@@ -1,0 +1,34 @@
+{
+  "name": "pestoverse",
+  "description": "The official pesto community website for events",
+  "version": "0.1.0",
+  "private": true,
+  "author": {
+    "email": "me@tougrel.dev",
+    "name": "Lampros \"Tougrel\" Sagris",
+    "url": "https://github.com/Tougrel"
+  },
+  "contributors": [],
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare",
+    "pretty": "prettier --write \"./**/*.{d.ts,ts}\""
+  },
+  "devDependencies": {
+    "@iconify-json/line-md": "^1.1.25",
+    "@iconify-json/mdi": "^1.1.52",
+    "@nuxt/devtools": "latest",
+    "@nuxt/image": "rc",
+    "@nuxthq/ui": "^2.5.0",
+    "@types/node": "^18.16.19",
+    "nuxt": "^3.6.2",
+    "nuxt-icon": "^0.4.2",
+    "prettier": "^3.0.0",
+    "prettier-plugin-tailwindcss": "^0.3.0",
+    "typescript": "^5.1.6"
+  },
+  "packageManager": "yarn@3.6.1"
+}
