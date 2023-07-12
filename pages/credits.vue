@@ -12,9 +12,7 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                <CreditsUser name="Yuniiho" description="For the amazing emotes" iconPath="credits/yuniiho.webp" />
-                <CreditsUser name="Tougrel" description="Website idea & maintainer" iconPath="credits/tougrel.webp" />
-                <CreditsUser name="Ikanexus" description="Ideas" iconPath="credits/ikanexus.webp" />
+                <CreditsUser v-for="user in CREDIT_USERS" :name="user.name" :description="user.description" :iconPath="user.icon_path" />
             </div>
         </div>
     </div>
