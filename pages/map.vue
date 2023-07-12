@@ -4,14 +4,14 @@
   type MarkerProps = {
     name: string,
     coords: LatLngExpression,
-    image: string
+    images: string[]
 }
 
   const markers = [
     {
       name: 'test',
       coords: [48.0367592,7.576856],
-      image: 'https://placekitten.com/g/300/200'
+      images: ['https://placekitten.com/g/450/300', 'https://placekitten.com/g/450/400', 'https://placekitten.com/g/450/250', 'https://placekitten.com/g/450/375']
     }
   ] as MarkerProps[];
 
