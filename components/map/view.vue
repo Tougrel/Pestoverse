@@ -48,7 +48,7 @@ onMounted(() => {
 </script>
 
 <template>
-    <div id="mapView" class="w-full h-full z-0"></div>
+    <div id="mapView" class="w-full h-full z-0 dark:invert dark:hue-rotate-180 dark:brightness-95 dark:contrast-90"></div>
     
     <USlideover v-for="marker in markers" v-model="isOpen">
         <UCard class="flex flex-col flex-1 overflow-scroll">
