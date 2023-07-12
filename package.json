@@ -10,6 +10,7 @@
   },
   "contributors": [],
   "scripts": {
+    "refresh": "nuxt clean && yarn run postinstall",
     "build": "nuxt build",
     "dev": "nuxt dev",
     "generate": "nuxt generate",

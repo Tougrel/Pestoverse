@@ -18,10 +18,10 @@
 </script>
 
 <template>
-  <div class="flex flex-col items-center gap-8 h-screen pt-8">
-    <UiNav />
+  <div class="flex flex-col items-center gap-8 h-screen">
     <ClientOnly>
       <MapView :markers="markers" />
     </ClientOnly>
+    <UiNav class="absolute top-5 right-5" fontSize="sm" iconSize="1.5em" buttonClass="bg-white dark:bg-navigation"/>
   </div>
 </template>

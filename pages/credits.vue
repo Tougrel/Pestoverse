@@ -2,9 +2,7 @@
 </script>
 
 <template>
-    <div class="flex flex-col items-center gap-8 h-screen p-8">
-        <UiNav />
-
+    <NuxtLayout name="default">
         <div class="flex flex-col items-center gap-6">
             <div class="flex flex-col items-center">
                 <Icon name="line-md:coffee-half-empty-twotone-loop" size="6em" class="text-green-600 dark:text-green-400" />
@@ -15,5 +13,5 @@
                 <CreditsUser v-for="user in CREDIT_USERS" :name="user.name" :description="user.description" :iconPath="user.icon_path" />
             </div>
         </div>
-    </div>
+    </NuxtLayout>
 </template>
