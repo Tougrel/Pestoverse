@@ -1,3 +1,5 @@
+import { fileURLToPath } from "url";
+
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
 	devtools: {
@@ -12,12 +14,17 @@ export default defineNuxtConfig({
 		icons: ["heroicons", "mdi"],
 	},
 
+	alias: {
+		'static': fileURLToPath(new URL('./static', import.meta.url)),
+	},
+
 	colorMode: {
 		fallback: "dark",
 		classSuffix: "",
 	},
 
 	image: {
+		none: {},
 		dir: "static/images",
 	},
 });

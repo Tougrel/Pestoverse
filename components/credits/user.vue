@@ -6,8 +6,7 @@ defineProps<{ name: string; description: string; iconPath: string; }>();
     <UCard>
         <template #header>
             <div class="flex flex-row justify-center">
-                <NuxtImg :src="iconPath" width="128" :preload="true" loading="lazy" decoding="async" format="webp"
-                    class="rounded-full" />
+                <img :src="iconPath" width="128" loading="lazy" decoding="async" class="rounded-full" />
             </div>
         </template>
 
