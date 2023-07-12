@@ -33,5 +33,5 @@ onMounted(() => {
 </script>
 
 <template>
-    <div id="mapView" class="w-full h-full"></div>
+    <div id="mapView" class="w-full h-full z-0"></div>
 </template>
