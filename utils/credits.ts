@@ -1,17 +1,21 @@
+import yuniiho from 'static/images/credits/yuniiho.webp';
+import tougrel from 'static/images/credits/tougrel.webp';
+import ikanexus from 'static/images/credits/ikanexus.webp';
+
 export const CREDIT_USERS = [
     {
         name: "Yuniiho",
         description: "For the amazing emotes",
-        icon_path: "credits/yuniiho.webp",
+        icon_path: yuniiho,
     },
     {
         name: "Tougrel",
         description: "Website idea & maintainer",
-        icon_path: "credits/tougrel.webp",
+        icon_path: tougrel,
     },
     {
         name: "Ikanexus",
         description: "Ideas",
-        icon_path: "credits/ikanexus.webp",
+        icon_path: ikanexus,
     },
 ]
