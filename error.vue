@@ -6,7 +6,7 @@ const handleErrors = () => clearError({ redirect: "/" });
 
 <template>
     <div class="flex flex-col items-center justify-center gap-4 p-4 h-screen">
-        <img src="/static/images/emotes/scream.webp" decoding="async" loading="lazy" alt="Scream" class="rounded-lg" />
+        <img src="static/images/emotes/scream.webp" decoding="async" loading="lazy" alt="Scream" class="rounded-lg" />
         <div class="text-center">
             <h1 class="text-3xl lg:text-6xl font-bold text-red-600 dark:text-red-500">BLACK HOLE ALERT</h1>
             <p class="text-lg text-gray-600 dark:text-gray-400">

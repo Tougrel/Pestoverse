@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import yuniiho from 'static/images/credits/yuniiho.webp';
+import tougrel from 'static/images/credits/tougrel.webp';
+import ikanexus from 'static/images/credits/ikanexus.webp';
 </script>
 
 <template>
@@ -12,9 +15,9 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                <CreditsUser name="Yuniiho" description="For the amazing emotes" iconPath="credits/yuniiho.webp" />
-                <CreditsUser name="Tougrel" description="Website idea & maintainer" iconPath="credits/tougrel.webp" />
-                <CreditsUser name="Ikanexus" description="Ideas" iconPath="credits/ikanexus.webp" />
+                <CreditsUser name="Yuniiho" description="For the amazing emotes" :iconPath="yuniiho" />
+                <CreditsUser name="Tougrel" description="Website idea & maintainer" :iconPath="tougrel" />
+                <CreditsUser name="Ikanexus" description="Ideas" :iconPath="ikanexus" />
             </div>
         </div>
     </div>
