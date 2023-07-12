@@ -1,19 +1,9 @@
 <script setup lang="ts">
-  import { LatLngExpression } from 'leaflet';
+  import { MarkerProps } from 'types/marker';
 
-  type MarkerProps = {
-    name: string,
-    coords: LatLngExpression,
-    images: string[]
-}
+  const { data } = await useFetch('/api/markers');
 
-  const markers = [
-    {
-      name: 'test',
-      coords: [48.0367592,7.576856],
-      images: ['https://placekitten.com/g/450/300', 'https://placekitten.com/g/450/400', 'https://placekitten.com/g/450/250', 'https://placekitten.com/g/450/375']
-    }
-  ] as MarkerProps[];
+  const markers = data as unknown as MarkerProps[];
 
 </script>
 
