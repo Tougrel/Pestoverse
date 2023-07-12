@@ -16,7 +16,7 @@
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
     "pretty": "prettier --write \"./**/*.{d.ts,ts}\"",
-    "copyimages": "ncp static/images .output/public || ncp static/images dist"
+    "copyimages": "ncp static .output/public/static || ncp static dist/static"
   },
   "devDependencies": {
     "@iconify-json/line-md": "^1.1.25",
