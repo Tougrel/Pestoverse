@@ -1,4 +1,6 @@
 <script setup lang="ts">
+const loading = ref(true);
+
 useSeoMeta({
   title: "Pestoverse",
   description: "The official community website created by Yuniiho's community!",
@@ -25,8 +27,13 @@ useHead({
     },
   ],
 });
+
+onMounted(() => {
+  loading.value = false;
+});
 </script>
 
 <template>
-  <NuxtPage />
+  <UiLoading v-if="loading" />
+  <NuxtPage v-else />
 </template>
