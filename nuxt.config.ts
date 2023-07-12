@@ -18,6 +18,7 @@ export default defineNuxtConfig({
 	},
 
 	image: {
+		none: {},
 		dir: "static/images",
 	},
 });
