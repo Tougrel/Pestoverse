@@ -12,9 +12,7 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                <span v-for="user in CREDIT_USERS" >
-                    <CreditsUser :name="user.name" :description="user.description" :iconPath="user.icon_path" />
-                </span>
+                <CreditsUser v-for="user in CREDIT_USERS" :name="user.name" :description="user.description" :iconPath="user.icon_path" />
             </div>
         </div>
     </div>
