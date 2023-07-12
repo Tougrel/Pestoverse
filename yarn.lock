@@ -6300,6 +6300,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"ncp@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "ncp@npm:2.0.0"
+  bin:
+    ncp: ./bin/ncp
+  checksum: ea9b19221da1d1c5529bdb9f8e85c9d191d156bcaae408cce5e415b7fbfd8744c288e792bd7faf1fe3b70fd44c74e22f0d43c39b209bc7ac1fb8016f70793a16
+  languageName: node
+  linkType: hard
+
 "negotiator@npm:0.6.3, negotiator@npm:^0.6.3":
   version: 0.6.3
   resolution: "negotiator@npm:0.6.3"
@@ -7110,6 +7119,7 @@ __metadata:
     "@nuxt/image": rc
     "@nuxthq/ui": ^2.5.0
     "@types/node": ^18.16.19
+    ncp: ^2.0.0
     nuxt: ^3.6.2
     nuxt-icon: ^0.4.2
     prettier: ^3.0.0

@@ -10,12 +10,13 @@
   },
   "contributors": [],
   "scripts": {
-    "build": "nuxt build",
+    "build": "nuxt build && yarn run copyimages",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
-    "pretty": "prettier --write \"./**/*.{d.ts,ts}\""
+    "pretty": "prettier --write \"./**/*.{d.ts,ts}\"",
+    "copyimages": "ncp static/images .output/public || ncp static/images dist"
   },
   "devDependencies": {
     "@iconify-json/line-md": "^1.1.25",
@@ -24,6 +25,7 @@
     "@nuxt/image": "rc",
     "@nuxthq/ui": "^2.5.0",
     "@types/node": "^18.16.19",
+    "ncp": "^2.0.0",
     "nuxt": "^3.6.2",
     "nuxt-icon": "^0.4.2",
     "prettier": "^3.0.0",
