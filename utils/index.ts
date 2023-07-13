@@ -19,6 +19,14 @@ export const NAV_MENU = [
             icon: "i-heroicons-map-solid",
             to: "/map"
         },
+        {
+            label: "Kudo Boards",
+            icon: "i-heroicons-clipboard-document-list-solid",
+            click: () => {
+                const state = useState("kudo-slideover");
+                state.value = true;
+            }
+        },
     ],
     [
         {
@@ -56,4 +64,25 @@ export const THEME_MENU = [
             },
         },
     ]
+];
+
+export const KUDO_BOARDS = [
+    {
+        title: "Yunii's Birthday - 2022",
+        description: null,
+        icon: "heroicons:cake-solid",
+        to: "https://www.kudoboard.com/boards/w9JmES7S",
+    },
+    {
+        title: "Yunii's 3 year Anniversary",
+        description: null,
+        icon: "mdi:party-popper",
+        to: "https://www.kudoboard.com/boards/jg4DoxNe",
+    },
+    {
+        title: "Yunii's Birthday - 2023",
+        description: null,
+        icon: "heroicons:cake-solid",
+        to: "https://www.kudoboard.com/boards/ALFEX0yC",
+    }
 ]

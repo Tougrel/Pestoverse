@@ -21,6 +21,16 @@ export default defineAppConfig({
 
         card: {
             background: "bg-white dark:bg-navigation",
+            divide: "divide-y divide-slate-500 dark:divide-slate-700",
+            ring: "ring-1 ring-slate-500 dark:ring-slate-700",
         },
+
+        slideover: {
+            background: "bg-white dark:bg-background",
+            overlay: {
+                background: "bg-black/60"
+            },
+            ring: "ring-1 ring-navigation dark:ring-gray-600",
+        }
     },
 });
