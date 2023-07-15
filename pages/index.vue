@@ -1,7 +1,5 @@
 <template>
-  <div class="flex flex-col items-center justify-between h-screen p-8">
-    <UiNav />
-
+  <NuxtLayout name="default" class="justify-between">
     <div class="flex flex-col items-center gap-4">
       <div class="text-center">
         <span class="text-xl text-gray-600 dark:text-gray-400 font-medium">Welcome to the</span>
@@ -28,5 +26,5 @@
         </NuxtLink> page!
       </p>
     </div>
-  </div>
+  </NuxtLayout>>
 </template>

@@ -10,6 +10,7 @@
   },
   "contributors": [],
   "scripts": {
+    "refresh": "nuxt clean && yarn run postinstall",
     "build": "nuxt build",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
@@ -20,10 +21,13 @@
   "devDependencies": {
     "@iconify-json/line-md": "^1.1.25",
     "@iconify-json/mdi": "^1.1.52",
+    "@nuxt/content": "^2.7.0",
     "@nuxt/devtools": "latest",
     "@nuxt/image": "rc",
     "@nuxthq/ui": "^2.5.0",
+    "@types/leaflet": "^1.9.3",
     "@types/node": "^18.16.19",
+    "leaflet": "^1.9.4",
     "nuxt": "^3.6.2",
     "nuxt-icon": "^0.4.2",
     "prettier": "^3.0.0",

@@ -15,7 +15,7 @@ export const CREDIT_USERS = [
     },
     {
         name: "Ikanexus",
-        description: "Ideas",
+        description: "Ideas & code",
         icon_path: ikanexus,
     },
 ]
