@@ -27,7 +27,7 @@ const openModal = (image: string) => {
                 <h1 class="text-4xl text-green-600 dark:text-green-400 font-bold">Look at all the Pesto</h1>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-4">
+            <div class="flex flex-row flex-wrap gap-4">
                 <UCard v-for="image in images" :ui="appConfig.ui.galleryCard">
                     <NuxtImg role="button" class="h-64 m-auto" loading="lazy" decoding="async" :src="image" @click="openModal(image)"/>
                 </UCard>
