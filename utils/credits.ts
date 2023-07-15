@@ -1,6 +1,8 @@
 import yuniiho from 'static/images/credits/yuniiho.webp';
 import tougrel from 'static/images/credits/tougrel.webp';
 import ikanexus from 'static/images/credits/ikanexus.webp';
+import bootfighter from 'static/images/credits/bootfighter.webp';
+import dhoru from 'static/images/credits/dhoru.webp';
 
 export const CREDIT_USERS = [
     {
@@ -18,4 +20,14 @@ export const CREDIT_USERS = [
         description: "Ideas & code",
         icon_path: ikanexus,
     },
+    {
+        name: "Bootfighter",
+        description: "For the amazing emotes",
+        icon_path: bootfighter
+    },
+    {
+        name: "Dhoru",
+        description: "For the amazing emotes",
+        icon_path: dhoru
+    }
 ]
