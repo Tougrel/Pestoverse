@@ -1282,31 +1282,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@nuxt/kit@npm:^3.3.2":
-  version: 3.6.3
-  resolution: "@nuxt/kit@npm:3.6.3"
-  dependencies:
-    "@nuxt/schema": 3.6.3
-    c12: ^1.4.2
-    consola: ^3.2.3
-    defu: ^6.1.2
-    globby: ^13.2.2
-    hash-sum: ^2.0.0
-    ignore: ^5.2.4
-    jiti: ^1.19.1
-    knitwork: ^1.0.0
-    mlly: ^1.4.0
-    pathe: ^1.1.1
-    pkg-types: ^1.0.3
-    scule: ^1.0.0
-    semver: ^7.5.3
-    unctx: ^2.3.1
-    unimport: ^3.0.14
-    untyped: ^1.3.2
-  checksum: 08538308be294de832944970f66c34c3084991b96330ab65cef55770f84b75b7879edd76b838f4978829d6b8db872013d415ec97bb859df4dbe6c8a991c54cf6
-  languageName: node
-  linkType: hard
-
 "@nuxt/postcss8@npm:^1.1.3":
   version: 1.1.3
   resolution: "@nuxt/postcss8@npm:1.1.3"
@@ -1337,23 +1312,6 @@ __metadata:
     unimport: ^3.0.14
     untyped: ^1.3.2
   checksum: 931ba8612299e5698235ab48a0d9d1fb74db6fdcfefca12cd87c4bf6c371fc0091530fb78a73885f5c66d2d988a03d847f6ebf772c0b9a058ad8fe63d506d259
-  languageName: node
-  linkType: hard
-
-"@nuxt/schema@npm:3.6.3":
-  version: 3.6.3
-  resolution: "@nuxt/schema@npm:3.6.3"
-  dependencies:
-    defu: ^6.1.2
-    hookable: ^5.5.3
-    pathe: ^1.1.1
-    pkg-types: ^1.0.3
-    postcss-import-resolver: ^2.0.0
-    std-env: ^3.3.3
-    ufo: ^1.1.2
-    unimport: ^3.0.14
-    untyped: ^1.3.2
-  checksum: 0f18fa880087cf2191bccbab1e173ddd215ed7ac73263d6c1e06b9f434b78ce9f202ee670e4d0041e4b3a9a49fc8167211f2945c3d55a7056e5df46cd210259c
   languageName: node
   linkType: hard
 
@@ -1874,13 +1832,6 @@ __metadata:
   version: 20.4.1
   resolution: "@types/node@npm:20.4.1"
   checksum: 22cbcc792f2eb636fe4188778ed0f32658ab872aa7fcb9847b3fa289a42b14b9f5e30c6faec50ef3c7adbc6c2a246926e5858136bb8b10c035a3fcaa6afbeed2
-  languageName: node
-  linkType: hard
-
-"@types/node@npm:^17.0.36":
-  version: 17.0.45
-  resolution: "@types/node@npm:17.0.45"
-  checksum: aa04366b9103b7d6cfd6b2ef64182e0eaa7d4462c3f817618486ea0422984c51fc69fd0d436eae6c9e696ddfdbec9ccaa27a917f7c2e8c75c5d57827fe3d95e8
   languageName: node
   linkType: hard
 
@@ -3427,15 +3378,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"crosspath@npm:^2.0.0":
-  version: 2.0.0
-  resolution: "crosspath@npm:2.0.0"
-  dependencies:
-    "@types/node": ^17.0.36
-  checksum: a209e02562504b91da143f1b3fe4c1f7e5dfc20c9c83b2538f802e243ad16fadc3d529aa4e5f47430f91f92f4c1ed0860206c9fcb4e0ad737723a44b32a7f61b
-  languageName: node
-  linkType: hard
-
 "css-declaration-sorter@npm:^6.3.1":
   version: 6.4.1
   resolution: "css-declaration-sorter@npm:6.4.1"
@@ -3608,13 +3550,6 @@ __metadata:
   version: 4.0.1
   resolution: "data-uri-to-buffer@npm:4.0.1"
   checksum: 0d0790b67ffec5302f204c2ccca4494f70b4e2d940fea3d36b09f0bb2b8539c2e86690429eb1f1dc4bcc9e4df0644193073e63d9ee48ac9fce79ec1506e4aa4c
-  languageName: node
-  linkType: hard
-
-"debounce@npm:^1.2.1":
-  version: 1.2.1
-  resolution: "debounce@npm:1.2.1"
-  checksum: 682a89506d9e54fb109526f4da255c5546102fbb8e3ae75eef3b04effaf5d4853756aee97475cd4650641869794e44f410eeb20ace2b18ea592287ab2038519e
   languageName: node
   linkType: hard
 
@@ -4961,7 +4896,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"globby@npm:^13.2.0, globby@npm:^13.2.1, globby@npm:^13.2.2":
+"globby@npm:^13.2.0, globby@npm:^13.2.1":
   version: 13.2.2
   resolution: "globby@npm:13.2.2"
   dependencies:
@@ -5399,17 +5334,6 @@ __metadata:
   version: 0.1.1
   resolution: "image-meta@npm:0.1.1"
   checksum: fe38611c2b7f2b327e4bf66bd73a24d5b2fa6aecbe0bc69565dd882c930e9d123e181ccadcdf8f66055d21405eeefaa69863f8ed5e0edcb08a6ee3956560d385
-  languageName: node
-  linkType: hard
-
-"image-size@npm:^1.0.2":
-  version: 1.0.2
-  resolution: "image-size@npm:1.0.2"
-  dependencies:
-    queue: 6.0.2
-  bin:
-    image-size: bin/image-size.js
-  checksum: 01745fdb47f87cecf538e69c63f9adc5bfab30a345345c2de91105f3afbd1bfcfba1256af02bf3323077b33b0004469a837e077bf0cbb9c907e9c1e9e7547585
   languageName: node
   linkType: hard
 
@@ -7686,25 +7610,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"nuxt-content-assets@npm:^1.3.2":
-  version: 1.3.2
-  resolution: "nuxt-content-assets@npm:1.3.2"
-  dependencies:
-    "@nuxt/kit": ^3.3.2
-    crosspath: ^2.0.0
-    debounce: ^1.2.1
-    image-size: ^1.0.2
-    listhen: ^1.0.4
-    ohash: ^1.0.0
-    unist-util-visit: ^4.1.2
-    unstorage: ^1.4.1
-    ws: ^8.13.0
-  peerDependencies:
-    "@nuxt/content": ^2.0.0
-  checksum: 4ddc548f2cd1403f27e00017f4ac59b716c14d8cebcd8363a26c68195c1e9da084996cc75f6aee01e2e8d8fea9022d2102541bd6e7294bf3f48391c72e75c246
-  languageName: node
-  linkType: hard
-
 "nuxt-icon@npm:^0.4.2":
   version: 0.4.2
   resolution: "nuxt-icon@npm:0.4.2"
@@ -7835,7 +7740,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ohash@npm:^1.0.0, ohash@npm:^1.1.2":
+"ohash@npm:^1.1.2":
   version: 1.1.2
   resolution: "ohash@npm:1.1.2"
   checksum: f9f325096658aa793ca91bb6787014c02ed7f9f77a9b5269fc8e2e1f4eea40283f53c0cbf5c1ec2d4004fafbacaa2dae0504caa1c701d4b098c237ed6fb83f95
@@ -8171,7 +8076,6 @@ __metadata:
     "@types/node": ^18.16.19
     leaflet: ^1.9.4
     nuxt: ^3.6.2
-    nuxt-content-assets: ^1.3.2
     nuxt-icon: ^0.4.2
     prettier: ^3.0.0
     prettier-plugin-tailwindcss: ^0.3.0
@@ -8945,15 +8849,6 @@ __metadata:
   version: 1.2.3
   resolution: "queue-microtask@npm:1.2.3"
   checksum: b676f8c040cdc5b12723ad2f91414d267605b26419d5c821ff03befa817ddd10e238d22b25d604920340fd73efd8ba795465a0377c4adf45a4a41e4234e42dc4
-  languageName: node
-  linkType: hard
-
-"queue@npm:6.0.2":
-  version: 6.0.2
-  resolution: "queue@npm:6.0.2"
-  dependencies:
-    inherits: ~2.0.3
-  checksum: ebc23639248e4fe40a789f713c20548e513e053b3dc4924b6cb0ad741e3f264dcff948225c8737834dd4f9ec286dbc06a1a7c13858ea382d9379f4303bcc0916
   languageName: node
   linkType: hard
 
@@ -10671,7 +10566,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"unstorage@npm:^1.4.1, unstorage@npm:^1.6.1, unstorage@npm:^1.7.0":
+"unstorage@npm:^1.6.1, unstorage@npm:^1.7.0":
   version: 1.8.0
   resolution: "unstorage@npm:1.8.0"
   dependencies:
