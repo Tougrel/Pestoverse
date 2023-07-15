@@ -5,5 +5,5 @@ images:
     - 'https://placekitten.com/g/450/300'
     - 'https://placekitten.com/g/450/400'
     - 'https://placekitten.com/g/450/250'
-    - 'https://placekitten.com/g/450/375'
+    - 'https://placekitten.com/g/550/500'
 ---

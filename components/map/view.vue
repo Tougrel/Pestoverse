@@ -54,7 +54,7 @@ onMounted(() => {
 <template>
     <div id="mapView" class="w-full h-full z-0 dark:invert dark:hue-rotate-180 dark:brightness-95 dark:contrast-90"></div>
     <UiSlideover state="map-slideover">
-        <a v-for="image, index in slideoverData.images" @click="openModal(slideoverData.images, index)">
+        <a role="button" v-for="image, index in slideoverData.images" @click="openModal(slideoverData.images, index)">
             <img loading="lazy" decoding="async" :src="image" :title="slideoverData.name"/>
         </a>
     </UiSlideover>
