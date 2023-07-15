@@ -6,7 +6,7 @@ export default defineNuxtConfig({
 		enabled: true,
 	},
 
-	modules: ["@nuxt/devtools", "@nuxt/image", "@nuxthq/ui", "nuxt-icon", "@nuxt/content"],
+	modules: ["@nuxt/devtools", "@nuxt/image", "@nuxthq/ui", "nuxt-icon"],
 
 	css: ["~/assets/css/index.css"],
 
