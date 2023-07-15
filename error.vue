@@ -38,7 +38,7 @@ const handleErrors = () => clearError({ redirect: "/" });
             class="border-2 border-green-700 px-4 py-2 rounded-lg transition-all hover:bg-green-300 hover:dark:bg-green-900 hover:scale-105 duration-300 z-10">
             Try to restore the Universe
         </button>
-        <img :src="dog" class="fixed bottom-0 left-0 opacity-5 grayscale z-0 animate-[scalein_60s_linear_normal]" draggable="false" />
+        <img :src="dog" class="fixed bottom-0 left-0 opacity-5 grayscale z-0 animate-[scalein_120s_linear_forwards]" draggable="false" />
     </div>
 </template>
   
