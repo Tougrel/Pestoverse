@@ -24,6 +24,8 @@ onMounted(() => {
         maxZoom: 10
     }).addTo(map);
 
+    map.setMaxBounds(map.getBounds());
+
     const greenIcon = L.icon({
         iconUrl: leafletMarker,
         shadowUrl: leafletShadow,
