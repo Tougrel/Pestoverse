@@ -28,8 +28,8 @@ const openModal = (image: string) => {
             </div>
 
             <div class="flex flex-row flex-wrap gap-4">
-                <UCard v-for="image in images" :ui="appConfig.ui.galleryCard">
-                    <NuxtImg role="button" class="h-64 m-auto" loading="lazy" decoding="async" :src="image" @click="openModal(image)"/>
+                <UCard v-for="image in images" :ui="appConfig.ui.galleryCard" class="mx-auto md:mx-0">
+                    <NuxtImg role="button" class="h-64" loading="lazy" decoding="async" :src="image" @click="openModal(image)"/>
                 </UCard>
             </div>
         </div>
