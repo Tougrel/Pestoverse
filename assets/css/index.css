@@ -1,4 +1,5 @@
 html,
-body {
+body,
+#__nuxt {
   @apply bg-white dark:bg-background font-poppins transition-[background] duration-300;
 }

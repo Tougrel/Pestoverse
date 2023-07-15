@@ -1,6 +1,8 @@
 <script setup lang="ts">
 const loading = ref(true);
 
+useState("kudo-slideover", () => false);
+
 useSeoMeta({
   title: "Pestoverse",
   description: "The official community website created by Yuniiho's community!",
@@ -35,5 +37,6 @@ onMounted(() => {
 
 <template>
   <UiLoading v-if="loading" />
-  <NuxtPage v-else />
+  <KudoSidebar v-if="!loading" />
+  <NuxtPage v-if="!loading" />
 </template>
