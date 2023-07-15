@@ -30,7 +30,11 @@ onMounted(() => {
         maxZoom: 10
     }).addTo(map);
 
-    map.setMaxBounds(map.getBounds());
+    const southWestBounds = L.latLng(-85.081364, -180.351563)
+    const northEastBounds = L.latLng(85.06627, 180.351563);
+    const bounds = L.latLngBounds(southWestBounds, northEastBounds);
+
+    map.setMaxBounds(bounds);
 
     props.markers.forEach(entry => {
         const icon = getEmote();
