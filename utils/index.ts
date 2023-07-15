@@ -20,6 +20,11 @@ export const NAV_MENU = [
             to: "/map"
         },
         {
+            label: "Pesto Gallery",
+            icon: "i-heroicons-photo-solid",
+            to: "/gallery"
+        },
+        {
             label: "Kudo Boards",
             icon: "i-heroicons-clipboard-document-list-solid",
             click: () => {
