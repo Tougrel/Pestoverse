@@ -14,7 +14,8 @@ const mapCenter = [28.883744, -28.621836] as LatLngExpression;
 const mapZoom = 3;
 const mapTiles = "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
 
-const isOpen = ref(false);
+const isOpen = useState<boolean>("map-slideover", () => false);
+
 const slideoverData = ref({} as MarkerProps);
 
 onMounted(() => {
@@ -47,16 +48,7 @@ onMounted(() => {
 
 <template>
     <div id="mapView" class="w-full h-full z-0 dark:invert dark:hue-rotate-180 dark:brightness-95 dark:contrast-90"></div>
-    <!-- TODO: This should be another component but couldn't get the signalling sorted -->
-    <USlideover v-model="isOpen">
-        <UCard class="flex flex-col flex-1 overflow-scroll">
-            <template #header>
-                <div class="flex items-center justify-between">
-                    <h3 class="text-base font-semibold leading-6 text-gray-900 dark:text-white bg-white dark:bg-navigation">{{ slideoverData.name }}</h3>
-                    <UButton color="green" variant="ghost" icon="i-heroicons-x-mark-20-solid" class="-my-1 text-green-700 dark:text-green-400" @click="isOpen = false" />
-                </div>
-            </template>
-            <img v-for="image in slideoverData.images" loading="lazy" decoding="async" :src="image" class="pb-4" />
-        </UCard>
-    </USlideover>
+    <UiSlideover state="map-slideover">
+        <img v-for="image in slideoverData.images" loading="lazy" decoding="async" :src="image" :title="slideoverData.name"/>
+    </UiSlideover>
 </template>
