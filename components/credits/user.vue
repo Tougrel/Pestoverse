@@ -6,7 +6,7 @@ defineProps<{ name: string; description: string; iconPath: string; }>();
     <UCard>
         <template #header>
             <div class="flex flex-row justify-center">
-                <img :src="iconPath" width="128" loading="lazy" decoding="async" class="rounded-full" />
+                <img :src="iconPath" loading="lazy" decoding="async" class="rounded-full h-128" />
             </div>
         </template>
 
