@@ -8,6 +8,7 @@ const handleErrors = () => clearError({ redirect: "/" });
 
 const flashbang = ref(false);
 const showDog = ref(true);
+const animationFinished = ref(false);
 
 </script>
 
@@ -26,11 +27,11 @@ const showDog = ref(true);
         <code
             class="bg-gray-300 dark:bg-navigation/40 border-2 border-navigation p-2 rounded-lg max-w-screen-2xl w-full max-h-30 overflow-y-scroll z-10">{{ error }}</code>
         <button @click="handleErrors"
-            class="border-2 border-green-700 px-4 py-2 rounded-lg transition-all hover:bg-green-300 hover:dark:bg-green-900 hover:scale-105 duration-300 z-10">
+            class="border-2 border-green-700 px-4 py-2 rounded-lg transition-all hover:bg-green-300 hover:dark:bg-green-900 hover:scale-105 duration-300 z-10" @mouseenter="() => {if (animationFinished) showDog = true}" @mouseleave="() => {if (animationFinished) showDog = false}">
             Try to restore the Universe
         </button>
-        <img :src="dog" v-if="showDog" class="fixed bottom-0 left-0 opacity-5 grayscale z-0 animate-[scalein_30s_ease-in-out_forwards]" draggable="false" @animationend="flashbang = true" />
-        <div :class="{'opacity-100': flashbang, 'opacity-0': !flashbang, 'delay-1000': !flashbang, 'duration-100': flashbang, 'duration-1000': !flashbang}" class="pointer-events-none transition ease-linear absolute z-50 h-screen w-screen bg-white" @transitionend="flashbang = false; showDog = false"></div>
+        <img :src="dog" :class="{'opacity-5': showDog, 'opacity-0': !showDog}" class="fixed bottom-0 left-0 grayscale z-0 animate-[scalein_30s_ease-in-out_forwards] transition ease-linear" draggable="false" @animationend="flashbang = true" />
+        <div :class="{'opacity-100': flashbang, 'opacity-0': !flashbang, 'delay-1000': !flashbang, 'duration-100': flashbang, 'duration-1000': !flashbang}" class="pointer-events-none transition ease-linear absolute z-50 h-screen w-screen bg-white" @transitionend="flashbang = false; showDog = false; animationFinished = true"></div>
     </div>
 </template>
   
