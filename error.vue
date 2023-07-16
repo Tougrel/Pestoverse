@@ -23,7 +23,7 @@ const flashbang = ref(false);
             </p>
         </div>
         <code
-            class="bg-gray-300 dark:bg-navigation/40 border-2 border-navigation p-2 rounded-lg max-w-screen-2xl w-full z-10">{{ error }}</code>
+            class="bg-gray-300 dark:bg-navigation/40 border-2 border-navigation p-2 rounded-lg max-w-screen-2xl w-full max-h-30 overflow-y-scroll z-10">{{ error }}</code>
         <button @click="handleErrors"
             class="border-2 border-green-700 px-4 py-2 rounded-lg transition-all hover:bg-green-300 hover:dark:bg-green-900 hover:scale-105 duration-300 z-10">
             Try to restore the Universe
