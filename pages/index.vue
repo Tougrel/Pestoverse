@@ -26,5 +26,5 @@
         </NuxtLink> page!
       </p>
     </div>
-  </NuxtLayout>>
+  </NuxtLayout>
 </template>
