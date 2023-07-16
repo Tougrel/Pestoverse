@@ -27,10 +27,12 @@ const openModal = (image: string) => {
                 <h1 class="text-4xl text-green-600 dark:text-green-400 font-bold">Look at all the Pesto</h1>
             </div>
 
-            <div class="flex flex-row flex-wrap gap-4">
-                <UCard v-for="image in images" :ui="appConfig.ui.galleryCard" class="mx-auto md:mx-0">
-                    <NuxtImg role="button" class="h-64" loading="lazy" decoding="async" :src="image" @click="openModal(image)"/>
-                </UCard>
+            <div class="relative flex flex-col justify-center">
+                <div class="columns-2 xl:columns-3 2xl:columns-4 [column-fill:_balance] box-border mx-auto before:box-inherit after:box-inherit">
+                    <div v-for="image in images" class="break-inside-avoid mb-6">
+                        <NuxtImg :ui="appConfig.ui.galleryCard" role="button" class="mx-auto md:mx-0 rounded-lg" loading="lazy" decoding="async" :src="image" @click="openModal(image)"/>
+                    </div>
+                </div>
             </div>
         </div>
         <UModal v-model="modalOpen">
