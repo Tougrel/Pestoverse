@@ -5,14 +5,13 @@ useState("kudo-slideover", () => false);
 
 useSeoMeta({
   title: "Pestoverse",
-  description: "The official community website created by Yuniiho's community!",
+  description: "The official website for running, upcoming and archived events created by Yuniiho's community!",
+
   ogTitle: "Pestoverse",
-  ogDescription: "The official community website created by Yuniiho's community!",
-  // ogImage: "",
-  // ogUrl: "",
+  ogDescription: "The official website for running, upcoming and archived events created by Yuniiho's community!",
+
   twitterTitle: "Pestoverse",
-  twitterDescription: "The official community website created by Yuniiho's community!",
-  // twitterImage: "",
+  twitterDescription: "The official website for running, upcoming and archived created by Yuniiho's community!",
   twitterCard: "summary",
 });
 
@@ -24,9 +23,19 @@ useHead({
   link: [
     {
       rel: "icon",
-      type: "image/png",
-      href: "/favicon.png",
+      type: "image/vnd.microsoft.icon",
+      href: "/favicon.ico",
     },
+    {
+      rel: "shortcut icon",
+      type: "image/vnd.microsoft.icon",
+      href: "/favicon.ico",
+    },
+    {
+      rel: "icon",
+      type: "image/png",
+      href: "/icons/favicon-32x32.png",
+    }
   ],
 });
 
