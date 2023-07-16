@@ -6,11 +6,10 @@ const playNya = () => {
     const audio = new Audio(nya);
     audio.play();
 } 
-
 </script>
 
 <template>
-    <button @click="playNya">
-        <img :src="cat" loading="lazy" decoding="async" class="fixed bottom-0 left-0 h-10 opacity-10 hover:opacity-60" />
+    <button @click="playNya" class="fixed bottom-0 left-0">
+        <img :src="cat" loading="lazy" decoding="async" class="h-10 opacity-20 hover:opacity-60" />
     </button>
 </template>
