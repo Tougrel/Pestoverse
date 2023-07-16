@@ -1,6 +1,6 @@
 <template>
   <NuxtLayout name="default" class="justify-between">
-    <div class="flex flex-col items-center gap-4">
+    <div class="flex flex-col items-center gap-4 z-10">
       <div class="text-center">
         <span class="text-xl text-gray-600 dark:text-gray-400 font-medium">Welcome to the</span>
         <h1 class="text-6xl text-green-700 font-bold">Pestoverse</h1>
@@ -11,7 +11,7 @@
       </NuxtLink>
     </div>
 
-    <div class="flex flex-col items-center">
+    <div class="flex flex-col items-center z-10">
       <p class="text-gray-600 dark:text-gray-300">
         Made with <span class="animate-pulse">❤️</span> by the
         <a href="https://github.com/Tougrel/pestoverse"
@@ -26,5 +26,6 @@
         </NuxtLink> page!
       </p>
     </div>
+    <EasterEggOrbit />
   </NuxtLayout>
 </template>

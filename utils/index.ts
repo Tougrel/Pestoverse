@@ -3,6 +3,8 @@ export const ICONS = {
     SYSTEM_THEME: "heroicons:computer-desktop-solid",
     WHITE_THEME: "line-md:moon-filled-alt-to-sunny-filled-loop-transition",
     DARK_THEME: "line-md:sunny-filled-loop-to-moon-alt-filled-loop-transition",
+    CAT: "mdi:cat",
+    PAW: "mdi:paw",
 } as const;
 
 export const NAV_MENU = [
