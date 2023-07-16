@@ -33,8 +33,8 @@ export default {
           '100%': { transform: 'scale(2.0)' }
         },
         sunfire: {
-          'from': { boxShadow: `0 0 50px ${theme.colors.yellow[200]}` },
-          'to': { boxShadow: `0 0 100px ${theme.colors.yellow[200]}` }
+          'from': { boxShadow: `0 0 50px ${theme.colors.pink[700]}` },
+          'to': { boxShadow: `0 0 100px ${theme.colors.pink[600]}` }
         },
         rotation: {
           'from': { transform: 'rotate(0)' },

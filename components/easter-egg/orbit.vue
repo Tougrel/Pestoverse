@@ -23,15 +23,16 @@ const getPosition = (index: number) => {
 </script>
 
 <template>
-    <div class="fixed opacity-50 top-3/4 left-1/2 pointer-events-none bg-gradient-radial">
+    <div class="fixed opacity-50 top-1/4 pointer-events-none h-full w-full bg-gradient-radial from-black via-transparent to-transparent rounded-full">
         <!-- Sun -->
-        <div class="absolute h-48 w-48 -mt-24 -ml-24 rounded-full bg-gradient-radial from-yellow-300 to-orange-400 z-4 animate-[sunfire_4s_infinite_alternate]"></div>
+        <div class="absolute h-48 w-48 top-1/2 left-1/2 -ml-24 -mt-24 rounded-full bg-gradient-radial from-pink-400 to-pink-600 z-4 animate-[sunfire_4s_infinite_alternate]"></div>
         <!-- Pestie Orbit -->
         <div class="absolute h-128 w-128 top-1/2 left-1/2 -mt-64 -ml-64 border-full animate-[rotation_30s_linear_infinite]">
             <div class="relative h-full w-full">
                 <!-- Pestie -->
-                <img v-for="index in pesties" :key="index" :class="`absolute h-16 -ml-8 animate-[rotation_3s_linear_infinite]`" :style="`${getPosition(index)}`" :src="pestoroll" alt="Pestie" />
+                <img v-for="index in pesties" :key="index" class="absolute h-16 -ml-8 animate-[rotation_3s_linear_infinite] saturate-150 dark:saturate-100" :style="`${getPosition(index)}`" :src="pestoroll" alt="Pestie" />
             </div>
         </div>
+
     </div>
 </template>
