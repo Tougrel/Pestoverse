@@ -58,9 +58,11 @@ onMounted(() => {
 <template>
     <div id="mapView" class="w-full h-full z-0 dark:invert dark:hue-rotate-180 dark:brightness-95 dark:contrast-90"></div>
     <UiSlideover state="map-slideover">
-        <a role="button" v-for="image, index in slideoverData.images" @click="openModal(slideoverData.images, index)">
-            <img loading="lazy" decoding="async" :src="image" :title="slideoverData.name"/>
-        </a>
+        <div class="flex flex-col gap-4">
+            <a role="button" v-for="image, index in slideoverData.images" @click="openModal(slideoverData.images, index)">
+                <img class="rounded" loading="lazy" decoding="async" :src="image" :title="slideoverData.name"/>
+            </a>
+        </div>
     </UiSlideover>
     <UModal v-model="modalOpen" @close="slideoverOpen = true">
         <img v-for="image, index in modalImages" v-show="index === modalActiveImage" loading="lazy" decoding="async" :src="image"/>
