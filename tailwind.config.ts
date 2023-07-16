@@ -23,6 +23,12 @@ export default {
       zIndex: {
         500: "500",
       },
+      keyframes: {
+        scalein: {
+          '0%': { transform: 'scale(1.0)' },
+          '100%': { transform: 'scale(2.0)' }
+        }
+      }
     },
   },
 } satisfies Config;

@@ -5,20 +5,9 @@ import scream from 'static/images/emotes/scream.webp';
 import dog from 'static/images/dog.png';
 
 const handleErrors = () => clearError({ redirect: "/" });
-</script>
 
-<style>
-@keyframes scalein {
-  0% {
-      transform: scale(1.0);
-      -webkit-transform: scale(1.0);
-  }
-  100% {
-      transform: scale(2.0);
-      -webkit-transform: scale(2.0);
-  }
-}
-</style>
+const flashbang = ref(false);
+</script>
 
 <template>
     <div class="flex flex-col items-center justify-center gap-4 p-4 h-screen">
@@ -38,7 +27,8 @@ const handleErrors = () => clearError({ redirect: "/" });
             class="border-2 border-green-700 px-4 py-2 rounded-lg transition-all hover:bg-green-300 hover:dark:bg-green-900 hover:scale-105 duration-300 z-10">
             Try to restore the Universe
         </button>
-        <img :src="dog" class="fixed bottom-0 left-0 opacity-5 grayscale z-0 animate-[scalein_60s_linear_forwards]" draggable="false" />
+        <img :src="dog" class="fixed bottom-0 left-0 opacity-5 grayscale z-0 animate-[scalein_60s_linear_forwards]" draggable="false" @animationend="flashbang = true" />
+        <div :class="{'opacity-100': flashbang, 'opacity-0': !flashbang}" class="pointer-events-none transition ease-linear delay-700 duration-500 absolute z-50 h-screen w-screen bg-white" @transitionend="flashbang = false"></div>
     </div>
 </template>
   
