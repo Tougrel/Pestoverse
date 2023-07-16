@@ -7,6 +7,7 @@ import dog from 'static/images/dog.png';
 const handleErrors = () => clearError({ redirect: "/" });
 
 const flashbang = ref(false);
+
 </script>
 
 <template>
@@ -27,8 +28,8 @@ const flashbang = ref(false);
             class="border-2 border-green-700 px-4 py-2 rounded-lg transition-all hover:bg-green-300 hover:dark:bg-green-900 hover:scale-105 duration-300 z-10">
             Try to restore the Universe
         </button>
-        <img :src="dog" class="fixed bottom-0 left-0 opacity-5 grayscale z-0 animate-[scalein_60s_linear_forwards]" draggable="false" @animationend="flashbang = true" />
-        <div :class="{'opacity-100': flashbang, 'opacity-0': !flashbang}" class="pointer-events-none transition ease-linear delay-700 duration-500 absolute z-50 h-screen w-screen bg-white" @transitionend="flashbang = false"></div>
+        <img :src="dog" class="fixed bottom-0 left-0 opacity-5 grayscale z-0 animate-[scalein_50s_linear_forwards]" draggable="false" @animationend="flashbang = true" />
+        <div :class="{'opacity-100': flashbang, 'opacity-0': !flashbang, 'delay-1000': !flashbang, 'duration-100': flashbang, 'duration-1000': !flashbang}" class="pointer-events-none transition ease-linear absolute z-50 h-screen w-screen bg-white" @transitionend="flashbang = false"></div>
     </div>
 </template>
   
