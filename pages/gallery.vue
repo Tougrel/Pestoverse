@@ -30,7 +30,7 @@ const openModal = (image: string) => {
             <div class="relative flex flex-col justify-center max-w-screen-2xl">
                 <div class="columns-2 xl:columns-3 2xl:columns-4 [column-fill:_balance] box-border mx-auto before:box-inherit after:box-inherit">
                     <div v-for="image in images" class="break-inside-avoid mx-0.5 mb-6">
-                        <NuxtImg :ui="appConfig.ui.galleryCard" role="button" class="rounded-lg" loading="lazy" decoding="async" :src="image" @click="openModal(image)"/>
+                        <NuxtImg role="button" class="rounded-lg" loading="lazy" decoding="async" :src="image" @click="openModal(image)"/>
                     </div>
                 </div>
             </div>
