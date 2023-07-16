@@ -24,7 +24,7 @@ const openModal = (image: string) => {
         <div class="flex flex-col items-center gap-6">
             <div class="flex flex-col items-center">
                 <img loading="lazy" decoding="async" :src="pestoBinoculars" />
-                <h1 class="text-4xl text-green-600 dark:text-green-400 font-bold">Look at all the Pesto</h1>
+                <h1 class="text-4xl text-primary-600 dark:text-primary-400 font-bold">Look at all the Pesto</h1>
             </div>
 
             <div class="relative flex flex-col justify-center max-w-screen-2xl">

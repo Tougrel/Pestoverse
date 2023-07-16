@@ -1,5 +1,4 @@
 <script setup lang="ts">
-const colorMode = useColorMode();
 const props = defineProps<{ iconSize?: string, fontSize?: "sm" | "md" | "lg", buttonClass?: string }>();
 
 const textSizeClass = {
@@ -16,24 +15,13 @@ if (props.iconSize) {
 <template>
     <nav class="flex flex-row flex-wrap items-center gap-4">
         <UDropdown :items="NAV_MENU" :popper="{ placement: 'bottom' }">
-            <div class="inline-flex items-center gap-2 border-2 border-green-700 dark:border-green-400 p-2 rounded-lg hover:text-green-700 hover:dark:text-green-400 transition-colors" :class="buttonClass"
-                role="button">
-                <Icon :name="ICONS.NAV_MENU" :size="normalIconSize" class="text-green-700 dark:text-green-400" />
+            <div class="inline-flex items-center gap-2 border-2 border-primary-700 dark:border-primary-400 p-2 rounded-lg hover:text-primary-700 hover:dark:text-primary-400 transition-colors"
+                :class="buttonClass" role="button">
+                <Icon :name="ICONS.NAV_MENU" :size="normalIconSize" class="text-primary-700 dark:text-primary-400" />
                 <span class="font-medium" :class="textSizeClass">Menu</span>
             </div>
         </UDropdown>
 
-        <UDropdown :items="THEME_MENU" :popper="{ placement: 'bottom' }">
-            <div
-                class="inline-flex items-center gap-2 border-2 border-green-700 dark:border-green-400 p-2 rounded-lg hover:text-green-700 hover:dark:text-green-400 transition-colors" :class="buttonClass">
-                <Icon v-if="colorMode.preference === 'system'" :name="ICONS.SYSTEM_THEME" :size="normalIconSize"
-                    class="text-green-700 dark:text-green-400" />
-                <Icon v-if="colorMode.preference === 'white'" :name="ICONS.WHITE_THEME" :size="normalIconSize"
-                    class="text-green-700 dark:text-green-400" />
-                <Icon v-if="colorMode.preference === 'dark'" :name="ICONS.DARK_THEME" :size="normalIconSize"
-                    class="text-green-700 dark:text-green-400" />
-                <span class="font-medium" :class="textSizeClass">Theme</span>
-            </div>
-        </UDropdown>
+        <UiColorPicker :size="normalIconSize" :button-class="buttonClass" />
     </nav>
 </template>
