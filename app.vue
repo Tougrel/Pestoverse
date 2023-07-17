@@ -41,6 +41,9 @@ useHead({
 
 onMounted(() => {
   loading.value = false;
+
+  const primary = localStorage.getItem("ui-color");
+  if (primary) useAppConfig().ui.primary = primary;
 });
 </script>
 

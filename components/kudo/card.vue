@@ -4,8 +4,8 @@ defineProps<{ title: string; description: string | null; icon: string; to: strin
 
 <template>
     <a :href="to"
-        class="flex flex-row bg-gray-200 dark:bg-navigation p-4 gap-4 rounded-lg ring-2 ring-transparent hover:ring-green-700 hover:dark:ring-green-400 transition-all duration-300">
-        <Icon :name="icon" size="3em" class="text-green-700 dark:text-green-400" />
+        class="flex flex-row bg-gray-200 dark:bg-navigation p-4 gap-4 rounded-lg ring-2 ring-transparent hover:ring-primary-700 hover:dark:ring-primary-400 transition-all duration-300">
+        <Icon :name="icon" size="3em" class="text-primary-700 dark:text-primary-400" />
 
         <div class="flex flex-col">
             <h2 class="text-xl font-bold">{{ title }}</h2>
