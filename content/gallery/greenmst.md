@@ -1,12 +1,12 @@
 ---
-name: Greenmsg
+name: Greenmst
 coords: [1.3386541010412876, 103.83734649337978]
 images:
-    - https://cdn.discordapp.com/attachments/1119383864763232266/1130414414550544474/IMG-20230717-WA0003.jpg
-    - https://cdn.discordapp.com/attachments/1119383864763232266/1130414414873501746/IMG-20230717-WA0004.jpg
-    - https://cdn.discordapp.com/attachments/1119383864763232266/1130414415217438760/IMG-20230717-WA0005.jpg
-    - https://cdn.discordapp.com/attachments/1119383864763232266/1130414415536197642/IMG-20230717-WA0006.jpg
-    - https://cdn.discordapp.com/attachments/1119383864763232266/1130414415917887518/IMG-20230717-WA0007.jpg
-    - https://cdn.discordapp.com/attachments/1119383864763232266/1130414416383447120/IMG-20230717-WA0008.jpg
-    - https://cdn.discordapp.com/attachments/1119383864763232266/1130414416723193896/IMG-20230717-WA0009.jpg
+    - https://api.tougrel.dev/legacy/pestoverse/image?name=greenmst-1.jpg
+    - https://api.tougrel.dev/legacy/pestoverse/image?name=greenmst-2.jpg
+    - https://api.tougrel.dev/legacy/pestoverse/image?name=greenmst-3.jpg
+    - https://api.tougrel.dev/legacy/pestoverse/image?name=greenmst-4.jpg
+    - https://api.tougrel.dev/legacy/pestoverse/image?name=greenmst-5.jpg
+    - https://api.tougrel.dev/legacy/pestoverse/image?name=greenmst-6.jpg
+    - https://api.tougrel.dev/legacy/pestoverse/image?name=greenmst-7.jpg
 ---

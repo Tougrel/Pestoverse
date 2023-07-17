@@ -2,13 +2,13 @@
 name: Eskimoish
 coords: [55.49106737239579, 8.410804854878334]
 images:
-    - https://cdn.discordapp.com/attachments/1119383864763232266/1130416732138393630/IMG20230509161844.jpg
-    - https://cdn.discordapp.com/attachments/1119383864763232266/1130416732469731338/IMG20230509161843.jpg
-    - https://cdn.discordapp.com/attachments/1119383864763232266/1130416732729774211/IMG20230509161841.jpg
-    - https://cdn.discordapp.com/attachments/1119383864763232266/1130416733136638022/IMG20230509161839.jpg
-    - https://cdn.discordapp.com/attachments/1119383864763232266/1130416733488947231/IMG20230509161832.jpg
-    - https://cdn.discordapp.com/attachments/1119383864763232266/1130416733795143761/IMG20230509161827.jpg
-    - https://cdn.discordapp.com/attachments/1119383864763232266/1130416734076149827/IMG20230509161824.jpg
-    - https://cdn.discordapp.com/attachments/1119383864763232266/1130416734352969778/IMG20230509161816.jpg
-    - https://cdn.discordapp.com/attachments/1119383864763232266/1130416735003103292/IMG20230509161814.jpg
+    - https://api.tougrel.dev/legacy/pestoverse/image?name=eskimoish-1.jpg
+    - https://api.tougrel.dev/legacy/pestoverse/image?name=eskimoish-2.jpg
+    - https://api.tougrel.dev/legacy/pestoverse/image?name=eskimoish-3.jpg
+    - https://api.tougrel.dev/legacy/pestoverse/image?name=eskimoish-4.jpg
+    - https://api.tougrel.dev/legacy/pestoverse/image?name=eskimoish-5.jpg
+    - https://api.tougrel.dev/legacy/pestoverse/image?name=eskimoish-6.jpg
+    - https://api.tougrel.dev/legacy/pestoverse/image?name=eskimoish-7.jpg
+    - https://api.tougrel.dev/legacy/pestoverse/image?name=eskimoish-8.jpg
+    - https://api.tougrel.dev/legacy/pestoverse/image?name=eskimoish-9.jpg
 ---

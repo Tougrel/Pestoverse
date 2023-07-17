@@ -2,13 +2,13 @@
 name: MrGrimmLore
 coords: [14.599873163156646, 120.98797462367486]
 images:
-    - https://cdn.discordapp.com/attachments/1119383864763232266/1130074885339762718/20230709_171654.jpg
-    - https://cdn.discordapp.com/attachments/1119383864763232266/1130074885822095460/20230709_172115.jpg
-    - https://cdn.discordapp.com/attachments/1119383864763232266/1130074886140874823/20230709_172348.jpg
-    - https://cdn.discordapp.com/attachments/1119383864763232266/1130074886501572618/20230709_172607.jpg
-    - https://cdn.discordapp.com/attachments/1119383864763232266/1130074886795186176/20230709_172841.jpg
-    - https://cdn.discordapp.com/attachments/1119383864763232266/1130074887063609344/20230709_173443.jpg
-    - https://cdn.discordapp.com/attachments/1119383864763232266/1130074887340425246/20230709_173702.jpg
-    - https://cdn.discordapp.com/attachments/1119383864763232266/1130074887831179304/20230709_174700.jpg
-    - https://cdn.discordapp.com/attachments/1119383864763232266/1130074888158314536/20230709_174756.jpg
+    - https://api.tougrel.dev/legacy/pestoverse/image?name=mrgrimmlore-1.jpg
+    - https://api.tougrel.dev/legacy/pestoverse/image?name=mrgrimmlore-2.jpg
+    - https://api.tougrel.dev/legacy/pestoverse/image?name=mrgrimmlore-3.jpg
+    - https://api.tougrel.dev/legacy/pestoverse/image?name=mrgrimmlore-4.jpg
+    - https://api.tougrel.dev/legacy/pestoverse/image?name=mrgrimmlore-5.jpg
+    - https://api.tougrel.dev/legacy/pestoverse/image?name=mrgrimmlore-6.jpg
+    - https://api.tougrel.dev/legacy/pestoverse/image?name=mrgrimmlore-7.jpg
+    - https://api.tougrel.dev/legacy/pestoverse/image?name=mrgrimmlore-8.jpg
+    - https://api.tougrel.dev/legacy/pestoverse/image?name=mrgrimmlore-9.jpg
 ---
