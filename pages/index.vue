@@ -27,5 +27,6 @@
       </p>
     </div>
     <EasterEggOrbit />
+    <EasterEggConfetti />
   </NuxtLayout>
 </template>
