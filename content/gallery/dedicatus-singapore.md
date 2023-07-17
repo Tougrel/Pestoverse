@@ -1,0 +1,16 @@
+---
+name: Dedicatus
+coords: [1.2870270212991277, 103.85451958194533]
+images:
+    - https://media.discordapp.net/attachments/1119383864763232266/1130464514823966730/20230717_184602.jpg?width=606&height=808
+    - https://media.discordapp.net/attachments/1119383864763232266/1130464515214032956/20230717_184920.jpg?width=606&height=808
+    - https://media.discordapp.net/attachments/1119383864763232266/1130464515545370734/20230717_185430.jpg?width=606&height=808
+    - https://media.discordapp.net/attachments/1119383864763232266/1130464515851571270/20230717_190047.jpg?width=606&height=808
+    - https://media.discordapp.net/attachments/1119383864763232266/1130464516195500072/20230717_190213.jpg?width=606&height=808
+    - https://media.discordapp.net/attachments/1119383864763232266/1130464516581363802/20230717_191418.jpg?width=606&height=808
+    - https://media.discordapp.net/attachments/1119383864763232266/1130464516908535858/20230717_191625.jpg?width=606&height=808
+    - https://media.discordapp.net/attachments/1119383864763232266/1130464517244076062/20230717_191924.jpg?width=606&height=808
+    - https://media.discordapp.net/attachments/1119383864763232266/1130464517680271431/20230717_192019.jpg?width=606&height=808
+    - https://media.discordapp.net/attachments/1119383864763232266/1130464518036803584/20230717_192747.jpg?width=606&height=808
+    - https://media.discordapp.net/attachments/1119383864763232266/1130464592091435019/20230717_194006.jpg?width=606&height=808
+---
