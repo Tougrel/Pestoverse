@@ -1755,6 +1755,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/canvas-confetti@npm:^1.6.0":
+  version: 1.6.0
+  resolution: "@types/canvas-confetti@npm:1.6.0"
+  checksum: e1bd2bc81e4d6ec6241982a4087ed90a3c21f858390dda7cb68e8aeb1df5573fc7c263ea4272397d2b39f0e78dcd192e8ba4a93c182ff29f80ea74073aaee496
+  languageName: node
+  linkType: hard
+
 "@types/debug@npm:^4.0.0":
   version: 4.1.8
   resolution: "@types/debug@npm:4.1.8"
@@ -2933,6 +2940,13 @@ __metadata:
   version: 1.0.30001514
   resolution: "caniuse-lite@npm:1.0.30001514"
   checksum: ee2e90fe63cb59fb4a1515eb6b157f1c26d3ccba496b994b0f03088c39c282ee2fb8c160ad7b677ee196b5bb078b23f2f9474c32e4e47724f4d782de92bb8bbe
+  languageName: node
+  linkType: hard
+
+"canvas-confetti@npm:^1.6.0":
+  version: 1.6.0
+  resolution: "canvas-confetti@npm:1.6.0"
+  checksum: be19e3be736ab28aa8af7b53cba9f4146f5714edadbf4d5a7d7b1899914dc59a8ac5574260fe6b7d9995c51df5787b0b707adfbb72dbacbc61fc03f9f2b25291
   languageName: node
   linkType: hard
 
@@ -8072,8 +8086,10 @@ __metadata:
     "@nuxt/devtools": latest
     "@nuxt/image": rc
     "@nuxthq/ui": ^2.5.0
+    "@types/canvas-confetti": ^1.6.0
     "@types/leaflet": ^1.9.3
     "@types/node": ^18.16.19
+    canvas-confetti: ^1.6.0
     leaflet: ^1.9.4
     nuxt: ^3.6.2
     nuxt-icon: ^0.4.2
