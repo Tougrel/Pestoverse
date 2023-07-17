@@ -2,8 +2,8 @@
 import confetti from 'canvas-confetti';
 
 onMounted(() => {
-    // Copied from https://www.kirilv.com/canvas-confetti/ Fireworks example
-    const duration = 15 * 1000;
+    // Based on https://www.kirilv.com/canvas-confetti/ Fireworks example
+    const duration = 5 * 1000;
     const animationEnd = Date.now() + duration;
     const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
 
@@ -18,8 +18,22 @@ onMounted(() => {
 
         const particleCount = 50 * (timeLeft / duration);
         // since particles fall down, start a bit higher than random
-        confetti(Object.assign({}, defaults, { particleCount, origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 } }));
-        confetti(Object.assign({}, defaults, { particleCount, origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 } }));
+        confetti({ 
+            particleCount, 
+            origin: {
+                x: randomInRange(0.1, 0.3),
+                y: Math.random() - 0.2
+            },
+            ...defaults
+        });
+        confetti({
+            particleCount,
+            origin: {
+                x: randomInRange(0.7, 0.9),
+                y: Math.random() - 0.2
+            },
+            ...defaults
+        });
     }, 250);
 })
 </script>
