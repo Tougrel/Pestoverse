@@ -3,6 +3,7 @@ import tougrel from 'static/images/credits/tougrel.webp';
 import ikanexus from 'static/images/credits/ikanexus.webp';
 import bootfighter from 'static/images/credits/bootfighter.webp';
 import dhoru from 'static/images/credits/dhoru.webp';
+import yoclesh from 'static/images/credits/yoclesh.webp';
 
 export const CREDIT_USERS = [
     {
@@ -29,5 +30,10 @@ export const CREDIT_USERS = [
         name: "Dhoru",
         description: "For the amazing emotes",
         icon_path: dhoru
+    },
+    {
+        name: "Yoclesh",
+        description: "For the amazing emotes",
+        icon_path: yoclesh
     }
 ]
