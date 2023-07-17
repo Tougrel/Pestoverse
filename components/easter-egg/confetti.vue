@@ -5,7 +5,7 @@ onMounted(() => {
     // Based on https://www.kirilv.com/canvas-confetti/ Fireworks example
     const duration = 5 * 1000;
     const animationEnd = Date.now() + duration;
-    const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
+    const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0, disableForReducedMotion: true } as confetti.Options;
 
     const randomInRange = (min: number, max: number) => Math.random() * (max - min) + min;
 
