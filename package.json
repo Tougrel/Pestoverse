@@ -25,6 +25,7 @@
     "@nuxt/devtools": "latest",
     "@nuxt/image": "rc",
     "@nuxthq/ui": "^2.5.0",
+    "@nuxtjs/google-fonts": "^3.0.1",
     "@types/canvas-confetti": "^1.6.0",
     "@types/leaflet": "^1.9.3",
     "@types/node": "^18.16.19",

@@ -6,7 +6,7 @@ export default defineNuxtConfig({
 		enabled: true,
 	},
 
-	modules: ["@nuxt/devtools", "@nuxt/image", "@nuxthq/ui", "nuxt-icon", "@nuxt/content"],
+	modules: ["@nuxt/devtools", "@nuxt/image", "@nuxthq/ui", "nuxt-icon", "@nuxt/content", "@nuxtjs/google-fonts"],
 
 	css: ["~/assets/css/index.css"],
 
@@ -27,5 +27,12 @@ export default defineNuxtConfig({
 	image: {
 		none: {},
 		dir: "static/images",
+	},
+
+	googleFonts: {
+		useStylesheet: true,
+		families: {
+			Poppins: [400, 500, 600, 700],
+		},
 	},
 });
