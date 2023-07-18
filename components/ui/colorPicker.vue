@@ -1,27 +1,8 @@
 <script setup lang="ts">
-import colors from "tailwindcss/colors";
 
 const appConfig = useAppConfig();
 const colorMode = useColorMode();
 
-// TODO: improve how this works lol
-const ignoredDefault = ref([
-    "inherit",
-    "current",
-    "transparent",
-    "black",
-    "white",
-    "slate",
-    "gray",
-    "zinc",
-    "neutral",
-    "stone",
-    "lightBlue",
-    "warmGray",
-    "trueGray",
-    "coolGray",
-    "blueGray",
-]);
 const primary = computed(() => appConfig.ui.primary);
 
 const setColor = (color: string) => {
@@ -62,8 +43,7 @@ defineProps<{ size: string; buttonClass?: string }>();
                 <hr class="border-background dark:border-white" />
                 <div class="grid grid-cols-5 gap-1">
                     <button
-                        v-for="color in Object.entries(colors)
-                            .filter((c) => !ignoredDefault.includes(c[0]))
+                        v-for="color in Object.entries(COLORS)
                             .map((c) => {
                                 return {
                                     name: c[0],
