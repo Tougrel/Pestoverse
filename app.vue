@@ -48,7 +48,9 @@ onMounted(() => {
 </script>
 
 <template>
-    <UiLoading v-if="loading" />
-    <KudoSidebar v-if="!loading" />
-    <NuxtPage v-if="!loading" />
+    <main>
+        <UiLoadingScreen v-if="loading" />
+        <KudoSidebar v-if="!loading" />
+        <NuxtPage v-if="!loading" />
+    </main>
 </template>

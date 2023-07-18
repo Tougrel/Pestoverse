@@ -62,7 +62,7 @@ defineProps<{ size: string; buttonClass?: string }>();
                 <hr class="border-background dark:border-white" />
                 <div class="grid grid-cols-5 gap-1">
                     <button
-                        v-for="color in Object.entries(colors)
+                        v-for="(color, index) in Object.entries(colors)
                             .filter((c) => !ignoredDefault.includes(c[0]))
                             .map((c) => {
                                 return {
@@ -70,6 +70,7 @@ defineProps<{ size: string; buttonClass?: string }>();
                                     value: ['dark'].includes(colorMode.preference) ? c[1]['400'] : c[1]['700'],
                                 };
                             })"
+                        :key="index"
                         class="rounded-lg p-1 transition-colors hover:bg-gray-300 dark:hover:bg-background"
                         :class="{ 'bg-gray-300 dark:bg-background': primary === color.name }"
                         @click="setColor(color.name)"
