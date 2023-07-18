@@ -1,10 +1,12 @@
 <script setup lang="ts">
-defineProps<{ title: string; description: string | null; icon: string; to: string; }>();
+defineProps<{ title: string; description: string | null; icon: string; to: string }>();
 </script>
 
 <template>
-    <a :href="to"
-        class="flex flex-row bg-gray-200 dark:bg-navigation p-4 gap-4 rounded-lg ring-2 ring-transparent hover:ring-primary-700 hover:dark:ring-primary-400 transition-all duration-300">
+    <a
+        :href="to"
+        class="hover:ring-primary-700 hover:dark:ring-primary-400 flex flex-row gap-4 rounded-lg bg-gray-200 p-4 ring-2 ring-transparent transition-all duration-300 dark:bg-navigation"
+    >
         <Icon :name="icon" size="3em" class="text-primary-700 dark:text-primary-400" />
 
         <div class="flex flex-col">

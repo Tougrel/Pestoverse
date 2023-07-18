@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import confetti from 'canvas-confetti';
+import confetti from "canvas-confetti";
 
 onMounted(() => {
     // Based on https://www.kirilv.com/canvas-confetti/ Fireworks example
@@ -9,7 +9,7 @@ onMounted(() => {
 
     const randomInRange = (min: number, max: number) => Math.random() * (max - min) + min;
 
-    const interval: any = setInterval(function() {
+    const interval: any = setInterval(function () {
         const timeLeft = animationEnd - Date.now();
 
         if (timeLeft <= 0) {
@@ -18,22 +18,22 @@ onMounted(() => {
 
         const particleCount = 50 * (timeLeft / duration);
         // since particles fall down, start a bit higher than random
-        confetti({ 
-            particleCount, 
+        confetti({
+            particleCount,
             origin: {
                 x: randomInRange(0.1, 0.3),
-                y: Math.random() - 0.2
+                y: Math.random() - 0.2,
             },
-            ...defaults
+            ...defaults,
         });
         confetti({
             particleCount,
             origin: {
                 x: randomInRange(0.7, 0.9),
-                y: Math.random() - 0.2
+                y: Math.random() - 0.2,
             },
-            ...defaults
+            ...defaults,
         });
     }, 250);
-})
+});
 </script>
