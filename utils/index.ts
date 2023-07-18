@@ -13,19 +13,19 @@ export const NAV_MENU = [
         {
             label: "Home",
             icon: "i-heroicons-home-solid",
-            to: "/"
-        }
+            to: "/",
+        },
     ],
     [
         {
             label: "Pesto Around the World",
             icon: "i-heroicons-map-solid",
-            to: "/map"
+            to: "/map",
         },
         {
             label: "Pesto Gallery",
             icon: "i-heroicons-photo-solid",
-            to: "/gallery"
+            to: "/gallery",
         },
         {
             label: "Kudo Boards",
@@ -33,15 +33,15 @@ export const NAV_MENU = [
             click: () => {
                 const state = useState("kudo-slideover");
                 state.value = true;
-            }
+            },
         },
     ],
     [
         {
             label: "Credits",
             icon: "i-mdi-handshake",
-            to: "/credits"
-        }
+            to: "/credits",
+        },
     ],
 ];
 
@@ -63,5 +63,5 @@ export const KUDO_BOARDS = [
         description: null,
         icon: "heroicons:cake-solid",
         to: "https://www.kudoboard.com/boards/ALFEX0yC",
-    }
-]
+    },
+];
