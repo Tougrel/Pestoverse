@@ -21,13 +21,13 @@ const animationFinished = ref(false);
                 The universe is about to collapse due to an unexpected error!
                 In case this keeps happening open an issue
                 <a target="_blank" href="https://github.com/Tougrel/pestoverse/issues"
-                    class="text-green-700 dark:text-green-400">here</a>.
+                    class="text-primary-700 dark:text-primary-400">here</a>.
             </p>
         </div>
         <code
             class="bg-gray-300 dark:bg-navigation/40 border-2 border-navigation p-2 rounded-lg max-w-screen-2xl w-full max-h-30 overflow-y-scroll z-10">{{ error }}</code>
         <button @click="handleErrors"
-            class="border-2 border-green-700 px-4 py-2 rounded-lg transition-all hover:bg-green-300 hover:dark:bg-green-900 hover:scale-105 duration-300 z-10" @mouseenter="() => {if (animationFinished) showDog = true}" @mouseleave="() => {if (animationFinished) showDog = false}">
+            class="border-2 border-primary-700 px-4 py-2 rounded-lg transition-all hover:bg-primary-300 hover:dark:bg-primary-900 hover:scale-105 duration-300 z-10" @mouseenter="() => {if (animationFinished) showDog = true}" @mouseleave="() => {if (animationFinished) showDog = false}">
             Try to restore the Universe
         </button>
         <img :src="dog" :class="{'opacity-5': showDog, 'opacity-0': !showDog}" class="fixed bottom-0 left-0 grayscale z-0 animate-[scalein_30s_ease-in-out_forwards] transition ease-linear" draggable="false" @animationend="flashbang = true" />

@@ -14,7 +14,7 @@ export default defineAppConfig({
             item: {
                 active: "bg-gray-300 dark:bg-background text-black dark:text-white",
                 icon: {
-                    active: "text-green-500 dark:text-green-400"
+                    active: "text-primary-500 dark:text-primary-400"
                 }
             }
         },
