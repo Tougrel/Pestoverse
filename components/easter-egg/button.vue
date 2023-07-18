@@ -7,11 +7,11 @@ const playNya = () => {
     audio.play();
 };
 
-const CAT_ICON = ref(ICONS.PAW);
+const CAT_ICON: Ref<typeof ICONS.PAW | typeof ICONS.CAT> = ref(ICONS.PAW);
 </script>
 
 <template>
-    <button @click="playNya" class="fixed bottom-0 left-0 pb-2 pl-2">
-        <Icon :name="CAT_ICON" size="2em" class="opacity-20 hover:opacity-60" @mouseover="CAT_ICON = ICONS.CAT" @mouseout="CAT_ICON = ICONS.PAW" />
+    <button class="fixed bottom-0 left-0 pb-2 pl-2 opacity-20 hover:opacity-60" @mouseover="CAT_ICON = ICONS.CAT" @mouseout="CAT_ICON = ICONS.PAW" @click="playNya">
+        <Icon :name="CAT_ICON" size="2em"/>
     </button>
 </template>
