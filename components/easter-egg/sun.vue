@@ -4,10 +4,10 @@ const primary = computed(() => appConfig.ui.primary);
 
 const gradient = computed((gradient => {
     const color = primary.value;
-    console.log(COLORS);
-    if (color in COLORS) {
-        const fromColor = COLORS[color]['400'];
-        const toColor = COLORS[color]['600'];
+    const colors = Object(COLORS);
+    if (color in colors) {
+        const fromColor = colors[color]['400'];
+        const toColor = colors[color]['600'];
         return {
             "--tw-gradient-from-color": fromColor,
             "--tw-gradient-from": "var(--tw-gradient-from-color) var(--tw-gradient-to-position)",

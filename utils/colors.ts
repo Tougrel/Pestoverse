@@ -1,6 +1,11 @@
 import colors from "tailwindcss/colors";
 
 const ignoredDefault = [
+    "inherit",
+    "current",
+    "transparent",
+    "black",
+    "white",
     "slate",
     "gray",
     "zinc",
@@ -12,8 +17,7 @@ const ignoredDefault = [
     "coolGray",
     "blueGray",
 ];
-
-export const COLORS = Object.fromEntries(
-    Object.entries(colors)
-        .filter((c) => c[1] === Object(c[1]) && !ignoredDefault.includes(c[0]))
-);
+// Had to use this alternative way of excluding keys otherwise Tailwind was printing warnings all the time
+export const COLORS = Object.keys(colors)
+    .filter(key => !ignoredDefault.includes(key))
+    .reduce((obj, key: string) => ({[key]: Object(colors)[key], ...obj}), {}) as typeof colors;
