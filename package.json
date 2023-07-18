@@ -16,7 +16,7 @@
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
-    "pretty": "prettier --write \"./**/*.{d.ts,ts}\""
+    "pretty": "prettier --write \"./**/*.{ts,vue}\""
   },
   "devDependencies": {
     "@iconify-json/line-md": "^1.1.25",
