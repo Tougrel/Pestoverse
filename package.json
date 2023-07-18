@@ -33,7 +33,7 @@
     "nuxt": "^3.6.2",
     "nuxt-icon": "^0.4.2",
     "prettier": "^3.0.0",
-    "prettier-plugin-tailwindcss": "^0.3.0",
+    "prettier-plugin-tailwindcss": "^0.4.1",
     "typescript": "^5.1.6"
   },
   "packageManager": "yarn@3.6.1"
