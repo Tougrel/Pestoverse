@@ -1,11 +1,34 @@
+import pestoBinoculars from "static/images/emotes/pestoBinoculars.webp";
+
 export const ICONS = {
     NAV_MENU: "mdi:menu",
     SYSTEM_THEME: "heroicons:computer-desktop-solid",
-    WHITE_THEME: "line-md:moon-filled-alt-to-sunny-filled-loop-transition",
-    DARK_THEME: "line-md:sunny-filled-loop-to-moon-alt-filled-loop-transition",
+    WHITE_THEME: "line-md:sunny-filled-loop",
+    DARK_THEME: "line-md:moon-filled-alt-loop",
+    HOME: "mdi:home",
     PALETTE: "mdi:palette",
     CAT: "mdi:cat",
     PAW: "mdi:paw",
+    GITHUB: "mdi:github",
+    COFFEE: "line-md:coffee-half-empty-twotone-loop",
+} as const;
+
+export const PAGES = {
+    "/": {
+        name: "Home",
+        icon: ICONS.HOME,
+        image: false,
+    },
+    "/gallery": {
+        name: "Look at all the Pesto",
+        icon: pestoBinoculars,
+        image: true,
+    },
+    "/credits": {
+        name: "Made by these amazing people",
+        icon: ICONS.COFFEE,
+        image: false,
+    },
 } as const;
 
 export const NAV_MENU = [

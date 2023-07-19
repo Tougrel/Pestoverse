@@ -7,7 +7,7 @@ const playNya = () => {
     audio.play();
 };
 
-const CAT_ICON = ref(ICONS.PAW);
+const CAT_ICON = ref<string>(ICONS.PAW);
 </script>
 
 <template>
