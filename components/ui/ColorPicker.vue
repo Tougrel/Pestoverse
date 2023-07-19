@@ -34,10 +34,7 @@ defineProps<{ size: string; buttonClass?: string }>();
 
 <template>
     <UPopover :popper="{ placement: 'bottom' }">
-        <div
-            class="border-primary-700 dark:border-primary-400 hover:text-primary-700 hover:dark:text-primary-400 flex items-center gap-2 rounded-lg border-2 p-2 transition-colors"
-            :class="buttonClass"
-        >
+        <div class="hover:text-primary-700 hover:dark:text-primary-400 flex items-center gap-2 transition-colors" :class="buttonClass">
             <Icon :name="ICONS.PALETTE" :size="size" class="text-primary-700 dark:text-primary-400" />
         </div>
 

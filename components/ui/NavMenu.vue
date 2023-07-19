@@ -25,7 +25,7 @@ if (props.iconSize) normalIconSize = props.iconSize;
         <div class="order-1 flex flex-row items-center gap-2 lg:order-2">
             <UDropdown :items="NAV_MENU" :popper="{ placement: 'bottom' }">
                 <nav
-                    class="border-primary-700 dark:border-primary-400 hover:text-primary-700 hover:dark:text-primary-400 inline-flex items-center gap-2 rounded-lg border-2 p-2 transition-colors"
+                    class="hover:text-primary-700 hover:dark:text-primary-400 inline-flex items-center gap-2 transition-colors"
                     :class="buttonClass"
                     role="button"
                 >

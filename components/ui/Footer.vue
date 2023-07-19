@@ -22,11 +22,7 @@
             </p>
         </div>
         <div class="flex flex-row items-center justify-between gap-2">
-            <a
-                href="https://github.com/Tougrel/Pestoverse"
-                target="_blank"
-                class="border-primary-700 dark:border-primary-400 hover:text-primary-700 dark:hover:text-primary-500 rounded-lg border-2 p-2 transition-colors"
-            >
+            <a href="https://github.com/Tougrel/Pestoverse" target="_blank" class="hover:text-primary-700 dark:hover:text-primary-500 transition-colors">
                 <Icon :name="ICONS.GITHUB" size="2em" />
             </a>
         </div>
