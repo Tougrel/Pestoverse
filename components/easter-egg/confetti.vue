@@ -5,7 +5,7 @@ onMounted(() => {
     // Based on https://www.kirilv.com/canvas-confetti/ examples
     const schoolPrideConfettiCanvas = document.getElementById("schoolPrideConfetti");
     const schoolPrideConfetti = confetti.create(schoolPrideConfettiCanvas, { resize: true });
-    const end = Date.now() + (5 * 1000);
+    const end = Date.now() + 5 * 1000;
     const colors = ["#008d44", "#ffffff", "#d0323d"];
 
     (() => {
@@ -13,7 +13,7 @@ onMounted(() => {
             particleCount: 100,
             spread: 70,
             origin: { y: 0.6 },
-            colors: colors
+            colors: colors,
         });
     })();
 
@@ -23,7 +23,7 @@ onMounted(() => {
             angle: 60,
             spread: 55,
             origin: { x: 0 },
-            colors: colors
+            colors: colors,
         });
 
         schoolPrideConfetti({
@@ -31,17 +31,16 @@ onMounted(() => {
             angle: 120,
             spread: 55,
             origin: { x: 1 },
-            colors: colors
+            colors: colors,
         });
 
-        if (Date.now() < end)
-            requestAnimationFrame(deezNutsEski);
+        if (Date.now() < end) requestAnimationFrame(deezNutsEski);
     })();
 });
 </script>
 
 <template>
     <Teleport to="body">
-        <canvas id="schoolPrideConfetti" class="hidden lg:flex fixed inset-0 w-full h-full" />
+        <canvas id="schoolPrideConfetti" class="fixed inset-0 hidden h-full w-full lg:flex" />
     </Teleport>
 </template>
