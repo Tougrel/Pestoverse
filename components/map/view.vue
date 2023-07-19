@@ -8,6 +8,7 @@ import { MarkerProps } from "types/marker";
 const props = defineProps<{ markers: MarkerProps[] }>();
 
 const mapCenter = [28.883744, -28.621836] as LatLngExpression;
+// const mapCenter = [0, 0] as LatLngExpression;
 const mapZoom = 3;
 const mapTiles = "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png";
 
@@ -56,7 +57,7 @@ onMounted(() => {
 
 <template>
     <div id="mapView" class="dark:contrast-90 z-0 h-full w-full dark:brightness-95 dark:hue-rotate-180 dark:invert"></div>
-    <UiSlideover state="map-slideover">
+    <UiSlideOver state="map-slideover">
         <div class="flex flex-col gap-4">
             <button v-for="(image, index) in slideoverData.images" @click="openModal(slideoverData.images, index)">
                 <img class="rounded" loading="lazy" decoding="async" :src="image" :title="slideoverData.name" />
@@ -65,5 +66,5 @@ onMounted(() => {
         <UModal v-model="modalOpen">
             <img v-for="(image, index) in modalImages" v-show="index === modalActiveImage" loading="lazy" decoding="async" :src="image" />
         </UModal>
-    </UiSlideover>
+    </UiSlideOver>
 </template>
