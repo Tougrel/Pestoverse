@@ -4,6 +4,7 @@ import ikanexus from "static/images/credits/ikanexus.webp";
 import bootfighter from "static/images/credits/bootfighter.webp";
 import dhoru from "static/images/credits/dhoru.webp";
 import yoclesh from "static/images/credits/yoclesh.webp";
+import vihilsta from "static/images/credits/vihilsta.webp";
 
 export const CREDIT_USERS = [
     {
@@ -35,5 +36,10 @@ export const CREDIT_USERS = [
         name: "Yoclesh",
         description: "For the amazing emotes",
         icon_path: yoclesh,
+    },
+    {
+        name: "Vihilsta",
+        description: "Ideas",
+        icon_path: vihilsta,
     },
 ];

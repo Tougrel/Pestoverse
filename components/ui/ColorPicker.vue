@@ -14,11 +14,8 @@ defineProps<{ size: string; buttonClass?: string }>();
 </script>
 
 <template>
-    <UPopover :popper="{ placement: 'bottom' }">
-        <div
-            class="border-primary-700 dark:border-primary-400 hover:text-primary-700 hover:dark:text-primary-400 flex items-center gap-2 rounded-lg border-2 p-2 transition-colors"
-            :class="buttonClass"
-        >
+    <UPopover :popper="{ placement: 'bottom' }" class="inline-flex">
+        <div class="hover:text-primary-700 hover:dark:text-primary-400 flex items-center gap-2 transition-colors" :class="buttonClass">
             <Icon :name="ICONS.PALETTE" :size="size" class="text-primary-700 dark:text-primary-400" />
         </div>
 
@@ -43,13 +40,14 @@ defineProps<{ size: string; buttonClass?: string }>();
                 <hr class="border-background dark:border-white" />
                 <div class="grid grid-cols-5 gap-1">
                     <button
-                        v-for="color in Object.entries(COLORS)
+                        v-for="(color, index) in Object.entries(COLORS)
                             .map((c) => {
                                 return {
                                     name: c[0],
                                     value: ['dark'].includes(colorMode.preference) ? c[1]['400'] : c[1]['700'],
                                 };
                             })"
+                        :key="index"
                         class="rounded-lg p-1 transition-colors hover:bg-gray-300 dark:hover:bg-background"
                         :class="{ 'bg-gray-300 dark:bg-background': primary === color.name }"
                         @click="setColor(color.name)"

@@ -21,10 +21,9 @@ const markers = transformMarkers();
 </script>
 
 <template>
-    <div class="flex h-screen flex-col items-center gap-8">
+    <NuxtLayout name="map">
         <ClientOnly>
             <MapView :markers="markers" />
         </ClientOnly>
-        <UiNav class="absolute right-5 top-5" fontSize="sm" iconSize="1.5em" buttonClass="bg-white dark:bg-black/60" />
-    </div>
+    </NuxtLayout>
 </template>
