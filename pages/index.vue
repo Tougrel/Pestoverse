@@ -2,12 +2,6 @@
     <NuxtLayout name="default" class="justify-between">
         <div class="flex flex-col items-center gap-4">
             <EasterEggSun />
-            <NuxtLink
-                to="/map"
-                class="z-10 border-primary-700 dark:border-primary-400 hover:bg-primary-300 hover:dark:bg-primary-900 rounded-lg border-2 px-4 py-2 transition-all duration-300 hover:scale-105"
-            >
-                Start exploring!
-            </NuxtLink>
         </div>
 
         <div class="flex flex-col items-center">
