@@ -7,8 +7,7 @@ import { MarkerProps } from "types/marker";
 
 const props = defineProps<{ markers: MarkerProps[] }>();
 
-const mapCenter = [28.883744, -28.621836] as LatLngExpression;
-// const mapCenter = [0, 0] as LatLngExpression;
+const mapCenter = [28.883744, 0] as LatLngExpression;
 const mapZoom = 3;
 const mapTiles = "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png";
 
