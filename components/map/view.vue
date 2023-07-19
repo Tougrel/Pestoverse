@@ -6,13 +6,11 @@ import { onMounted } from "vue";
 import { MarkerProps } from "types/marker";
 
 const colorMode = useColorMode();
-const config = useRuntimeConfig();
 const props = defineProps<{ markers: MarkerProps[] }>();
 
 const mapCenter = [28.883744, -28.621836] as LatLngExpression;
 const mapZoom = 3;
 const mapName = computed((previous) => {
-    console.log(colorMode.preference);
     switch(colorMode.preference) {
         case "white":
             return "basic-v2";
@@ -23,7 +21,7 @@ const mapName = computed((previous) => {
     }
 })
 const mapTiles = computed(() => {
-    return `https://${config.public.maptilerBase}/${mapName.value}/{z}/{x}/{y}.png?key=${config.public.maptilerKey}`
+    return `https://${import.meta.env.VITE_MAPTILER_BASE || "api.maptiler.com/maps"}/${mapName.value}/{z}/{x}/{y}.png?key=${import.meta.env.VITE_MAPTILER_KEY}`
 });
 
 const slideoverOpen = useState<boolean>("map-slideover", () => false);
