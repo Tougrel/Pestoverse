@@ -5,11 +5,26 @@ import "leaflet/dist/leaflet.css";
 import { onMounted } from "vue";
 import { MarkerProps } from "types/marker";
 
+const colorMode = useColorMode();
+const config = useRuntimeConfig();
 const props = defineProps<{ markers: MarkerProps[] }>();
 
 const mapCenter = [28.883744, -28.621836] as LatLngExpression;
 const mapZoom = 3;
-const mapTiles = "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png";
+const mapName = computed((previous) => {
+    console.log(colorMode.preference);
+    switch(colorMode.preference) {
+        case "white":
+            return "basic-v2";
+        case "dark":
+            return "basic-v2-dark";
+        default:
+            return previous;
+    }
+})
+const mapTiles = computed(() => {
+    return `https://${config.public.maptilerBase}/${mapName.value}/{z}/{x}/{y}.png?key=${config.public.maptilerKey}`
+});
 
 const slideoverOpen = useState<boolean>("map-slideover", () => false);
 const modalOpen = useState<boolean>("map-modal", () => false);
@@ -26,9 +41,15 @@ const openModal = (images: string[], index: number) => {
 
 onMounted(() => {
     const map = L.map("mapView").setView(mapCenter, mapZoom);
-    L.tileLayer(mapTiles, {
-        maxZoom: 10,
+    const layer = L.tileLayer(mapTiles.value, {
+        minZoom: 3,
+        maxZoom: 8,
+        attribution: '<a href="https://www.maptiler.com/copyright/" target="_blank">&copy; MapTiler</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">&copy; OpenStreetMap contributors</a>'
     }).addTo(map);
+
+    watch(mapTiles, (value) => {
+        layer.setUrl(value);
+    })
 
     const southWestBounds = L.latLng(-85.081364, -180.351563);
     const northEastBounds = L.latLng(85.06627, 180.351563);
@@ -43,7 +64,6 @@ onMounted(() => {
             iconUrl: icon,
             iconSize: [38, 38], // size of the icon
             iconAnchor: [22, 22], // point of the icon which will correspond to marker's location
-            className: "dark:invert dark:hue-rotate-180 dark:brightness-95 dark:contrast-90", // reset hue inversion on dark mode
         });
         const marker = L.marker(entry.coords, { icon: markerIcon }).addTo(map);
         marker.on("click", () => {
@@ -55,8 +75,8 @@ onMounted(() => {
 </script>
 
 <template>
-    <div id="mapView" class="dark:contrast-90 z-0 h-full w-full dark:brightness-95 dark:hue-rotate-180 dark:invert"></div>
-    <UiSlideover state="map-slideover">
+    <div id="mapView" class="z-0 h-full w-full bg-white dark:bg-background"></div>
+    <UiSlideOver state="map-slideover">
         <div class="flex flex-col gap-4">
             <button v-for="(image, index) in slideoverData.images" @click="openModal(slideoverData.images, index)">
                 <img class="rounded" loading="lazy" decoding="async" :src="image" :title="slideoverData.name" />
