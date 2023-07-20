@@ -10,19 +10,7 @@ const props = defineProps<{ markers: MarkerProps[] }>();
 
 const mapCenter = [28.883744, -28.621836] as LatLngExpression;
 const mapZoom = 3;
-const mapName = computed((previous) => {
-    switch(colorMode.preference) {
-        case "white":
-            return "basic-v2";
-        case "dark":
-            return "basic-v2-dark";
-        default:
-            return previous;
-    }
-})
-const mapTiles = computed(() => {
-    return `https://${import.meta.env.VITE_MAPTILER_BASE || "api.maptiler.com/maps"}/${mapName.value}/{z}/{x}/{y}.png?key=${import.meta.env.VITE_MAPTILER_KEY}`
-});
+const mapLayer = `https://${import.meta.env.VITE_MAPTILES_BASE || 'maptiles.p.rapidapi.com'}/en/map/v1/{z}/{x}/{y}.png?rapidapi-key=${import.meta.env.VITE_MAPTILES_KEY}`
 
 const slideoverOpen = useState<boolean>("map-slideover", () => false);
 const modalOpen = useState<boolean>("map-modal", () => false);
@@ -39,15 +27,11 @@ const openModal = (images: string[], index: number) => {
 
 onMounted(() => {
     const map = L.map("mapView").setView(mapCenter, mapZoom);
-    const layer = L.tileLayer(mapTiles.value, {
+    const layer = L.tileLayer(mapLayer, {
         minZoom: 3,
         maxZoom: 8,
-        attribution: '<a href="https://www.maptiler.com/copyright/" target="_blank">&copy; MapTiler</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">&copy; OpenStreetMap contributors</a>'
+        attribution: 'Map <a href="https://www.maptilesapi.com/" target="_blank">&copy; Map Tiles API</a> | Map Data <a href="https://www.openstreetmap.org/copyright" target="_blank">&copy; OpenStreetMap contributors</a>'
     }).addTo(map);
-
-    watch(mapTiles, (value) => {
-        layer.setUrl(value);
-    })
 
     const southWestBounds = L.latLng(-85.081364, -180.351563);
     const northEastBounds = L.latLng(85.06627, 180.351563);
