@@ -35,10 +35,4 @@ export default defineNuxtConfig({
             Poppins: [400, 500, 600, 700],
         },
     },
-    runtimeConfig: {
-        public: {
-            maptilerBase: "api.maptiler.com/maps",
-            maptilerKey: ""
-        }
-    }
 });
