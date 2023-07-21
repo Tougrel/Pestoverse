@@ -8,6 +8,7 @@ import { Vector as SourceVector } from "ol/source";
 import { Style, Icon } from "ol/style";
 import { GeoJSON } from "ol/format";
 import type { Coordinate } from "ol/coordinate";
+import type { Pixel } from "ol/pixel";
 import { fromLonLat } from "ol/proj";
 import { apply } from "ol-mapbox-style";
 
@@ -115,8 +116,8 @@ onMounted(() => {
         layers: [markerLayer],
     });
 
-    map.on("click", (event) => {
-        map.forEachFeatureAtPixel(event.pixel, (feature) => {
+    const openSlideover = (pixel: Pixel) => {
+        map.forEachFeatureAtPixel(pixel, (feature) => {
             const id = feature.getId();
             if (typeof id !== "string" || !id.startsWith("pestino")) {
                 return;
@@ -126,6 +127,10 @@ onMounted(() => {
             slideoverOpen.value = true;
             slideoverData.value = data;
         });
+    };
+
+    map.on("singleclick", (event) => {
+        openSlideover(event.pixel);
     });
 
     map.on("pointermove", (e) => {
