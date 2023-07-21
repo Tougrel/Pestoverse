@@ -1,5 +1,5 @@
 ---
-name: NoblePhantasma
+name: Phantasma
 coords: [55.95360127100055, -3.191262932338722]
 images:
     - https://media.discordapp.net/attachments/1119383864763232266/1123897358976036865/PXL_20230629_0727554192.jpg?width=1080&height=607
