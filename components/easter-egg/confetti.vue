@@ -2,38 +2,45 @@
 import confetti from "canvas-confetti";
 
 onMounted(() => {
-    // Based on https://www.kirilv.com/canvas-confetti/ Fireworks example
-    const duration = 5 * 1000;
-    const animationEnd = Date.now() + duration;
-    const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0, disableForReducedMotion: true } as confetti.Options;
+    // Based on https://www.kirilv.com/canvas-confetti/ examples
+    const schoolPrideConfettiCanvas = document.getElementById("schoolPrideConfetti");
+    const schoolPrideConfetti = confetti.create(schoolPrideConfettiCanvas, { resize: true });
+    const end = Date.now() + 5 * 1000;
+    const colors = ["#008d44", "#ffffff", "#d0323d"];
 
-    const randomInRange = (min: number, max: number) => Math.random() * (max - min) + min;
-
-    const interval: any = setInterval(function () {
-        const timeLeft = animationEnd - Date.now();
-
-        if (timeLeft <= 0) {
-            return clearInterval(interval);
-        }
-
-        const particleCount = 50 * (timeLeft / duration);
-        // since particles fall down, start a bit higher than random
+    (() => {
         confetti({
-            particleCount,
-            origin: {
-                x: randomInRange(0.1, 0.3),
-                y: Math.random() - 0.2,
-            },
-            ...defaults,
+            particleCount: 100,
+            spread: 70,
+            origin: { y: 0.6 },
+            colors: colors,
         });
-        confetti({
-            particleCount,
-            origin: {
-                x: randomInRange(0.7, 0.9),
-                y: Math.random() - 0.2,
-            },
-            ...defaults,
+    })();
+
+    (function deezNutsEski() {
+        schoolPrideConfetti({
+            particleCount: 3,
+            angle: 60,
+            spread: 55,
+            origin: { x: 0 },
+            colors: colors,
         });
-    }, 250);
+
+        schoolPrideConfetti({
+            particleCount: 3,
+            angle: 120,
+            spread: 55,
+            origin: { x: 1 },
+            colors: colors,
+        });
+
+        if (Date.now() < end) requestAnimationFrame(deezNutsEski);
+    })();
 });
 </script>
+
+<template>
+    <Teleport to="body">
+        <canvas id="schoolPrideConfetti" class="fixed inset-0 hidden h-full w-full lg:flex" />
+    </Teleport>
+</template>
