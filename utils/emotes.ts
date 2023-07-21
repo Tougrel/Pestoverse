@@ -46,6 +46,5 @@ const emotes = [
 
 export const getEmote = () => {
     const index = Math.floor(Math.random() * emotes.length);
-    console.log(index);
     return emotes[index];
 };
