@@ -1,27 +1,7 @@
 <script setup lang="ts">
-import colors from "tailwindcss/colors";
-
 const appConfig = useAppConfig();
 const colorMode = useColorMode();
 
-// TODO: improve how this works lol
-const ignoredDefault = ref([
-    "inherit",
-    "current",
-    "transparent",
-    "black",
-    "white",
-    "slate",
-    "gray",
-    "zinc",
-    "neutral",
-    "stone",
-    "lightBlue",
-    "warmGray",
-    "trueGray",
-    "coolGray",
-    "blueGray",
-]);
 const primary = computed(() => appConfig.ui.primary);
 
 const setColor = (color: string) => {
@@ -59,14 +39,12 @@ defineProps<{ size: string; buttonClass?: string }>();
                 <hr class="border-background dark:border-white" />
                 <div class="grid grid-cols-5 gap-1">
                     <button
-                        v-for="(color, index) in Object.entries(colors)
-                            .filter((c) => !ignoredDefault.includes(c[0]))
-                            .map((c) => {
-                                return {
-                                    name: c[0],
-                                    value: ['dark'].includes(colorMode.preference) ? c[1]['400'] : c[1]['700'],
-                                };
-                            })"
+                        v-for="(color, index) in Object.entries(COLORS).map((c) => {
+                            return {
+                                name: c[0],
+                                value: ['dark'].includes(colorMode.preference) ? c[1]['400'] : c[1]['700'],
+                            };
+                        })"
                         :key="index"
                         class="rounded-lg p-1 transition-colors hover:bg-gray-300 dark:hover:bg-background"
                         :class="{ 'bg-gray-300 dark:bg-background': primary === color.name }"

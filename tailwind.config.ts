@@ -27,8 +27,8 @@ export default {
                     "100%": { transform: "scale(2.0)" },
                 },
                 sunfire: {
-                    from: { boxShadow: `0 0 50px ${theme.colors.pink[700]}` },
-                    to: { boxShadow: `0 0 100px ${theme.colors.pink[600]}` },
+                    from: { boxShadow: "0 0 50px var(--tw-gradient-to-color)" },
+                    to: { boxShadow: "0 0 100px var(--tw-gradient-from-color)" },
                 },
                 rotation: {
                     from: { transform: "rotate(0)" },
