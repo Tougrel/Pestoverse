@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import confetti from "canvas-confetti";
 
+const finished = ref(false);
+
 onMounted(() => {
     // Based on https://www.kirilv.com/canvas-confetti/ examples
     const schoolPrideConfettiCanvas = document.getElementById("schoolPrideConfetti");
@@ -34,13 +36,17 @@ onMounted(() => {
             colors: colors,
         });
 
-        if (Date.now() < end) requestAnimationFrame(deezNutsEski);
+        if (Date.now() < end) {
+            requestAnimationFrame(deezNutsEski);
+        } else {
+            finished.value = true;
+        }
     })();
 });
 </script>
 
 <template>
     <Teleport to="body">
-        <canvas id="schoolPrideConfetti" class="fixed inset-0 hidden h-full w-full lg:flex" />
+        <canvas v-if="!finished" id="schoolPrideConfetti" class="fixed inset-0 hidden h-full w-full lg:flex pointer-events-none" />
     </Teleport>
 </template>
