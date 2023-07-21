@@ -1,5 +1,4 @@
 <script setup lang="ts">
-
 const appConfig = useAppConfig();
 const colorMode = useColorMode();
 
@@ -40,13 +39,12 @@ defineProps<{ size: string; buttonClass?: string }>();
                 <hr class="border-background dark:border-white" />
                 <div class="grid grid-cols-5 gap-1">
                     <button
-                        v-for="(color, index) in Object.entries(COLORS)
-                            .map((c) => {
-                                return {
-                                    name: c[0],
-                                    value: ['dark'].includes(colorMode.preference) ? c[1]['400'] : c[1]['700'],
-                                };
-                            })"
+                        v-for="(color, index) in Object.entries(COLORS).map((c) => {
+                            return {
+                                name: c[0],
+                                value: ['dark'].includes(colorMode.preference) ? c[1]['400'] : c[1]['700'],
+                            };
+                        })"
                         :key="index"
                         class="rounded-lg p-1 transition-colors hover:bg-gray-300 dark:hover:bg-background"
                         :class="{ 'bg-gray-300 dark:bg-background': primary === color.name }"

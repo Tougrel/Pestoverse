@@ -35,11 +35,10 @@ onMounted(() => {
         if (Date.now() < end) requestAnimationFrame(deezNutsEski);
     })();
 });
-
 </script>
 
 <template>
     <Teleport to="body">
-        <canvas id="confetti" class="fixed inset-0 hidden h-full w-full lg:flex pointer-events-none" />
+        <canvas id="confetti" class="pointer-events-none fixed inset-0 hidden h-full w-full lg:flex" />
     </Teleport>
 </template>
