@@ -16,7 +16,7 @@ const props = defineProps<{ markers: MarkerProps[] }>();
 
 const toLonLat = (latlon: Coordinate): Coordinate => {
     return [latlon[1], latlon[0]];
-}
+};
 
 const mapCenter = toLonLat([28.883744, -28.621836]);
 const mapZoom = 3;
@@ -29,9 +29,9 @@ const mapName = computed((previous) => {
         default:
             return previous;
     }
-})
+});
 const styleJson = computed(() => {
-    return `https://${import.meta.env.VITE_TILESERVER || "map.ika.gg"}/styles/${mapName.value}/style.json`
+    return `https://${import.meta.env.VITE_TILESERVER || "map.ika.gg"}/styles/${mapName.value}/style.json`;
 });
 
 const slideoverOpen = useState<boolean>("map-slideover", () => false);
@@ -48,25 +48,14 @@ const openModal = (images: string[], index: number) => {
 };
 
 onMounted(() => {
-    // const map = L.map("mapView").setView(mapCenter, mapZoom);
-    // const layer = L.tileLayer(mapLayer, {
-    //     minZoom: 3,
-    //     maxZoom: 8,
-    //     attribution: 'Map <a href="https://www.maptilesapi.com/" target="_blank">&copy; Map Tiles API</a> | Map Data <a href="https://www.openstreetmap.org/copyright" target="_blank">&copy; OpenStreetMap contributors</a>'
-    // }).addTo(map);
-
-    // const southWestBounds = L.latLng(-85.081364, -180.351563);
-    // const northEastBounds = L.latLng(85.06627, 180.351563);
-    // const bounds = L.latLngBounds(southWestBounds, northEastBounds);
-
-    // map.setMaxBounds(bounds);
+    // TODO set map bounds(?)
 
     let geoJson = {
-        type: 'FeatureCollection',
+        type: "FeatureCollection",
         crs: {
-            type: 'name',
+            type: "name",
             properties: {
-                name: 'EPSG:3857'
+                name: "EPSG:3857",
             },
         },
         features: [] as Array<any>,
@@ -75,7 +64,7 @@ onMounted(() => {
     const iconCache = {} as { [id: string]: string };
 
     const styleFunction = (feature: any) => {
-        const uid = feature.getGeometry().ol_uid
+        const uid = feature.getGeometry().ol_uid;
         let icon;
         if (uid in iconCache) {
             icon = iconCache[uid];
@@ -87,89 +76,78 @@ onMounted(() => {
             new Style({
                 image: new Icon({
                     src: icon,
-                    height: 38
-                })
-            })
-        ]
-    }
+                    height: 38,
+                }),
+            }),
+        ];
+    };
 
     props.markers.forEach((entry, i) => {
         geoJson.features.push({
-            type: 'Feature',
+            type: "Feature",
             id: `pestino-${i}`,
             geometry: {
                 type: "Point",
-                coordinates: fromLonLat(toLonLat(entry.coords))
+                coordinates: fromLonLat(toLonLat(entry.coords)),
             },
-            properties: entry
-        })
-        // const marker = L.marker(entry.coords, { icon: markerIcon }).addTo(map);
-        // marker.on("click", () => {
-        //     slideoverOpen.value = true;
-        //     slideoverData.value = entry;
-        // });
+            properties: entry,
+        });
     });
 
     const markerLayer = new LayerVector({
         source: new SourceVector({
             features: new GeoJSON().readFeatures(geoJson),
-            format: new GeoJSON()
+            format: new GeoJSON(),
         }),
         style: styleFunction,
         zIndex: 1,
-    })
+    });
 
     const map = new Map({
-        target: 'mapView',
+        target: "mapView",
         view: new View({
             constrainResolution: true,
             center: fromLonLat(mapCenter),
             zoom: mapZoom,
             minZoom: mapZoom,
-            maxZoom: 8
+            maxZoom: 8,
         }),
-        layers: [
-            markerLayer
-        ]
-    })
-
-    // map.on("click", (event) => {
-
-    // })
+        layers: [markerLayer],
+    });
 
     map.on("click", (event) => {
         map.forEachFeatureAtPixel(event.pixel, (feature) => {
             const id = feature.getId();
-            if (typeof id !== 'string' || !id.startsWith('pestino')) {
+            if (typeof id !== "string" || !id.startsWith("pestino")) {
                 return;
-            } 
-            const { coords, name, images} = feature.getProperties();
-            const data = { coords, name, images }
+            }
+            const { coords, name, images } = feature.getProperties();
+            const data = { coords, name, images };
             slideoverOpen.value = true;
             slideoverData.value = data;
-        })
-    })
+        });
+    });
 
-    map.on('pointermove', (e) => {
+    map.on("pointermove", (e) => {
         if (e.dragging) return;
-        
+
         const pixel = map.getEventPixel(e.originalEvent);
         let hit = false;
         map.forEachFeatureAtPixel(pixel, (feature) => {
             const id = feature.getId();
-            if (typeof id === 'string' && id.startsWith('pestino')) {
+            if (typeof id === "string" && id.startsWith("pestino")) {
                 hit = true;
             }
-        })
+        });
 
-        map.getTargetElement().style.cursor = hit ? 'pointer' : '';
+        map.getTargetElement().style.cursor = hit ? "pointer" : "";
     });
 
     apply(map, styleJson.value);
 
     watch(styleJson, (value) => {
         apply(map, value);
-    })
+    });
 });
 </script>
 
@@ -182,8 +160,7 @@ onMounted(() => {
             </button>
         </div>
         <UModal v-model="modalOpen">
-            <img v-for="(image, index) in modalImages" v-show="index === modalActiveImage" loading="lazy" decoding="async"
-                :src="image" />
+            <img v-for="(image, index) in modalImages" v-show="index === modalActiveImage" loading="lazy" decoding="async" :src="image" />
         </UModal>
-    </UiSlideover>
+    </UiSlideOver>
 </template>
