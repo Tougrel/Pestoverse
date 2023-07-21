@@ -1,17 +1,28 @@
 <script setup lang="ts">
 const appConfig = useAppConfig();
+const colorMode = useColorMode();
 const primary = computed(() => appConfig.ui.primary);
+
+const getColorPreference = (preference: string) => {
+    switch (preference) {
+        case 'white':
+            return ['200', '400'];
+        default:
+            return ['400', '600'];
+    }
+}
 
 const gradient = computed((gradient => {
     const color = primary.value;
     const colors = Object(COLORS);
     if (color in colors) {
-        const lightColor = colors[color]['400'];
-        const darkColor = colors[color]['600'];
+        const [ lightWeight, darkWeight ] = getColorPreference(colorMode.preference)
+        const lightColor = colors[color][lightWeight];
+        const darkColor = colors[color][darkWeight];
         return {
-            "--tw-gradient-from-color": darkColor,
+            "--tw-gradient-from-color": lightColor,
             "--tw-gradient-from": "var(--tw-gradient-from-color) var(--tw-gradient-to-position)",
-            "--tw-gradient-to-color": lightColor,
+            "--tw-gradient-to-color": darkColor,
             "--tw-gradient-to": "var(--tw-gradient-to-color) var(--tw-gradient-to-position)",
             "--tw-gradient-stops": "var(--tw-gradient-from), var(--tw-gradient-to)"
         }

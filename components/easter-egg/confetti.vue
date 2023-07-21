@@ -13,7 +13,6 @@ onMounted(() => {
         spread: 70,
         origin: { y: 0.6 },
         colors: colors,
-        disableForReducedMotion: true
     });
 
     (function deezNutsEski() {
