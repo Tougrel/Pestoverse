@@ -1,11 +1,34 @@
+import pestoBinoculars from "static/images/emotes/pestoBinoculars.webp";
+
 export const ICONS = {
     NAV_MENU: "mdi:menu",
     SYSTEM_THEME: "heroicons:computer-desktop-solid",
-    WHITE_THEME: "line-md:moon-filled-alt-to-sunny-filled-loop-transition",
-    DARK_THEME: "line-md:sunny-filled-loop-to-moon-alt-filled-loop-transition",
+    WHITE_THEME: "line-md:sunny-filled-loop",
+    DARK_THEME: "line-md:moon-filled-alt-loop",
+    HOME: "mdi:home",
     PALETTE: "mdi:palette",
     CAT: "mdi:cat",
     PAW: "mdi:paw",
+    GITHUB: "mdi:github",
+    COFFEE: "line-md:coffee-half-empty-twotone-loop",
+} as const;
+
+export const PAGES = {
+    "/": {
+        name: "Home",
+        icon: ICONS.HOME,
+        image: false,
+    },
+    "/gallery": {
+        name: "Look at all the Pesto",
+        icon: pestoBinoculars,
+        image: true,
+    },
+    "/credits": {
+        name: "Made by these amazing people",
+        icon: ICONS.COFFEE,
+        image: false,
+    },
 } as const;
 
 export const NAV_MENU = [
@@ -13,19 +36,19 @@ export const NAV_MENU = [
         {
             label: "Home",
             icon: "i-heroicons-home-solid",
-            to: "/"
-        }
+            to: "/",
+        },
     ],
     [
         {
             label: "Pesto Around the World",
             icon: "i-heroicons-map-solid",
-            to: "/map"
+            to: "/map",
         },
         {
             label: "Pesto Gallery",
             icon: "i-heroicons-photo-solid",
-            to: "/gallery"
+            to: "/gallery",
         },
         {
             label: "Kudo Boards",
@@ -33,15 +56,15 @@ export const NAV_MENU = [
             click: () => {
                 const state = useState("kudo-slideover");
                 state.value = true;
-            }
+            },
         },
     ],
     [
         {
             label: "Credits",
             icon: "i-mdi-handshake",
-            to: "/credits"
-        }
+            to: "/credits",
+        },
     ],
 ];
 
@@ -63,5 +86,5 @@ export const KUDO_BOARDS = [
         description: null,
         icon: "heroicons:cake-solid",
         to: "https://www.kudoboard.com/boards/ALFEX0yC",
-    }
-]
+    },
+];

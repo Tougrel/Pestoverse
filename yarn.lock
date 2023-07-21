@@ -1282,6 +1282,31 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@nuxt/kit@npm:^3.5.0":
+  version: 3.6.3
+  resolution: "@nuxt/kit@npm:3.6.3"
+  dependencies:
+    "@nuxt/schema": 3.6.3
+    c12: ^1.4.2
+    consola: ^3.2.3
+    defu: ^6.1.2
+    globby: ^13.2.2
+    hash-sum: ^2.0.0
+    ignore: ^5.2.4
+    jiti: ^1.19.1
+    knitwork: ^1.0.0
+    mlly: ^1.4.0
+    pathe: ^1.1.1
+    pkg-types: ^1.0.3
+    scule: ^1.0.0
+    semver: ^7.5.3
+    unctx: ^2.3.1
+    unimport: ^3.0.14
+    untyped: ^1.3.2
+  checksum: 08538308be294de832944970f66c34c3084991b96330ab65cef55770f84b75b7879edd76b838f4978829d6b8db872013d415ec97bb859df4dbe6c8a991c54cf6
+  languageName: node
+  linkType: hard
+
 "@nuxt/postcss8@npm:^1.1.3":
   version: 1.1.3
   resolution: "@nuxt/postcss8@npm:1.1.3"
@@ -1312,6 +1337,23 @@ __metadata:
     unimport: ^3.0.14
     untyped: ^1.3.2
   checksum: 931ba8612299e5698235ab48a0d9d1fb74db6fdcfefca12cd87c4bf6c371fc0091530fb78a73885f5c66d2d988a03d847f6ebf772c0b9a058ad8fe63d506d259
+  languageName: node
+  linkType: hard
+
+"@nuxt/schema@npm:3.6.3":
+  version: 3.6.3
+  resolution: "@nuxt/schema@npm:3.6.3"
+  dependencies:
+    defu: ^6.1.2
+    hookable: ^5.5.3
+    pathe: ^1.1.1
+    pkg-types: ^1.0.3
+    postcss-import-resolver: ^2.0.0
+    std-env: ^3.3.3
+    ufo: ^1.1.2
+    unimport: ^3.0.14
+    untyped: ^1.3.2
+  checksum: 0f18fa880087cf2191bccbab1e173ddd215ed7ac73263d6c1e06b9f434b78ce9f202ee670e4d0041e4b3a9a49fc8167211f2945c3d55a7056e5df46cd210259c
   languageName: node
   linkType: hard
 
@@ -1430,6 +1472,17 @@ __metadata:
     lodash.template: ^4.5.0
     pathe: ^1.1.1
   checksum: 5b90e5bc92bcb4ba57627518a881326b4b1b6280c4fdaa5ed309861475bb7dd9c4e04dc42450ca0c7d42e394019a14d003b935597b9d927f2b06a8ebdfbb1454
+  languageName: node
+  linkType: hard
+
+"@nuxtjs/google-fonts@npm:^3.0.1":
+  version: 3.0.1
+  resolution: "@nuxtjs/google-fonts@npm:3.0.1"
+  dependencies:
+    "@nuxt/kit": ^3.5.0
+    google-fonts-helper: ^3.3.0
+    pathe: ^1.1.0
+  checksum: 8ac90e9f86aa8baf622ddd3266f58395555388b4c957095425d167b069be0fc92846e183505de7543bc4841bd773455a3fc4c7d7c0fcccb8e28e9992d94e6502
   languageName: node
   linkType: hard
 
@@ -3692,7 +3745,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"deepmerge@npm:^4.2.2":
+"deepmerge@npm:^4.2.2, deepmerge@npm:^4.3.1":
   version: 4.3.1
   resolution: "deepmerge@npm:4.3.1"
   checksum: 2024c6a980a1b7128084170c4cf56b0fd58a63f2da1660dcfe977415f27b17dbe5888668b59d0b063753f3220719d5e400b7f113609489c90160bb9a5518d052
@@ -4910,7 +4963,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"globby@npm:^13.2.0, globby@npm:^13.2.1":
+"globby@npm:^13.2.0, globby@npm:^13.2.1, globby@npm:^13.2.2":
   version: 13.2.2
   resolution: "globby@npm:13.2.2"
   dependencies:
@@ -4920,6 +4973,18 @@ __metadata:
     merge2: ^1.4.1
     slash: ^4.0.0
   checksum: f3d84ced58a901b4fcc29c846983108c426631fe47e94872868b65565495f7bee7b3defd68923bd480582771fd4bbe819217803a164a618ad76f1d22f666f41e
+  languageName: node
+  linkType: hard
+
+"google-fonts-helper@npm:^3.3.0":
+  version: 3.3.0
+  resolution: "google-fonts-helper@npm:3.3.0"
+  dependencies:
+    deepmerge: ^4.3.1
+    hookable: ^5.5.3
+    ofetch: ^1.0.1
+    ufo: ^1.1.1
+  checksum: 5710dc77b9e2bce779c977707ca691e3789953f4c9972ead156c5713a4eb3ddb5920835d5f62d9ce8d81a31ba5375979e64d5cf10e54cfe555f49c8f903d38a8
   languageName: node
   linkType: hard
 
@@ -7743,7 +7808,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ofetch@npm:^1.1.1":
+"ofetch@npm:^1.0.1, ofetch@npm:^1.1.1":
   version: 1.1.1
   resolution: "ofetch@npm:1.1.1"
   dependencies:
@@ -8086,6 +8151,7 @@ __metadata:
     "@nuxt/devtools": latest
     "@nuxt/image": rc
     "@nuxthq/ui": ^2.5.0
+    "@nuxtjs/google-fonts": ^3.0.1
     "@types/canvas-confetti": ^1.6.0
     "@types/leaflet": ^1.9.3
     "@types/node": ^18.16.19
@@ -8094,7 +8160,7 @@ __metadata:
     nuxt: ^3.6.2
     nuxt-icon: ^0.4.2
     prettier: ^3.0.0
-    prettier-plugin-tailwindcss: ^0.3.0
+    prettier-plugin-tailwindcss: ^0.4.1
     typescript: ^5.1.6
   languageName: unknown
   linkType: soft
@@ -8711,16 +8777,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prettier-plugin-tailwindcss@npm:^0.3.0":
-  version: 0.3.0
-  resolution: "prettier-plugin-tailwindcss@npm:0.3.0"
+"prettier-plugin-tailwindcss@npm:^0.4.1":
+  version: 0.4.1
+  resolution: "prettier-plugin-tailwindcss@npm:0.4.1"
   peerDependencies:
     "@ianvs/prettier-plugin-sort-imports": "*"
     "@prettier/plugin-pug": "*"
     "@shopify/prettier-plugin-liquid": "*"
     "@shufo/prettier-plugin-blade": "*"
     "@trivago/prettier-plugin-sort-imports": "*"
-    prettier: ">=2.2.0"
+    prettier: ^2.2 || ^3.0
     prettier-plugin-astro: "*"
     prettier-plugin-css-order: "*"
     prettier-plugin-import-sort: "*"
@@ -8762,7 +8828,7 @@ __metadata:
       optional: true
     prettier-plugin-twig-melody:
       optional: true
-  checksum: 007c09558433dac0c81d42fd9695f8ed17be56be2e446a03e2557f01ae8e26bb11945780f9afa4e6e90b861aad3fbfac6a65d381804273d5539e7d26b0a270c9
+  checksum: 9bdf3b7c270cc544f6bc38bbb869d3a97afc93de5005eee7272a36f374488731349c9362d2bbe4c83bd2a14b8a7c96cd25b9b682d1bea6dccc5bf08b2d02096c
   languageName: node
   linkType: hard
 

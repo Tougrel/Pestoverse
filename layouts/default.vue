@@ -1,7 +1,8 @@
 <template>
-    <div class="flex flex-col items-center gap-8 h-screen p-8">
-        <UiNav />
+    <div class="flex h-screen flex-col items-center gap-8 p-8">
+        <UiNavMenu />
         <slot />
+        <UiFooter />
         <EasterEggButton />
     </div>
 </template>

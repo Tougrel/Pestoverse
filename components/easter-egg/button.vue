@@ -1,14 +1,13 @@
 <script setup lang="ts">
-import nya from 'static/audio/nya.mp3';
+import nya from "static/audio/nya.mp3";
 
 const playNya = () => {
     const audio = new Audio(nya);
     audio.volume = 0.5;
     audio.play();
-} 
+};
 
-const CAT_ICON = ref(ICONS.PAW);
-
+const CAT_ICON = ref<string>(ICONS.PAW);
 </script>
 
 <template>

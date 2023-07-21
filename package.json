@@ -16,7 +16,7 @@
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
-    "pretty": "prettier --write \"./**/*.{d.ts,ts}\""
+    "pretty": "prettier --write \"./**/*.{ts,vue}\""
   },
   "devDependencies": {
     "@iconify-json/line-md": "^1.1.25",
@@ -25,6 +25,7 @@
     "@nuxt/devtools": "latest",
     "@nuxt/image": "rc",
     "@nuxthq/ui": "^2.5.0",
+    "@nuxtjs/google-fonts": "^3.0.1",
     "@types/canvas-confetti": "^1.6.0",
     "@types/leaflet": "^1.9.3",
     "@types/node": "^18.16.19",
@@ -33,7 +34,7 @@
     "nuxt": "^3.6.2",
     "nuxt-icon": "^0.4.2",
     "prettier": "^3.0.0",
-    "prettier-plugin-tailwindcss": "^0.3.0",
+    "prettier-plugin-tailwindcss": "^0.4.1",
     "typescript": "^5.1.6"
   },
   "packageManager": "yarn@3.6.1"
