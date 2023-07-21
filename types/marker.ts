@@ -1,7 +1,7 @@
-import type { LatLngExpression } from "leaflet";
+import type { Coordinate } from "ol/coordinate";
 
 export type MarkerProps = {
     name: string;
-    coords: LatLngExpression;
+    coords: Coordinate;
     images: string[];
 };
