@@ -1,5 +1,5 @@
 ---
-name: RyoD - Oasis of Sant'Alessio
+name: RyoD
 coords: [45.21972, 28.15361]
 images:
     - https://media.discordapp.net/attachments/1119383864763232266/1131487953458319450/photo_5886590663485667934_y.jpg?width=772&height=579
