@@ -121,13 +121,11 @@ onMounted(() => {
             const id = feature.getId();
             if (typeof id !== "string" || !id.startsWith("pestino")) return;
             features.push(feature);
-        })
+        });
         if (features.length) {
             if (features.length > 1) {
-                const extent = boundingExtent(
-                    features.map((r) => r.getGeometry().getCoordinates())
-                );
-                map.getView().fit(extent, {duration: 1000, padding: [50, 50, 50, 50]});
+                const extent = boundingExtent(features.map((r) => r.getGeometry().getCoordinates()));
+                map.getView().fit(extent, { duration: 1000, padding: [50, 50, 50, 50] });
             } else {
                 const { coords, name, images } = features[0].getProperties();
                 const data = { coords, name, images };
@@ -144,7 +142,7 @@ onMounted(() => {
             let cursor = "pointer";
             if (!features.length) cursor = "";
             map.getTargetElement().style.cursor = cursor;
-        })
+        });
     });
 
     apply(map, styleJson.value);
