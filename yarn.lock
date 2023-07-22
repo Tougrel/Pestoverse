@@ -1935,6 +1935,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/ol@npm:^7.0.0":
+  version: 7.0.0
+  resolution: "@types/ol@npm:7.0.0"
+  dependencies:
+    ol: "*"
+  checksum: b6fb074aa6ae636024ec116b4853bc0330971f049463ad49ed3cd9069ee968d3a2890afe72d61e1d0a0df9a301df310a8ade22e75e99c3189918c29d0e4b6f99
+  languageName: node
+  linkType: hard
+
 "@types/parse-json@npm:^4.0.0":
   version: 4.0.0
   resolution: "@types/parse-json@npm:4.0.0"
@@ -7913,7 +7922,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ol@npm:^7.3.0, ol@npm:^7.4.0":
+"ol@npm:*, ol@npm:^7.3.0, ol@npm:^7.4.0":
   version: 7.4.0
   resolution: "ol@npm:7.4.0"
   dependencies:
@@ -8280,6 +8289,7 @@ __metadata:
     "@nuxtjs/google-fonts": ^3.0.1
     "@types/canvas-confetti": ^1.6.0
     "@types/node": ^18.16.19
+    "@types/ol": ^7.0.0
     canvas-confetti: ^1.6.0
     nuxt: ^3.6.2
     nuxt-icon: ^0.4.2

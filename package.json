@@ -28,6 +28,7 @@
     "@nuxtjs/google-fonts": "^3.0.1",
     "@types/canvas-confetti": "^1.6.0",
     "@types/node": "^18.16.19",
+    "@types/ol": "^7.0.0",
     "canvas-confetti": "^1.6.0",
     "nuxt": "^3.6.2",
     "nuxt-icon": "^0.4.2",
