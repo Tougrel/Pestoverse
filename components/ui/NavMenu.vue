@@ -1,15 +1,8 @@
 <script setup lang="ts">
-const props = defineProps<{ iconSize?: string; fontSize?: "sm" | "md" | "lg"; buttonClass?: string; map?: boolean }>();
+const props = defineProps<{ buttonClass?: string; map?: boolean }>();
 const route = useRoute();
 
-const textSizeClass = {
-    "text-sm": props.fontSize === "sm",
-    "text-md": props.fontSize === "md",
-    "text-lg": props.fontSize === "lg",
-};
-
-let normalIconSize = "2em";
-if (props.iconSize) normalIconSize = props.iconSize;
+let iconSize = "2em";
 </script>
 
 <template>
@@ -29,12 +22,12 @@ if (props.iconSize) normalIconSize = props.iconSize;
                     :class="buttonClass"
                     role="button"
                 >
-                    <Icon :name="ICONS.NAV_MENU" :size="normalIconSize" class="text-primary-700 dark:text-primary-400" />
-                    <span class="font-medium" :class="textSizeClass">Menu</span>
+                    <Icon :name="ICONS.NAV_MENU" :size="iconSize" class="text-primary-700 dark:text-primary-400" />
+                    <span class="font-medium">Menu</span>
                 </nav>
             </UDropdown>
 
-            <UiColorPicker :size="normalIconSize" :button-class="buttonClass" />
+            <UiColorPicker :size="iconSize" :button-class="buttonClass" />
         </div>
     </header>
 </template>

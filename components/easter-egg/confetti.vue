@@ -3,22 +3,20 @@ import confetti from "canvas-confetti";
 
 onMounted(() => {
     // Based on https://www.kirilv.com/canvas-confetti/ examples
-    const schoolPrideConfettiCanvas = document.getElementById("schoolPrideConfetti");
-    const schoolPrideConfetti = confetti.create(schoolPrideConfettiCanvas, { resize: true });
+    const confettiCanvas = document.getElementById("confetti");
+    const customConfetti = confetti.create(confettiCanvas, { resize: true, disableForReducedMotion: true });
     const end = Date.now() + 5 * 1000;
     const colors = ["#008d44", "#ffffff", "#d0323d"];
 
-    (() => {
-        confetti({
-            particleCount: 100,
-            spread: 70,
-            origin: { y: 0.6 },
-            colors: colors,
-        });
-    })();
+    customConfetti({
+        particleCount: 100,
+        spread: 70,
+        origin: { y: 0.6 },
+        colors: colors,
+    });
 
     (function deezNutsEski() {
-        schoolPrideConfetti({
+        customConfetti({
             particleCount: 3,
             angle: 60,
             spread: 55,
@@ -26,7 +24,7 @@ onMounted(() => {
             colors: colors,
         });
 
-        schoolPrideConfetti({
+        customConfetti({
             particleCount: 3,
             angle: 120,
             spread: 55,
@@ -41,6 +39,6 @@ onMounted(() => {
 
 <template>
     <Teleport to="body">
-        <canvas id="schoolPrideConfetti" class="fixed inset-0 hidden h-full w-full lg:flex" />
+        <canvas id="confetti" class="pointer-events-none fixed inset-0 hidden h-full w-full lg:flex" />
     </Teleport>
 </template>
