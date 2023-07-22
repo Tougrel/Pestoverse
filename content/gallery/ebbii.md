@@ -2,5 +2,5 @@
 name: Ebbii
 coords: [52.051085, -0.795195]
 images:
-    - https://media.discordapp.net/attachments/1119383864763232266/1131553815250874528/IMG_20230720_123900.jpg?width=876&height=657
+    - https://api.tougrel.dev/legacy/pestoverse/image?name=ebbii-2.jpg
 ---
