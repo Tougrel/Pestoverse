@@ -8,7 +8,8 @@ import { Vector as SourceVector } from "ol/source";
 import { Style, Icon } from "ol/style";
 import { GeoJSON } from "ol/format";
 import type { Coordinate } from "ol/coordinate";
-import type { Pixel } from "ol/pixel";
+import { boundingExtent } from "ol/extent";
+import type { FeatureLike } from "ol/Feature";
 import { fromLonLat } from "ol/proj";
 import { apply } from "ol-mapbox-style";
 
@@ -19,10 +20,10 @@ const toLonLat = (latlon: Coordinate): Coordinate => {
     return [latlon[1], latlon[0]];
 };
 
-const mapCenter = toLonLat([28.883744, -28.621836]);
+const mapCenter = toLonLat([34.92485641107942, 30.656626315862535]);
 const mapZoom = 3;
 const mapName = computed((previous) => {
-    switch (colorMode.preference) {
+    switch (colorMode.value) {
         case "white":
             return "basic";
         case "dark":
@@ -49,9 +50,7 @@ const openModal = (images: string[], index: number) => {
 };
 
 onMounted(() => {
-    // TODO set map bounds(?)
-
-    let geoJson = {
+    const geoJson = {
         type: "FeatureCollection",
         crs: {
             type: "name",
@@ -77,7 +76,7 @@ onMounted(() => {
             new Style({
                 image: new Icon({
                     src: icon,
-                    height: 38,
+                    height: 34,
                 }),
             }),
         ];
@@ -111,41 +110,41 @@ onMounted(() => {
             center: fromLonLat(mapCenter),
             zoom: mapZoom,
             minZoom: mapZoom,
-            maxZoom: 8,
+            maxZoom: 10,
         }),
         layers: [markerLayer],
     });
 
-    const openSlideover = (pixel: Pixel) => {
-        map.forEachFeatureAtPixel(pixel, (feature) => {
-            const id = feature.getId();
-            if (typeof id !== "string" || !id.startsWith("pestino")) {
-                return;
-            }
-            const { coords, name, images } = feature.getProperties();
-            const data = { coords, name, images };
-            slideoverOpen.value = true;
-            slideoverData.value = data;
-        });
-    };
-
     map.on("singleclick", (event) => {
-        openSlideover(event.pixel);
+        const features = [] as FeatureLike[];
+        map.forEachFeatureAtPixel(event.pixel, (feature) => {
+            const id = feature.getId();
+            if (typeof id !== "string" || !id.startsWith("pestino")) return;
+            features.push(feature);
+        })
+        if (features.length) {
+            if (features.length > 1) {
+                const extent = boundingExtent(
+                    features.map((r) => r.getGeometry().getCoordinates())
+                );
+                map.getView().fit(extent, {duration: 1000, padding: [50, 50, 50, 50]});
+            } else {
+                const { coords, name, images } = features[0].getProperties();
+                const data = { coords, name, images };
+                slideoverOpen.value = true;
+                slideoverData.value = data;
+            }
+        }
     });
 
     map.on("pointermove", (e) => {
         if (e.dragging) return;
 
-        const pixel = map.getEventPixel(e.originalEvent);
-        let hit = false;
-        map.forEachFeatureAtPixel(pixel, (feature) => {
-            const id = feature.getId();
-            if (typeof id === "string" && id.startsWith("pestino")) {
-                hit = true;
-            }
-        });
-
-        map.getTargetElement().style.cursor = hit ? "pointer" : "";
+        markerLayer.getFeatures(e.pixel).then((features) => {
+            let cursor = "pointer";
+            if (!features.length) cursor = "";
+            map.getTargetElement().style.cursor = cursor;
+        })
     });
 
     apply(map, styleJson.value);
