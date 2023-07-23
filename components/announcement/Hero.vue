@@ -1,11 +1,11 @@
 <script setup lang="ts">
-const currentDate = Date.now().valueOf();
+const currentDate = new Date().getTime();
 const data = await queryContent('announcement').where({ hero: true }).sort({date: -1}).find();
 
 const activeAnnouncements = data
     .filter(announcement => {
-        const isAfterStart = new Date(announcement.start).valueOf() < currentDate;
-        const isBeforeEnd = new Date(announcement.end).valueOf() > currentDate;
+        const isAfterStart = new Date(announcement.start).getTime() < currentDate;
+        const isBeforeEnd = new Date(announcement.end).getTime() > currentDate;
         return isAfterStart && isBeforeEnd;
     })
 
