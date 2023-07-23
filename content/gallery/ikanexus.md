@@ -7,8 +7,6 @@ images:
     - https://media.discordapp.net/attachments/1119383864763232266/1132650983466471494/20230723_114529.jpg?width=571&height=761
     - https://media.discordapp.net/attachments/1119383864763232266/1132650984217247824/20230723_115405.jpg?width=571&height=761
     - https://media.discordapp.net/attachments/1119383864763232266/1132650984695406612/20230723_115900.jpg?width=571&height=761
-    - https://media.discordapp.net/attachments/1119383864763232266/1132650985232273428/20230723_120525.jpg?width=571&height=761
-    - https://media.discordapp.net/attachments/1119383864763232266/1132650985232273428/20230723_120525.jpg?width=571&height=761
     - https://media.discordapp.net/attachments/1119383864763232266/1132650985563619338/20230723_121404.jpg?width=571&height=761
     - https://media.discordapp.net/attachments/1119383864763232266/1132650985932726322/20230723_122232.jpg?width=1016&height=762
     - https://media.discordapp.net/attachments/1119383864763232266/1132650986289238026/20230723_123251.jpg?width=571&height=761
