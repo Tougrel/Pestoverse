@@ -2,8 +2,6 @@
 const gallery = await queryContent("gallery").only(["images", "name"]).find();
 const images = gallery.flatMap((entry) => entry.images.flatMap((image: string) => ({name: entry.name, src: image}))) as [{name: string, src: string}];
 
-console.log(images);
-
 const modalOpen = useState<boolean>("gallery-modal", () => false);
 const modalImage = useState<string>("gallery-modal-image");
 
