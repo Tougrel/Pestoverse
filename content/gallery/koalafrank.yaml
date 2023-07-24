@@ -1,5 +1,7 @@
 name: KoalaFrank
-coords: [41.4976312, -81.7882595]
+coords:
+  - 41.4976312
+  - -81.7882595
 images:
   - url: https://api.tougrel.dev/legacy/pestoverse/image?name=koalafrank-1.jpg
     width: 606

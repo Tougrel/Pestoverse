@@ -1,5 +1,7 @@
 name: Eskimoish
-coords: [55.49106737239579, 8.410804854878334]
+coords:
+  - 55.49106737239579
+  - 8.410804854878334
 images:
   - url: https://api.tougrel.dev/legacy/pestoverse/image?name=eskimoish-1.jpg
     width: 4000

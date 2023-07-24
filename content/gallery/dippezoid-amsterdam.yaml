@@ -1,5 +1,7 @@
 name: Dippezoid
-coords: [52.368869367666896, 4.901582471952299]
+coords:
+  - 52.368869367666896
+  - 4.901582471952299
 images:
   - url: https://api.tougrel.dev/legacy/pestoverse/image?name=dippezoid-amsterdam-1.jpg
     width: 4417

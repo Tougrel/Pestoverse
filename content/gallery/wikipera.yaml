@@ -1,5 +1,7 @@
 name: WikiPera
-coords: [48.72466, 8.19070]
+coords:
+  - 48.72466
+  - 8.1907
 images:
   - url: https://api.tougrel.dev/legacy/pestoverse/image?name=wikipera-1.jpg
     width: 4032

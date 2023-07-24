@@ -1,5 +1,7 @@
 name: GiackTheDemon
-coords: [40.42079220194847, 9.117668555282178]
+coords:
+  - 40.42079220194847
+  - 9.117668555282178
 images:
   - url: https://api.tougrel.dev/legacy/pestoverse/image?name=giackthedemon-1.jpg
     width: 1077

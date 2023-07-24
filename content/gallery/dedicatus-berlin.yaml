@@ -1,5 +1,7 @@
 name: Dedicatus
-coords: [52.52469736372716, 13.404125458554361]
+coords:
+  - 52.52469736372716
+  - 13.404125458554361
 images:
   - url: https://api.tougrel.dev/legacy/pestoverse/image?name=dedicatus-berlin-1.jpg
     width: 606

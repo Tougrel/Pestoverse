@@ -1,5 +1,7 @@
 name: Dedicatus
-coords: [1.2870270212991277, 103.85451958194533]
+coords:
+  - 1.2870270212991277
+  - 103.85451958194533
 images:
   - url: https://api.tougrel.dev/legacy/pestoverse/image?name=dedicatus-singapore-1.jpg
     width: 606

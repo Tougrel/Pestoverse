@@ -1,5 +1,7 @@
 name: Zoiyya
-coords: [51.15048009662052, 7.341056204944281]
+coords:
+  - 51.15048009662052
+  - 7.341056204944281
 images:
   - url: https://api.tougrel.dev/legacy/pestoverse/image?name=zoiyya-1.jpg
     width: 1080

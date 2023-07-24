@@ -1,5 +1,7 @@
 name: MrGrimmLore
-coords: [14.599873163156646, 120.98797462367486]
+coords:
+  - 14.599873163156646
+  - 120.98797462367486
 images:
   - url: https://api.tougrel.dev/legacy/pestoverse/image?name=mrgrimmlore-1.jpg
     width: 3000

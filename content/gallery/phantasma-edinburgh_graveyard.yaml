@@ -1,5 +1,7 @@
 name: NoblePhantasma
-coords: [55.946800, -3.192590]
+coords:
+  - 55.9468
+  - -3.19259
 images:
   - url: https://api.tougrel.dev/legacy/pestoverse/image?name=noblephantasma-edinburgh_graveyard.jpg
     width: 4624

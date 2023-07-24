@@ -1,5 +1,7 @@
 name: Greenmst
-coords: [1.3386541010412876, 103.83734649337978]
+coords:
+  - 1.3386541010412876
+  - 103.83734649337978
 images:
   - url: https://api.tougrel.dev/legacy/pestoverse/image?name=greenmst-1.jpg
     width: 1600

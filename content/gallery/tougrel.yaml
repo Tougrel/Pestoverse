@@ -1,5 +1,7 @@
 name: Tougrel
-coords: [39.967453, 23.907474]
+coords:
+  - 39.967453
+  - 23.907474
 images:
   - url: https://api.tougrel.dev/legacy/pestoverse/image?name=tougrel-1.jpg
     width: 4032

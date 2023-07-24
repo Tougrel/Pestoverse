@@ -1,5 +1,7 @@
 name: ErcBurger
-coords: [37.2, -76.8]
+coords:
+  - 37.2
+  - -76.8
 images:
   - url: https://api.tougrel.dev/legacy/pestoverse/image?name=ercburger-1.jpg
     width: 606

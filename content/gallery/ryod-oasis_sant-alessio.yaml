@@ -1,5 +1,7 @@
 name: RyoD
-coords: [45.21972, 28.15361]
+coords:
+  - 45.21972
+  - 28.15361
 images:
   - url: https://api.tougrel.dev/legacy/pestoverse/image?name=ryod-oasis_sant-alessio-1.jpg
     width: 772

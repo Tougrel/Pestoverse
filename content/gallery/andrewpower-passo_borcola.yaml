@@ -1,5 +1,7 @@
 name: AndreaPower
-coords: [45.82966468870668, 11.207669455115347]
+coords:
+  - 45.82966468870668
+  - 11.207669455115347
 images:
   - url: https://api.tougrel.dev/legacy/pestoverse/image?name=andreapower-3.jpg
     width: 526

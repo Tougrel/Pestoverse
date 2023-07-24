@@ -1,5 +1,7 @@
 name: Vihilsta
-coords: [32.76919, -96.77091]
+coords:
+  - 32.76919
+  - -96.77091
 images:
   - url: https://api.tougrel.dev/legacy/pestoverse/image?name=vihilsta-1.png
     width: 1599
