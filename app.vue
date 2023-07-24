@@ -3,6 +3,12 @@ const loading = ref(true);
 
 useState("kudo-slideover", () => false);
 
+defineOgImage({
+    component: 'template',
+    title: 'Pestoverse',
+    description: "The official website for running, upcoming and archived events created by Yuniiho's community!",
+});
+
 useSeoMeta({
     title: "Pestoverse",
     description: "The official website for running, upcoming and archived events created by Yuniiho's community!",
