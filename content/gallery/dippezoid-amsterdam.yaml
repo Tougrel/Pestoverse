@@ -1,0 +1,18 @@
+name: Dippezoid
+coords: [52.368869367666896, 4.901582471952299]
+images:
+  - url: https://api.tougrel.dev/legacy/pestoverse/image?name=dippezoid-amsterdam-1.jpg
+    width: 4417
+    height: 2485
+  - url: https://api.tougrel.dev/legacy/pestoverse/image?name=dippezoid-amsterdam-2.jpg
+    width: 4608
+    height: 2592
+  - url: https://api.tougrel.dev/legacy/pestoverse/image?name=dippezoid-amsterdam-3.jpg
+    width: 4608
+    height: 2592
+  - url: https://api.tougrel.dev/legacy/pestoverse/image?name=dippezoid-amsterdam-4.jpg
+    width: 4511
+    height: 2537
+  - url: https://api.tougrel.dev/legacy/pestoverse/image?name=dippezoid-amsterdam-5.jpg
+    width: 4502
+    height: 2533

@@ -1,0 +1,6 @@
+name: NoblePhantasma
+coords: [48.807900, 2.111900]
+images:
+  - url: https://api.tougrel.dev/legacy/pestoverse/image?name=noblephantasma-versailles.jpg
+    width: 3322
+    height: 3228

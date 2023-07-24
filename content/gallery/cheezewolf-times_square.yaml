@@ -1,0 +1,9 @@
+name: CheezeWolf
+coords: [40.75803784504769, -73.9855741183615]
+images:
+  - url: https://api.tougrel.dev/legacy/pestoverse/image?name=cheezewolf-times_square-1.jpg
+    width: 571
+    height: 761
+  - url: https://api.tougrel.dev/legacy/pestoverse/image?name=cheezewolf-times_square-2.jpg
+    width: 571
+    height: 761

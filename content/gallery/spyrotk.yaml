@@ -1,0 +1,11 @@
+name: SpyroTK
+images:
+  - url: https://api.tougrel.dev/legacy/pestoverse/image?name=spyrotk-1.jpg
+    width: 1080
+    height: 608
+  - url: https://api.tougrel.dev/legacy/pestoverse/image?name=spyrotk-2.jpg
+    width: 1080
+    height: 608
+  - url: https://api.tougrel.dev/legacy/pestoverse/image?name=spyrotk-3.jpg
+    width: 1080
+    height: 608

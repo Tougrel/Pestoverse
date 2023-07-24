@@ -1,0 +1,12 @@
+name: KoalaFrank
+coords: [41.4976312, -81.7882595]
+images:
+  - url: https://api.tougrel.dev/legacy/pestoverse/image?name=koalafrank-1.jpg
+    width: 606
+    height: 808
+  - url: https://api.tougrel.dev/legacy/pestoverse/image?name=koalafrank-2.jpg
+    width: 606
+    height: 808
+  - url: https://api.tougrel.dev/legacy/pestoverse/image?name=koalafrank-3.jpg
+    width: 606
+    height: 808

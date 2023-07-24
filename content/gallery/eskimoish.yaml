@@ -1,0 +1,30 @@
+name: Eskimoish
+coords: [55.49106737239579, 8.410804854878334]
+images:
+  - url: https://api.tougrel.dev/legacy/pestoverse/image?name=eskimoish-1.jpg
+    width: 4000
+    height: 3008
+  - url: https://api.tougrel.dev/legacy/pestoverse/image?name=eskimoish-2.jpg
+    width: 4000
+    height: 3008
+  - url: https://api.tougrel.dev/legacy/pestoverse/image?name=eskimoish-3.jpg
+    width: 4000
+    height: 3008
+  - url: https://api.tougrel.dev/legacy/pestoverse/image?name=eskimoish-4.jpg
+    width: 4000
+    height: 3008
+  - url: https://api.tougrel.dev/legacy/pestoverse/image?name=eskimoish-5.jpg
+    width: 3008
+    height: 4000
+  - url: https://api.tougrel.dev/legacy/pestoverse/image?name=eskimoish-6.jpg
+    width: 4000
+    height: 3008
+  - url: https://api.tougrel.dev/legacy/pestoverse/image?name=eskimoish-7.jpg
+    width: 4000
+    height: 3008
+  - url: https://api.tougrel.dev/legacy/pestoverse/image?name=eskimoish-8.jpg
+    width: 3008
+    height: 4000
+  - url: https://api.tougrel.dev/legacy/pestoverse/image?name=eskimoish-9.jpg
+    width: 3008
+    height: 4000

@@ -1,0 +1,36 @@
+name: Dedicatus
+coords: [1.2870270212991277, 103.85451958194533]
+images:
+  - url: https://api.tougrel.dev/legacy/pestoverse/image?name=dedicatus-singapore-1.jpg
+    width: 606
+    height: 808
+  - url: https://api.tougrel.dev/legacy/pestoverse/image?name=dedicatus-singapore-2.jpg
+    width: 606
+    height: 808
+  - url: https://api.tougrel.dev/legacy/pestoverse/image?name=dedicatus-singapore-3.jpg
+    width: 606
+    height: 808
+  - url: https://api.tougrel.dev/legacy/pestoverse/image?name=dedicatus-singapore-4.jpg
+    width: 606
+    height: 808
+  - url: https://api.tougrel.dev/legacy/pestoverse/image?name=dedicatus-singapore-5.jpg
+    width: 606
+    height: 808
+  - url: https://api.tougrel.dev/legacy/pestoverse/image?name=dedicatus-singapore-6.jpg
+    width: 606
+    height: 808
+  - url: https://api.tougrel.dev/legacy/pestoverse/image?name=dedicatus-singapore-7.jpg
+    width: 606
+    height: 808
+  - url: https://api.tougrel.dev/legacy/pestoverse/image?name=dedicatus-singapore-8.jpg
+    width: 606
+    height: 808
+  - url: https://api.tougrel.dev/legacy/pestoverse/image?name=dedicatus-singapore-9.jpg
+    width: 606
+    height: 808
+  - url: https://api.tougrel.dev/legacy/pestoverse/image?name=dedicatus-singapore-10.jpg
+    width: 606
+    height: 808
+  - url: https://api.tougrel.dev/legacy/pestoverse/image?name=dedicatus-singapore-11.jpg
+    width: 606
+    height: 808

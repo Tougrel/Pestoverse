@@ -1,0 +1,15 @@
+name: NoblePhantasma
+coords: [55.95360127100055, -3.191262932338722]
+images:
+  - url: https://api.tougrel.dev/legacy/pestoverse/image?name=noblephantasma-1.jpg
+    width: 1080
+    height: 607
+  - url: https://api.tougrel.dev/legacy/pestoverse/image?name=noblephantasma-2.jpg
+    width: 1080
+    height: 608
+  - url: https://api.tougrel.dev/legacy/pestoverse/image?name=noblephantasma-3.jpg
+    width: 607
+    height: 808
+  - url: https://api.tougrel.dev/legacy/pestoverse/image?name=noblephantasma-4.jpg
+    width: 703
+    height: 808

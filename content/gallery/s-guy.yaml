@@ -1,0 +1,22 @@
+name: S_Guy
+coords: [48.60464, 10.19710]
+images:
+  - url: https://api.tougrel.dev/legacy/pestoverse/image?name=s_guy-1.jpg
+    width: 1080
+    height: 608
+  - url: https://api.tougrel.dev/legacy/pestoverse/image?name=s_guy-2.jpg
+    width: 1080
+    height: 608
+  # Augsburg - coords: [48.35257, 10.98418]
+  - url: https://api.tougrel.dev/legacy/pestoverse/image?name=s_guy-augsburg-1.jpg
+    width: 2457
+    height: 4102
+  - url: https://api.tougrel.dev/legacy/pestoverse/image?name=s_guy-augsburg-2.jpg
+    width: 2333
+    height: 4047
+  - url: https://api.tougrel.dev/legacy/pestoverse/image?name=s_guy-augsburg-3.jpg
+    width: 2604
+    height: 4624
+  - url: https://api.tougrel.dev/legacy/pestoverse/image?name=s_guy-augsburg-4.jpg
+    width: 2604
+    height: 4624

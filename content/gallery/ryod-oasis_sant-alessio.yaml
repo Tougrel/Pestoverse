@@ -1,0 +1,30 @@
+name: RyoD
+coords: [45.21972, 28.15361]
+images:
+  - url: https://api.tougrel.dev/legacy/pestoverse/image?name=ryod-oasis_sant-alessio-1.jpg
+    width: 772
+    height: 579
+  - url: https://api.tougrel.dev/legacy/pestoverse/image?name=ryod-oasis_sant-alessio-2.jpg
+    width: 433
+    height: 577
+  - url: https://api.tougrel.dev/legacy/pestoverse/image?name=ryod-oasis_sant-alessio-3.jpg
+    width: 433
+    height: 577
+  - url: https://api.tougrel.dev/legacy/pestoverse/image?name=ryod-oasis_sant-alessio-4.jpg
+    width: 433
+    height: 577
+  - url: https://api.tougrel.dev/legacy/pestoverse/image?name=ryod-oasis_sant-alessio-5.jpg
+    width: 433
+    height: 577
+  - url: https://api.tougrel.dev/legacy/pestoverse/image?name=ryod-oasis_sant-alessio-6.jpg
+    width: 433
+    height: 577
+  - url: https://api.tougrel.dev/legacy/pestoverse/image?name=ryod-oasis_sant-alessio-7.jpg
+    width: 721
+    height: 579
+  - url: https://api.tougrel.dev/legacy/pestoverse/image?name=ryod-oasis_sant-alessio-8.jpg
+    width: 433
+    height: 577
+  - url: https://api.tougrel.dev/legacy/pestoverse/image?name=ryod-oasis_sant-alessio-9.jpg
+    width: 433
+    height: 577

@@ -1,0 +1,33 @@
+name: ErcBurger
+coords: [37.2, -76.8]
+images:
+  - url: https://api.tougrel.dev/legacy/pestoverse/image?name=ercburger-1.jpg
+    width: 606
+    height: 808
+  - url: https://api.tougrel.dev/legacy/pestoverse/image?name=ercburger-2.jpg
+    width: 606
+    height: 808
+  - url: https://api.tougrel.dev/legacy/pestoverse/image?name=ercburger-3.jpg
+    width: 606
+    height: 808
+  - url: https://api.tougrel.dev/legacy/pestoverse/image?name=ercburger-4.jpg
+    width: 1016
+    height: 762
+  - url: https://api.tougrel.dev/legacy/pestoverse/image?name=ercburger-5.jpg
+    width: 1016
+    height: 762
+  - url: https://api.tougrel.dev/legacy/pestoverse/image?name=ercburger-6.jpg
+    width: 1016
+    height: 762
+  - url: https://api.tougrel.dev/legacy/pestoverse/image?name=ercburger-7.jpg
+    width: 1016
+    height: 762
+  - url: https://api.tougrel.dev/legacy/pestoverse/image?name=ercburger-8.jpg
+    width: 1016
+    height: 762
+  - url: https://api.tougrel.dev/legacy/pestoverse/image?name=ercburger-9.jpg
+    width: 1016
+    height: 762
+  - url: https://api.tougrel.dev/legacy/pestoverse/image?name=ercburger-10.jpg
+    width: 1016
+    height: 762
