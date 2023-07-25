@@ -2,16 +2,20 @@
 import "ol/ol.css";
 import { onMounted } from "vue";
 import { MarkerProps } from "types/marker";
-import { Map, View } from "ol";
+import { Map, MapBrowserEvent, View } from "ol";
 import { Vector as LayerVector } from "ol/layer";
 import { Vector as SourceVector } from "ol/source";
 import { Style, Icon } from "ol/style";
 import { GeoJSON } from "ol/format";
-import type { Coordinate } from "ol/coordinate";
 import { boundingExtent } from "ol/extent";
-import type { FeatureLike } from "ol/Feature";
 import { fromLonLat } from "ol/proj";
+import { Control, defaults as defaultControls } from "ol/control";
+import { defaults as interactionDefaults } from "ol/interaction";
 import { apply } from "ol-mapbox-style";
+import { Point } from "ol/geom";
+import type { FeatureLike } from "ol/Feature";
+import type { Coordinate } from "ol/coordinate";
+import type { Options as ControlOptions } from "ol/control/Control";
 
 const colorMode = useColorMode();
 const props = defineProps<{ markers: MarkerProps[] }>();
@@ -48,6 +52,32 @@ const openModal = (images: string[], index: number) => {
     modalImages.value = images;
     modalActiveImage.value = index;
 };
+
+class ResetZoomControl extends Control {
+    constructor(opt_options?: ControlOptions) {
+        const options = opt_options || {};
+
+        const button = document.createElement("button");
+        button.innerHTML = "&#8635;";
+
+        const element = document.createElement("div");
+        element.className = "reset-zoom ol-unselectable ol-control";
+        element.title = "Reset Zoom";
+        element.appendChild(button);
+
+        super({
+            element: element,
+            target: options.target,
+        });
+
+        button.addEventListener("click", this.handleResetZoom.bind(this), false);
+        button.addEventListener("touchend", this.handleResetZoom.bind(this), false);
+    }
+
+    handleResetZoom() {
+        this.getMap()?.getView().animate({ zoom: mapZoom });
+    }
+}
 
 onMounted(() => {
     const geoJson = {
@@ -107,6 +137,8 @@ onMounted(() => {
 
     const map = new Map({
         target: "mapView",
+        controls: defaultControls().extend([new ResetZoomControl()]),
+        interactions: interactionDefaults({ altShiftDragRotate: false, pinchRotate: false }),
         view: new View({
             constrainResolution: true,
             center: fromLonLat(mapCenter),
@@ -117,16 +149,16 @@ onMounted(() => {
         layers: [markerLayer],
     });
 
-    map.on("singleclick", (event) => {
+    map.on("singleclick", (event: MapBrowserEvent<PointerEvent>) => {
         const features = [] as FeatureLike[];
-        map.forEachFeatureAtPixel(event.pixel, (feature) => {
+        map.forEachFeatureAtPixel(event.pixel, (feature: FeatureLike) => {
             const id = feature.getId();
             if (typeof id !== "string" || !id.startsWith("pestino")) return;
             features.push(feature);
         });
         if (features.length) {
             if (features.length > 1) {
-                const extent = boundingExtent(features.map((r) => r.getGeometry().getCoordinates()));
+                const extent = boundingExtent(features.map((r) => (r.getGeometry() as Point).getCoordinates()));
                 map.getView().fit(extent, { duration: 1000, padding: [50, 50, 50, 50] });
             } else {
                 const { coords, name, images } = features[0].getProperties();
@@ -137,10 +169,10 @@ onMounted(() => {
         }
     });
 
-    map.on("pointermove", (e) => {
-        if (e.dragging) return;
+    map.on("pointermove", (event: MapBrowserEvent<PointerEvent>) => {
+        if (event.dragging) return;
 
-        markerLayer.getFeatures(e.pixel).then((features) => {
+        markerLayer.getFeatures(event.pixel).then((features: FeatureLike[]) => {
             let cursor = "pointer";
             if (!features.length) cursor = "";
             map.getTargetElement().style.cursor = cursor;
@@ -155,17 +187,32 @@ onMounted(() => {
 });
 </script>
 
+<style>
+.reset-zoom {
+    top: 65px;
+    left: 0.5em;
+}
+
+.ol-touch .reset-zoom {
+    top: 80px;
+}
+</style>
+
 <template>
     <div id="mapView" class="z-0 h-full w-full bg-white dark:bg-background"></div>
     <UiSlideOver state="map-slideover">
         <div class="flex flex-col gap-4">
             <button v-for="(image, index) in slideoverData.images" @click="openModal(slideoverData.images, index)" class="relative">
-                <span v-if="slideoverData.name" class="absolute bottom-0 right-0 text-white text-sm bg-background opacity-25 hover:opacity-50 px-2 py-1 rounded-br-md rounded-tl-md">{{ slideoverData.name }}</span>
-                <NuxtImg class="rounded" loading="lazy" decoding="async" :src="image" />
+                <span
+                    v-if="slideoverData.name"
+                    class="absolute bottom-0 right-0 rounded-br-md rounded-tl-md bg-background px-2 py-1 text-sm text-white opacity-25 hover:opacity-50"
+                    >{{ slideoverData.name }}</span
+                >
+                <img class="rounded" loading="lazy" decoding="async" :src="image" />
             </button>
         </div>
         <UModal v-model="modalOpen">
-            <NuxtImg v-for="(image, index) in modalImages" v-show="index === modalActiveImage" loading="lazy" decoding="async" :src="image" />
+            <img v-for="(image, index) in modalImages" v-show="index === modalActiveImage" loading="lazy" decoding="async" :src="image" />
         </UModal>
     </UiSlideOver>
 </template>

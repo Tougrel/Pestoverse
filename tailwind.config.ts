@@ -9,7 +9,7 @@ export default {
                 background: "#2B303B",
                 navigation: "#16181D",
                 italygreen: "#008D44",
-                italyred: "#D0323D"
+                italyred: "#D0323D",
             },
 
             fontFamily: {
