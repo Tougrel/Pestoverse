@@ -63,7 +63,9 @@ onMounted(() => {
 
     const iconCache = {} as { [id: string]: string };
 
-    const styleFunction = (feature: any) => {
+    const styleFunction = (feature: any, resolution: number) => {
+        // lots of magic numbers here - it ends up slowly increasing the scale of the icon based on the zoom level
+        const scale = 1 / Math.log(Math.pow(resolution, 1/3));
         const uid = feature.getGeometry().ol_uid;
         let icon;
         if (uid in iconCache) {
@@ -76,7 +78,7 @@ onMounted(() => {
             new Style({
                 image: new Icon({
                     src: icon,
-                    height: 34,
+                    height: 75 * scale,
                 }),
             }),
         ];
