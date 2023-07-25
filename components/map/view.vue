@@ -71,6 +71,7 @@ class ResetZoomControl extends Control {
         });
 
         button.addEventListener("click", this.handleResetZoom.bind(this), false);
+        button.addEventListener("touchend", this.handleResetZoom.bind(this), false);
     }
 
     handleResetZoom() {
