@@ -6,4 +6,5 @@ images:
     - https://api.tougrel.dev/legacy/pestoverse/image?name=noblephantasma-2.jpg
     - https://api.tougrel.dev/legacy/pestoverse/image?name=noblephantasma-3.jpg
     - https://api.tougrel.dev/legacy/pestoverse/image?name=noblephantasma-4.jpg
+    - https://api.tougrel.dev/legacy/pestoverse/image?name=noblephantasma-edinburgh_graveyard.jpg
 ---
