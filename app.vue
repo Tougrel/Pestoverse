@@ -9,10 +9,15 @@ useSeoMeta({
 
     ogTitle: "Pestoverse",
     ogDescription: "The official website for running, upcoming and archived events created by Yuniiho's community!",
+    ogUrl: "https://pestoverse.tougrel.dev",
+    ogImage: "https://i.imgur.com/E41zbAO.png",
+    ogImageType: "image/png",
 
     twitterTitle: "Pestoverse",
     twitterDescription: "The official website for running, upcoming and archived created by Yuniiho's community!",
-    twitterCard: "summary",
+    twitterImage: "https://i.imgur.com/E41zbAO.png",
+    twitterImageType: "image/png",
+    twitterCard: "summary_large_image",
 });
 
 useHead({
