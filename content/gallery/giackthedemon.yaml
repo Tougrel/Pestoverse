@@ -3,6 +3,6 @@ coords:
   - 40.42079220194847
   - 9.117668555282178
 images:
-  - url: https://api.tougrel.dev/legacy/pestoverse/image?name=giackthedemon-1.jpg
+  - url: giackthedemon-1.jpg
     width: 1077
     height: 808

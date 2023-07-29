@@ -3,12 +3,12 @@ coords:
   - 52.0138
   - 18.5981
 images:
-  - url: https://api.tougrel.dev/legacy/pestoverse/image?name=lesheran-1.jpg
+  - url: lesheran-1.jpg
     width: 268
     height: 595
-  - url: https://api.tougrel.dev/legacy/pestoverse/image?name=lesheran-2.jpg
+  - url: lesheran-2.jpg
     width: 268
     height: 595
-  - url: https://api.tougrel.dev/legacy/pestoverse/image?name=lesheran-3.jpg
+  - url: lesheran-3.jpg
     width: 268
     height: 595

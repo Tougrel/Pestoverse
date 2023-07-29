@@ -3,12 +3,12 @@ coords:
   - 51.97004842947316
   - 4.514678052601896
 images:
-  - url: https://api.tougrel.dev/legacy/pestoverse/image?name=dippezoid-south_holland-1.jpg
+  - url: dippezoid-south_holland-1.jpg
     width: 4353
     height: 2449
-  - url: https://api.tougrel.dev/legacy/pestoverse/image?name=dippezoid-south_holland-2.jpg
+  - url: dippezoid-south_holland-2.jpg
     width: 1920
     height: 1080
-  - url: https://api.tougrel.dev/legacy/pestoverse/image?name=dippezoid-south_holland-3.jpg
+  - url: dippezoid-south_holland-3.jpg
     width: 1920
     height: 1080

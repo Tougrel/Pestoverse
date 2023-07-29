@@ -3,24 +3,24 @@ coords:
   - 1.3386541010412876
   - 103.83734649337978
 images:
-  - url: https://api.tougrel.dev/legacy/pestoverse/image?name=greenmst-1.jpg
+  - url: greenmst-1.jpg
     width: 1600
     height: 1200
-  - url: https://api.tougrel.dev/legacy/pestoverse/image?name=greenmst-2.jpg
+  - url: greenmst-2.jpg
     width: 1600
     height: 1200
-  - url: https://api.tougrel.dev/legacy/pestoverse/image?name=greenmst-3.jpg
+  - url: greenmst-3.jpg
     width: 1600
     height: 1200
-  - url: https://api.tougrel.dev/legacy/pestoverse/image?name=greenmst-4.jpg
+  - url: greenmst-4.jpg
     width: 1200
     height: 1600
-  - url: https://api.tougrel.dev/legacy/pestoverse/image?name=greenmst-5.jpg
+  - url: greenmst-5.jpg
     width: 1200
     height: 1600
-  - url: https://api.tougrel.dev/legacy/pestoverse/image?name=greenmst-6.jpg
+  - url: greenmst-6.jpg
     width: 1200
     height: 1600
-  - url: https://api.tougrel.dev/legacy/pestoverse/image?name=greenmst-7.jpg
+  - url: greenmst-7.jpg
     width: 1200
     height: 1600

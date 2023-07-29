@@ -3,6 +3,6 @@ coords:
   - 52.051085
   - -0.795195
 images:
-  - url: https://api.tougrel.dev/legacy/pestoverse/image?name=ebbii-2.jpg
+  - url: ebbii-2.jpg
     width: 876
     height: 657

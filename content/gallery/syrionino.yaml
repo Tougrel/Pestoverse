@@ -3,6 +3,6 @@ coords:
   - 52.86865
   - 17.54433
 images:
-  - url: https://api.tougrel.dev/legacy/pestoverse/image?name=syrionino-1.jpg
+  - url: syrionino-1.jpg
     width: 2083
     height: 3704

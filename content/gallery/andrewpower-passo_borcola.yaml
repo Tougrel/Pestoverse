@@ -3,12 +3,12 @@ coords:
   - 45.82966468870668
   - 11.207669455115347
 images:
-  - url: https://api.tougrel.dev/legacy/pestoverse/image?name=andreapower-3.jpg
+  - url: andreapower-3.jpg
     width: 526
     height: 701
-  - url: https://api.tougrel.dev/legacy/pestoverse/image?name=andreapower-4.jpg
+  - url: andreapower-4.jpg
     width: 526
     height: 701
-  - url: https://api.tougrel.dev/legacy/pestoverse/image?name=andreapower-5.jpg
+  - url: andreapower-5.jpg
     width: 526
     height: 701

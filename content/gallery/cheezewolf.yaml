@@ -3,6 +3,6 @@ coords:
   - 40.68957096713306
   - -74.04434696026298
 images:
-  - url: https://api.tougrel.dev/legacy/pestoverse/image?name=cheezewolf-1.jpg
+  - url: cheezewolf-1.jpg
     width: 606
     height: 808

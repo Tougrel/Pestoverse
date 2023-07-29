@@ -3,6 +3,6 @@ coords:
   - 32.76919
   - -96.77091
 images:
-  - url: https://api.tougrel.dev/legacy/pestoverse/image?name=vihilsta-1.png
+  - url: vihilsta-1.png
     width: 1599
     height: 1204

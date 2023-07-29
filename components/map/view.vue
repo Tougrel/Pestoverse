@@ -157,13 +157,10 @@ onMounted(() => {
     <div id="mapView" class="z-0 h-full w-full bg-white dark:bg-background"></div>
     <UiSlideOver state="map-slideover">
         <div class="flex flex-col gap-4">
-            <button v-for="(image, index) in slideoverData.images" @click="openModal(slideoverData.images, index)" class="relative">
-                <span v-if="slideoverData.name" class="absolute bottom-0 right-0 text-white text-sm bg-background opacity-25 hover:opacity-50 px-2 py-1 rounded-br-md rounded-tl-md">{{ slideoverData.name }}</span>
-                <img class="rounded" loading="lazy" decoding="async" :src="image.url" :width="image.width" :height="image.height" />
-            </button>
+            <UiImage v-for="(image, index) in slideoverData.images" @click="openModal(slideoverData.images, index)" :src="image.url" :width="image.width" :height="image.height" :name="slideoverData.name" />
         </div>
         <UModal v-model="modalOpen">
-            <img v-for="(image, index) in modalImages" v-show="index === modalActiveImage" loading="lazy" decoding="async" :src="image.url" />
+            <img v-for="(image, index) in modalImages" v-show="index === modalActiveImage" loading="lazy" decoding="async" :src="getFullImage(image.url)" />
         </UModal>
     </UiSlideOver>
 </template>

@@ -3,30 +3,30 @@ coords:
   - 52.52469736372716
   - 13.404125458554361
 images:
-  - url: https://api.tougrel.dev/legacy/pestoverse/image?name=dedicatus-berlin-1.jpg
+  - url: dedicatus-berlin-1.jpg
     width: 606
     height: 808
-  - url: https://api.tougrel.dev/legacy/pestoverse/image?name=dedicatus-berlin-2.jpg
+  - url: dedicatus-berlin-2.jpg
     width: 606
     height: 808
-  - url: https://api.tougrel.dev/legacy/pestoverse/image?name=dedicatus-berlin-3.jpg
+  - url: dedicatus-berlin-3.jpg
     width: 528
     height: 808
-  - url: https://api.tougrel.dev/legacy/pestoverse/image?name=dedicatus-berlin-4.jpg
+  - url: dedicatus-berlin-4.jpg
     width: 606
     height: 808
-  - url: https://api.tougrel.dev/legacy/pestoverse/image?name=dedicatus-berlin-5.jpg
+  - url: dedicatus-berlin-5.jpg
     width: 488
     height: 808
-  - url: https://api.tougrel.dev/legacy/pestoverse/image?name=dedicatus-berlin-6.jpg
+  - url: dedicatus-berlin-6.jpg
     width: 606
     height: 808
-  - url: https://api.tougrel.dev/legacy/pestoverse/image?name=dedicatus-berlin-7.jpg
+  - url: dedicatus-berlin-7.jpg
     width: 606
     height: 808
-  - url: https://api.tougrel.dev/legacy/pestoverse/image?name=dedicatus-berlin-8.jpg
+  - url: dedicatus-berlin-8.jpg
     width: 606
     height: 808
-  - url: https://api.tougrel.dev/legacy/pestoverse/image?name=dedicatus-berlin-9.jpg
+  - url: dedicatus-berlin-9.jpg
     width: 606
     height: 808

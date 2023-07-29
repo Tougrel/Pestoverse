@@ -3,6 +3,6 @@ coords:
   - 48.8079
   - 2.1119
 images:
-  - url: https://api.tougrel.dev/legacy/pestoverse/image?name=noblephantasma-versailles.jpg
+  - url: noblephantasma-versailles.jpg
     width: 3322
     height: 3228

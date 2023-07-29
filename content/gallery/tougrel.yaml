@@ -3,15 +3,15 @@ coords:
   - 39.967453
   - 23.907474
 images:
-  - url: https://api.tougrel.dev/legacy/pestoverse/image?name=tougrel-1.jpg
-    width: 4032
-    height: 3024
-  - url: https://api.tougrel.dev/legacy/pestoverse/image?name=tougrel-2.jpg
-    width: 4032
-    height: 3024
-  - url: https://api.tougrel.dev/legacy/pestoverse/image?name=tougrel-3.jpg
-    width: 4032
-    height: 3024
-  - url: https://api.tougrel.dev/legacy/pestoverse/image?name=tougrel-4.jpg
-    width: 4032
-    height: 3024
+  - url: tougrel-1.jpg
+    width: 3024
+    height: 4032
+  - url: tougrel-2.jpg
+    width: 3024
+    height: 4032
+  - url: tougrel-3.jpg
+    width: 3024
+    height: 4032
+  - url: tougrel-4.jpg
+    width: 3024
+    height: 4032

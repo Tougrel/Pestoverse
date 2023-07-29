@@ -3,30 +3,30 @@ coords:
   - 53.22910632692975
   - -2.67261593068695
 images:
-  - url: https://api.tougrel.dev/legacy/pestoverse/image?name=ikanexus-1.jpg
+  - url: ikanexus-1.jpg
     width: 571
     height: 761
-  - url: https://api.tougrel.dev/legacy/pestoverse/image?name=ikanexus-2.jpg
+  - url: ikanexus-2.jpg
     width: 571
     height: 761
-  - url: https://api.tougrel.dev/legacy/pestoverse/image?name=ikanexus-3.jpg
+  - url: ikanexus-3.jpg
     width: 571
     height: 761
-  - url: https://api.tougrel.dev/legacy/pestoverse/image?name=ikanexus-4.jpg
+  - url: ikanexus-4.jpg
     width: 571
     height: 761
-  - url: https://api.tougrel.dev/legacy/pestoverse/image?name=ikanexus-5.jpg
+  - url: ikanexus-5.jpg
     width: 571
     height: 761
-  - url: https://api.tougrel.dev/legacy/pestoverse/image?name=ikanexus-6.jpg
+  - url: ikanexus-6.jpg
     width: 571
     height: 761
-  - url: https://api.tougrel.dev/legacy/pestoverse/image?name=ikanexus-7.jpg
+  - url: ikanexus-7.jpg
     width: 1016
     height: 762
-  - url: https://api.tougrel.dev/legacy/pestoverse/image?name=ikanexus-8.jpg
+  - url: ikanexus-8.jpg
     width: 571
     height: 761
-  - url: https://api.tougrel.dev/legacy/pestoverse/image?name=ikanexus-9.jpg
+  - url: ikanexus-9.jpg
     width: 571
     height: 761

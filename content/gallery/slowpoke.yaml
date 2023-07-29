@@ -3,6 +3,6 @@ coords:
   - 33.77993387269327
   - -84.38442573426596
 images:
-  - url: https://api.tougrel.dev/legacy/pestoverse/image?name=slowpoke316-1.jpg
+  - url: slowpoke316-1.jpg
     width: 1077
     height: 808

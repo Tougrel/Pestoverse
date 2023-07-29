@@ -7,6 +7,11 @@ import sizeOf from 'buffer-image-size';
 const galleryPath = path.join('content', 'gallery')
 const files = fs.readdirSync(galleryPath);
 
+let baseUrl = "https://images.ika.gg";
+if (process.argv.length > 2) {
+    baseUrl = process.argv[2];
+}
+
 files.forEach(file => {
     const filePath = path.join(galleryPath, file);
     const data = yaml.load(fs.readFileSync(filePath, 'utf-8'));
@@ -14,19 +19,22 @@ files.forEach(file => {
     let newImages = [];
     console.log("\nProcessing file", filePath);
     images.forEach((image) => {
-        let imageUrl
+        let imageFile
         if (typeof image === 'string') {
-            imageUrl = image;
+            imageFile = image;
         } else if (typeof image === 'object' && 'url' in image) {
-            imageUrl = image.url;
+            imageFile = image.url;
         }
+
+        const imageUrl = `${baseUrl}/full/${imageFile}`;
+
         const res = request('GET', imageUrl);
         const imageBuffer = Buffer.from(res.getBody(), 'utf-8');
         const { height, width } = sizeOf(imageBuffer);
 
-        console.log(imageUrl, `width=${width}, height=${height}`);
+        console.log(imageFile, `width=${width}, height=${height}`);
         newImages.push({
-            url: imageUrl,
+            url: imageFile,
             width,
             height
         });

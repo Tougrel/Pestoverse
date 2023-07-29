@@ -3,30 +3,30 @@ coords:
   - 14.599873163156646
   - 120.98797462367486
 images:
-  - url: https://api.tougrel.dev/legacy/pestoverse/image?name=mrgrimmlore-1.jpg
+  - url: mrgrimmlore-1.jpg
     width: 3000
     height: 4000
-  - url: https://api.tougrel.dev/legacy/pestoverse/image?name=mrgrimmlore-2.jpg
+  - url: mrgrimmlore-2.jpg
     width: 2252
     height: 4000
-  - url: https://api.tougrel.dev/legacy/pestoverse/image?name=mrgrimmlore-3.jpg
+  - url: mrgrimmlore-3.jpg
     width: 2252
     height: 4000
-  - url: https://api.tougrel.dev/legacy/pestoverse/image?name=mrgrimmlore-4.jpg
+  - url: mrgrimmlore-4.jpg
     width: 2252
     height: 4000
-  - url: https://api.tougrel.dev/legacy/pestoverse/image?name=mrgrimmlore-5.jpg
+  - url: mrgrimmlore-5.jpg
     width: 2252
     height: 4000
-  - url: https://api.tougrel.dev/legacy/pestoverse/image?name=mrgrimmlore-6.jpg
+  - url: mrgrimmlore-6.jpg
     width: 2252
     height: 4000
-  - url: https://api.tougrel.dev/legacy/pestoverse/image?name=mrgrimmlore-7.jpg
+  - url: mrgrimmlore-7.jpg
     width: 2252
     height: 4000
-  - url: https://api.tougrel.dev/legacy/pestoverse/image?name=mrgrimmlore-8.jpg
+  - url: mrgrimmlore-8.jpg
     width: 2252
     height: 4000
-  - url: https://api.tougrel.dev/legacy/pestoverse/image?name=mrgrimmlore-9.jpg
+  - url: mrgrimmlore-9.jpg
     width: 2252
     height: 4000

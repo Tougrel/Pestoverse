@@ -3,6 +3,6 @@ coords:
   - 48.72466
   - 8.1907
 images:
-  - url: https://api.tougrel.dev/legacy/pestoverse/image?name=wikipera-1.jpg
+  - url: wikipera-1.jpg
     width: 4032
     height: 3024

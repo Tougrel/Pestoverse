@@ -3,6 +3,6 @@ coords:
   - 42.746635
   - -75.77004500000001
 images:
-  - url: https://api.tougrel.dev/legacy/pestoverse/image?name=121gwjolt-1.jpg
+  - url: 121gwjolt-1.jpg
     width: 433
     height: 579
