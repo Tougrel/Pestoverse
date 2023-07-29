@@ -1,7 +1,7 @@
-const IMAGE_BASE = import.meta.env.IMAGE_BASE || "https://images.ika.gg";
+const IMAGE_HOST = import.meta.env.IMAGE_HOST || "images.ika.gg";
 
 const getUrl = (category: string, image: string) => {
-    return `${IMAGE_BASE}/${category}/${image}`;
+    return `https://${IMAGE_HOST}/${category}/${image}`;
 }
 
 export const getPlaceholderImage = (image: string) => {
