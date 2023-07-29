@@ -8,7 +8,7 @@ const imageLoaded = ref(false);
         <figure class="relative table rounded-lg bg-cover" :style="{backgroundImage: `url(${getPlaceholderImage(src)})`}">
             <img
                 role="button"
-                class="block max-w-full rounded-lg bg-cover bg-center transition-[opacity_200ms_ease-in-out]"
+                class="block w-full rounded-lg bg-cover bg-center transition-[opacity_200ms_ease-in-out]"
                 :class="{'opacity-100': imageLoaded, 'opacity-0': !imageLoaded}"
                 loading="lazy"
                 decoding="async"
