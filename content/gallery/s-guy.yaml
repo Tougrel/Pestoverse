@@ -1,0 +1,23 @@
+name: S_Guy
+coords:
+  - 48.60464
+  - 10.1971
+images:
+  - url: s_guy-1.jpg
+    width: 1080
+    height: 608
+  - url: s_guy-2.jpg
+    width: 1080
+    height: 608
+  - url: s_guy-augsburg-1.jpg
+    width: 2457
+    height: 4102
+  - url: s_guy-augsburg-2.jpg
+    width: 2333
+    height: 4047
+  - url: s_guy-augsburg-3.jpg
+    width: 2604
+    height: 4624
+  - url: s_guy-augsburg-4.jpg
+    width: 2604
+    height: 4624

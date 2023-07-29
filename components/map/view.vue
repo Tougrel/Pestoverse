@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import "ol/ol.css";
 import { onMounted } from "vue";
-import { MarkerProps } from "types/marker";
+import { MarkerImageData, MarkerProps } from "types/marker";
 import { Map, MapBrowserEvent, View } from "ol";
 import { Vector as LayerVector } from "ol/layer";
 import { Vector as SourceVector } from "ol/source";
@@ -42,12 +42,12 @@ const styleJson = computed(() => {
 
 const slideoverOpen = useState<boolean>("map-slideover", () => false);
 const modalOpen = useState<boolean>("map-modal", () => false);
-const modalImages = useState<string[]>("map-modal-images", () => []);
+const modalImages = useState<MarkerImageData[]>("map-modal-images", () => []);
 const modalActiveImage = useState<number>("map-modal-active-image", () => 0);
 
 const slideoverData = ref({} as MarkerProps);
 
-const openModal = (images: string[], index: number) => {
+const openModal = (images: MarkerImageData[], index: number) => {
     modalOpen.value = true;
     modalImages.value = images;
     modalActiveImage.value = index;
@@ -202,17 +202,10 @@ onMounted(() => {
     <div id="mapView" class="z-0 h-full w-full bg-white dark:bg-background"></div>
     <UiSlideOver state="map-slideover">
         <div class="flex flex-col gap-4">
-            <button v-for="(image, index) in slideoverData.images" @click="openModal(slideoverData.images, index)" class="relative">
-                <span
-                    v-if="slideoverData.name"
-                    class="absolute bottom-0 right-0 rounded-br-md rounded-tl-md bg-background px-2 py-1 text-sm text-white opacity-25 hover:opacity-50"
-                    >{{ slideoverData.name }}</span
-                >
-                <img class="rounded" loading="lazy" decoding="async" :src="image" />
-            </button>
+            <UiImage v-for="(image, index) in slideoverData.images" @click="openModal(slideoverData.images, index)" :src="image.url" :width="image.width" :height="image.height" :name="slideoverData.name" />
         </div>
         <UModal v-model="modalOpen">
-            <img v-for="(image, index) in modalImages" v-show="index === modalActiveImage" loading="lazy" decoding="async" :src="image" />
+            <img v-for="(image, index) in modalImages" v-show="index === modalActiveImage" loading="lazy" decoding="async" :src="getFullImage(image.url)" />
         </UModal>
     </UiSlideOver>
 </template>

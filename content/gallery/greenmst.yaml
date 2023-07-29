@@ -1,0 +1,26 @@
+name: Greenmst
+coords:
+  - 1.3386541010412876
+  - 103.83734649337978
+images:
+  - url: greenmst-1.jpg
+    width: 1600
+    height: 1200
+  - url: greenmst-2.jpg
+    width: 1600
+    height: 1200
+  - url: greenmst-3.jpg
+    width: 1600
+    height: 1200
+  - url: greenmst-4.jpg
+    width: 1200
+    height: 1600
+  - url: greenmst-5.jpg
+    width: 1200
+    height: 1600
+  - url: greenmst-6.jpg
+    width: 1200
+    height: 1600
+  - url: greenmst-7.jpg
+    width: 1200
+    height: 1600

@@ -1,0 +1,35 @@
+name: ErcBurger
+coords:
+  - 37.2
+  - -76.8
+images:
+  - url: ercburger-1.jpg
+    width: 606
+    height: 808
+  - url: ercburger-2.jpg
+    width: 606
+    height: 808
+  - url: ercburger-3.jpg
+    width: 606
+    height: 808
+  - url: ercburger-4.jpg
+    width: 1016
+    height: 762
+  - url: ercburger-5.jpg
+    width: 1016
+    height: 762
+  - url: ercburger-6.jpg
+    width: 1016
+    height: 762
+  - url: ercburger-7.jpg
+    width: 1016
+    height: 762
+  - url: ercburger-8.jpg
+    width: 1016
+    height: 762
+  - url: ercburger-9.jpg
+    width: 1016
+    height: 762
+  - url: ercburger-10.jpg
+    width: 1016
+    height: 762

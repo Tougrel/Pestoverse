@@ -1,0 +1,14 @@
+name: Lesheran
+coords:
+  - 52.0138
+  - 18.5981
+images:
+  - url: lesheran-1.jpg
+    width: 268
+    height: 595
+  - url: lesheran-2.jpg
+    width: 268
+    height: 595
+  - url: lesheran-3.jpg
+    width: 268
+    height: 595

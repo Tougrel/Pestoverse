@@ -1,0 +1,8 @@
+name: ErcBurger
+coords:
+  - 37
+  - -76.6
+images:
+  - url: ercburger-pig-1.jpg
+    width: 571
+    height: 761
