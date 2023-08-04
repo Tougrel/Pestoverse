@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import "ol/ol.css";
 import { onMounted } from "vue";
-import { MarkerImageData, MarkerProps } from "types/marker";
+import { MarkerImageData, MarkerProps } from "types";
 import { Map, MapBrowserEvent, View } from "ol";
 import { Vector as LayerVector } from "ol/layer";
 import { Vector as SourceVector } from "ol/source";
@@ -95,7 +95,7 @@ onMounted(() => {
 
     const styleFunction = (feature: any, resolution: number) => {
         // lots of magic numbers here - it ends up slowly increasing the scale of the icon based on the zoom level
-        const scale = 1 / Math.log(Math.pow(resolution, 1/3));
+        const scale = 1 / Math.log(Math.pow(resolution, 1 / 3));
         const uid = feature.getGeometry().ol_uid;
         let icon;
         if (uid in iconCache) {
@@ -202,7 +202,14 @@ onMounted(() => {
     <div id="mapView" class="z-0 h-full w-full bg-white dark:bg-background"></div>
     <UiSlideOver state="map-slideover">
         <div class="flex flex-col gap-4">
-            <UiImage v-for="(image, index) in slideoverData.images" @click="openModal(slideoverData.images, index)" :src="image.url" :width="image.width" :height="image.height" :name="slideoverData.name" />
+            <UiImage
+                v-for="(image, index) in slideoverData.images"
+                @click="openModal(slideoverData.images, index)"
+                :src="image.url"
+                :width="image.width"
+                :height="image.height"
+                :name="slideoverData.name"
+            />
         </div>
         <UModal v-model="modalOpen">
             <img v-for="(image, index) in modalImages" v-show="index === modalActiveImage" loading="lazy" decoding="async" :src="getFullImage(image.url)" />

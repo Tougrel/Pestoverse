@@ -3,7 +3,7 @@ import confetti from "canvas-confetti";
 
 onMounted(() => {
     // Based on https://www.kirilv.com/canvas-confetti/ examples
-    const confettiCanvas = document.getElementById("confetti");
+    const confettiCanvas = document.getElementById("confetti") as HTMLCanvasElement;
     const customConfetti = confetti.create(confettiCanvas, { resize: true, disableForReducedMotion: true });
     const end = Date.now() + 5 * 1000;
     const colors = ["#008d44", "#ffffff", "#d0323d"];

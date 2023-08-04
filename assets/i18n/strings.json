@@ -1,0 +1,25 @@
+{
+  "en-us": {
+	"pestoverse": "Pestoverse",
+    "close": "Close",
+    "nav.menu": "Menu",
+    "nav.home": "Home",
+    "nav.gallery": "Look at all the Pesto",
+    "nav.credits": "Made by these amazing people",
+    "nav.menu.world": "Pesto Around the World",
+    "nav.menu.gallery": "Pesto Gallery",
+    "nav.menu.kudo": "Kudo Boards",
+    "nav.menu.credits": "Credits",
+    "home.explore": "Start exploring!",
+    "credits.emotes": "For the amazing emotes",
+    "credits.gallery": "Gallery updates",
+    "credits.ideas": "Ideas",
+    "credits.ideas.maintain": "Website idea & maintainer",
+    "credits.ideas.code": "Ideas & code",
+    "footer.made": "Made with",
+    "footer.made.by": "by the",
+    "footer.made.community": "pesto community",
+    "footer.credits": "Some of the work is done by some amazing pesties that you can find in the",
+    "footer.credits.page": "page!"
+  }
+}

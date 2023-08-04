@@ -6,46 +6,47 @@ import dhoru from "static/images/credits/dhoru.webp";
 import yoclesh from "static/images/credits/yoclesh.webp";
 import vihilsta from "static/images/credits/vihilsta.webp";
 import phantasma from "static/images/credits/phantasma.webp";
+import { CreditUser } from "~/types";
 
-export const CREDIT_USERS = [
+export const CREDIT_USERS: CreditUser[] = [
     {
         name: "Yuniiho",
-        description: "For the amazing emotes",
+        description: "credits.emotes",
         icon_path: yuniiho,
     },
     {
         name: "Tougrel",
-        description: "Website idea & maintainer",
+        description: "credits.ideas.maintain",
         icon_path: tougrel,
     },
     {
         name: "Ikanexus",
-        description: "Ideas & code",
+        description: "credits.ideas.code",
         icon_path: ikanexus,
     },
     {
         name: "Bootfighter",
-        description: "For the amazing emotes",
+        description: "credits.emotes",
         icon_path: bootfighter,
     },
     {
         name: "Dhoru",
-        description: "For the amazing emotes",
+        description: "credits.emotes",
         icon_path: dhoru,
     },
     {
         name: "Yoclesh",
-        description: "For the amazing emotes",
+        description: "credits.emotes",
         icon_path: yoclesh,
     },
     {
         name: "Vihilsta",
-        description: "Ideas",
+        description: "credits.ideas",
         icon_path: vihilsta,
     },
     {
         name: "Phantasma",
-        description: "Gallery updates",
+        description: "credits.gallery",
         icon_path: phantasma,
     },
 ];

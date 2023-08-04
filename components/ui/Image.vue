@@ -13,6 +13,7 @@ const imageLoaded = ref(false);
                 loading="lazy"
                 decoding="async"
                 :src="getResizedImage(src)"
+                :alt="name"
                 :width="width"
                 :height="height"
                 @load="imageLoaded = true"

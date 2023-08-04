@@ -23,7 +23,7 @@
     "@iconify-json/line-md": "^1.1.25",
     "@iconify-json/mdi": "^1.1.52",
     "@nuxt/content": "^2.7.0",
-    "@nuxt/devtools": "latest",
+    "@nuxt/devtools": "^0.7.2",
     "@nuxt/image": "rc",
     "@nuxthq/ui": "^2.5.0",
     "@nuxtjs/google-fonts": "^3.0.1",

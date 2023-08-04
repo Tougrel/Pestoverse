@@ -1,5 +1,12 @@
 <script setup lang="ts">
-const loading = ref(true);
+useState("lang", () => null);
+useState("lang_id", () => "en-us");
+const loading = useState("loading", () => {
+    return {
+        website: true,
+        lang: true,
+    };
+});
 
 useState("kudo-slideover", () => false);
 
@@ -10,12 +17,12 @@ useSeoMeta({
     ogTitle: "Pestoverse",
     ogDescription: "The official website for running, upcoming and archived events created by Yuniiho's community!",
     ogUrl: "https://pestoverse.tougrel.dev",
-    ogImage: "https://i.imgur.com/E41zbAO.png",
+    ogImage: "https://i.imgur.com/HjwqC9A.png",
     ogImageType: "image/png",
 
     twitterTitle: "Pestoverse",
     twitterDescription: "The official website for running, upcoming and archived created by Yuniiho's community!",
-    twitterImage: "https://i.imgur.com/E41zbAO.png",
+    twitterImage: "https://i.imgur.com/HjwqC9A.png",
     twitterImageType: "image/png",
     twitterCard: "summary_large_image",
 });
@@ -45,7 +52,8 @@ useHead({
 });
 
 onMounted(() => {
-    loading.value = false;
+    generateLanguageMap();
+    loading.value.website = false;
 
     const primary = localStorage.getItem("ui-color");
     if (primary) useAppConfig().ui.primary = primary;
@@ -54,8 +62,8 @@ onMounted(() => {
 
 <template>
     <main>
-        <UiLoadingScreen v-if="loading" />
-        <KudoSidebar v-if="!loading" />
-        <NuxtPage v-if="!loading" />
+        <UiLoadingScreen v-if="loading.website && loading.lang" />
+        <KudoSidebar v-if="!loading.website && !loading.lang" />
+        <NuxtPage v-if="!loading.website && !loading.lang" />
     </main>
 </template>
