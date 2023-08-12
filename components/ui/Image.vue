@@ -4,7 +4,7 @@ const imageLoaded = ref(false);
 </script>
 
 <template>
-    <button class="mb-4 break-inside-avoid rounded-lg group" @click="$emit('click')">
+    <button class="break-inside-avoid rounded-lg group" @click="$emit('click')">
         <figure class="relative table rounded-lg bg-cover" :style="{backgroundImage: `url(${getPlaceholderImage(src)})`}">
             <img
                 role="button"

@@ -67,7 +67,6 @@ onMounted(() => {
         maxZoom: 10,
         center: toLonLat([34.92485641107942, 30.656626315862535]),
         style: getStyle(colorMode, language),
-        dragRotate: false
     }));
 
     map.value.addControl(new NavigationControl({visualizePitch: false, showCompass: false}), "top-left")
