@@ -992,15 +992,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mapbox/mapbox-gl-language@npm:^1.0.1":
-  version: 1.0.1
-  resolution: "@mapbox/mapbox-gl-language@npm:1.0.1"
-  peerDependencies:
-    mapbox-gl: ">=0.29.0"
-  checksum: 1e7334feb74723f08bfcf29e17b3cffb90ae603b6d4c2597103644c0f6c7ade0137b1aa4d3bfda7d784872c09578fcafdd9659d511e053dfe954eeee6a80859d
-  languageName: node
-  linkType: hard
-
 "@mapbox/mapbox-gl-style-spec@npm:^13.23.1":
   version: 13.28.0
   resolution: "@mapbox/mapbox-gl-style-spec@npm:13.28.0"
@@ -8696,7 +8687,6 @@ __metadata:
   dependencies:
     "@iconify-json/line-md": ^1.1.25
     "@iconify-json/mdi": ^1.1.52
-    "@mapbox/mapbox-gl-language": ^1.0.1
     "@nuxt/content": ^2.7.0
     "@nuxt/devtools": latest
     "@nuxt/image": rc

@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import {Map, NavigationControl, StyleSpecification, Marker} from 'maplibre-gl';
-import MapboxLanguage from '@mapbox/mapbox-gl-language';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import light from "./light";
 import dark from "./dark";
@@ -22,7 +21,7 @@ const colorMode = useColorMode();
 const mapContainer = shallowRef<HTMLElement>();
 const map = shallowRef<Map>();
 
-const getStyle = (color: typeof colorMode) => {
+const getStyle = (color: typeof colorMode, lang: string = 'en') => {
     return {
         version: 8,
         glyphs: 'https://tileassets.ika.gg/fonts/{fontstack}/{range}.pbf',
@@ -32,7 +31,7 @@ const getStyle = (color: typeof colorMode) => {
                 url: "https://tiles.ika.gg/osm-planet.json"
             }
         },
-        'layers': color.value === "white" ? light : dark
+        'layers': color.value === "white" ? light(lang) : dark(lang)
     } as StyleSpecification
 }
 
@@ -59,25 +58,19 @@ const openSlideover = (entry: MarkerProps) => {
     // TODO: zoom in on clusters
 }
 
+const language = 'en'; // TODO replace with i18n!!
+
 onMounted(() => {
     map.value = markRaw(new Map({
         container: mapContainer.value as HTMLElement,
         zoom: 3,
         maxZoom: 10,
         center: toLonLat([34.92485641107942, 30.656626315862535]),
-        style: getStyle(colorMode),
+        style: getStyle(colorMode, language),
         dragRotate: false
     }));
 
     map.value.addControl(new NavigationControl({visualizePitch: false, showCompass: false}), "top-left")
-    map.value.addControl(new MapboxLanguage({
-        // defaultLanguage: 'it',
-        languageField: /^name:/,
-        getLanguageField: (language) => {
-            return language === 'mul' ? 'name:en' : `name:${language}`
-        },
-        languageSource: 'protomaps'
-    }))
 
     props.markers.forEach(entry => {
         if (map.value) {
@@ -92,7 +85,7 @@ onMounted(() => {
     });
 
     watch(colorMode, (value) => {
-        map.value?.setStyle(getStyle(value))
+        map.value?.setStyle(getStyle(value, language))
     })
 })
 </script>

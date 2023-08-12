@@ -1,4 +1,4 @@
-export default [
+export default (lang: string) => ([
     {
         "id": "background",
         "paint": {
@@ -1130,9 +1130,12 @@ export default [
                 "coalesce",
                 [
                     "get",
-                    "name:en"
+                    `name:${lang}`
                 ],
                 [
+                    "get",
+                    "name:en"
+                ],                [
                     "get",
                     "name:latin"
                 ],
@@ -1180,9 +1183,12 @@ export default [
                 "coalesce",
                 [
                     "get",
-                    "name:en"
+                    `name:${lang}`
                 ],
                 [
+                    "get",
+                    "name:en"
+                ],                [
                     "get",
                     "name:latin"
                 ],
@@ -1232,9 +1238,12 @@ export default [
                 "coalesce",
                 [
                     "get",
-                    "name:en"
+                    `name:${lang}`
                 ],
                 [
+                    "get",
+                    "name:en"
+                ],                [
                     "get",
                     "name:latin"
                 ],
@@ -1293,9 +1302,12 @@ export default [
                 "coalesce",
                 [
                     "get",
-                    "name:en"
+                    `name:${lang}`
                 ],
                 [
+                    "get",
+                    "name:en"
+                ],                [
                     "get",
                     "name:latin"
                 ],
@@ -1348,9 +1360,12 @@ export default [
                 "coalesce",
                 [
                     "get",
-                    "name:en"
+                    `name:${lang}`
                 ],
                 [
+                    "get",
+                    "name:en"
+                ],                [
                     "get",
                     "name:latin"
                 ],
@@ -1409,9 +1424,12 @@ export default [
                 "coalesce",
                 [
                     "get",
-                    "name:en"
+                    `name:${lang}`
                 ],
                 [
+                    "get",
+                    "name:en"
+                ],                [
                     "get",
                     "name:latin"
                 ],
@@ -1470,9 +1488,12 @@ export default [
                 "coalesce",
                 [
                     "get",
-                    "name:en"
+                    `name:${lang}`
                 ],
                 [
+                    "get",
+                    "name:en"
+                ],                [
                     "get",
                     "name:latin"
                 ],
@@ -1528,9 +1549,12 @@ export default [
                 "coalesce",
                 [
                     "get",
-                    "name:en"
+                    `name:${lang}`
                 ],
                 [
+                    "get",
+                    "name:en"
+                ],                [
                     "get",
                     "name:latin"
                 ],
@@ -1615,9 +1639,12 @@ export default [
                 "coalesce",
                 [
                     "get",
-                    "name:en"
+                    `name:${lang}`
                 ],
                 [
+                    "get",
+                    "name:en"
+                ],                [
                     "get",
                     "name:latin"
                 ],
@@ -1814,9 +1841,12 @@ export default [
                 "coalesce",
                 [
                     "get",
-                    "name:en"
+                    `name:${lang}`
                 ],
                 [
+                    "get",
+                    "name:en"
+                ],                [
                     "get",
                     "name:latin"
                 ],
@@ -1884,9 +1914,12 @@ export default [
                 "coalesce",
                 [
                     "get",
-                    "name:en"
+                    `name:${lang}`
                 ],
                 [
+                    "get",
+                    "name:en"
+                ],                [
                     "get",
                     "name:latin"
                 ],
@@ -1945,9 +1978,12 @@ export default [
                 "coalesce",
                 [
                     "get",
-                    "name:en"
+                    `name:${lang}`
                 ],
                 [
+                    "get",
+                    "name:en"
+                ],                [
                     "get",
                     "name:latin"
                 ],
@@ -2028,9 +2064,12 @@ export default [
                 "coalesce",
                 [
                     "get",
-                    "name:en"
+                    `name:${lang}`
                 ],
                 [
+                    "get",
+                    "name:en"
+                ],                [
                     "get",
                     "name:latin"
                 ],
@@ -2135,9 +2174,12 @@ export default [
                 "coalesce",
                 [
                     "get",
-                    "name:en"
+                    `name:${lang}`
                 ],
                 [
+                    "get",
+                    "name:en"
+                ],                [
                     "get",
                     "name:latin"
                 ],
@@ -2242,9 +2284,12 @@ export default [
                 "coalesce",
                 [
                     "get",
-                    "name:en"
+                    `name:${lang}`
                 ],
                 [
+                    "get",
+                    "name:en"
+                ],                [
                     "get",
                     "name:latin"
                 ],
@@ -2354,9 +2399,12 @@ export default [
                 "coalesce",
                 [
                     "get",
-                    "name:en"
+                    `name:${lang}`
                 ],
                 [
+                    "get",
+                    "name:en"
+                ],                [
                     "get",
                     "name:latin"
                 ],
@@ -2462,9 +2510,12 @@ export default [
                 "coalesce",
                 [
                     "get",
-                    "name:en"
+                    `name:${lang}`
                 ],
                 [
+                    "get",
+                    "name:en"
+                ],                [
                     "get",
                     "name:latin"
                 ],
@@ -2530,9 +2581,12 @@ export default [
                 "coalesce",
                 [
                     "get",
-                    "name:en"
+                    `name:${lang}`
                 ],
                 [
+                    "get",
+                    "name:en"
+                ],                [
                     "get",
                     "name:latin"
                 ],
@@ -2589,9 +2643,12 @@ export default [
                 "coalesce",
                 [
                     "get",
-                    "name:en"
+                    `name:${lang}`
                 ],
                 [
+                    "get",
+                    "name:en"
+                ],                [
                     "get",
                     "name:latin"
                 ],
@@ -2679,9 +2736,12 @@ export default [
                 "coalesce",
                 [
                     "get",
-                    "name:en"
+                    `name:${lang}`
                 ],
                 [
+                    "get",
+                    "name:en"
+                ],                [
                     "get",
                     "name:latin"
                 ],
@@ -2750,9 +2810,12 @@ export default [
                 "coalesce",
                 [
                     "get",
-                    "name:en"
+                    `name:${lang}`
                 ],
                 [
+                    "get",
+                    "name:en"
+                ],                [
                     "get",
                     "name:latin"
                 ],
@@ -2780,4 +2843,4 @@ export default [
         "source-layer": "place",
         "type": "symbol"
     }
-]
+])
