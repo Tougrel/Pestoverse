@@ -100,10 +100,10 @@ onMounted(() => {
     <div ref="mapContainer" class="h-full w-full bg-white dark:bg-background"></div>
     <UiSlideOver state="map-slideover">
         <div class="flex flex-col gap-4">
-            <UiImage v-for="(image, index) in slideOverData.images" @click="openModal(slideOverData.images, index)" :src="image.url" :width="image.width" :height="image.height" :name="slideoverData.name" />
+            <UiImage v-for="(image, index) in slideOverData.images" @click="openModal(slideOverData.images, index)" :src="image.url" :width="image.width" :height="image.height" :name="slideOverData.name" />
         </div>
         <UModal v-model="modalOpen">
-            <img v-for="(image, index) in modalImages" v-show="index === modalActiveImage" loading="lazy" decoding="async" :src="getFullImage(image.url)" />
+            <img v-for="(image, index) in modalImages" v-show="index === modalActiveImage" loading="lazy" decoding="async" :src="getFullImage(image.url)" :alt="slideOverData.name" />
         </UModal>
     </UiSlideOver>
 </template>
