@@ -1,0 +1,17 @@
+name: Tougrel
+coords:
+  - 39.967453
+  - 23.907474
+images:
+  - url: tougrel-1.jpg
+    width: 3024
+    height: 4032
+  - url: tougrel-2.jpg
+    width: 3024
+    height: 4032
+  - url: tougrel-3.jpg
+    width: 3024
+    height: 4032
+  - url: tougrel-4.jpg
+    width: 3024
+    height: 4032

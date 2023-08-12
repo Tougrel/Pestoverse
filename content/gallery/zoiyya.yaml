@@ -1,0 +1,11 @@
+name: Zoiyya
+coords:
+  - 51.15048009662052
+  - 7.341056204944281
+images:
+  - url: zoiyya-1.jpg
+    width: 1080
+    height: 719
+  - url: zoiyya-2.jpg
+    width: 1080
+    height: 719

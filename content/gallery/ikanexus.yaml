@@ -1,0 +1,32 @@
+name: IkaNexus
+coords:
+  - 53.22910632692975
+  - -2.67261593068695
+images:
+  - url: ikanexus-1.jpg
+    width: 571
+    height: 761
+  - url: ikanexus-2.jpg
+    width: 571
+    height: 761
+  - url: ikanexus-3.jpg
+    width: 571
+    height: 761
+  - url: ikanexus-4.jpg
+    width: 571
+    height: 761
+  - url: ikanexus-5.jpg
+    width: 571
+    height: 761
+  - url: ikanexus-6.jpg
+    width: 571
+    height: 761
+  - url: ikanexus-7.jpg
+    width: 1016
+    height: 762
+  - url: ikanexus-8.jpg
+    width: 571
+    height: 761
+  - url: ikanexus-9.jpg
+    width: 571
+    height: 761

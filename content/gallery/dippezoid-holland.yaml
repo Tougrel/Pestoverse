@@ -1,0 +1,14 @@
+name: Dippezoid
+coords:
+  - 51.97004842947316
+  - 4.514678052601896
+images:
+  - url: dippezoid-south_holland-1.jpg
+    width: 4353
+    height: 2449
+  - url: dippezoid-south_holland-2.jpg
+    width: 1920
+    height: 1080
+  - url: dippezoid-south_holland-3.jpg
+    width: 1920
+    height: 1080

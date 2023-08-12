@@ -16,7 +16,8 @@
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
-    "pretty": "prettier --write \"./**/*.{ts,vue}\""
+    "pretty": "prettier --write \"./**/*.{ts,vue}\"",
+    "updateimages": "node update_image_sizes.mjs"
   },
   "devDependencies": {
     "@iconify-json/line-md": "^1.1.25",
@@ -30,12 +31,15 @@
     "@types/canvas-confetti": "^1.6.0",
     "@types/node": "^18.16.19",
     "@types/ol": "^7.0.0",
+    "buffer-image-size": "^0.6.4",
     "canvas-confetti": "^1.6.0",
+    "js-yaml": "^4.1.0",
     "maplibre-gl": "^3.3.0",
     "nuxt": "^3.6.2",
     "nuxt-icon": "^0.4.2",
     "prettier": "^3.0.0",
     "prettier-plugin-tailwindcss": "^0.4.1",
+    "sync-request": "^6.1.0",
     "typescript": "^5.1.6"
   },
   "packageManager": "yarn@3.6.1"

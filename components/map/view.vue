@@ -4,7 +4,7 @@ import MapboxLanguage from '@mapbox/mapbox-gl-language';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import light from "./light";
 import dark from "./dark";
-import {MarkerProps} from "~/types/marker";
+import { MarkerImageData, MarkerProps } from "types/marker";
 
 const props = defineProps<{ markers: MarkerProps[] }>();
 
@@ -42,6 +42,12 @@ const getMarkerIcon = () => {
     el.style.backgroundImage = `url(${getEmote()})`;
     return el;
 }
+
+const openModal = (images: MarkerImageData[], index: number) => {
+  modalOpen.value = true;
+  modalImages.value = images;
+  modalActiveImage.value = index;
+};
 
 const openSlideover = (entry: MarkerProps) => {
     slideOverOpen.value = true;
@@ -94,18 +100,10 @@ onMounted(() => {
     <div ref="mapContainer" class="h-full w-full bg-white dark:bg-background"></div>
     <UiSlideOver state="map-slideover">
         <div class="flex flex-col gap-4">
-            <button v-for="(image, index) in slideOverData.images" @click="openModal(slideOverData.images, index)"
-                    class="relative">
-                <span v-if="slideOverData.name"
-                      class="absolute bottom-0 right-0 text-white text-sm bg-background opacity-25 hover:opacity-50 px-2 py-1 rounded-br-md rounded-tl-md">{{
-                        slideOverData.name
-                    }}</span>
-                <NuxtImg class="rounded" loading="lazy" decoding="async" :src="image" />
-            </button>
+            <UiImage v-for="(image, index) in slideOverData.images" @click="openModal(slideOverData.images, index)" :src="image.url" :width="image.width" :height="image.height" :name="slideoverData.name" />
         </div>
         <UModal v-model="modalOpen">
-            <NuxtImg v-for="(image, index) in modalImages" v-show="index === modalActiveImage" loading="lazy"
-                     decoding="async" :src="image" />
+            <img v-for="(image, index) in modalImages" v-show="index === modalActiveImage" loading="lazy" decoding="async" :src="getFullImage(image.url)" />
         </UModal>
     </UiSlideOver>
 </template>

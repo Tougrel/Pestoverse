@@ -1,0 +1,14 @@
+name: KoalaFrank
+coords:
+  - 41.4976312
+  - -81.7882595
+images:
+  - url: koalafrank-1.jpg
+    width: 606
+    height: 808
+  - url: koalafrank-2.jpg
+    width: 606
+    height: 808
+  - url: koalafrank-3.jpg
+    width: 606
+    height: 808
