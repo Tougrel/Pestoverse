@@ -65,12 +65,13 @@ onMounted(() => {
         zoom: 3,
         maxZoom: 10,
         center: toLonLat([34.92485641107942, 30.656626315862535]),
-        style: getStyle(colorMode)
+        style: getStyle(colorMode),
+        dragRotate: false
     }));
 
     map.value.addControl(new NavigationControl({visualizePitch: false, showCompass: false}), "top-left")
     map.value.addControl(new MapboxLanguage({
-        defaultLanguage: 'it',
+        // defaultLanguage: 'it',
         languageField: /^name:/,
         getLanguageField: (language) => {
             return language === 'mul' ? 'name:en' : `name:${language}`
