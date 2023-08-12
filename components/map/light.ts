@@ -1142,7 +1142,7 @@ export default [
                 ]
             ],
             "text-font": [
-                "Stadia Regular"
+                "Poppins Regular"
             ],
             "text-max-angle": 30,
             "text-pitch-alignment": "viewport",
@@ -1192,7 +1192,7 @@ export default [
                 ]
             ],
             "text-font": [
-                "Stadia Italic"
+                "Poppins Italic"
             ],
             "text-letter-spacing": 0.25,
             "text-line-height": 1.55,
@@ -1244,7 +1244,7 @@ export default [
                 ]
             ],
             "text-font": [
-                "Stadia Italic"
+                "Poppins Italic"
             ],
             "text-letter-spacing": 0.1,
             "text-line-height": 1.55,
@@ -1305,7 +1305,7 @@ export default [
                 ]
             ],
             "text-font": [
-                "Stadia Italic"
+                "Poppins Italic"
             ],
             "text-letter-spacing": 0.2,
             "text-line-height": 1.55,
@@ -1360,7 +1360,7 @@ export default [
                 ]
             ],
             "text-font": [
-                "Stadia Regular"
+                "Poppins Regular"
             ],
             "text-justify": "center",
             "text-line-height": 1.55,
@@ -1421,7 +1421,7 @@ export default [
                 ]
             ],
             "text-font": [
-                "Stadia Regular"
+                "Poppins Regular"
             ],
             "text-justify": "center",
             "text-line-height": 1.55,
@@ -1482,7 +1482,7 @@ export default [
                 ]
             ],
             "text-font": [
-                "Stadia Regular"
+                "Poppins Regular"
             ],
             "text-justify": "center",
             "text-line-height": 1.55,
@@ -1540,7 +1540,7 @@ export default [
                 ]
             ],
             "text-font": [
-                "Stadia Regular"
+                "Poppins Regular"
             ],
             "text-justify": "center",
             "text-letter-spacing": 0.1,
@@ -1627,7 +1627,7 @@ export default [
                 ]
             ],
             "text-font": [
-                "Stadia Regular"
+                "Poppins Regular"
             ],
             "text-line-height": 1.55,
             "text-max-angle": 30,
@@ -1693,7 +1693,7 @@ export default [
             },
             "text-field": "{ref}",
             "text-font": [
-                "Stadia Regular"
+                "Poppins Regular"
             ],
             "text-rotation-alignment": "viewport",
             "text-size": 10
@@ -1744,7 +1744,7 @@ export default [
             },
             "text-field": "{ref}",
             "text-font": [
-                "Stadia Regular"
+                "Poppins Regular"
             ],
             "text-rotation-alignment": "viewport",
             "text-size": 10
@@ -1782,7 +1782,7 @@ export default [
             "symbol-placement": "line",
             "text-field": "{ref}",
             "text-font": [
-                "Stadia Regular"
+                "Poppins Regular"
             ],
             "text-rotation-alignment": "viewport",
             "text-size": 10
@@ -1826,7 +1826,7 @@ export default [
                 ]
             ],
             "text-font": [
-                "Stadia Regular"
+                "Poppins Regular"
             ],
             "text-justify": "center",
             "text-line-height": 1.55,
@@ -1896,7 +1896,7 @@ export default [
                 ]
             ],
             "text-font": [
-                "Stadia Regular"
+                "Poppins Regular"
             ],
             "text-justify": "left",
             "text-line-height": 1.55,
@@ -1957,7 +1957,7 @@ export default [
                 ]
             ],
             "text-font": [
-                "Stadia Regular"
+                "Poppins Regular"
             ],
             "text-line-height": 1.55,
             "text-max-width": 9,
@@ -2040,7 +2040,7 @@ export default [
                 ]
             ],
             "text-font": [
-                "Stadia Regular"
+                "Poppins Regular"
             ],
             "text-justify": "left",
             "text-line-height": 1.55,
@@ -2147,7 +2147,7 @@ export default [
                 ]
             ],
             "text-font": [
-                "Stadia Regular"
+                "Poppins Regular"
             ],
             "text-justify": "left",
             "text-line-height": 1.55,
@@ -2254,7 +2254,7 @@ export default [
                 ]
             ],
             "text-font": [
-                "Stadia Regular"
+                "Poppins Regular"
             ],
             "text-justify": "left",
             "text-line-height": 1.55,
@@ -2366,7 +2366,7 @@ export default [
                 ]
             ],
             "text-font": [
-                "Stadia Regular"
+                "Poppins Regular"
             ],
             "text-justify": "left",
             "text-line-height": 1.55,
@@ -2474,7 +2474,7 @@ export default [
                 ]
             ],
             "text-font": [
-                "Stadia Regular"
+                "Poppins Regular"
             ],
             "text-justify": "left",
             "text-line-height": 1.55,
@@ -2542,7 +2542,7 @@ export default [
                 ]
             ],
             "text-font": [
-                "Stadia Regular"
+                "Poppins Regular"
             ],
             "text-line-height": 1.55,
             "text-size": 10,
@@ -2601,7 +2601,7 @@ export default [
                 ]
             ],
             "text-font": [
-                "Stadia Semibold"
+                "Poppins SemiBold"
             ],
             "text-letter-spacing": 0.05,
             "text-line-height": 1.55,
@@ -2691,7 +2691,7 @@ export default [
                 ]
             ],
             "text-font": [
-                "Stadia Semibold"
+                "Poppins SemiBold"
             ],
             "text-letter-spacing": 0.05,
             "text-line-height": 1.55,
@@ -2762,7 +2762,7 @@ export default [
                 ]
             ],
             "text-font": [
-                "Stadia Bold"
+                "Poppins Bold"
             ],
             "text-letter-spacing": 0.1,
             "text-max-width": 6.25,

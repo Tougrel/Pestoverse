@@ -11,7 +11,7 @@ const props = defineProps<{ markers: MarkerProps[] }>();
 const slideOverOpen = useState<boolean>("map-slideover", () => false);
 const slideOverData = ref({} as MarkerProps);
 const modalOpen = useState<boolean>("map-modal", () => false);
-const modalImages = useState<string[]>("map-modal-images", () => []);
+const modalImages = useState<MarkerImageData[]>("map-modal-images", () => []);
 const modalActiveImage = useState<number>("map-modal-active-image", () => 0);
 
 const toLonLat = (latlon: [number, number]): [number, number] => {
@@ -25,7 +25,7 @@ const map = shallowRef<Map>();
 const getStyle = (color: typeof colorMode) => {
     return {
         version: 8,
-        glyphs: 'https://tiles.stadiamaps.com/fonts/{fontstack}/{range}.pbf',
+        glyphs: 'https://tileassets.ika.gg/fonts/{fontstack}/{range}.pbf',
         sources: {
             "protomaps": {
                 type: "vector",
