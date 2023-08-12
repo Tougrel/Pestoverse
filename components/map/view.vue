@@ -1,169 +1,111 @@
 <script setup lang="ts">
-import "ol/ol.css";
-import { onMounted } from "vue";
-import { MarkerProps } from "types/marker";
-import { Map, View } from "ol";
-import { Vector as LayerVector } from "ol/layer";
-import { Vector as SourceVector } from "ol/source";
-import { Style, Icon } from "ol/style";
-import { GeoJSON } from "ol/format";
-import type { Coordinate } from "ol/coordinate";
-import { boundingExtent } from "ol/extent";
-import type { FeatureLike } from "ol/Feature";
-import { fromLonLat } from "ol/proj";
-import { apply } from "ol-mapbox-style";
+import {Map, NavigationControl, StyleSpecification, Marker} from 'maplibre-gl';
+import MapboxLanguage from '@mapbox/mapbox-gl-language';
+import 'maplibre-gl/dist/maplibre-gl.css';
+import light from "./light";
+import dark from "./dark";
+import {MarkerProps} from "~/types/marker";
 
-const colorMode = useColorMode();
 const props = defineProps<{ markers: MarkerProps[] }>();
 
-const toLonLat = (latlon: Coordinate): Coordinate => {
-    return [latlon[1], latlon[0]];
-};
-
-const mapCenter = toLonLat([34.92485641107942, 30.656626315862535]);
-const mapZoom = 3;
-const mapName = computed((previous) => {
-    switch (colorMode.value) {
-        case "white":
-            return "basic";
-        case "dark":
-            return "dark";
-        default:
-            return previous;
-    }
-});
-const styleJson = computed(() => {
-    return `https://${import.meta.env.VITE_TILESERVER || "map.ika.gg"}/styles/${mapName.value}/style.json`;
-});
-
-const slideoverOpen = useState<boolean>("map-slideover", () => false);
+const slideOverOpen = useState<boolean>("map-slideover", () => false);
+const slideOverData = ref({} as MarkerProps);
 const modalOpen = useState<boolean>("map-modal", () => false);
 const modalImages = useState<string[]>("map-modal-images", () => []);
 const modalActiveImage = useState<number>("map-modal-active-image", () => 0);
 
-const slideoverData = ref({} as MarkerProps);
-
-const openModal = (images: string[], index: number) => {
-    modalOpen.value = true;
-    modalImages.value = images;
-    modalActiveImage.value = index;
+const toLonLat = (latlon: [number, number]): [number, number] => {
+    return [latlon[1], latlon[0]];
 };
 
-onMounted(() => {
-    const geoJson = {
-        type: "FeatureCollection",
-        crs: {
-            type: "name",
-            properties: {
-                name: "EPSG:3857",
-            },
-        },
-        features: [] as Array<any>,
-    };
+const colorMode = useColorMode();
+const mapContainer = shallowRef<HTMLElement>();
+const map = shallowRef<Map>();
 
-    const iconCache = {} as { [id: string]: string };
-
-    const styleFunction = (feature: any) => {
-        const uid = feature.getGeometry().ol_uid;
-        let icon;
-        if (uid in iconCache) {
-            icon = iconCache[uid];
-        } else {
-            icon = getEmote();
-            iconCache[uid] = icon;
-        }
-        return [
-            new Style({
-                image: new Icon({
-                    src: icon,
-                    height: 34,
-                }),
-            }),
-        ];
-    };
-
-    props.markers.forEach((entry, i) => {
-        geoJson.features.push({
-            type: "Feature",
-            id: `pestino-${i}`,
-            geometry: {
-                type: "Point",
-                coordinates: fromLonLat(toLonLat(entry.coords)),
-            },
-            properties: entry,
-        });
-    });
-
-    const markerLayer = new LayerVector({
-        source: new SourceVector({
-            features: new GeoJSON().readFeatures(geoJson),
-            format: new GeoJSON(),
-        }),
-        style: styleFunction,
-        zIndex: 1,
-    });
-
-    const map = new Map({
-        target: "mapView",
-        view: new View({
-            constrainResolution: true,
-            center: fromLonLat(mapCenter),
-            zoom: mapZoom,
-            minZoom: mapZoom,
-            maxZoom: 10,
-        }),
-        layers: [markerLayer],
-    });
-
-    map.on("singleclick", (event) => {
-        const features = [] as FeatureLike[];
-        map.forEachFeatureAtPixel(event.pixel, (feature) => {
-            const id = feature.getId();
-            if (typeof id !== "string" || !id.startsWith("pestino")) return;
-            features.push(feature);
-        });
-        if (features.length) {
-            if (features.length > 1) {
-                const extent = boundingExtent(features.map((r) => r.getGeometry().getCoordinates()));
-                map.getView().fit(extent, { duration: 1000, padding: [50, 50, 50, 50] });
-            } else {
-                const { coords, name, images } = features[0].getProperties();
-                const data = { coords, name, images };
-                slideoverOpen.value = true;
-                slideoverData.value = data;
+const getStyle = (color: typeof colorMode) => {
+    return {
+        version: 8,
+        glyphs: 'https://tiles.stadiamaps.com/fonts/{fontstack}/{range}.pbf',
+        sources: {
+            "protomaps": {
+                type: "vector",
+                url: "https://tiles.ika.gg/osm-planet.json"
             }
+        },
+        'layers': color.value === "white" ? light : dark
+    } as StyleSpecification
+}
+
+const getMarkerIcon = () => {
+    const el = document.createElement('div');
+    el.className = 'marker hover:cursor-pointer bg-cover h-7 w-7';
+    el.style.backgroundImage = `url(${getEmote()})`;
+    return el;
+}
+
+const openSlideover = (entry: MarkerProps) => {
+    slideOverOpen.value = true;
+    slideOverData.value = {
+        coords: entry.coords,
+        name: entry.name,
+        images: entry.images
+    };
+    // TODO: zoom in on clusters
+}
+
+onMounted(() => {
+    map.value = markRaw(new Map({
+        container: mapContainer.value as HTMLElement,
+        zoom: 3,
+        maxZoom: 10,
+        center: toLonLat([34.92485641107942, 30.656626315862535]),
+        style: getStyle(colorMode)
+    }));
+
+    map.value.addControl(new NavigationControl({visualizePitch: false, showCompass: false}), "top-left")
+    map.value.addControl(new MapboxLanguage({
+        defaultLanguage: 'it',
+        languageField: /^name:/,
+        getLanguageField: (language) => {
+            return language === 'mul' ? 'name:en' : `name:${language}`
+        },
+        languageSource: 'protomaps'
+    }))
+
+    props.markers.forEach(entry => {
+        if (map.value) {
+            const el = getMarkerIcon()
+            const marker = new Marker({ element: el })
+                .setLngLat(toLonLat(entry.coords))
+                .addTo(map.value);
+            el.addEventListener('click', () => {
+                openSlideover(entry);
+            })
         }
     });
 
-    map.on("pointermove", (e) => {
-        if (e.dragging) return;
-
-        markerLayer.getFeatures(e.pixel).then((features) => {
-            let cursor = "pointer";
-            if (!features.length) cursor = "";
-            map.getTargetElement().style.cursor = cursor;
-        });
-    });
-
-    apply(map, styleJson.value);
-
-    watch(styleJson, (value) => {
-        apply(map, value);
-    });
-});
+    watch(colorMode, (value) => {
+        map.value?.setStyle(getStyle(value))
+    })
+})
 </script>
 
 <template>
-    <div id="mapView" class="z-0 h-full w-full bg-white dark:bg-background"></div>
+    <div ref="mapContainer" class="h-full w-full bg-white dark:bg-background"></div>
     <UiSlideOver state="map-slideover">
         <div class="flex flex-col gap-4">
-            <button v-for="(image, index) in slideoverData.images" @click="openModal(slideoverData.images, index)" class="relative">
-                <span v-if="slideoverData.name" class="absolute bottom-0 right-0 text-white text-sm bg-background opacity-25 hover:opacity-50 px-2 py-1 rounded-br-md rounded-tl-md">{{ slideoverData.name }}</span>
+            <button v-for="(image, index) in slideOverData.images" @click="openModal(slideOverData.images, index)"
+                    class="relative">
+                <span v-if="slideOverData.name"
+                      class="absolute bottom-0 right-0 text-white text-sm bg-background opacity-25 hover:opacity-50 px-2 py-1 rounded-br-md rounded-tl-md">{{
+                        slideOverData.name
+                    }}</span>
                 <NuxtImg class="rounded" loading="lazy" decoding="async" :src="image" />
             </button>
         </div>
         <UModal v-model="modalOpen">
-            <NuxtImg v-for="(image, index) in modalImages" v-show="index === modalActiveImage" loading="lazy" decoding="async" :src="image" />
+            <NuxtImg v-for="(image, index) in modalImages" v-show="index === modalActiveImage" loading="lazy"
+                     decoding="async" :src="image" />
         </UModal>
     </UiSlideOver>
 </template>

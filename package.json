@@ -21,6 +21,7 @@
   "devDependencies": {
     "@iconify-json/line-md": "^1.1.25",
     "@iconify-json/mdi": "^1.1.52",
+    "@mapbox/mapbox-gl-language": "^1.0.1",
     "@nuxt/content": "^2.7.0",
     "@nuxt/devtools": "latest",
     "@nuxt/image": "rc",
@@ -30,10 +31,9 @@
     "@types/node": "^18.16.19",
     "@types/ol": "^7.0.0",
     "canvas-confetti": "^1.6.0",
+    "maplibre-gl": "^3.3.0",
     "nuxt": "^3.6.2",
     "nuxt-icon": "^0.4.2",
-    "ol": "^7.4.0",
-    "ol-mapbox-style": "^10.6.0",
     "prettier": "^3.0.0",
     "prettier-plugin-tailwindcss": "^0.4.1",
     "typescript": "^5.1.6"

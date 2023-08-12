@@ -1,7 +1,7 @@
-import type { Coordinate } from "ol/coordinate";
+import {LngLatLike} from "maplibre-gl";
 
 export type MarkerProps = {
     name: string;
-    coords: Coordinate;
+    coords: [number, number];
     images: string[];
 };
