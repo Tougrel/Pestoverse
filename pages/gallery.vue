@@ -21,7 +21,15 @@ const openModal = (image: string) => {
 <template>
     <NuxtLayout name="default">
         <div class="max-w-screen-2xl columns-1 gap-4 sm:columns-2 md:columns-3 lg:columns-4">
-            <UiImage v-for="image in images" @click="openModal(image.src)" :name="image.name" :src="image.src" :width="image.width" :height="image.height" class="mb-4" />
+            <UiImage
+                v-for="image in images"
+                @click="openModal(image.src)"
+                :name="image.name"
+                :src="image.src"
+                :width="image.width"
+                :height="image.height"
+                class="mb-4"
+            />
             <UModal v-model="modalOpen">
                 <img loading="lazy" decoding="async" :src="modalImage" />
             </UModal>

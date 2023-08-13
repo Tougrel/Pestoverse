@@ -1974,6 +1974,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/haversine@npm:^1.1.5":
+  version: 1.1.5
+  resolution: "@types/haversine@npm:1.1.5"
+  checksum: 55253fa19e78ee4c9f400bd3a69fbd5e2b76970fdb27f9db602daace7ab5d58d5a33ffa280ceba4737ca5393afdef9772075874dd48642cd3579d4fba1540f2a
+  languageName: node
+  linkType: hard
+
 "@types/http-proxy@npm:^1.17.11":
   version: 1.17.11
   resolution: "@types/http-proxy@npm:1.17.11"
@@ -4800,6 +4807,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"fflate@npm:^0.8.0":
+  version: 0.8.0
+  resolution: "fflate@npm:0.8.0"
+  checksum: 6215f95ee01d620a41e459247a7de7e7117dd23e78ef017c26b64c26f2a880a90eedc77675918bbf816d18cc990f6505cd71be933c67cc48cc1e7ebbff1589ea
+  languageName: node
+  linkType: hard
+
 "file-type@npm:^3.8.0":
   version: 3.9.0
   resolution: "file-type@npm:3.9.0"
@@ -5547,6 +5561,13 @@ __metadata:
     property-information: ^6.0.0
     space-separated-tokens: ^2.0.0
   checksum: 928a21576ff7b9a8c945e7940bcbf2d27f770edb4279d4d04b33dc90753e26ca35c1172d626f54afebd377b2afa32331e399feb3eb0f7b91a399dca5927078ae
+  languageName: node
+  linkType: hard
+
+"haversine@npm:^1.1.1":
+  version: 1.1.1
+  resolution: "haversine@npm:1.1.1"
+  checksum: 0d635e4da5bdd21c74ca92bb1bd44d6f8c6ca2166447fdbc33bb51469172c2326b103588a942767820602e3ba72d0a780b7180b042fac36381186bbc54316fcb
   languageName: node
   linkType: hard
 
@@ -8693,14 +8714,17 @@ __metadata:
     "@nuxthq/ui": ^2.5.0
     "@nuxtjs/google-fonts": ^3.0.1
     "@types/canvas-confetti": ^1.6.0
+    "@types/haversine": ^1.1.5
     "@types/node": ^18.16.19
     "@types/ol": ^7.0.0
     buffer-image-size: ^0.6.4
     canvas-confetti: ^1.6.0
+    haversine: ^1.1.1
     js-yaml: ^4.1.0
     maplibre-gl: ^3.3.0
     nuxt: ^3.6.2
     nuxt-icon: ^0.4.2
+    pmtiles: ^2.10.0
     prettier: ^3.0.0
     prettier-plugin-tailwindcss: ^0.4.1
     sync-request: ^6.1.0
@@ -8767,6 +8791,15 @@ __metadata:
     mlly: ^1.2.0
     pathe: ^1.1.0
   checksum: 4b305c834b912ddcc8a0fe77530c0b0321fe340396f84cbb87aecdbc126606f47f2178f23b8639e71a4870f9631c7217aef52ffed0ae17ea2dbbe7e43d116a6e
+  languageName: node
+  linkType: hard
+
+"pmtiles@npm:^2.10.0":
+  version: 2.10.0
+  resolution: "pmtiles@npm:2.10.0"
+  dependencies:
+    fflate: ^0.8.0
+  checksum: c9540202cac1b4475e81c91813879b55e905f3fd0b14a716eb89f8959b0d0bf22f57f4283ffa10d50622c5368478d25803371de873dbe63cdda45d8f0e60168c
   languageName: node
   linkType: hard
 
