@@ -1,5 +1,13 @@
 <script setup lang="ts">
-import maplibregl, {Map, NavigationControl, StyleSpecification, Marker, Popup, LngLatBoundsLike} from "maplibre-gl";
+import maplibregl, {
+    Map,
+    NavigationControl,
+    StyleSpecification,
+    Marker,
+    Popup,
+    LngLatBoundsLike,
+    AttributionControl
+} from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
 import light from "./light";
 import dark from "./dark";
@@ -145,7 +153,8 @@ onMounted(() => {
 
         map.value.touchZoomRotate.disableRotation()
         map.value.addControl(new NavigationControl({ visualizePitch: false, showCompass: false }), "top-left");
-        map.value.addControl(new ResetZoomControl(), "top-left")
+        map.value.addControl(new ResetZoomControl(), "top-left");
+        map.value.addControl(new AttributionControl({ compact: true, customAttribution: ['<a href="https://www.maptiler.com/copyright/" target="_blank">&copy; MapTiler</a>', '<a href="https://www.openstreetmap.org/copyright" target="_blank">&copy; OpenStreetMap contributors</a>'] }));
 
         props.markers.forEach((entry) => {
             if (map.value) {
