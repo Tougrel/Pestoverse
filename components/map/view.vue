@@ -1,51 +1,66 @@
 <script setup lang="ts">
-import "ol/ol.css";
-import { onMounted } from "vue";
+import maplibregl, {
+    Map,
+    NavigationControl,
+    StyleSpecification,
+    Marker,
+    Popup,
+    LngLatBoundsLike,
+    AttributionControl
+} from "maplibre-gl";
+import "maplibre-gl/dist/maplibre-gl.css";
+import light from "./light";
+import dark from "./dark";
 import { MarkerImageData, MarkerProps } from "types/marker";
-import { Map, MapBrowserEvent, View } from "ol";
-import { Vector as LayerVector } from "ol/layer";
-import { Vector as SourceVector } from "ol/source";
-import { Style, Icon } from "ol/style";
-import { GeoJSON } from "ol/format";
-import { boundingExtent } from "ol/extent";
-import { fromLonLat } from "ol/proj";
-import { Control, defaults as defaultControls } from "ol/control";
-import { defaults as interactionDefaults } from "ol/interaction";
-import { apply } from "ol-mapbox-style";
-import { Point } from "ol/geom";
-import type { FeatureLike } from "ol/Feature";
-import type { Coordinate } from "ol/coordinate";
-import type { Options as ControlOptions } from "ol/control/Control";
+import { PMTiles, Protocol } from "pmtiles";
+import haversine from 'haversine';
 
-const colorMode = useColorMode();
 const props = defineProps<{ markers: MarkerProps[] }>();
 
-const toLonLat = (latlon: Coordinate): Coordinate => {
-    return [latlon[1], latlon[0]];
-};
-
-const mapCenter = toLonLat([34.92485641107942, 30.656626315862535]);
-const mapZoom = 3;
-const mapName = computed((previous) => {
-    switch (colorMode.value) {
-        case "white":
-            return "basic";
-        case "dark":
-            return "dark";
-        default:
-            return previous;
-    }
-});
-const styleJson = computed(() => {
-    return `https://${import.meta.env.VITE_TILESERVER || "map.ika.gg"}/styles/${mapName.value}/style.json`;
-});
-
-const slideoverOpen = useState<boolean>("map-slideover", () => false);
+const slideOverOpen = useState<boolean>("map-slideover", () => false);
+const slideOverData = ref({} as MarkerProps);
 const modalOpen = useState<boolean>("map-modal", () => false);
 const modalImages = useState<MarkerImageData[]>("map-modal-images", () => []);
 const modalActiveImage = useState<number>("map-modal-active-image", () => 0);
 
-const slideoverData = ref({} as MarkerProps);
+const toLonLat = (latlon: [number, number]): [number, number] => {
+    return [latlon[1], latlon[0]];
+};
+
+const colorMode = useColorMode();
+const mapContainer = shallowRef<HTMLElement>();
+const map = shallowRef<Map>();
+
+const tileUrl = "https://tiles.ika.gg/osm-planet.pmtiles";
+
+const protocol = new Protocol();
+maplibregl.addProtocol("pmtiles", protocol.tile);
+const p = new PMTiles(tileUrl);
+protocol.add(p);
+
+const defaultZoom = 3;
+
+const getStyle = (color: typeof colorMode, lang: string = "en") => {
+    return {
+        version: 8,
+        glyphs: "https://tileassets.ika.gg/fonts/{fontstack}/{range}.pbf",
+        sprite: "https://tileassets.ika.gg/sprite",
+        sources: {
+            protomaps: {
+                type: "vector",
+                url: `pmtiles://${tileUrl}`,
+            },
+        },
+        layers: color.value === "white" ? light(lang) : dark(lang),
+    } as StyleSpecification;
+};
+
+const getMarkerIcon = () => {
+    const el = document.createElement("div");
+    el.className = "marker hover:cursor-pointer bg-cover h-7 w-7";
+    el.style.backgroundImage = `url(${getEmote()})`;
+    return el;
+};
 
 const openModal = (images: MarkerImageData[], index: number) => {
     modalOpen.value = true;
@@ -53,159 +68,135 @@ const openModal = (images: MarkerImageData[], index: number) => {
     modalActiveImage.value = index;
 };
 
-class ResetZoomControl extends Control {
-    constructor(opt_options?: ControlOptions) {
-        const options = opt_options || {};
+const getOverlappingMarkers = (map: Map, coordinates: [number, number]): MarkerProps[] => {
+    const zoomModifier = map.getMaxZoom() - map.getZoom()
+    if (zoomModifier === 0) {
+        return [];
+    }
+    return props.markers.filter(marker => haversine(coordinates, marker.coords, { format: "[lat,lon]", threshold: zoomModifier * 14 }))
+}
+
+const openSlideOver = (entry: MarkerProps) => {
+    slideOverOpen.value = true;
+    slideOverData.value = {
+        coords: entry.coords,
+        name: entry.name,
+        images: entry.images,
+    };
+}
+
+class ResetZoomControl {
+    protected _map: Map;
+    protected _container: HTMLElement;
+
+    onAdd(map: Map) {
+        this._map = map;
+        this._container = document.createElement("div");
+        this._container.className = "maplibregl-ctrl maplibregl-ctrl-group";
+        this._container.title = "Reset Zoom";
 
         const button = document.createElement("button");
-        button.innerHTML = "&#8635;";
+        const span = document.createElement("span");
+        span.className = "maplibregl-ctrl-icon p-1.5"
+        span.innerHTML = '<svg fill="#000000" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"></defs><path d="M22.4478,21A10.855,10.855,0,0,0,25,14,10.99,10.99,0,0,0,6,6.4658V2H4v8h8V8H7.332a8.9768,8.9768,0,1,1-2.1,8H3.1912A11.0118,11.0118,0,0,0,14,25a10.855,10.855,0,0,0,7-2.5522L28.5859,30,30,28.5859Z"/></svg>';
+        button.appendChild(span);
+        this._container.appendChild(button);
 
-        const element = document.createElement("div");
-        element.className = "reset-zoom ol-unselectable ol-control";
-        element.title = "Reset Zoom";
-        element.appendChild(button);
+        button.addEventListener("click", () => map.zoomTo(defaultZoom, { duration: 2000}))
 
-        super({
-            element: element,
-            target: options.target,
-        });
-
-        button.addEventListener("click", this.handleResetZoom.bind(this), false);
-        button.addEventListener("touchend", this.handleResetZoom.bind(this), false);
+        return this._container
     }
-
-    handleResetZoom() {
-        this.getMap()?.getView().animate({ zoom: mapZoom });
+    onRemove() {
+        this._container.parentNode.removeChild(this._container);
+        this._map = undefined;
     }
 }
 
+const handleMarkerClick = (map: Map, entry: MarkerProps, marker: Marker, document: Document) => {
+
+    const overlappingMarkers = getOverlappingMarkers(map, entry.coords);
+    const currentZoom = map.getZoom();
+    const maxZoom = map.getMaxZoom();
+
+    if (overlappingMarkers.length > 1 && currentZoom < maxZoom - 2) { // 2 is an arbitrary number, but prevents flying around too much in the states
+        map.fitBounds(overlappingMarkers.map(marker => toLonLat(marker.coords)) as LngLatBoundsLike, {duration: 3000, padding: 100})
+    // } else if (overlappingMarkers.length > 1) {
+        // TODO show popover
+    } else {
+        // Zoom into the marker a bit - less on mobile to avoid too much pinching around
+        const targetZoom = 4;
+        const zoomLevel = map.getZoom() < targetZoom ? targetZoom : map.getZoom();
+        if (currentZoom < maxZoom - 1) { // prevents jumping around between markers when you're around max zoom
+            map.flyTo({zoom: zoomLevel, duration: 1500, center: toLonLat(entry.coords)});
+        }
+        openSlideOver(entry)
+    }
+};
+
+const language = "en"; // TODO replace with i18n!!
+
 onMounted(() => {
-    const geoJson = {
-        type: "FeatureCollection",
-        crs: {
-            type: "name",
-            properties: {
-                name: "EPSG:3857",
-            },
-        },
-        features: [] as Array<any>,
-    };
-
-    const iconCache = {} as { [id: string]: string };
-
-    const styleFunction = (feature: any, resolution: number) => {
-        // lots of magic numbers here - it ends up slowly increasing the scale of the icon based on the zoom level
-        const scale = 1 / Math.log(Math.pow(resolution, 1/3));
-        const uid = feature.getGeometry().ol_uid;
-        let icon;
-        if (uid in iconCache) {
-            icon = iconCache[uid];
-        } else {
-            icon = getEmote();
-            iconCache[uid] = icon;
-        }
-        return [
-            new Style({
-                image: new Icon({
-                    src: icon,
-                    height: 75 * scale,
-                }),
+    p.getHeader().then((h) => {
+        map.value = markRaw(
+            new Map({
+                container: mapContainer.value as HTMLElement,
+                minZoom: 1.5,
+                zoom: defaultZoom,
+                maxZoom: 10,
+                center: [h.centerLon, h.centerLat],
+                style: getStyle(colorMode, language),
+                dragRotate: false
             }),
-        ];
-    };
+        );
 
-    props.markers.forEach((entry, i) => {
-        geoJson.features.push({
-            type: "Feature",
-            id: `pestino-${i}`,
-            geometry: {
-                type: "Point",
-                coordinates: fromLonLat(toLonLat(entry.coords)),
-            },
-            properties: entry,
-        });
-    });
+        map.value.touchZoomRotate.disableRotation()
+        map.value.addControl(new NavigationControl({ visualizePitch: false, showCompass: false }), "top-left");
+        map.value.addControl(new ResetZoomControl(), "top-left");
+        map.value.addControl(new AttributionControl({ compact: true, customAttribution: ['<a href="https://www.maptiler.com/copyright/" target="_blank">&copy; MapTiler</a>', '<a href="https://www.openstreetmap.org/copyright" target="_blank">&copy; OpenStreetMap contributors</a>'] }));
 
-    const markerLayer = new LayerVector({
-        source: new SourceVector({
-            features: new GeoJSON().readFeatures(geoJson),
-            format: new GeoJSON(),
-        }),
-        style: styleFunction,
-        zIndex: 1,
-    });
-
-    const map = new Map({
-        target: "mapView",
-        controls: defaultControls().extend([new ResetZoomControl()]),
-        interactions: interactionDefaults({ altShiftDragRotate: false, pinchRotate: false }),
-        view: new View({
-            constrainResolution: true,
-            center: fromLonLat(mapCenter),
-            zoom: mapZoom,
-            minZoom: mapZoom,
-            maxZoom: 10,
-        }),
-        layers: [markerLayer],
-    });
-
-    map.on("singleclick", (event: MapBrowserEvent<PointerEvent>) => {
-        const features = [] as FeatureLike[];
-        map.forEachFeatureAtPixel(event.pixel, (feature: FeatureLike) => {
-            const id = feature.getId();
-            if (typeof id !== "string" || !id.startsWith("pestino")) return;
-            features.push(feature);
-        });
-        if (features.length) {
-            if (features.length > 1) {
-                const extent = boundingExtent(features.map((r) => (r.getGeometry() as Point).getCoordinates()));
-                map.getView().fit(extent, { duration: 1000, padding: [50, 50, 50, 50] });
-            } else {
-                const { coords, name, images } = features[0].getProperties();
-                const data = { coords, name, images };
-                slideoverOpen.value = true;
-                slideoverData.value = data;
+        props.markers.forEach((entry) => {
+            if (map.value) {
+                const el = getMarkerIcon();
+                const marker = new Marker({ element: el })
+                    .setLngLat(toLonLat(entry.coords))
+                    .addTo(map.value);
+                el.addEventListener("click", () => {
+                    if (map.value) {
+                        handleMarkerClick(map.value, entry, marker, document);
+                    }
+                });
             }
-        }
-    });
-
-    map.on("pointermove", (event: MapBrowserEvent<PointerEvent>) => {
-        if (event.dragging) return;
-
-        markerLayer.getFeatures(event.pixel).then((features: FeatureLike[]) => {
-            let cursor = "pointer";
-            if (!features.length) cursor = "";
-            map.getTargetElement().style.cursor = cursor;
         });
-    });
 
-    apply(map, styleJson.value);
-
-    watch(styleJson, (value) => {
-        apply(map, value);
+        watch(colorMode, (value) => {
+            map.value?.setStyle(getStyle(value, language));
+        });
     });
 });
 </script>
 
-<style>
-.reset-zoom {
-    top: 65px;
-    left: 0.5em;
-}
-
-.ol-touch .reset-zoom {
-    top: 80px;
-}
-</style>
-
 <template>
-    <div id="mapView" class="z-0 h-full w-full bg-white dark:bg-background"></div>
+    <div ref="mapContainer" class="h-full w-full bg-white dark:bg-background"></div>
     <UiSlideOver state="map-slideover">
         <div class="flex flex-col gap-4">
-            <UiImage v-for="(image, index) in slideoverData.images" @click="openModal(slideoverData.images, index)" :src="image.url" :width="image.width" :height="image.height" :name="slideoverData.name" />
+            <UiImage
+                v-for="(image, index) in slideOverData.images"
+                @click="openModal(slideOverData.images, index)"
+                :src="image.url"
+                :width="image.width"
+                :height="image.height"
+                :name="slideOverData.name"
+            />
         </div>
         <UModal v-model="modalOpen">
-            <img v-for="(image, index) in modalImages" v-show="index === modalActiveImage" loading="lazy" decoding="async" :src="getFullImage(image.url)" />
+            <img
+                v-for="(image, index) in modalImages"
+                v-show="index === modalActiveImage"
+                loading="lazy"
+                decoding="async"
+                :src="getFullImage(image.url)"
+                :alt="slideOverData.name"
+            />
         </UModal>
     </UiSlideOver>
 </template>

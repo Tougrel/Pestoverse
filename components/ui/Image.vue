@@ -1,15 +1,15 @@
 <script setup lang="ts">
-defineProps<{ src: string, name?: string, width: number, height: number }>();
+defineProps<{ src: string; name?: string; width: number; height: number }>();
 const imageLoaded = ref(false);
 </script>
 
 <template>
-    <button class="mb-4 break-inside-avoid rounded-lg group" @click="$emit('click')">
-        <figure class="relative table rounded-lg bg-cover" :style="{backgroundImage: `url(${getPlaceholderImage(src)})`}">
+    <button class="group break-inside-avoid rounded-lg" @click="$emit('click')">
+        <figure class="relative table rounded-lg bg-cover" :style="{ backgroundImage: `url(${getPlaceholderImage(src)})` }">
             <img
                 role="button"
                 class="block w-full rounded-lg bg-cover bg-center transition-[opacity_200ms_ease-in-out]"
-                :class="{'opacity-100': imageLoaded, 'opacity-0': !imageLoaded}"
+                :class="{ 'opacity-100': imageLoaded, 'opacity-0': !imageLoaded }"
                 loading="lazy"
                 decoding="async"
                 :src="getResizedImage(src)"
