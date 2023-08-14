@@ -70,8 +70,6 @@ const openModal = (images: MarkerImageData[], index: number) => {
 
 const getOverlappingMarkers = (map: Map, coordinates: [number, number]): MarkerProps[] => {
     const zoomModifier = map.getMaxZoom() - map.getZoom()
-    console.log('zoom', zoomModifier)
-    console.log('logZoom', Math.log(map.getZoom()))
     if (zoomModifier === 0) {
         return [];
     }
