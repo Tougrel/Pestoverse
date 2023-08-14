@@ -5,7 +5,7 @@ const images = gallery.flatMap((entry) =>
         name: entry.name,
         src: image.url,
         width: image.width,
-        height: image.height,
+        height: image.height
     })),
 ) as [{ name: string; src: string; width: number; height: number }];
 

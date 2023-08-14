@@ -31,7 +31,7 @@ const colorMode = useColorMode();
 const mapContainer = shallowRef<HTMLElement>();
 const map = shallowRef<Map>();
 
-const tileUrl = "https://tileassets.ika.gg/osm-planet.pmtiles";
+const tileUrl = "https://tiles.ika.gg/osm-planet.pmtiles";
 
 const protocol = new Protocol();
 maplibregl.addProtocol("pmtiles", protocol.tile);
@@ -147,7 +147,7 @@ onMounted(() => {
                 maxZoom: 10,
                 center: [h.centerLon, h.centerLat],
                 style: getStyle(colorMode, language),
-                dragRotate: false,
+                dragRotate: false
             }),
         );
 
