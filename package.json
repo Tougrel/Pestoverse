@@ -30,7 +30,6 @@
     "@types/canvas-confetti": "^1.6.0",
     "@types/haversine": "^1.1.5",
     "@types/node": "^18.16.19",
-    "@types/ol": "^7.0.0",
     "buffer-image-size": "^0.6.4",
     "canvas-confetti": "^1.6.0",
     "haversine": "^1.1.1",

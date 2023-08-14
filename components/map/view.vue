@@ -30,6 +30,8 @@ maplibregl.addProtocol("pmtiles", protocol.tile);
 const p = new PMTiles(tileUrl);
 protocol.add(p);
 
+const defaultZoom = 3;
+
 const getStyle = (color: typeof colorMode, lang: string = "en") => {
     return {
         version: 8,
@@ -77,6 +79,33 @@ const openSlideOver = (entry: MarkerProps) => {
     };
 }
 
+class ResetZoomControl {
+    protected _map: Map;
+    protected _container: HTMLElement;
+
+    onAdd(map: Map) {
+        this._map = map;
+        this._container = document.createElement("div");
+        this._container.className = "maplibregl-ctrl maplibregl-ctrl-group";
+        this._container.title = "Reset Zoom";
+
+        const button = document.createElement("button");
+        const span = document.createElement("span");
+        span.className = "maplibregl-ctrl-icon p-1.5"
+        span.innerHTML = '<svg fill="#000000" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"></defs><path d="M22.4478,21A10.855,10.855,0,0,0,25,14,10.99,10.99,0,0,0,6,6.4658V2H4v8h8V8H7.332a8.9768,8.9768,0,1,1-2.1,8H3.1912A11.0118,11.0118,0,0,0,14,25a10.855,10.855,0,0,0,7-2.5522L28.5859,30,30,28.5859Z"/></svg>';
+        button.appendChild(span);
+        this._container.appendChild(button);
+
+        button.addEventListener("click", () => map.zoomTo(defaultZoom, { duration: 2000}))
+
+        return this._container
+    }
+    onRemove() {
+        this._container.parentNode.removeChild(this._container);
+        this._map = undefined;
+    }
+}
+
 const handleMarkerClick = (map: Map, entry: MarkerProps, marker: Marker, document: Document) => {
 
     const overlappingMarkers = getOverlappingMarkers(map, entry.coords);
@@ -105,15 +134,18 @@ onMounted(() => {
         map.value = markRaw(
             new Map({
                 container: mapContainer.value as HTMLElement,
-                zoom: 3,
+                minZoom: 1.5,
+                zoom: defaultZoom,
                 maxZoom: 10,
-                center: [-12.2167999, 28.6135],
+                center: [h.centerLon, h.centerLat],
                 style: getStyle(colorMode, language),
                 dragRotate: false,
             }),
         );
 
+        map.value.touchZoomRotate.disableRotation()
         map.value.addControl(new NavigationControl({ visualizePitch: false, showCompass: false }), "top-left");
+        map.value.addControl(new ResetZoomControl(), "top-left")
 
         props.markers.forEach((entry) => {
             if (map.value) {
