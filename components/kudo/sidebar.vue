@@ -1,5 +1,3 @@
-<script setup lang="ts"></script>
-
 <template>
     <UiSlideOver state="kudo-slideover">
         <div class="flex flex-col gap-4">

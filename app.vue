@@ -1,5 +1,4 @@
 <script setup lang="ts">
-useState("lang", () => null);
 useState("lang_id", () => "en-us");
 const loading = useState("loading", () => {
     return {
@@ -54,6 +53,9 @@ useHead({
 onMounted(() => {
     generateLanguageMap();
     loading.value.website = false;
+
+    if (localStorage.getItem("lang-id"))
+        changeLangID(localStorage.getItem("lang-id")!);
 
     const primary = localStorage.getItem("ui-color");
     if (primary) useAppConfig().ui.primary = primary;

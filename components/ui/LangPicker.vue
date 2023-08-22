@@ -1,22 +1,30 @@
 <script setup lang="ts">
-const lang = useLang();
+import type { LangIDs } from "~/utils/i18n";
+import { changeLangID } from "~/utils/i18n";
+
+const langID = useState<LangIDs>("lang_id");
+const modal = ref(false);
 
 defineProps<{ size: string; buttonClass?: string }>();
 </script>
 
 <template>
-    <UPopover :popper="{ placement: 'bottom' }" class="inline-flex">
-        <div class="hover:text-primary-700 hover:dark:text-primary-400 flex items-center gap-2 transition-colors" :class="buttonClass">
-            <Icon :name="ICONS.LANGUAGE" :size="size" class="text-primary-700 dark:text-primary-400" />
-        </div>
+    <button class="hover:text-primary-700 hover:dark:text-primary-400 flex items-center gap-2 transition-colors" :class="buttonClass" @click="modal = !modal">
+        <Icon :name="ICONS.LANGUAGE" :size="size" class="text-primary-700 dark:text-primary-400" />
+    </button>
 
-        <template #panel>
-            <div class="flex flex-col gap-4 p-2">
-                <div class="grid grid-cols-5 gap-1">
-                    <Icon :name="ICONS.WHITE_THEME" size="1.5em" role="button" />
-                    <Icon :name="ICONS.DARK_THEME" size="1.5em" role="button" />
-                </div>
-            </div>
-        </template>
-    </UPopover>
+    <UModal v-model="modal">
+        <div class="flex flex-row flex-wrap items-center gap-2 p-2">
+            <button
+                v-for="lang in LangData"
+                class="flex flex-row items-center gap-1 rounded-lg px-1"
+                :class="{ 'bg-gray-800': lang.id === langID }"
+                @click="changeLangID(lang.id)"
+            >
+                <UTooltip :text="lang.name">
+                    <Icon :name="lang.flag" size="3em" />
+                </UTooltip>
+            </button>
+        </div>
+    </UModal>
 </template>

@@ -1,59 +1,72 @@
+import type { Lang, LangIDs } from "~/utils/i18n";
 import pestoBinoculars from "static/images/emotes/pestoBinoculars.webp";
 
-export const PAGES = {
-    "/": {
-        name: "Home",
-        icon: ICONS.HOME,
-        image: false,
-    },
-    "/gallery": {
-        name: "Look at all the Pesto",
-        icon: pestoBinoculars,
-        image: true,
-    },
-    "/credits": {
-        name: "Made by these amazing people",
-        icon: ICONS.COFFEE,
-        image: false,
-    },
-} as const;
+interface Pages {
+    [key: string]: {
+        name?: string;
+        icon: string;
+        image: boolean;
+    }
+}
 
-export const NAV_MENU = [
-    [
-        {
-            label: "Home",
-            icon: UI_ICONS.HOME,
-            to: "/",
+export const PAGES = (lang: Lang, id: LangIDs): Pages => {
+    return {
+        "/": {
+            name: lang.get(id)?.get("nav.home"),
+            icon: ICONS.HOME,
+            image: false,
         },
-    ],
-    [
-        {
-            label: "Pesto Around the World",
-            icon: UI_ICONS.MAP,
-            to: "/map",
+        "/gallery": {
+            name: lang.get(id)?.get("nav.gallery"),
+            icon: pestoBinoculars,
+            image: true,
         },
-        {
-            label: "Pesto Gallery",
-            icon: UI_ICONS.GALLERY,
-            to: "/gallery",
+        "/credits": {
+            name: lang.get(id)?.get("nav.credits"),
+            icon: ICONS.COFFEE,
+            image: false,
         },
-        {
-            label: "Kudo Boards",
-            icon: UI_ICONS.KUDO,
-            click: () => {
-                const state = useState("kudo-slideover");
-                state.value = true;
+    }
+};
+
+export const NAV_MENU = (lang: Lang, id: LangIDs) => {
+    return [
+        [
+            {
+                label: lang.get(id)?.get("nav.home"),
+                icon: UI_ICONS.HOME,
+                to: "/",
             },
-        },
-    ],
-    [
-        {
-            label: "Credits",
-            icon: UI_ICONS.CREDITS,
-            to: "/credits",
-        },
-    ],
-];
+        ],
+        [
+            {
+                label: lang.get(id)?.get("nav.menu.world"),
+                icon: UI_ICONS.MAP,
+                to: "/map",
+            },
+            {
+                label: lang.get(id)?.get("nav.menu.gallery"),
+                icon: UI_ICONS.GALLERY,
+                to: "/gallery",
+            },
+            {
+                label: lang.get(id)?.get("nav.menu.kudo"),
+                icon: UI_ICONS.KUDO,
+                click: () => {
+                    const state = useState("kudo-slideover");
+                    state.value = true;
+                },
+            },
+        ],
+        [
+            {
+                label: lang.get(id)?.get("nav.menu.credits"),
+                icon: UI_ICONS.CREDITS,
+                to: "/credits",
+            },
+        ],
+    ];
+};
 
 export const KUDO_BOARDS = [
     {

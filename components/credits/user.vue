@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { LangNames } from "~/utils/i18n";
 
-const lang = useLang();
+const lang = useState("lang");
+const langID = useState("lang_id");
 defineProps<{ name: string; description: LangNames; iconPath: string }>();
 </script>
 
@@ -15,7 +16,7 @@ defineProps<{ name: string; description: LangNames; iconPath: string }>();
 
         <div class="flex flex-col gap-2">
             <h2 class="text-primary-600 dark:text-primary-400 text-2xl font-bold">{{ name }}</h2>
-            <p class="text-gray-500 dark:text-gray-300">{{ lang.get(description) }}</p>
+            <p class="text-gray-500 dark:text-gray-300">{{ lang.get(langID)?.get(description) }}</p>
         </div>
     </UCard>
 </template>

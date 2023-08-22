@@ -2,7 +2,8 @@
 const appConfig = useAppConfig();
 const colorMode = useColorMode();
 const primary = computed(() => appConfig.ui.primary);
-const lang = useLang();
+const lang = useState("lang");
+const langID = useState("lang_id");
 
 const getColorPreference = (preference: string) => {
     switch (preference) {
@@ -34,6 +35,6 @@ const gradient = computed((gradient) => {
 <template>
     <NuxtLink to="/map" class="h-48 w-48 text-center transition-all duration-300 hover:scale-105">
         <div class="fixed h-48 w-48 animate-[sunfire_4s_infinite_alternate] rounded-full bg-gradient-radial" :style="gradient"></div>
-        <div class="relative top-1/2 -mt-2">{{ lang.get("home.explore") }}</div>
+        <div class="relative top-1/2 -mt-2">{{ lang.get(langID)?.get("home.explore") }}</div>
     </NuxtLink>
 </template>

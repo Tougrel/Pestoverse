@@ -19,6 +19,14 @@ export default defineAppConfig({
             },
         },
 
+        tooltip: {
+            background: "bg-white dark:bg-navigation",
+        },
+
+        modal: {
+            background: "bg-white dark:bg-navigation",
+        },
+
         card: {
             background: "bg-white dark:bg-navigation",
             divide: "divide-y divide-slate-500 dark:divide-slate-700",
