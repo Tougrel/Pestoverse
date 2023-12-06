@@ -30,8 +30,8 @@ export default defineNuxtConfig({
     },
 
     runtimeConfig: {
-        public: {
-            cdnBase: "https://cdn.pestoverse.world",
+        app: {
+            cdnURL: "https://cdn.pestoverse.world",
         },
     },
 
