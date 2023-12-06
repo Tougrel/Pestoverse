@@ -42,7 +42,7 @@ useHead({
         {
             rel: "icon",
             type: "image/png",
-            href: "/icons/favicon-322.png",
+            href: "/icons/favicon-32x32.png",
         },
     ],
 });
