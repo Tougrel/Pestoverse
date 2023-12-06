@@ -1,19 +1,12 @@
 <script setup lang="ts">
-import maplibregl, {
-    Map,
-    NavigationControl,
-    StyleSpecification,
-    Marker,
-    Popup,
-    LngLatBoundsLike,
-    AttributionControl
-} from "maplibre-gl";
+const runtimeConfig = useRuntimeConfig();
+import maplibregl, { Map, NavigationControl, StyleSpecification, Marker, Popup, LngLatBoundsLike, AttributionControl } from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
 import light from "./light";
 import dark from "./dark";
 import { MarkerImageData, MarkerProps } from "types/marker";
 import { PMTiles, Protocol } from "pmtiles";
-import haversine from 'haversine';
+import haversine from "haversine";
 
 const props = defineProps<{ markers: MarkerProps[] }>();
 
@@ -31,7 +24,9 @@ const colorMode = useColorMode();
 const mapContainer = shallowRef<HTMLElement>();
 const map = shallowRef<Map>();
 
-const tileUrl = "https://tiles.ika.gg/osm-planet.pmtiles";
+const mapBaseUrl = `${runtimeConfig.public.cdnBase}/map`;
+
+const tileUrl = `${mapBaseUrl}/osm-planet.pmtiles`;
 
 const protocol = new Protocol();
 maplibregl.addProtocol("pmtiles", protocol.tile);
@@ -43,8 +38,8 @@ const defaultZoom = 3;
 const getStyle = (color: typeof colorMode, lang: string = "en") => {
     return {
         version: 8,
-        glyphs: "https://tileassets.ika.gg/fonts/{fontstack}/{range}.pbf",
-        sprite: "https://tileassets.ika.gg/sprite",
+        glyphs: `${mapBaseUrl}/fonts/{fontstack}/{range}.pbf`,
+        sprite: `${mapBaseUrl}/sprite`,
         sources: {
             protomaps: {
                 type: "vector",
@@ -69,12 +64,12 @@ const openModal = (images: MarkerImageData[], index: number) => {
 };
 
 const getOverlappingMarkers = (map: Map, coordinates: [number, number]): MarkerProps[] => {
-    const zoomModifier = map.getMaxZoom() - map.getZoom()
+    const zoomModifier = map.getMaxZoom() - map.getZoom();
     if (zoomModifier === 0) {
         return [];
     }
-    return props.markers.filter(marker => haversine(coordinates, marker.coords, { format: "[lat,lon]", threshold: zoomModifier * 14 }))
-}
+    return props.markers.filter((marker) => haversine(coordinates, marker.coords, { format: "[lat,lon]", threshold: zoomModifier * 14 }));
+};
 
 const openSlideOver = (entry: MarkerProps) => {
     slideOverOpen.value = true;
@@ -83,7 +78,7 @@ const openSlideOver = (entry: MarkerProps) => {
         name: entry.name,
         images: entry.images,
     };
-}
+};
 
 class ResetZoomControl {
     protected _map: Map;
@@ -97,14 +92,15 @@ class ResetZoomControl {
 
         const button = document.createElement("button");
         const span = document.createElement("span");
-        span.className = "maplibregl-ctrl-icon p-1.5"
-        span.innerHTML = '<svg fill="#000000" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"></defs><path d="M22.4478,21A10.855,10.855,0,0,0,25,14,10.99,10.99,0,0,0,6,6.4658V2H4v8h8V8H7.332a8.9768,8.9768,0,1,1-2.1,8H3.1912A11.0118,11.0118,0,0,0,14,25a10.855,10.855,0,0,0,7-2.5522L28.5859,30,30,28.5859Z"/></svg>';
+        span.className = "maplibregl-ctrl-icon p-1.5";
+        span.innerHTML =
+            '<svg fill="#000000" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"></defs><path d="M22.4478,21A10.855,10.855,0,0,0,25,14,10.99,10.99,0,0,0,6,6.4658V2H4v8h8V8H7.332a8.9768,8.9768,0,1,1-2.1,8H3.1912A11.0118,11.0118,0,0,0,14,25a10.855,10.855,0,0,0,7-2.5522L28.5859,30,30,28.5859Z"/></svg>';
         button.appendChild(span);
         this._container.appendChild(button);
 
-        button.addEventListener("click", () => map.zoomTo(defaultZoom, { duration: 2000}))
+        button.addEventListener("click", () => map.zoomTo(defaultZoom, { duration: 2000 }));
 
-        return this._container
+        return this._container;
     }
     onRemove() {
         this._container.parentNode.removeChild(this._container);
@@ -113,23 +109,24 @@ class ResetZoomControl {
 }
 
 const handleMarkerClick = (map: Map, entry: MarkerProps, marker: Marker, document: Document) => {
-
     const overlappingMarkers = getOverlappingMarkers(map, entry.coords);
     const currentZoom = map.getZoom();
     const maxZoom = map.getMaxZoom();
 
-    if (overlappingMarkers.length > 1 && currentZoom < maxZoom - 2) { // 2 is an arbitrary number, but prevents flying around too much in the states
-        map.fitBounds(overlappingMarkers.map(marker => toLonLat(marker.coords)) as LngLatBoundsLike, {duration: 3000, padding: 100})
-    // } else if (overlappingMarkers.length > 1) {
+    if (overlappingMarkers.length > 1 && currentZoom < maxZoom - 2) {
+        // 2 is an arbitrary number, but prevents flying around too much in the states
+        map.fitBounds(overlappingMarkers.map((marker) => toLonLat(marker.coords)) as LngLatBoundsLike, { duration: 3000, padding: 100 });
+        // } else if (overlappingMarkers.length > 1) {
         // TODO show popover
     } else {
         // Zoom into the marker a bit - less on mobile to avoid too much pinching around
         const targetZoom = 4;
         const zoomLevel = map.getZoom() < targetZoom ? targetZoom : map.getZoom();
-        if (currentZoom < maxZoom - 1) { // prevents jumping around between markers when you're around max zoom
-            map.flyTo({zoom: zoomLevel, duration: 1500, center: toLonLat(entry.coords)});
+        if (currentZoom < maxZoom - 1) {
+            // prevents jumping around between markers when you're around max zoom
+            map.flyTo({ zoom: zoomLevel, duration: 1500, center: toLonLat(entry.coords) });
         }
-        openSlideOver(entry)
+        openSlideOver(entry);
     }
 };
 
@@ -145,21 +142,27 @@ onMounted(() => {
                 maxZoom: 10,
                 center: [h.centerLon, h.centerLat],
                 style: getStyle(colorMode, language),
-                dragRotate: false
+                dragRotate: false,
             }),
         );
 
-        map.value.touchZoomRotate.disableRotation()
+        map.value.touchZoomRotate.disableRotation();
         map.value.addControl(new NavigationControl({ visualizePitch: false, showCompass: false }), "top-left");
         map.value.addControl(new ResetZoomControl(), "top-left");
-        map.value.addControl(new AttributionControl({ compact: true, customAttribution: ['<a href="https://www.maptiler.com/copyright/" target="_blank">&copy; MapTiler</a>', '<a href="https://www.openstreetmap.org/copyright" target="_blank">&copy; OpenStreetMap contributors</a>'] }));
+        map.value.addControl(
+            new AttributionControl({
+                compact: true,
+                customAttribution: [
+                    '<a href="https://www.maptiler.com/copyright/" target="_blank">&copy; MapTiler</a>',
+                    '<a href="https://www.openstreetmap.org/copyright" target="_blank">&copy; OpenStreetMap contributors</a>',
+                ],
+            }),
+        );
 
         props.markers.forEach((entry) => {
             if (map.value) {
                 const el = getMarkerIcon();
-                const marker = new Marker({ element: el })
-                    .setLngLat(toLonLat(entry.coords))
-                    .addTo(map.value);
+                const marker = new Marker({ element: el }).setLngLat(toLonLat(entry.coords)).addTo(map.value);
                 el.addEventListener("click", () => {
                     if (map.value) {
                         handleMarkerClick(map.value, entry, marker, document);

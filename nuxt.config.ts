@@ -29,6 +29,12 @@ export default defineNuxtConfig({
         dir: "static/images",
     },
 
+    runtimeConfig: {
+        public: {
+            cdnBase: "https://cdn.pestoverse.world",
+        },
+    },
+
     googleFonts: {
         useStylesheet: true,
         families: {
