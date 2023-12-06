@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { MarkerProps } from "types/marker";
+import type { MarkerProps } from "@types/pestoverse";
 
 const images = await queryContent("gallery").only(["coords", "images", "name"]).find();
 
