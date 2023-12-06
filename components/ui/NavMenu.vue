@@ -7,7 +7,9 @@ let iconSize = "2em";
 
 <template>
     <header class="z-10 flex flex-col items-center justify-center gap-4 lg:flex-row lg:justify-between" :class="{ 'w-full': !map }">
-        <h1 v-if="!map" class="text-primary-700 dark:text-primary-400 order-none hidden text-2xl font-bold lg:block">Pestoverse</h1>
+        <NuxtLink v-if="!map" to="/">
+            <h1 class="text-primary-700 dark:text-primary-400 order-none hidden text-2xl font-bold lg:block">Pestoverse</h1>
+        </NuxtLink>
 
         <div v-if="!map" class="order-2 flex flex-row items-center gap-2 lg:order-1">
             <img v-if="PAGES[route.path as keyof typeof PAGES].image" :src="PAGES[route.path as keyof typeof PAGES].icon as string" width="24" />

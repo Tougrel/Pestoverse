@@ -1,13 +1,13 @@
 <script setup lang="ts">
-const runtimeConfig = useRuntimeConfig();
+import type { MarkerImageData, MarkerProps } from "@types/pestoverse";
 import maplibregl, { Map, NavigationControl, StyleSpecification, Marker, Popup, LngLatBoundsLike, AttributionControl } from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
 import light from "./light";
 import dark from "./dark";
-import { MarkerImageData, MarkerProps } from "types/marker";
 import { PMTiles, Protocol } from "pmtiles";
 import haversine from "haversine";
 
+const runtimeConfig = useRuntimeConfig();
 const props = defineProps<{ markers: MarkerProps[] }>();
 
 const slideOverOpen = useState<boolean>("map-slideover", () => false);
