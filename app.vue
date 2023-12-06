@@ -1,5 +1,8 @@
 <script setup lang="ts">
 const loading = ref(true);
+const {
+    public: { cdnBase },
+} = useRuntimeConfig();
 
 useState("kudo-slideover", () => false);
 
@@ -10,12 +13,12 @@ useSeoMeta({
     ogTitle: "Pestoverse",
     ogDescription: "The official website for running, upcoming and archived events created by Yuniiho's community!",
     ogUrl: "https://pestoverse.tougrel.dev",
-    ogImage: "https://i.imgur.com/E41zbAO.png",
+    ogImage: `${cdnBase}/pestoverse_banner.png`,
     ogImageType: "image/png",
 
     twitterTitle: "Pestoverse",
     twitterDescription: "The official website for running, upcoming and archived created by Yuniiho's community!",
-    twitterImage: "https://i.imgur.com/E41zbAO.png",
+    twitterImage: `${cdnBase}/pestoverse_banner.png`,
     twitterImageType: "image/png",
     twitterCard: "summary_large_image",
 });
