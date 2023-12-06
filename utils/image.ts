@@ -1,7 +1,9 @@
-const IMAGE_HOST = import.meta.env.IMAGE_HOST || "images.ika.gg";
+const {
+    public: { cdnBase },
+} = useRuntimeConfig();
 
 const getUrl = (category: string, image: string) => {
-    return `https://${IMAGE_HOST}/${category}/${image}`;
+    return `${cdnBase}/${category}/${image}`;
 };
 
 export const getPlaceholderImage = (image: string) => {
