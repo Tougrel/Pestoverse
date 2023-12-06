@@ -825,7 +825,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@iconify-json/line-md@npm:^1.1.25":
+"@iconify-json/line-md@npm:^1.1.33":
   version: 1.1.33
   resolution: "@iconify-json/line-md@npm:1.1.33"
   dependencies:
@@ -834,12 +834,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@iconify-json/mdi@npm:^1.1.52":
+"@iconify-json/mdi@npm:^1.1.59":
   version: 1.1.59
   resolution: "@iconify-json/mdi@npm:1.1.59"
   dependencies:
     "@iconify/types": "*"
   checksum: ac4e5aeeb166751738060aaddf808b8cca1a023087816f1c23205bef3d926d143e5de0db702119ef43465faf2bd3f9d4722ae9a79a28ec9e320b9d3004d72ef0
+  languageName: node
+  linkType: hard
+
+"@iconify/collections@npm:^1.0.366":
+  version: 1.0.366
+  resolution: "@iconify/collections@npm:1.0.366"
+  dependencies:
+    "@iconify/types": "*"
+  checksum: adbbc8c381b760231e3d0e77950b38a37300d93fe067229b22b4c0b1b931c57f2515d2ac1a72b575033ccd8faeb8bab969d7441f1b6b57e6a3d4769d5030c884
   languageName: node
   linkType: hard
 
@@ -1203,7 +1212,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@nuxt/content@npm:^2.7.0":
+"@nuxt/content@npm:^2.9.0":
   version: 2.9.0
   resolution: "@nuxt/content@npm:2.9.0"
   dependencies:
@@ -1245,7 +1254,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@nuxt/devtools-kit@npm:1.0.4":
+"@nuxt/devtools-kit@npm:1.0.4, @nuxt/devtools-kit@npm:^1.0.4":
   version: 1.0.4
   resolution: "@nuxt/devtools-kit@npm:1.0.4"
   dependencies:
@@ -1279,7 +1288,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@nuxt/devtools@npm:^1.0.3, @nuxt/devtools@npm:latest":
+"@nuxt/devtools@npm:^1.0.3, @nuxt/devtools@npm:^1.0.4":
   version: 1.0.4
   resolution: "@nuxt/devtools@npm:1.0.4"
   dependencies:
@@ -1329,29 +1338,29 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@nuxt/image@npm:rc":
-  version: 1.0.0-rc.3
-  resolution: "@nuxt/image@npm:1.0.0-rc.3"
+"@nuxt/image@npm:^1.1.0":
+  version: 1.1.0
+  resolution: "@nuxt/image@npm:1.1.0"
   dependencies:
-    "@nuxt/kit": ^3.7.4
+    "@nuxt/kit": ^3.8.2
     consola: ^3.2.3
-    defu: ^6.1.2
-    h3: ^1.8.2
-    image-meta: ^0.1.1
-    ipx: ^2.0.0-1
-    node-fetch-native: ^1.4.0
+    defu: ^6.1.3
+    h3: ^1.9.0
+    image-meta: ^0.2.0
+    ipx: ^2.0.2
+    node-fetch-native: ^1.4.1
     ohash: ^1.1.3
     pathe: ^1.1.1
-    std-env: ^3.4.3
-    ufo: ^1.3.1
+    std-env: ^3.5.0
+    ufo: ^1.3.2
   dependenciesMeta:
     ipx:
       optional: true
-  checksum: 09b576767a7555336673c6a78786b356c716323b61fa26b4fb68566a903db5aef486d815f5697290319ced4ddc9649d3fd33cfd22e958c2532cf5dbb3d7b1810
+  checksum: a30332e3adcaff3ebcddcf652dd2b4a440ada6ff8bd08e847e316e2cbc543fb1b7e8c0038a38806061e470aa678a433698bcdca814e398067f2a0214bdeb8153
   languageName: node
   linkType: hard
 
-"@nuxt/kit@npm:3.8.2, @nuxt/kit@npm:^3.6.1, @nuxt/kit@npm:^3.6.5, @nuxt/kit@npm:^3.7.4, @nuxt/kit@npm:^3.8.0, @nuxt/kit@npm:^3.8.1, @nuxt/kit@npm:^3.8.2":
+"@nuxt/kit@npm:3.8.2, @nuxt/kit@npm:^3.6.5, @nuxt/kit@npm:^3.8.0, @nuxt/kit@npm:^3.8.1, @nuxt/kit@npm:^3.8.2":
   version: 3.8.2
   resolution: "@nuxt/kit@npm:3.8.2"
   dependencies:
@@ -1473,7 +1482,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@nuxthq/ui@npm:^2.5.0":
+"@nuxthq/ui@npm:^2.7.0":
   version: 2.7.0
   resolution: "@nuxthq/ui@npm:2.7.0"
   dependencies:
@@ -1510,7 +1519,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@nuxtjs/google-fonts@npm:^3.0.1":
+"@nuxtjs/google-fonts@npm:^3.1.0":
   version: 3.1.0
   resolution: "@nuxtjs/google-fonts@npm:3.1.0"
   dependencies:
@@ -2115,7 +2124,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/canvas-confetti@npm:^1.6.0":
+"@types/canvas-confetti@npm:^1.6.4":
   version: 1.6.4
   resolution: "@types/canvas-confetti@npm:1.6.4"
   checksum: 0452e1f381e5d59471578be1b83f2908f0906ba0fddfe16f941a07e070f4ad91ceaf1a68bd84d84bb5e81214c95ef00137677d9d61d81119051425ca5ce307ba
@@ -2181,7 +2190,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/haversine@npm:^1.1.5":
+"@types/haversine@npm:^1.1.8":
   version: 1.1.8
   resolution: "@types/haversine@npm:1.1.8"
   checksum: c728627e328e877f2f0369f385130fc6a4fd68626942719dd7401076fd10a2ebb3fb1084355739d1b81d850e28533c4ef9782b90e16467fdd886d92a04fb6492
@@ -2256,7 +2265,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:^18.16.19":
+"@types/node@npm:^18.19.2":
   version: 18.19.2
   resolution: "@types/node@npm:18.19.2"
   dependencies:
@@ -3335,7 +3344,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"canvas-confetti@npm:^1.6.0":
+"canvas-confetti@npm:^1.9.2":
   version: 1.9.2
   resolution: "canvas-confetti@npm:1.9.2"
   checksum: e85fc0bbcd6ce7879997ccf18ba5a9747589ecf6916a06bdb3d229551e8c45c74fd5b9f8d455763db4a9e868c4c3e13b4630c26451823c9f7d1d390f0f0ab192
@@ -5682,13 +5691,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"image-meta@npm:^0.1.1":
-  version: 0.1.1
-  resolution: "image-meta@npm:0.1.1"
-  checksum: fe38611c2b7f2b327e4bf66bd73a24d5b2fa6aecbe0bc69565dd882c930e9d123e181ccadcdf8f66055d21405eeefaa69863f8ed5e0edcb08a6ee3956560d385
-  languageName: node
-  linkType: hard
-
 "image-meta@npm:^0.2.0":
   version: 0.2.0
   resolution: "image-meta@npm:0.2.0"
@@ -5772,7 +5774,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ipx@npm:^2.0.0-1":
+"ipx@npm:^2.0.2":
   version: 2.0.2
   resolution: "ipx@npm:2.0.2"
   dependencies:
@@ -6610,7 +6612,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"maplibre-gl@npm:^3.3.0":
+"maplibre-gl@npm:^3.6.2":
   version: 3.6.2
   resolution: "maplibre-gl@npm:3.6.2"
   dependencies:
@@ -8213,13 +8215,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"nuxt-icon@npm:^0.4.2":
-  version: 0.4.2
-  resolution: "nuxt-icon@npm:0.4.2"
+"nuxt-icon@npm:^0.6.7":
+  version: 0.6.7
+  resolution: "nuxt-icon@npm:0.6.7"
   dependencies:
+    "@iconify/collections": ^1.0.366
     "@iconify/vue": ^4.1.1
-    "@nuxt/kit": ^3.6.1
-  checksum: 7de3cca60e181889539f6a90801c9e7d558bd8e445d693b1157a920434c01c99fd48b272c63ec8fd78b3d94b5e01c9425acfd44fdcc13c10e85401c4b8cee6f9
+    "@nuxt/devtools-kit": ^1.0.4
+    "@nuxt/kit": ^3.8.2
+  checksum: 589abcadca5acd2251c419202c4946f2e06a726bf0a386e86690d7e3c36ee57e71cabac4e33f4ce2fb6422499d07c0bda26ecf7b93cc7c046c06b05763743ade
   languageName: node
   linkType: hard
 
@@ -8669,28 +8673,28 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "pestoverse@workspace:."
   dependencies:
-    "@iconify-json/line-md": ^1.1.25
-    "@iconify-json/mdi": ^1.1.52
-    "@nuxt/content": ^2.7.0
-    "@nuxt/devtools": latest
-    "@nuxt/image": rc
-    "@nuxthq/ui": ^2.5.0
-    "@nuxtjs/google-fonts": ^3.0.1
-    "@types/canvas-confetti": ^1.6.0
-    "@types/haversine": ^1.1.5
-    "@types/node": ^18.16.19
+    "@iconify-json/line-md": ^1.1.33
+    "@iconify-json/mdi": ^1.1.59
+    "@nuxt/content": ^2.9.0
+    "@nuxt/devtools": ^1.0.4
+    "@nuxt/image": ^1.1.0
+    "@nuxthq/ui": ^2.7.0
+    "@nuxtjs/google-fonts": ^3.1.0
+    "@types/canvas-confetti": ^1.6.4
+    "@types/haversine": ^1.1.8
+    "@types/node": ^18.19.2
     buffer-image-size: ^0.6.4
-    canvas-confetti: ^1.6.0
+    canvas-confetti: ^1.9.2
     haversine: ^1.1.1
     js-yaml: ^4.1.0
-    maplibre-gl: ^3.3.0
+    maplibre-gl: ^3.6.2
     nuxt: ^3.8.2
-    nuxt-icon: ^0.4.2
-    pmtiles: ^2.10.0
-    prettier: ^3.0.0
-    prettier-plugin-tailwindcss: ^0.4.1
+    nuxt-icon: ^0.6.7
+    pmtiles: ^2.11.0
+    prettier: ^3.1.0
+    prettier-plugin-tailwindcss: ^0.5.9
     sync-request: ^6.1.0
-    typescript: ^5.1.6
+    typescript: ^5.3.3
   languageName: unknown
   linkType: soft
 
@@ -8733,7 +8737,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"pmtiles@npm:^2.10.0":
+"pmtiles@npm:^2.11.0":
   version: 2.11.0
   resolution: "pmtiles@npm:2.11.0"
   dependencies:
@@ -9203,16 +9207,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prettier-plugin-tailwindcss@npm:^0.4.1":
-  version: 0.4.1
-  resolution: "prettier-plugin-tailwindcss@npm:0.4.1"
+"prettier-plugin-tailwindcss@npm:^0.5.9":
+  version: 0.5.9
+  resolution: "prettier-plugin-tailwindcss@npm:0.5.9"
   peerDependencies:
     "@ianvs/prettier-plugin-sort-imports": "*"
     "@prettier/plugin-pug": "*"
     "@shopify/prettier-plugin-liquid": "*"
-    "@shufo/prettier-plugin-blade": "*"
     "@trivago/prettier-plugin-sort-imports": "*"
-    prettier: ^2.2 || ^3.0
+    prettier: ^3.0
     prettier-plugin-astro: "*"
     prettier-plugin-css-order: "*"
     prettier-plugin-import-sort: "*"
@@ -9222,15 +9225,12 @@ __metadata:
     prettier-plugin-organize-imports: "*"
     prettier-plugin-style-order: "*"
     prettier-plugin-svelte: "*"
-    prettier-plugin-twig-melody: "*"
   peerDependenciesMeta:
     "@ianvs/prettier-plugin-sort-imports":
       optional: true
     "@prettier/plugin-pug":
       optional: true
     "@shopify/prettier-plugin-liquid":
-      optional: true
-    "@shufo/prettier-plugin-blade":
       optional: true
     "@trivago/prettier-plugin-sort-imports":
       optional: true
@@ -9254,11 +9254,11 @@ __metadata:
       optional: true
     prettier-plugin-twig-melody:
       optional: true
-  checksum: 9bdf3b7c270cc544f6bc38bbb869d3a97afc93de5005eee7272a36f374488731349c9362d2bbe4c83bd2a14b8a7c96cd25b9b682d1bea6dccc5bf08b2d02096c
+  checksum: ceb7d26d4191221736983c26f213f3fac660c289dd902cbce9003dba375e9d21066906d762530c52363049ef529a1e4a9d5926387cbb44e0ef154c0d2619fe72
   languageName: node
   linkType: hard
 
-"prettier@npm:^3.0.0":
+"prettier@npm:^3.1.0":
   version: 3.1.0
   resolution: "prettier@npm:3.1.0"
   bin:
@@ -10930,7 +10930,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@npm:^5.1.6":
+"typescript@npm:^5.3.3":
   version: 5.3.3
   resolution: "typescript@npm:5.3.3"
   bin:
@@ -10940,7 +10940,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@patch:typescript@^5.1.6#~builtin<compat/typescript>":
+"typescript@patch:typescript@^5.3.3#~builtin<compat/typescript>":
   version: 5.3.3
   resolution: "typescript@patch:typescript@npm%3A5.3.3#~builtin<compat/typescript>::version=5.3.3&hash=14eedb"
   bin:
