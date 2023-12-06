@@ -1,8 +1,8 @@
 const getUrl = (category: string, image: string) => {
     const {
-        app: { cdnURL },
+        public: { cdnBase },
     } = useRuntimeConfig();
-    return `${cdnURL}/${category}/${image}`;
+    return `${cdnBase}/${category}/${image}`;
 };
 
 export const getPlaceholderImage = (image: string) => {

@@ -24,7 +24,7 @@ const colorMode = useColorMode();
 const mapContainer = shallowRef<HTMLElement>();
 const map = shallowRef<Map>();
 
-const mapBaseUrl = `${runtimeConfig.app.cdnURL}/map`;
+const mapBaseUrl = `${runtimeConfig.public.cdnBase}/map`;
 
 const tileUrl = `${mapBaseUrl}/osm-planet.pmtiles`;
 
