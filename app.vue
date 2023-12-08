@@ -3,6 +3,7 @@ const loading = ref(true);
 const {
     public: { cdnBase },
 } = useRuntimeConfig();
+const { session, removeSession } = useAuth();
 
 useState("kudo-slideover", () => false);
 
@@ -12,7 +13,7 @@ useSeoMeta({
 
     ogTitle: "Pestoverse",
     ogDescription: "The official website for running, upcoming and archived events created by Yuniiho's community!",
-    ogUrl: "https://pestoverse.tougrel.dev",
+    ogUrl: "https://pestoverse.world",
     ogImage: `${cdnBase}/pestoverse_banner.png`,
     ogImageType: "image/png",
 
@@ -49,6 +50,8 @@ useHead({
 
 onMounted(() => {
     loading.value = false;
+
+    if (new Date() > new Date(session.value?.expires)) removeSession();
 
     const primary = localStorage.getItem("ui-color");
     if (primary) useAppConfig().ui.primary = primary;

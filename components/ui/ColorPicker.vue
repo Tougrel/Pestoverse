@@ -14,8 +14,8 @@ defineProps<{ size: string; buttonClass?: string }>();
 
 <template>
     <UPopover :popper="{ placement: 'bottom' }" class="inline-flex">
-        <div class="hover:text-primary-700 hover:dark:text-primary-400 flex items-center gap-2 transition-colors" :class="buttonClass">
-            <Icon :name="ICONS.PALETTE" :size="size" class="text-primary-700 dark:text-primary-400" />
+        <div class="flex items-center gap-2" :class="buttonClass">
+            <Icon :name="ICONS.PALETTE" :size="size" class="text-primary-700 dark:text-primary-400 hover:text-primary-800 hover:dark:text-primary-500 transition-colors" />
         </div>
 
         <template #panel>

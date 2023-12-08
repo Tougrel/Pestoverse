@@ -39,6 +39,25 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@auth/core@npm:^0.18.4":
+  version: 0.18.4
+  resolution: "@auth/core@npm:0.18.4"
+  dependencies:
+    "@panva/hkdf": ^1.1.1
+    cookie: 0.6.0
+    jose: ^5.1.0
+    oauth4webapi: ^2.3.0
+    preact: 10.11.3
+    preact-render-to-string: 5.2.3
+  peerDependencies:
+    nodemailer: ^6.8.0
+  peerDependenciesMeta:
+    nodemailer:
+      optional: true
+  checksum: 5ff5c170911bd9c2ce3749b40c55f9a7501e9b2b28c8c147d4bc421f7c092ec2f93fcb787c8801b2226edbc42cdf27464a1071c6118940426cba7ad0b02bb00b
+  languageName: node
+  linkType: hard
+
 "@babel/code-frame@npm:^7.12.13, @babel/code-frame@npm:^7.22.13, @babel/code-frame@npm:^7.23.5":
   version: 7.23.5
   resolution: "@babel/code-frame@npm:7.23.5"
@@ -474,7 +493,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@egoist/tailwindcss-icons@npm:^1.1.0":
+"@egoist/tailwindcss-icons@npm:^1.4.0":
   version: 1.4.0
   resolution: "@egoist/tailwindcss-icons@npm:1.4.0"
   dependencies:
@@ -807,7 +826,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@headlessui/vue@npm:^1.7.15":
+"@headlessui/tailwindcss@npm:^0.2.0":
+  version: 0.2.0
+  resolution: "@headlessui/tailwindcss@npm:0.2.0"
+  peerDependencies:
+    tailwindcss: ^3.0
+  checksum: a75799102729d74c080ec3d604fd4d9dea86eda08424062a7f6d6870033f372cd389898147662b5eb1a039fb4e19a1132f52d9da7b5c1c6077b28ed98bf9e8f1
+  languageName: node
+  linkType: hard
+
+"@headlessui/vue@npm:^1.7.16":
   version: 1.7.16
   resolution: "@headlessui/vue@npm:1.7.16"
   peerDependencies:
@@ -816,7 +844,26 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@iconify-json/heroicons@npm:^1.1.11":
+"@hebilicious/authjs-nuxt@npm:^0.3.5":
+  version: 0.3.5
+  resolution: "@hebilicious/authjs-nuxt@npm:0.3.5"
+  dependencies:
+    "@nuxt/kit": ^3.7.4
+    "@panva/hkdf": ^1.1.1
+    cookie: ^0.5.0
+    cookie-es: ^1.0.0
+    defu: ^6.1.2
+    immer: ^10.0.3
+    jose: ^4.15.4
+    unctx: ^2.3.1
+  peerDependencies:
+    "@auth/core": ^0.17.0
+    nuxt: ^3.7.4
+  checksum: fd82a8f927a52a3c47900e70fc895c7162b9e55e6629f5e95322efdf08dabecf4b6dee70e6a873d8a2d990a4d932bd014f470c551007a4a794f11e71e21e5765
+  languageName: node
+  linkType: hard
+
+"@iconify-json/heroicons@npm:^1.1.13":
   version: 1.1.15
   resolution: "@iconify-json/heroicons@npm:1.1.15"
   dependencies:
@@ -1360,7 +1407,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@nuxt/kit@npm:3.8.2, @nuxt/kit@npm:^3.6.5, @nuxt/kit@npm:^3.8.0, @nuxt/kit@npm:^3.8.1, @nuxt/kit@npm:^3.8.2":
+"@nuxt/kit@npm:3.8.2, @nuxt/kit@npm:^3.7.4, @nuxt/kit@npm:^3.8.0, @nuxt/kit@npm:^3.8.1, @nuxt/kit@npm:^3.8.2":
   version: 3.8.2
   resolution: "@nuxt/kit@npm:3.8.2"
   dependencies:
@@ -1439,6 +1486,37 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@nuxt/ui@npm:^2.11.0":
+  version: 2.11.0
+  resolution: "@nuxt/ui@npm:2.11.0"
+  dependencies:
+    "@egoist/tailwindcss-icons": ^1.4.0
+    "@headlessui/tailwindcss": ^0.2.0
+    "@headlessui/vue": ^1.7.16
+    "@iconify-json/heroicons": ^1.1.13
+    "@nuxt/kit": ^3.8.2
+    "@nuxtjs/color-mode": ^3.3.2
+    "@nuxtjs/tailwindcss": ^6.10.0
+    "@popperjs/core": ^2.11.8
+    "@tailwindcss/aspect-ratio": ^0.4.2
+    "@tailwindcss/container-queries": ^0.1.1
+    "@tailwindcss/forms": ^0.5.7
+    "@tailwindcss/typography": ^0.5.10
+    "@vueuse/core": ^10.6.1
+    "@vueuse/integrations": ^10.6.1
+    "@vueuse/math": ^10.6.1
+    defu: ^6.1.3
+    fuse.js: ^6.6.2
+    nuxt-icon: ^0.6.6
+    ohash: ^1.1.3
+    pathe: ^1.1.1
+    scule: ^1.1.0
+    tailwind-merge: ^1.14.0
+    tailwindcss: ^3.3.5
+  checksum: bc2a8ae4b36164f84fd2bda76de4f0aa2fb32a0ee44a97fb9b78e4c87b53b2aa699f2c42bf7261d02cdb15c817de3d8f4773ce3669e68236ee07b9876d9ac7c9
+  languageName: node
+  linkType: hard
+
 "@nuxt/vite-builder@npm:3.8.2":
   version: 3.8.2
   resolution: "@nuxt/vite-builder@npm:3.8.2"
@@ -1482,33 +1560,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@nuxthq/ui@npm:^2.7.0":
-  version: 2.7.0
-  resolution: "@nuxthq/ui@npm:2.7.0"
-  dependencies:
-    "@egoist/tailwindcss-icons": ^1.1.0
-    "@headlessui/vue": ^1.7.15
-    "@iconify-json/heroicons": ^1.1.11
-    "@nuxt/kit": ^3.6.5
-    "@nuxtjs/color-mode": ^3.3.0
-    "@nuxtjs/tailwindcss": ^6.8.0
-    "@popperjs/core": ^2.11.8
-    "@tailwindcss/aspect-ratio": ^0.4.2
-    "@tailwindcss/container-queries": ^0.1.1
-    "@tailwindcss/forms": ^0.5.4
-    "@tailwindcss/typography": ^0.5.9
-    "@vueuse/core": ^10.2.1
-    "@vueuse/integrations": ^10.2.1
-    "@vueuse/math": ^10.2.1
-    defu: ^6.1.2
-    fuse.js: ^6.6.2
-    lodash-es: ^4.17.21
-    tailwindcss: ^3.3.3
-  checksum: 7e266d68104bfbafec9977d0ee752d1f8985a96ca1d981adb3c35a84858124419a002b728b509d44c142bf3fc9d6f38d901aa33febf906473cac0ec1141fb440
-  languageName: node
-  linkType: hard
-
-"@nuxtjs/color-mode@npm:^3.3.0":
+"@nuxtjs/color-mode@npm:^3.3.2":
   version: 3.3.2
   resolution: "@nuxtjs/color-mode@npm:3.3.2"
   dependencies:
@@ -1568,7 +1620,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@nuxtjs/tailwindcss@npm:^6.8.0":
+"@nuxtjs/tailwindcss@npm:^6.10.0":
   version: 6.10.1
   resolution: "@nuxtjs/tailwindcss@npm:6.10.1"
   dependencies:
@@ -1593,6 +1645,13 @@ __metadata:
     ufo: ^1.3.2
     uncrypto: ^0.1.3
   checksum: 8bfa474797866d6a286170e502fac993f74265df6e71acb090121fd6ef8f33635632670d213412cd264060d1a4955ad7f67a5afe9813ad4ed5e2de28fa8290e7
+  languageName: node
+  linkType: hard
+
+"@panva/hkdf@npm:^1.1.1":
+  version: 1.1.1
+  resolution: "@panva/hkdf@npm:1.1.1"
+  checksum: f0dd12903751d8792420353f809ed3c7de860cf506399759fff5f59f7acfef8a77e2b64012898cee7e5b047708fa0bd91dff5ef55a502bf8ea11aad9842160da
   languageName: node
   linkType: hard
 
@@ -2075,7 +2134,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tailwindcss/forms@npm:^0.5.4":
+"@tailwindcss/forms@npm:^0.5.7":
   version: 0.5.7
   resolution: "@tailwindcss/forms@npm:0.5.7"
   dependencies:
@@ -2086,7 +2145,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tailwindcss/typography@npm:^0.5.9":
+"@tailwindcss/typography@npm:^0.5.10":
   version: 0.5.10
   resolution: "@tailwindcss/typography@npm:0.5.10"
   dependencies:
@@ -2608,7 +2667,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vueuse/core@npm:10.7.0, @vueuse/core@npm:^10.2.1, @vueuse/core@npm:^10.5.0":
+"@vueuse/core@npm:10.7.0, @vueuse/core@npm:^10.5.0, @vueuse/core@npm:^10.6.1":
   version: 10.7.0
   resolution: "@vueuse/core@npm:10.7.0"
   dependencies:
@@ -2634,7 +2693,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vueuse/integrations@npm:^10.2.1":
+"@vueuse/integrations@npm:^10.6.1":
   version: 10.7.0
   resolution: "@vueuse/integrations@npm:10.7.0"
   dependencies:
@@ -2683,7 +2742,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vueuse/math@npm:^10.2.1":
+"@vueuse/math@npm:^10.6.1":
   version: 10.7.0
   resolution: "@vueuse/math@npm:10.7.0"
   dependencies:
@@ -3742,6 +3801,20 @@ __metadata:
   version: 1.0.0
   resolution: "cookie-es@npm:1.0.0"
   checksum: e8721cf4d38f3e44049c9118874b323f4f674b1c5cef84a2b888f5bf86ad720ad17b51b43150cad7535a375c24e2921da603801ad28aa6125c3d36c031b41468
+  languageName: node
+  linkType: hard
+
+"cookie@npm:0.6.0":
+  version: 0.6.0
+  resolution: "cookie@npm:0.6.0"
+  checksum: f56a7d32a07db5458e79c726b77e3c2eff655c36792f2b6c58d351fb5f61531e5b1ab7f46987150136e366c65213cbe31729e02a3eaed630c3bf7334635fb410
+  languageName: node
+  linkType: hard
+
+"cookie@npm:^0.5.0":
+  version: 0.5.0
+  resolution: "cookie@npm:0.5.0"
+  checksum: 1f4bd2ca5765f8c9689a7e8954183f5332139eb72b6ff783d8947032ec1fdf43109852c178e21a953a30c0dd42257828185be01b49d1eb1a67fd054ca588a180
   languageName: node
   linkType: hard
 
@@ -5698,6 +5771,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"immer@npm:^10.0.3":
+  version: 10.0.3
+  resolution: "immer@npm:10.0.3"
+  checksum: 76acabe6f40e752028313762ba477a5d901e57b669f3b8fb406b87b9bb9b14e663a6fbbf5a6d1ab323737dd38f4b2494a4e28002045b88948da8dbf482309f28
+  languageName: node
+  linkType: hard
+
 "imurmurhash@npm:^0.1.4":
   version: 0.1.4
   resolution: "imurmurhash@npm:0.1.4"
@@ -6122,6 +6202,20 @@ __metadata:
   languageName: node
   linkType: hard
 
+"jose@npm:^4.15.4":
+  version: 4.15.4
+  resolution: "jose@npm:4.15.4"
+  checksum: dccad91cb3357f36423774a0b89ad830dd84b31090de65cd139b85488439f16a00f8c59c0773825e8a1adb0dd9d13ad725ad66e6ea33880ecb3959bb99e1ea5b
+  languageName: node
+  linkType: hard
+
+"jose@npm:^5.1.0":
+  version: 5.1.3
+  resolution: "jose@npm:5.1.3"
+  checksum: c0225c3408b1c3fcfc40c68161e5e14d554c606ffa428250e0db618469df52f4ce32c69918e296c8c299db1081981638096be838426f61d926269d35602fd814
+  languageName: node
+  linkType: hard
+
 "js-tokens@npm:^4.0.0":
   version: 4.0.0
   resolution: "js-tokens@npm:4.0.0"
@@ -6417,13 +6511,6 @@ __metadata:
   dependencies:
     p-locate: ^5.0.0
   checksum: 72eb661788a0368c099a184c59d2fee760b3831c9c1c33955e8a19ae4a21b4116e53fa736dc086cdeb9fce9f7cc508f2f92d2d3aae516f133e16a2bb59a39f5a
-  languageName: node
-  linkType: hard
-
-"lodash-es@npm:^4.17.21":
-  version: 4.17.21
-  resolution: "lodash-es@npm:4.17.21"
-  checksum: 05cbffad6e2adbb331a4e16fbd826e7faee403a1a04873b82b42c0f22090f280839f85b95393f487c1303c8a3d2a010048bf06151a6cbe03eee4d388fb0a12d2
   languageName: node
   linkType: hard
 
@@ -8215,7 +8302,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"nuxt-icon@npm:^0.6.7":
+"nuxt-icon@npm:^0.6.6, nuxt-icon@npm:^0.6.7":
   version: 0.6.7
   resolution: "nuxt-icon@npm:0.6.7"
   dependencies:
@@ -8312,6 +8399,13 @@ __metadata:
   bin:
     nypm: dist/cli.mjs
   checksum: 497bc4e3492f73bc6fa3bc5b471fd8e6d31f3cfc907cd62f6bafb093d5ffad2b4f055dd0fbdc52080a1fd786f9644d33eb802678a610f103cda4bd09615c7efb
+  languageName: node
+  linkType: hard
+
+"oauth4webapi@npm:^2.3.0":
+  version: 2.4.0
+  resolution: "oauth4webapi@npm:2.4.0"
+  checksum: 9e6d5be3966013aa9dd61781032a6bd07a63166a9819f2fc0d622d33b23221ea39ae25334a4bde9eba4623e576972d367b196e3b5d3facff75002125c510b672
   languageName: node
   linkType: hard
 
@@ -8673,12 +8767,14 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "pestoverse@workspace:."
   dependencies:
+    "@auth/core": ^0.18.4
+    "@hebilicious/authjs-nuxt": ^0.3.5
     "@iconify-json/line-md": ^1.1.33
     "@iconify-json/mdi": ^1.1.59
     "@nuxt/content": ^2.9.0
     "@nuxt/devtools": ^1.0.4
     "@nuxt/image": ^1.1.0
-    "@nuxthq/ui": ^2.7.0
+    "@nuxt/ui": ^2.11.0
     "@nuxtjs/google-fonts": ^3.1.0
     "@types/canvas-confetti": ^1.6.4
     "@types/haversine": ^1.1.8
@@ -9185,6 +9281,24 @@ __metadata:
   languageName: node
   linkType: hard
 
+"preact-render-to-string@npm:5.2.3":
+  version: 5.2.3
+  resolution: "preact-render-to-string@npm:5.2.3"
+  dependencies:
+    pretty-format: ^3.8.0
+  peerDependencies:
+    preact: ">=10"
+  checksum: 6e46288d8956adde35b9fe3a21aecd9dea29751b40f0f155dea62f3896f27cb8614d457b32f48d33909d2da81135afcca6c55077520feacd7d15164d1371fb44
+  languageName: node
+  linkType: hard
+
+"preact@npm:10.11.3":
+  version: 10.11.3
+  resolution: "preact@npm:10.11.3"
+  checksum: 9387115aa0581e8226309e6456e9856f17dfc0e3d3e63f774de80f3d462a882ba7c60914c05942cb51d51e23e120dcfe904b8d392d46f29ad15802941fe7a367
+  languageName: node
+  linkType: hard
+
 "prebuild-install@npm:^7.1.1":
   version: 7.1.1
   resolution: "prebuild-install@npm:7.1.1"
@@ -9271,6 +9385,13 @@ __metadata:
   version: 6.1.1
   resolution: "pretty-bytes@npm:6.1.1"
   checksum: 43d29d909d2d88072da2c3d72f8fd0f2d2523c516bfa640aff6e31f596ea1004b6601f4cabc50d14b2cf10e82635ebe5b7d9378f3d5bae1c0067131829421b8a
+  languageName: node
+  linkType: hard
+
+"pretty-format@npm:^3.8.0":
+  version: 3.8.0
+  resolution: "pretty-format@npm:3.8.0"
+  checksum: 21a114d43ef06978f8f7f6212be4649b0b094f05d9b30e14e37550bf35c8ca24d8adbca9e5adc4cc15d9eaf7a1e7a30478a4dc37b30982bfdf0292a5b385484c
   languageName: node
   linkType: hard
 
@@ -10641,7 +10762,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tailwindcss@npm:^3.3.3, tailwindcss@npm:~3.3.5":
+"tailwind-merge@npm:^1.14.0":
+  version: 1.14.0
+  resolution: "tailwind-merge@npm:1.14.0"
+  checksum: 8cf5d37f51b3b32e4bdd5544feaed34357bfba2f64f14834cc4a21ac29b0ae22d7255386467a0f1dadb3e38499389efbbabeddcd0b16571af5a0d346a4921877
+  languageName: node
+  linkType: hard
+
+"tailwindcss@npm:^3.3.5, tailwindcss@npm:~3.3.5":
   version: 3.3.6
   resolution: "tailwindcss@npm:3.3.6"
   dependencies:

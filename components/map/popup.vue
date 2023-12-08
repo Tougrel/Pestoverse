@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { MarkerProps } from "@types/pestoverse";
+import type { MarkerProps } from "@pestoverse/types";
 
 defineProps<{ markers: MarkerProps[]; open: (entry: MarkerProps) => void }>();
 </script>

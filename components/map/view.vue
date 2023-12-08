@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { MarkerImageData, MarkerProps } from "@types/pestoverse";
+import type { MarkerImageData, MarkerProps } from "@pestoverse/types";
 import maplibregl, { Map, NavigationControl, StyleSpecification, Marker, Popup, LngLatBoundsLike, AttributionControl } from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
 import light from "./light";
