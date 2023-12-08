@@ -11,6 +11,8 @@ export const ICONS = {
     PAW: "mdi:paw",
     GITHUB: "mdi:github",
     COFFEE: "line-md:coffee-half-empty-twotone-loop",
+    TROPHY: "mdi:trophy",
+    ACCOUNT: "mdi:account",
 } as const;
 
 export const PAGES = {
@@ -27,6 +29,11 @@ export const PAGES = {
     "/credits": {
         name: "Made by these amazing people",
         icon: ICONS.COFFEE,
+        image: false,
+    },
+    "/awards": {
+        name: "Pesto Awards",
+        icon: ICONS.TROPHY,
         image: false,
     },
 } as const;
@@ -57,6 +64,11 @@ export const NAV_MENU = [
                 const state = useState("kudo-slideover");
                 state.value = true;
             },
+        },
+        {
+            label: "Pesto Awards",
+            icon: "i-heroicons-trophy-solid",
+            to: "/awards",
         },
     ],
     [

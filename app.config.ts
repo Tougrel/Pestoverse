@@ -8,6 +8,14 @@ export default defineAppConfig({
             background: "bg-white dark:bg-navigation",
         },
 
+        avatar: {
+            background: "bg-primary-700 dark:bg-primary-500",
+            placeholder: "font-medium leading-none text-gray-300 dark:text-white truncate",
+            icon: {
+                base: "text-white dark:text-white flex-shrink-0",
+            }
+        },
+
         dropdown: {
             background: "bg-white dark:bg-navigation",
             ring: "ring-1 ring-slate-500 dark:ring-slate-700",

@@ -6,7 +6,7 @@ export default defineNuxtConfig({
         enabled: true,
     },
 
-    modules: ["@nuxt/devtools", "@nuxt/image", "@nuxthq/ui", "nuxt-icon", "@nuxt/content", "@nuxtjs/google-fonts"],
+    modules: ["@nuxt/devtools", "@nuxt/image", "@nuxt/ui", "nuxt-icon", "@nuxt/content", "@nuxtjs/google-fonts", "@hebilicious/authjs-nuxt"],
 
     css: ["~/assets/css/index.css"],
 
@@ -29,9 +29,28 @@ export default defineNuxtConfig({
         dir: "static/images",
     },
 
+    authJs: {
+        verifyClientOnEveryRequest: false,
+    },
+
     runtimeConfig: {
+        authJs: {
+            secret: process.env.NUXT_NEXTAUTH_SECRET,
+        },
+        discord: {
+            client_id: process.env.NUXT_DISCORD_ID,
+            client_secret: process.env.NUXT_DISCORD_SECRET,
+        },
+        twitch: {
+            client_id: process.env.NUXT_TWITCH_ID,
+            client_secret: process.env.NUXT_TWITCH_SECRET,
+        },
         public: {
             cdnBase: "https://cdn.pestoverse.world",
+            authJs: {
+                baseUrl: process.env.NUXT_NEXTAUTH_URL,
+                verifyClientOnEveryRequest: false
+            }
         },
     },
 
