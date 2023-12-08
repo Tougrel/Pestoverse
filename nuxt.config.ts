@@ -31,6 +31,7 @@ export default defineNuxtConfig({
 
     authJs: {
         verifyClientOnEveryRequest: false,
+        baseUrl: process.env.NUXT_NEXTAUTH_URL,
     },
 
     runtimeConfig: {
@@ -40,10 +41,6 @@ export default defineNuxtConfig({
         discord: {
             client_id: process.env.NUXT_DISCORD_ID,
             client_secret: process.env.NUXT_DISCORD_SECRET,
-        },
-        twitch: {
-            client_id: process.env.NUXT_TWITCH_ID,
-            client_secret: process.env.NUXT_TWITCH_SECRET,
         },
         public: {
             cdnBase: "https://cdn.pestoverse.world",
