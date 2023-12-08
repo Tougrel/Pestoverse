@@ -1,5 +1,6 @@
 import DiscordProvider from "@auth/core/providers/discord";
-import type { AuthConfig,  } from "@auth/core/types";
+import type { AuthConfig } from "@auth/core/types";
+import type { Guild } from "@types/pestoverse";
 import { NuxtAuthHandler } from "#auth";
 
 const runtimeConfig = useRuntimeConfig();
@@ -38,8 +39,8 @@ export const authOptions: AuthConfig = {
 
 				if (response.status === 200) {
 					const guilds = await response.json();
-					profile.in_guild = guilds.filter((g) => g.id === "649539673483640832").length > 0;
-					
+
+					if (profile) profile.in_guild = guilds.filter((g: Guild) => g.id === "649539673483640832").length > 0;
 					token.profile = profile;
 				}
 			}

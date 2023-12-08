@@ -1,7 +1,6 @@
 <script setup lang="ts">
 const route = useRoute();
 const iconSize = ref("2em");
-const { signIn, signOut, status, session } = useAuth();
 
 defineProps<{ buttonClass?: string; map?: boolean }>();
 </script>
