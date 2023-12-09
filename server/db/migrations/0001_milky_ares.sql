@@ -1,0 +1,1 @@
+ALTER TABLE `submissions` RENAME COLUMN `discord_id` TO `user_id`;

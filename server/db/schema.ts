@@ -7,7 +7,7 @@ export const categories = sqliteTable("categories", {
 
 export const submissions = sqliteTable("submissions", {
     id: integer("id").primaryKey({ autoIncrement: true }),
-    discordId: integer("discord_id").notNull(),
+    userId: integer("user_id").notNull(),
     categoryId: integer("category_id")
         .notNull()
         .references(() => categories.id),

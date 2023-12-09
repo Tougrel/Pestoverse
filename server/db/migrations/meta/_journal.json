@@ -8,6 +8,13 @@
       "when": 1702126526525,
       "tag": "0000_nosy_shadow_king",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1702143784462,
+      "tag": "0001_milky_ares",
+      "breakpoints": true
     }
   ]
 }

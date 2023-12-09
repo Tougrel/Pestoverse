@@ -1,5 +1,22 @@
 <script setup lang="ts">
+import type { Submission } from "~/server/db/schema";
+
+const { status } = useAuth();
 const { data: categories } = await useFetch("/api/submissions/categories");
+const { data: submissions } = await useFetch("/api/submissions/list");
+const { data: names } = await useFetch("/api/submissions/names");
+
+type SubmissionState = { [key: number]: string };
+
+const state = reactive<SubmissionState>(submissions.value as SubmissionState);
+
+const onSubmit = async () => {
+    await fetch("/api/submissions/submit", {
+        method: "POST",
+        body: JSON.stringify(state),
+    });
+    console.log(state);
+};
 </script>
 
 <template>
@@ -18,5 +35,11 @@ const { data: categories } = await useFetch("/api/submissions/categories");
                 <UBadge v-for="item in categories" color="primary" variant="soft" :label="item.name" size="lg" />
             </div>
         </div>
+        <UForm :state="state" class="space-y-4" @submit="onSubmit" v-if="status === 'authenticated'">
+            <UFormGroup v-for="item in categories" :label="item.name" :name="'' + item.id">
+                <UInput v-model="state[item.id]" />
+            </UFormGroup>
+            <UButton type="submit">Submit</UButton>
+        </UForm>
     </NuxtLayout>
 </template>
