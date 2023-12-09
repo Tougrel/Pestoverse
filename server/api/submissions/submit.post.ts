@@ -9,7 +9,7 @@ type RequestSubmission = Omit<Submission, "id" | "userId">;
 const normaliseBody = (body: { [key: string]: string }): RequestSubmission[] => {
     const result = [];
     for (const [key, value] of Object.entries(body)) {
-        if (!isNaN(Number(key))) {
+        if (!isNaN(Number(key)) && value !== "") {
             result.push({ categoryId: Number(key), submission: value });
         }
     }
