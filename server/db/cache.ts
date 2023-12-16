@@ -14,6 +14,7 @@ export const getFromCache = async (event: H3Event, key: string, data: (db: Retur
 
     if (isCloudflare) {
         const cache: KVNamespace = context.cloudflare.env.KV_CACHE;
+        console.log("cache", cache);
         let cacheValue = await cache.get(key, { type: "json" });
         console.log("got value", cacheValue, typeof cacheValue);
         if (cacheValue !== null && JSON.stringify(cacheValue) !== "{}") {
