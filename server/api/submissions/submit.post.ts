@@ -5,6 +5,7 @@ import { getServerSession } from "#auth";
 import { eq, inArray } from "drizzle-orm";
 
 type RequestSubmission = Omit<Submission, "id" | "userId">;
+type NewSubmission = Omit<Submission, "id">;
 
 const normaliseBody = (body: { [key: string]: string }): RequestSubmission[] => {
     const result = [];
@@ -16,18 +17,27 @@ const normaliseBody = (body: { [key: string]: string }): RequestSubmission[] => 
     return result;
 };
 
-const findDeleted = (existingSubmissions: Submission[], body: RequestSubmission[]) => {
-    return existingSubmissions.filter((submission) => body.every((b) => b.categoryId !== submission.categoryId)).map((submission) => submission.id);
-};
+const findChanges = (
+    existingSubmissions: Submission[],
+    body: RequestSubmission[],
+    userId: number,
+): { created: NewSubmission[]; updated: Submission[]; deleted: number[] } => {
+    let updated: Submission[] = [];
+    let deleted: number[] = [];
+    existingSubmissions.forEach((submission) => {
+        let pairedEntry = body.find((sub) => sub.categoryId == submission.categoryId);
+        if (pairedEntry && pairedEntry.submission !== submission.submission) {
+            updated.push({ id: submission.id, userId: submission.userId, ...pairedEntry });
+        } else if (pairedEntry === undefined) {
+            deleted.push(submission.id);
+        }
+    });
 
-const findNew = (existingSubmissions: Submission[], body: RequestSubmission[], userId: number) => {
-    return body.filter((b) => !existingSubmissions.some((s) => s.categoryId === b.categoryId)).map((submission) => ({ ...submission, userId: userId }));
-};
+    const created: NewSubmission[] = body
+        .filter((b) => !existingSubmissions.some((s) => s.categoryId === b.categoryId))
+        .map((submission) => ({ ...submission, userId: userId }));
 
-const findUpdated = (existingSubmissions: Submission[], body: RequestSubmission[]) => {
-    return body
-        .filter((b) => existingSubmissions.some((s) => s.categoryId === b.categoryId && s.submission !== b.submission))
-        .map((b) => ({ ...b, id: existingSubmissions.find((s) => s.categoryId === b.categoryId)?.id }));
+    return { created, updated, deleted };
 };
 
 export default defineEventHandler(async (event) => {
@@ -41,9 +51,10 @@ export default defineEventHandler(async (event) => {
     const existingSubmissions = await db.select().from(submissions).where(eq(submissions.userId, userId)).all();
     const requestSubmissions = normaliseBody(JSON.parse(body));
 
-    const deletedSubmissions = findDeleted(existingSubmissions, requestSubmissions);
-    const newSubmissions = findNew(existingSubmissions, requestSubmissions, userId);
-    const updatedSubmissions = findUpdated(existingSubmissions, requestSubmissions);
+    const submissionChanges = findChanges(existingSubmissions, requestSubmissions, userId);
+    const newSubmissions = submissionChanges.created;
+    const deletedSubmissions = submissionChanges.deleted;
+    const updatedSubmissions = submissionChanges.updated;
 
     if (deletedSubmissions.length > 0) {
         console.log("deleting", deletedSubmissions);

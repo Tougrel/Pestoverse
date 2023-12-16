@@ -1,8 +1,9 @@
-import { getDb } from "~/server/db/database";
+import { getFromCache } from "~/server/db/cache";
 import { categories } from "~/server/db/schema";
 
 export default defineEventHandler(async (event) => {
-    const db = getDb(event.context);
-    const result = await db.select().from(categories).all();
-    return result;
+    return await getFromCache(event, "categories", async (db) => {
+        // @ts-ignore
+        return await db.select().from(categories).all();
+    });
 });

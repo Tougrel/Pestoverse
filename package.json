@@ -12,9 +12,11 @@
     "scripts": {
         "refresh": "nuxt clean && yarn run postinstall",
         "build": "nuxt build",
+        "pages:build": "cross-env NITRO_PRESET=cloudflare_pages nuxt build",
         "dev": "nuxt dev",
         "generate": "nuxt generate",
         "preview": "nuxt preview",
+        "pages:preview": "wrangler pages dev dist/ --kv=CACHE",
         "postinstall": "nuxt prepare",
         "pretty": "prettier --write \"./**/*.{ts,vue}\"",
         "updateimages": "node update_image_sizes.mjs",
@@ -22,7 +24,6 @@
         "migrate:update": "drizzle-kit up:sqlite",
         "migrate:local": "drizzle-kit push:sqlite --driver better-sqlite --schema server/db/schema.ts --url local.db",
         "drizzle:studio": "drizzle-kit studio",
-        "db:seed": "tsx ./server/db/seed.ts",
         "wrangler": "wrangler"
     },
     "devDependencies": {

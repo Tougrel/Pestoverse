@@ -1,10 +1,8 @@
 <script setup lang="ts">
-import type { Submission } from "~/server/db/schema";
-
 const { status } = useAuth();
 const { data: categories } = await useFetch("/api/submissions/categories");
-const { data: submissions } = await useFetch("/api/submissions/list");
-const { data: names } = await useFetch("/api/submissions/names");
+const { data: submissions } = await useFetch("/api/submissions");
+// const { data: names } = await useFetch("/api/submissions/names");
 
 type SubmissionState = { [key: number]: string };
 
@@ -36,7 +34,7 @@ const onSubmit = async () => {
             </div>
         </div>
         <UForm :state="state" class="space-y-4" @submit="onSubmit" v-if="status === 'authenticated'">
-            <UFormGroup v-for="item in categories" :label="item.name" :name="'' + item.id">
+            <UFormGroup v-for="item in categories" :label="`${item.name} (${item.description})`" :name="'' + item.id">
                 <UInput v-model="state[item.id]" />
             </UFormGroup>
             <UButton type="submit">Submit</UButton>
