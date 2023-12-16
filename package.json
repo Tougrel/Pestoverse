@@ -16,7 +16,7 @@
         "dev": "nuxt dev",
         "generate": "nuxt generate",
         "preview": "nuxt preview",
-        "pages:preview": "wrangler pages dev dist/ --kv=CACHE",
+        "pages:preview": "wrangler pages dev dist/ --kv=KV_CACHE",
         "postinstall": "nuxt prepare",
         "pretty": "prettier --write \"./**/*.{ts,vue}\"",
         "updateimages": "node update_image_sizes.mjs",
@@ -55,7 +55,7 @@
         "sync-request": "^6.1.0",
         "tsx": "^4.6.2",
         "typescript": "^5.3.3",
-        "wrangler": "^3.19.0"
+        "wrangler": "^3.21.0"
     },
     "packageManager": "yarn@3.6.1",
     "dependencies": {
