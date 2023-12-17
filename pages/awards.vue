@@ -1,23 +1,20 @@
 <script setup lang="ts">
-const list = ref([
-    "Mod of the year",
-    "Best Yunii fanart",
-    "Artist of the year",
-    "Most chaotic pestie",
-    "Sussiest pestie",
-    "Most gassy pestie",
-    "Most biteable pestie",
-    "The chaddest pestie",
-    "Most gamba addicted pestie",
-    "Best gambler",
-    "Worst gambler",
-    "Best gamer",
-    "Most helpful pestie",
-    "Most wholesome pestie",
-    "Most nice pestie",
-    "Best discord streamer",
-    "Best discord chatter",
-]);
+const { status } = useAuth();
+const { data: categories } = await useFetch("/api/submissions/categories");
+const { data: submissions } = await useFetch("/api/submissions");
+// const { data: names } = await useFetch("/api/submissions/names");
+
+type SubmissionState = { [key: number]: string };
+
+const state = reactive<SubmissionState>(submissions.value as SubmissionState);
+
+const onSubmit = async () => {
+    await fetch("/api/submissions/submit", {
+        method: "POST",
+        body: JSON.stringify(state),
+    });
+    console.log(state);
+};
 </script>
 
 <template>
@@ -33,8 +30,14 @@ const list = ref([
             </div>
 
             <div class="flex max-w-screen-xl flex-row flex-wrap items-center gap-4">
-                <UBadge v-for="item in list" color="primary" variant="soft" :label="item" size="lg" />
+                <UBadge v-for="item in categories" color="primary" variant="soft" :label="item.name" size="lg" />
             </div>
         </div>
+        <UForm :state="state" class="space-y-4" @submit="onSubmit" v-if="status === 'authenticated'">
+            <UFormGroup v-for="item in categories" :label="`${item.name} (${item.description})`" :name="'' + item.id">
+                <UInput v-model="state[item.id]" />
+            </UFormGroup>
+            <UButton type="submit">Submit</UButton>
+        </UForm>
     </NuxtLayout>
 </template>
