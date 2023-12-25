@@ -40,5 +40,21 @@ export default defineAppConfig({
             },
             ring: "ring-1 ring-navigation dark:ring-gray-600",
         },
+
+        input: {
+            color: {
+                gray: {
+                    outline: "shadow-sm bg-gray-50 dark:bg-navigation text-gray-900 dark:text-white ring-1 ring-inset ring-slate-500 dark:ring-slate-700 focus:ring-2 focus:ring-primary-500 dark:focus:ring-primary-400"
+                }
+            },
+        },
+
+        alert: {
+            color: {
+                white: {
+                    solid: "text-gray-900 dark:text-white bg-white dark:bg-navigation ring-1 ring-slate-500 dark:ring-slate-700"
+                }
+            }
+        }
     },
 });

@@ -1,6 +1,6 @@
 import DiscordProvider from "@auth/core/providers/discord";
 import type { AuthConfig } from "@auth/core/types";
-import type { Guild } from "@types/pestoverse";
+import type { Guild } from "@pestoverse/types";
 import { NuxtAuthHandler } from "#auth";
 
 const runtimeConfig = useRuntimeConfig();
@@ -8,7 +8,7 @@ const runtimeConfig = useRuntimeConfig();
 export const authOptions: AuthConfig = {
 	secret: runtimeConfig.authJs.secret,
 	providers: [
-		DiscordProvider({
+		DiscordProvider(	{
 			clientId: runtimeConfig.discord.client_id,
 			clientSecret: runtimeConfig.discord.client_secret,
 			authorization: "https://discord.com/api/oauth2/authorize?scope=identify+guilds",
