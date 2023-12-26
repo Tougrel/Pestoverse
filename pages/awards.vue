@@ -7,8 +7,6 @@ const { data: names } = await useFetch("/api/submissions/names");
 type SubmissionState = { [key: number]: string };
 
 const state = reactive<SubmissionState>(submissions.value as SubmissionState);
-const items_to_show = 20;
-const page = ref(1);
 
 const onSubmit = async () => {
     await fetch("/api/submissions/submit", {
@@ -37,15 +35,9 @@ const onSubmit = async () => {
             <UDivider icon="i-mdi-creation" :ui="{ border: { base: 'border-primary-700 dark:border-primary-500' } }" />
             <div class="flex flex-col gap-2 p-4">
                 <p class="text-primary-700 dark:text-primary-500 text-lg font-bold">Suggestions</p>
-                <div class="flex flex-row gap-2">
-                    <UBadge
-                        v-for="name in names.slice((page - 1) * items_to_show, (page - 1) * items_to_show + items_to_show)"
-                        color="gray"
-                        size="lg"
-                        :label="name"
-                    />
+                <div class="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-6 gap-2 max-h-[272px] overflow-y-auto">
+                    <UBadge v-for="name in names" color="gray" size="lg" :label="name" />
                 </div>
-                <UPagination v-model="page" :page-count="items_to_show" :total="names.length" />
             </div>
             <UButton block type="submit" label="Submit" icon="i-mdi-check" size="lg" />
         </UForm>
