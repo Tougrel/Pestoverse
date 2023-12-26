@@ -13,7 +13,7 @@ export default defineAppConfig({
             placeholder: "font-medium leading-none text-gray-300 dark:text-white truncate",
             icon: {
                 base: "text-white dark:text-white flex-shrink-0",
-            }
+            },
         },
 
         dropdown: {
@@ -44,17 +44,25 @@ export default defineAppConfig({
         input: {
             color: {
                 gray: {
-                    outline: "shadow-sm bg-gray-50 dark:bg-navigation text-gray-900 dark:text-white ring-1 ring-inset ring-slate-500 dark:ring-slate-700 focus:ring-2 focus:ring-primary-500 dark:focus:ring-primary-400"
-                }
+                    outline: "shadow-sm bg-gray-50 dark:bg-navigation text-gray-900 dark:text-white ring-1 ring-inset ring-slate-500 dark:ring-slate-700 focus:ring-2 focus:ring-primary-500 dark:focus:ring-primary-400",
+                },
             },
         },
 
         alert: {
             color: {
                 white: {
-                    solid: "text-gray-900 dark:text-white bg-white dark:bg-navigation ring-1 ring-slate-500 dark:ring-slate-700"
+                    solid: "text-gray-900 dark:text-white bg-white dark:bg-navigation ring-1 ring-slate-500 dark:ring-slate-700",
+                },
+            },
+        },
+
+        badge: {
+            color: {
+                gray: {
+                    solid: "ring-1 ring-inset ring-slate-300 dark:ring-slate-700 text-gray-700 dark:text-gray-200 bg-white dark:bg-navigation",
                 }
-            }
-        }
+            },
+        },
     },
 });
