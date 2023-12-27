@@ -46,8 +46,8 @@ export default defineNuxtConfig({
             cdnBase: "https://cdn.pestoverse.world",
             authJs: {
                 baseUrl: process.env.NUXT_NEXTAUTH_URL,
-                verifyClientOnEveryRequest: false
-            }
+                verifyClientOnEveryRequest: false,
+            },
         },
     },
 
