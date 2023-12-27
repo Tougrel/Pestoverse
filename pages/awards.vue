@@ -2,7 +2,7 @@
 const { status } = useAuth();
 const { data: categories } = await useFetch("/api/submissions/categories");
 const { data: submissions } = await useFetch("/api/submissions");
-// const { data: names } = await useFetch("/api/submissions/names");
+const { data: names } = await useFetch("/api/submissions/names");
 
 type SubmissionState = { [key: number]: string };
 
@@ -13,31 +13,34 @@ const onSubmit = async () => {
         method: "POST",
         body: JSON.stringify(state),
     });
-    console.log(state);
+    // console.log(state);
 };
 </script>
 
 <template>
     <NuxtLayout name="default">
-        <div class="flex flex-1 flex-col items-center justify-center gap-4">
-            <div class="flex flex-col items-center">
-                <h1 class="text-4xl font-bold">List of possible categories!</h1>
-                <p class="text-lg text-gray-300">
-                    Make sure to suggest categories
-                    <NuxtLink to="https://github.com/Tougrel/Pestoverse/discussions/68" class="text-primary-600 dark:text-primary-400">here </NuxtLink>
-                    or on Discord by contacting Tougrel, Ikanexus or any moderator!
-                </p>
+        <UForm :state="state" @submit="onSubmit" v-if="status === 'authenticated'" class="relative flex flex-col gap-4">
+            <div class="flex w-full flex-col gap-2">
+                <UAlert
+                    icon="i-mdi-exclamation-bold"
+                    title="Voting submissions"
+                    description="Please check if the pestie you are voting for is in the suggested list first and use the same name!"
+                />
             </div>
-
-            <div class="flex max-w-screen-xl flex-row flex-wrap items-center gap-4">
-                <UBadge v-for="item in categories" color="primary" variant="soft" :label="item.name" size="lg" />
+            <div class="grid grid-cols-1 gap-x-2 gap-y-4 lg:grid-cols-2 2xl:grid-cols-3">
+                <UFormGroup v-for="item in categories" :label="item.name" :description="item.description || 'N/A'" :name="'' + item.id">
+                    <UInput color="gray" v-model="state[item.id]" />
+                </UFormGroup>
             </div>
-        </div>
-        <UForm :state="state" class="space-y-4" @submit="onSubmit" v-if="status === 'authenticated'">
-            <UFormGroup v-for="item in categories" :label="`${item.name} (${item.description})`" :name="'' + item.id">
-                <UInput v-model="state[item.id]" />
-            </UFormGroup>
-            <UButton type="submit">Submit</UButton>
+            <UDivider icon="i-mdi-creation" :ui="{ border: { base: 'border-primary-700 dark:border-primary-500' } }" />
+            <div class="flex flex-col gap-2 p-4">
+                <p class="text-primary-700 dark:text-primary-500 text-lg font-bold">Suggestions</p>
+                <div class="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-6 gap-2 max-h-[272px] overflow-y-auto">
+                    <UBadge v-for="name in names" color="gray" size="lg" :label="name" />
+                </div>
+            </div>
+            <UButton block type="submit" label="Submit" icon="i-mdi-check" size="lg" disabled />
         </UForm>
+        <UAlert v-else color="red" title="Authentication" description="Please sign in to continue!" class="mb-auto" />
     </NuxtLayout>
 </template>
