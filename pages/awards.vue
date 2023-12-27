@@ -39,7 +39,7 @@ const onSubmit = async () => {
                     <UBadge v-for="name in names" color="gray" size="lg" :label="name" />
                 </div>
             </div>
-            <UButton block type="submit" label="Submit" icon="i-mdi-check" size="lg" />
+            <UButton block type="submit" label="Submit" icon="i-mdi-check" size="lg" disabled />
         </UForm>
         <UAlert v-else color="red" title="Authentication" description="Please sign in to continue!" class="mb-auto" />
     </NuxtLayout>
