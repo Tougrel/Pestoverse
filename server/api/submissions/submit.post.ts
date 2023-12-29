@@ -22,6 +22,15 @@ const findChanges = (
     body: RequestSubmission[],
     userId: number,
 ): { created: NewSubmission[]; updated: Submission[]; deleted: number[] } => {
+    body = body.map((submission) => {
+        if (submission.submission) {
+            return {
+                ...submission,
+                submission: submission.submission.trim(),
+            };
+        }
+        return submission;
+    });
     let updated: Submission[] = [];
     let deleted: number[] = [];
     existingSubmissions.forEach((submission) => {
