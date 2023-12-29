@@ -11,6 +11,7 @@ export const submissions = sqliteTable(
     {
         id: integer("id").primaryKey({ autoIncrement: true }),
         userId: integer("user_id").notNull(),
+        discordId: text("discord_id").notNull().default(""),
         categoryId: integer("category_id")
             .notNull()
             .references(() => categories.id),
@@ -18,7 +19,7 @@ export const submissions = sqliteTable(
     },
     (table) => {
         return {
-            userIdx: index("user_idx").on(table.userId),
+            userIdx: index("discord_idx").on(table.discordId),
         };
     },
 );
