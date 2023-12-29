@@ -4,7 +4,7 @@ import { type H3Event } from "h3";
 // 2 Hours
 const CACHE_TTL = 60 * 60 * 2;
 
-export const getFromCache = async (event: H3Event, key: string, data: (db: ReturnType<typeof getDb>) => any) => {
+export const getFromCache = async (event: H3Event, key: string, data: (db: ReturnType<typeof getDb>) => any, ttl: number = CACHE_TTL) => {
     const context = event.context;
     const db = getDb(context);
 
@@ -21,7 +21,7 @@ export const getFromCache = async (event: H3Event, key: string, data: (db: Retur
         } else {
             cacheValue = await data(db);
             console.log("adding value", cacheValue);
-            await cache.put(key, JSON.stringify(cacheValue), { expirationTtl: CACHE_TTL });
+            await cache.put(key, JSON.stringify(cacheValue), { expirationTtl: ttl });
             result = cacheValue;
         }
     } else {
