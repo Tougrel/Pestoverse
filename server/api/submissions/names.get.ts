@@ -8,10 +8,15 @@ export default defineEventHandler(async (event) => {
     if (!session) {
         throw createError({ statusCode: 401, statusMessage: "Unauthorized" });
     }
-    const value = await getFromCache(event, "submission_names", async (db) => {
-        // @ts-ignore
-        const result = await db.selectDistinct({ submission: submissions.submission }).from(submissions).orderBy(submissions.submission);
-        return result.map((submission) => submission.submission);
-    });
+    const value = await getFromCache(
+        event,
+        "submission_names",
+        async (db) => {
+            // @ts-ignore
+            const result = await db.selectDistinct({ submission: submissions.submission }).from(submissions).orderBy(submissions.submission);
+            return result.map((submission) => submission.submission);
+        },
+        15 * 60, // 15 minutes
+    );
     return value;
 });
