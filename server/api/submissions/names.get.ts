@@ -14,7 +14,11 @@ export default defineEventHandler(async (event) => {
         async (db) => {
             // @ts-ignore
             const result = await db.selectDistinct({ submission: submissions.submission }).from(submissions).orderBy(submissions.submission);
-            return result.map((submission) => submission.submission);
+            return result
+                .map((submission) => submission.submission?.toLowerCase())
+                .filter((item, index, arr) => {
+                    return arr.indexOf(item) === index;
+                });
         },
         15 * 60, // 15 minutes
     );
