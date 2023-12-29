@@ -26,7 +26,7 @@ const findChanges = (
         if (submission.submission) {
             return {
                 ...submission,
-                submission: submission.submission.trim(),
+                submission: submission.submission.toLowerCase().trim(),
             };
         }
         return submission;
