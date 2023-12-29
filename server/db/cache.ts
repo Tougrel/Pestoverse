@@ -20,7 +20,7 @@ export const getFromCache = async (event: H3Event, key: string, data: (db: Retur
             result = cacheValue;
         } else {
             cacheValue = await data(db);
-            console.log("adding value", cacheValue);
+            console.log("adding value", cacheValue, "with ttl", ttl);
             await cache.put(key, JSON.stringify(cacheValue), { expirationTtl: ttl });
             result = cacheValue;
         }
