@@ -18,7 +18,8 @@ export default defineEventHandler(async (event) => {
                 .map((submission) => submission.submission?.toLowerCase())
                 .filter((item, index, arr) => {
                     return arr.indexOf(item) === index;
-                });
+                })
+                .sort();
         },
         15 * 60, // 15 minutes
     );
