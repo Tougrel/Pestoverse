@@ -12,18 +12,54 @@ if ! command -v jq &>/dev/null; then
 	exit
 fi
 
+CACHE='false'
+
+while getopts 'c' flag; do
+	case "$flag" in
+	c) CACHE='true' ;;
+	esac
+done
+
+info() {
+	echo -e "$(gum log -l info $@)" >&2
+}
+
+error() {
+	echo -e "$(gum log -l error $@)" >&2
+}
+
+abort() {
+	if [ $? -gt 0 ]; then
+		error "EXIT caught. Aborting"
+		exit 1
+	fi
+}
+trap abort EXIT
+
 run_sql() {
 	query="$1"
-	wrangler d1 execute pestoverse --command "$query" --json
+	file="$2"
+	info "Running query [$query]"
+	if [ "$CACHE" = 'true' ] && [ -f $file ]; then
+		cat $file
+	else
+		result=$(gum spin --spinner line --show-output --title "Running Query..." -- wrangler d1 execute pestoverse --command "$query" --json)
+		if [ $? -ne 0 ]; then
+			error "$result"
+		else
+			result=$(echo "$result" | jq '.[0].results')
+			if [ "$CACHE" = 'true' ]; then
+				echo -e "$result" | tee "$file"
+			else
+				echo -e "$result"
+			fi
+		fi
+	fi
 }
 
 get_categories() {
 	query="select id, name from categories"
-	# if [ -f categories.json ]; then
-	# 	cat categories.json
-	# else
-	run_sql "$query" | jq '.[0].results' #| tee categories.json
-	# fi
+	run_sql "$query" "categories.json"
 }
 
 get_category_name() {
@@ -34,15 +70,13 @@ get_category_name() {
 
 get_counts() {
 	query="select category_id, lower(submission) as submission, count(submission) as count from submissions group by lower(submission), category_id collate nocase order by count(submission) desc"
-	# if [ -f counts.json ]; then
-	# 	cat counts.json
-	# else
-	run_sql "$query" | jq '.[0].results' #| tee counts.json
-	# fi
+	run_sql "$query" "counts.json"
 }
 
 categories=$(get_categories)
+
 category_ids=($(echo "$categories" | jq -r '.[].id' | tr '\n' ' '))
+
 counts=$(get_counts)
 
 for category_id in "${category_ids[@]}"; do

@@ -12,12 +12,45 @@ if ! command -v jq &>/dev/null; then
 	exit
 fi
 
+CACHE='false'
+
+while getopts 'c' flag; do
+	case "$flag" in
+	c) CACHE='true' ;;
+	esac
+done
+
 info() {
-	gum log -t kitchen -l info $@
+	echo -e "$(gum log -l info "$@")" >&2
 }
 
 error() {
-	gum log -t kitchen -l error $@
+	echo -e "$(gum log -l error "$@")" >&2
+}
+
+warn() {
+	echo -e "$(gum log -l warn "$@")" >&2
+}
+
+run_sql() {
+	query="$1"
+	file="$2"
+	info "Running query [$query]"
+	if [ "$CACHE" = 'true' ] && [ -f $file ]; then
+		cat $file
+	else
+		result=$(gum spin --spinner line --show-output --title "Running Query..." -- wrangler d1 execute pestoverse --command "$query" --json)
+		if [ $? -ne 0 ]; then
+			error "$result"
+		else
+			result=$(echo "$result" | jq '.[0].results')
+			if [ "$CACHE" = 'true' ]; then
+				echo -e "$result" | tee "$file"
+			else
+				echo -e "$result"
+			fi
+		fi
+	fi
 }
 
 abort() {
@@ -28,6 +61,25 @@ abort() {
 }
 trap abort EXIT
 
+search_for_needle() {
+	search="$1"
+	query="SELECT id, submission FROM submissions WHERE submission like '%$search%'"
+	run_sql "$query" "results-$search.json"
+}
+
+get_ids_to_change() {
+	to_change="$1"
+	entries="$2"
+	ids_to_change=$(jq -r --argjson to_change "$to_change" '.[] | select(.submission as $in | $to_change | index($in)) | .id' <<<"$entries")
+
+	if [ -z "$ids_to_change" ]; then
+		error "Nothing selected to change"
+		exit 1
+	fi
+
+	echo "$ids_to_change" | tr '\n' ',' | sed 's/,$//'
+}
+
 search=$(gum input --placeholder "Query to search for")
 if [ -z $search ]; then
 	error "Please specify a query"
@@ -35,23 +87,20 @@ if [ -z $search ]; then
 fi
 info "Searching for: $search"
 
-query="SELECT id, submission FROM submissions WHERE submission like '%$search%'"
-info "Running query '$query'"
-entries=$(gum spin -s line --title "Searching..." --show-output -- wrangler d1 execute pestoverse --command "$query" --json)
-choices=$(jq -r '.[0].results[].submission' <<<"$entries" | sed 's/ /_/g' | sort | uniq)
+entries=$(search_for_needle "$search")
+choices=$(jq -r '.[].submission' <<<"$entries" | sed 's/ /_/g' | sort | uniq)
+
 selections=$(gum choose --no-limit --header "Values to change" --height=20 ${choices[@]})
 to_change=$(jq -c -n '$ARGS.positional' --args ${selections[@]} | sed 's/_/ /g')
 
 info "Will change values: $to_change"
 
-ids_to_change=$(jq -r --argjson to_change "$to_change" '.[0].results[] | select(.submission as $in | $to_change | index($in)) | .id' <<<"$entries")
+ids_to_change=$(get_ids_to_change "$to_change" "$entries")
 
 if [ -z "$ids_to_change" ]; then
 	error "Nothing selected to change"
 	exit 1
 fi
-
-ids_to_change="$(echo "$ids_to_change" | tr '\n' ',' | sed 's/,$//')"
 
 info "ids_to_change: $ids_to_change"
 
@@ -59,7 +108,12 @@ new_value=$(gum input --placeholder "New value")
 
 update_query="UPDATE submissions SET submission = '$new_value' WHERE id IN ($ids_to_change)"
 if gum confirm "Execute $update_query?"; then
-	gum spin -s line --title "Updating..." --show-output -- wrangler d1 execute pestoverse --command "$update_query"
+	wrangler_command="wrangler d1 execute pestoverse --command \"$update_query\" --json"
+	if [ "$CACHE" = 'true' ]; then
+		warn "would run [wrangler d1 execute pestoverse --command \"$update_query\" --json]"
+	else
+		gum spin -s line --title "Updating..." --show-output -- wrangler d1 execute pestoverse --command "$update_query" --json
+	fi
 	info "Successfully Updated!"
 else
 	info "Aborted"
