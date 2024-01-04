@@ -19,7 +19,7 @@
         "pages:preview": "wrangler pages dev dist/ --kv=KV_CACHE",
         "postinstall": "nuxt prepare",
         "pretty": "prettier --write \"./**/*.{ts,vue}\"",
-        "updateimages": "node update_image_sizes.mjs",
+        "updateimages": "node scripts/update_image_sizes.mjs",
         "migrate:generate": "drizzle-kit generate:sqlite",
         "migrate:update": "drizzle-kit up:sqlite",
         "migrate:local": "drizzle-kit push:sqlite --driver better-sqlite --schema server/db/schema.ts --url local.db",
