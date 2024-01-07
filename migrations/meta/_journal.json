@@ -15,6 +15,13 @@
       "when": 1703865379895,
       "tag": "0001_smiling_mother_askani",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1704652222057,
+      "tag": "0002_exotic_pestilence",
+      "breakpoints": true
     }
   ]
 }
