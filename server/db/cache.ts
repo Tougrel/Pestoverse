@@ -21,7 +21,11 @@ export const getFromCache = async (event: H3Event, key: string, data: (db: Retur
         } else {
             cacheValue = await data(db);
             console.log("adding value", cacheValue, "with ttl", ttl);
-            await cache.put(key, JSON.stringify(cacheValue), { expirationTtl: ttl });
+            let options = {};
+            if (ttl > 0) {
+                options = { expirationTtl: ttl };
+            }
+            await cache.put(key, JSON.stringify(cacheValue), options);
             result = cacheValue;
         }
     } else {

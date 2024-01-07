@@ -24,6 +24,18 @@ export const submissions = sqliteTable(
     },
 );
 
+export const flags = sqliteTable("flags", {
+    id: integer("id").primaryKey({ autoIncrement: true }),
+    key: text("key").notNull().unique(),
+    value: integer("value", { mode: "boolean" }).notNull(),
+});
+
+export const settings = sqliteTable("settings", {
+    id: integer("id").primaryKey({ autoIncrement: true }),
+    key: text("key").notNull().unique(),
+    value: text("value").notNull(),
+});
+
 export const submissionNamesView = sqliteView("submissions_view").as((qb) => qb.selectDistinct({ submission: submissions.submission }).from(submissions));
 
 export type Category = typeof categories.$inferSelect;

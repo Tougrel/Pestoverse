@@ -3,6 +3,9 @@ const { status } = useAuth();
 const { data: categories } = await useFetch("/api/submissions/categories");
 const { data: submissions } = await useFetch("/api/submissions");
 const { data: names } = await useFetch("/api/submissions/names");
+const { data: flagSubmissionEnabled } = await useFetch("/api/flags/submissions_enabled");
+
+const submissionDisabled = computed(() => flagSubmissionEnabled.value === false);
 
 type SubmissionState = { [key: number]: string };
 
@@ -43,6 +46,12 @@ const onSubmit = async () => {
                     title="Voting submissions"
                     description="Please check if the pestie you are voting for is in the suggested list first and use the same name!"
                 />
+                <UAlert icon="i-mdi-alarm" title="Voting Deadlines">
+                    <template #description>
+                        <p>Initial candidate submissions are open from 29th December to 12th January.</p>
+                        <p>Final Voting will then be open from 14th January to 26th January.</p>
+                    </template>
+                </UAlert>
             </div>
             <div class="grid grid-cols-1 gap-x-2 gap-y-4 lg:grid-cols-2 2xl:grid-cols-3">
                 <UFormGroup v-for="item in categories" :label="item.name" :description="item.description || 'N/A'" :name="'' + item.id">
@@ -56,7 +65,7 @@ const onSubmit = async () => {
                     <UBadge v-for="name in names" color="gray" size="lg" :label="name" />
                 </div>
             </div>
-            <UButton block type="submit" label="Submit" icon="i-mdi-check" size="lg" />
+            <UButton block type="submit" label="Submit" icon="i-mdi-check" size="lg" :disabled="submissionDisabled" />
         </UForm>
         <UAlert v-else color="red" title="Authentication" description="Please sign in to continue!" class="mb-auto" />
     </NuxtLayout>
