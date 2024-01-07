@@ -4,10 +4,14 @@
 ## Script to get the top 4 submissions for each category ##
 ###########################################################
 
-## Usage: bash ./get-counts.sh [-c]
-##    -c  Cache database data to file (optional)
+## Usage: bash ./get-counts.sh [-c] [-o FILE]
+##    -c            Cache database data to file (optional)
+##    -o [filename] Output file (optional)
 ## e.g. bash ./get-counts.sh
 ## e.g. bash ./get-counts.sh -c
+## e.g. bash ./get-counts.sh -c -o output.sql
+## e.g. bash ./get-counts.sh -co output.sql # does the same thing as above
+## e.g. bash ./get-counts.sh -o output.sql
 
 # Sets a bunch of bash safetynet settings - see https://gist.github.com/mohanpedala/1e2ff5661761d3abd0385e8223e16425 for more info
 set -euo pipefail
@@ -25,11 +29,14 @@ if ! command -v jq &>/dev/null; then
 fi
 
 CACHE='false'
+OUTPUT=''
 
 # Handle the `-c` flag mentioned above in usage
-while getopts 'c' flag; do
-	case "$flag" in
+# Handle the `-o` option mentioned above in usage
+while getopts 'co:' arg; do
+	case "$arg" in
 	c) CACHE='true' ;;
+	o) OUTPUT="$OPTARG" ;;
 	esac
 done
 
@@ -69,7 +76,7 @@ run_sql() {
 	if [ "$CACHE" = 'true' ] && [ -f $file ]; then
 		cat $file
 	else
-		result=$(gum spin --spinner line --show-output --title "Running Query..." -- wrangler d1 execute pestoverse --command "$query" --json)
+		result=$(gum spin --spinner line --show-output --title "Running Query..." -- npx wrangler d1 execute pestoverse --command "$query" --json)
 		if [ $? -ne 0 ]; then
 			error "$result"
 		else
@@ -105,8 +112,21 @@ category_ids=($(echo "$categories" | jq -r '.[].id' | tr '\n' ' '))
 
 counts=$(get_counts)
 
+output_sql="false"
+if [ "z$OUTPUT" != "z" ]; then
+	output_sql="true"
+	info "Outputting SQL seed file to $OUTPUT"
+fi
+sql_data='insert into `vote_options` (`category_id`, `name`) values'
 for category_id in "${category_ids[@]}"; do
 	# Creates a nicer header with a border
 	gum style --border double "$(get_category_name "$categories" "$category_id")"
 	echo "$counts" | jq -c ".[] | select(.category_id == $category_id)" | jq -sr '.[:4][] | "\(.submission) (\(.count))"'
+	if [ "$output_sql" = "true" ]; then
+		category_data="$(echo "$counts" | jq -c ".[] | select(.category_id == $category_id)" | jq -sr ".[:4][] | \"(\(.category_id), '\(.submission)'),\"" | tr '\n' ' ')"
+		sql_data="$sql_data $category_data"
+	fi
 done
+if [ "$output_sql" = "true" ]; then
+	echo $sql_data | sed 's/,$/;/' >$OUTPUT
+fi
