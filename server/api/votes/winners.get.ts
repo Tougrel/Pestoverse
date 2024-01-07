@@ -57,7 +57,7 @@ export default defineEventHandler(async (event) => {
                 winners.sort((a, b) => b.voteCount - a.voteCount);
                 winners.splice(1);
             });
-            return results;
+            return Object.fromEntries(winnersByCategory);
         },
         0, // don't want to automatically refresh this
     );
