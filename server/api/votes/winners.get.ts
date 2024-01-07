@@ -1,5 +1,4 @@
-import { count, eq } from "drizzle-orm";
-import { getTopVotesByCategory } from "~/server/utils/votes";
+import { count, eq, sql } from "drizzle-orm";
 
 type Winner = {
     name?: string;
@@ -24,40 +23,41 @@ export default defineEventHandler(async (event) => {
         event,
         "winners",
         async (db) => {
-            const winners = (await db
-                // @ts-ignore
+            const rankedVotes = db
+                //@ts-expect-error TS doesn't like overloaded methods on union types
                 .select({
                     categoryId: votes.categoryId,
                     optionId: votes.optionId,
-                    voteCount: count(votes.optionId),
-                    categoryName: categories.name,
+                    voteCount: count(votes.optionId).as("voteCount"),
+                    rank: sql`row_number() over (partition by ${votes.categoryId} order by count(*) desc)`.as("rank"),
                 })
                 .from(votes)
-                .leftJoin(categories, eq(votes.categoryId, categories.id))
-                .groupBy(votes.categoryId, votes.optionId)) as unknown as Winner[];
-            const results = winners.map((winner) => {
-                const winnerData = options[winner.categoryId][winner.optionId];
-                const winnerName = winnerData.label;
-                return {
-                    ...winner,
-                    name: winnerName,
-                };
-            }) as Winner[];
-            const winnersByCategory = results.reduce((acc, item) => {
-                const { categoryName } = item;
-                if (categoryName === undefined) return acc;
-                if (acc.has(categoryName)) {
-                    acc.get(categoryName)?.push(item);
-                } else {
-                    acc.set(categoryName, [item]);
-                }
-                return acc;
-            }, new Map<string, Winner[]>());
-            winnersByCategory.forEach((winners) => {
-                winners.sort((a, b) => b.voteCount - a.voteCount);
-                winners.splice(1);
-            });
-            return Object.fromEntries(winnersByCategory);
+                .groupBy(votes.categoryId, votes.optionId)
+                .as("rankedVotes");
+            const winners = (await db
+                //@ts-expect-error
+                .select({
+                    categoryId: rankedVotes.categoryId,
+                    categoryName: categories.name,
+                    optionId: rankedVotes.optionId,
+                    //@ts-expect-error this does exist but TS says it doesn't
+                    voteCount: rankedVotes.voteCount,
+                })
+                .from(rankedVotes)
+                //@ts-expect-error this does exist but TS says it doesn't
+                .where(eq(rankedVotes.rank, 1))
+                .leftJoin(categories, eq(rankedVotes.categoryId, categories.id))) as unknown as Winner[];
+            let result = winners.reduce(
+                (acc, item) => {
+                    const { categoryId, categoryName, voteCount, optionId } = item;
+                    const winnerData = options[categoryId][optionId];
+                    const name = winnerData.label;
+                    acc[categoryName] = { name, votes: voteCount };
+                    return acc;
+                },
+                {} as { [category: string]: { name: string; votes: number } },
+            );
+            return result;
         },
         0, // don't want to automatically refresh this
     );
