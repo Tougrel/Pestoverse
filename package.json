@@ -10,7 +10,7 @@
     },
     "contributors": [],
     "scripts": {
-        "refresh": "nuxt clean && yarn run postinstall",
+        "refresh": "nuxt cleanup && yarn run postinstall",
         "build": "nuxt build",
         "pages:build": "cross-env NITRO_PRESET=cloudflare_pages nuxt build",
         "dev": "nuxt dev",
