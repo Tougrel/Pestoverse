@@ -1,5 +1,4 @@
-import { getFromCache } from "~/server/db/cache";
-import { categories } from "~/server/db/schema";
+import { categories } from "~/server/utils/db/schema";
 
 export default defineEventHandler(async (event) => {
     return await getFromCache(event, "categories", async (db) => {

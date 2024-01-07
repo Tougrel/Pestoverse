@@ -1,0 +1,18 @@
+INSERT INTO `categories` (`name`, `description`) VALUES
+    ('Mod of the year', 'The mod that helped a lot on stream and in Discord'),
+    ('Best Yunii fanart', 'The pestie who made the best Yuniiho fanart'),
+    ('Artist of the year', 'The pestie who is an incredible artist, sharing their art on Discord'),
+    ('Most chaotic pestie', 'The pestie that causes the most Ĉ̸̤ḧ̶̲́a̶̗͘o̸̭͘s̵͇͌ on streams or discord'),
+    ('Most biteable pestie', 'The pestie which everyone was biting because they were super cute (we are not food)'),
+    ('The chaddest pestie', 'The one who contributed the most making the community a better place'),
+    ('Best gambler', 'The pestie that made good decisions in gamba'),
+    ('Worst gambler', 'The pestie that made the worst decisions and lost almost everything'),
+    ('Best gamer', 'The pestie who showed great skills in gaming surpassing everyone else'),
+    ('Most wholesome pestie', 'The pestie that everyone adores'),
+    ('Most active discord pestie', 'The pestie that is always present in Discord'),
+    ('Most banned pestie', 'The destined pestie that was banned the most'),
+    ('Best minecraft builder', 'Who made the best builds in the pesto land?'),
+    ('Best cook', 'What pestie shared really cool food that made everyone drool'),
+    ('Best clipper', 'The one pestie that clipped all the best moments'),
+    ('Best copypasta inventor', 'Who invented the best and worst copypasta texts'),
+    ('Pestie of the Year', 'The best overall pestie this year; their charisma, talent, and dedication have made them the standout amongst all pesties.');

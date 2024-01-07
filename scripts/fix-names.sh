@@ -71,7 +71,7 @@ run_sql() {
 	if [ "$CACHE" = 'true' ] && [ -f $file ]; then
 		cat $file
 	else
-		result=$(gum spin --spinner line --show-output --title "Running Query..." -- wrangler d1 execute pestoverse --command "$query" --json)
+		result=$(gum spin --spinner line --show-output --title "Running Query..." -- npx wrangler d1 execute pestoverse --command "$query" --json)
 		if [ $? -ne 0 ]; then
 			error "$result"
 		else
@@ -133,11 +133,10 @@ new_value=$(gum input --placeholder "New value")
 
 update_query="UPDATE submissions SET submission = '$new_value' WHERE id IN ($ids_to_change)"
 if gum confirm "Execute $update_query?"; then
-	wrangler_command="wrangler d1 execute pestoverse --command \"$update_query\" --json"
 	if [ "$CACHE" = 'true' ]; then
-		warn "would run [wrangler d1 execute pestoverse --command \"$update_query\" --json]"
+		warn "would run [npx wrangler d1 execute pestoverse --command \"$update_query\" --json]"
 	else
-		gum spin -s line --title "Updating..." --show-output -- wrangler d1 execute pestoverse --command "$update_query" --json
+		gum spin -s line --title "Updating..." --show-output -- npx wrangler d1 execute pestoverse --command "$update_query" --json
 	fi
 	info "Successfully Updated!"
 else

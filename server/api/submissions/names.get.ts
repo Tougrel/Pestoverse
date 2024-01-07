@@ -1,13 +1,7 @@
-import { submissions } from "~/server/db/schema";
-import { authOptions } from "~/server/api/auth/[...]";
-import { getServerSession } from "#auth";
-import { getFromCache } from "~/server/db/cache";
+import { submissions } from "~/server/utils/db/schema";
 
 export default defineEventHandler(async (event) => {
-    const session = await getServerSession(event, authOptions);
-    if (!session) {
-        throw createError({ statusCode: 401, statusMessage: "Unauthorized" });
-    }
+    const session = await getLoggedInSession(event);
     const value = await getFromCache(
         event,
         "submission_names",

@@ -10,7 +10,7 @@
     },
     "contributors": [],
     "scripts": {
-        "refresh": "nuxt clean && yarn run postinstall",
+        "refresh": "nuxt cleanup && yarn run postinstall",
         "build": "nuxt build",
         "pages:build": "cross-env NITRO_PRESET=cloudflare_pages nuxt build",
         "dev": "nuxt dev",
@@ -22,7 +22,9 @@
         "updateimages": "node scripts/update_image_sizes.mjs",
         "migrate:generate": "drizzle-kit generate:sqlite",
         "migrate:update": "drizzle-kit up:sqlite",
-        "migrate:local": "drizzle-kit push:sqlite --driver better-sqlite --schema server/db/schema.ts --url local.db",
+        "migrate:local": "drizzle-kit push:sqlite",
+        "seed:submissions": "tsx scripts/seed-submissions.ts",
+        "seed:votes": "tsx scripts/seed-votes.ts",
         "drizzle:studio": "drizzle-kit studio",
         "wrangler": "wrangler"
     },
