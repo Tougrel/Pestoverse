@@ -1,4 +1,4 @@
-import { and, eq, inArray, sql, count, desc } from "drizzle-orm";
+import { and, eq, inArray, sql, count, desc, lt } from "drizzle-orm";
 
 type Database = ReturnType<typeof getDb>;
 
@@ -49,32 +49,44 @@ export async function getTopVotesByCategory(db: Database) {
         categoryId: number;
         label: string;
         entryCount: number;
+        rank?: number;
     };
-    // for some reason select({}) is valid, but typescript doesn't like it
-    const data = (await db
-        // @ts-ignore
+    const rankedSubmissions = db
+        //@ts-expect-error TS doesn't like overloaded methods on union types
         .select({
             categoryId: submissions.categoryId,
-            label: sql`lower(${submissions.submission})`,
-            entryCount: count(submissions.submission),
+            submission: sql`lower(${submissions.submission})`.as("submission"),
+            entryCount: count(submissions.submission).as("entryCount"),
+            rank: sql`row_number() over (partition by ${submissions.categoryId} order by count(*) desc)`.as("rank"),
         })
         .from(submissions)
         .groupBy(sql`lower(${submissions.submission})`, submissions.categoryId)
-        .orderBy(desc(count(submissions.submission)))) as unknown as ResultData[];
-    const categories = data.reduce((acc, current) => {
-        const { categoryId } = current;
-        if (categoryId === undefined) return acc;
-        if (acc.has(categoryId)) {
-            acc.get(categoryId)?.push(current);
-        } else {
-            acc.set(categoryId, [current]);
-        }
-        return acc;
-    }, new Map<number, ResultData[]>());
-    categories.forEach((value) => {
-        value.sort((a, b) => b.entryCount - a.entryCount);
-        value.splice(4);
-        value.sort((a, b) => a.label?.localeCompare(b.label));
-    });
-    return Object.fromEntries(categories);
+        .as("rankedSubmissions");
+    const data = (await db
+        // @ts-expect-error
+        .select({
+            categoryId: rankedSubmissions.categoryId,
+            label: rankedSubmissions.submission,
+            // @ts-expect-error says it doesn't exist, but it does
+            entryCount: rankedSubmissions.entryCount,
+            // @ts-expect-error says it doesn't exist, but it does
+            rank: rankedSubmissions.rank,
+        })
+        .from(rankedSubmissions)
+        // @ts-expect-error says it doesn't exist, but it does
+        .where(lt(rankedSubmissions.rank, 5))
+        .orderBy(rankedSubmissions.submission)) as unknown as ResultData[];
+    const categories = data.reduce(
+        (acc, current) => {
+            const { categoryId } = current;
+            if (categoryId in acc) {
+                acc[categoryId].push(current);
+            } else {
+                acc[categoryId] = [current];
+            }
+            return acc;
+        },
+        {} as { [categoryId: number]: ResultData[] },
+    );
+    return categories;
 }
