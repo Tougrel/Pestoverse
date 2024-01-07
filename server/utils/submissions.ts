@@ -1,4 +1,3 @@
-import { type Submission, submissions, InsertSubmission } from "./db/schema";
 import { and, eq, inArray, or } from "drizzle-orm";
 
 type Database = ReturnType<typeof getDb>;

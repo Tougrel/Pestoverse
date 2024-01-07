@@ -22,7 +22,7 @@
         "updateimages": "node scripts/update_image_sizes.mjs",
         "migrate:generate": "drizzle-kit generate:sqlite",
         "migrate:update": "drizzle-kit up:sqlite",
-        "migrate:local": "drizzle-kit push:sqlite --driver better-sqlite --schema server/db/schema.ts --url local.db",
+        "migrate:local": "drizzle-kit push:sqlite",
         "drizzle:studio": "drizzle-kit studio",
         "wrangler": "wrangler"
     },

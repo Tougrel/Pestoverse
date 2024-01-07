@@ -1,57 +1,45 @@
-import { type Vote, votes } from "./db/schema";
-import { and, eq, inArray, or } from "drizzle-orm";
+import { and, eq, inArray } from "drizzle-orm";
 
 type Database = ReturnType<typeof getDb>;
 
-export type SubmissionEntry = {
+export type VoteEntry = {
     id?: number;
     categoryId: number;
-    value: string | null;
-    updateId?: boolean;
-};
-
-const BASE_SUBMISSION = {
-    userId: 0,
+    optionId: number;
 };
 
 export async function getVotes(db: Database, userId: string): Promise<Vote[]> {
     return await db.select().from(votes).where(eq(votes.discordId, userId));
 }
 
-export async function addSubmissions(db: Database, userId: string, entries: SubmissionEntry[]): Promise<void> {
-    const submissionList: InsertVote[] = entries.map((entry) => ({
-        ...BASE_SUBMISSION,
+export async function addVotes(db: Database, userId: string, entries: VoteEntry[]): Promise<void> {
+    const voteList: InsertVote[] = entries.map((entry) => ({
         discordId: userId,
         categoryId: entry.categoryId,
-        submission: entry.value,
+        optionId: entry.optionId,
     }));
-    if (submissionList.length > 0) {
-        await db.insert(submissions).values(submissionList);
+    if (voteList.length > 0) {
+        await db.insert(votes).values(voteList);
     }
 }
 
-export async function deleteSubmissions(db: Database, userId: string, ids: number[]): Promise<void> {
+export async function deleteVotes(db: Database, userId: string, ids: number[]): Promise<void> {
     if (ids.length > 0) {
-        await db.delete(submissions).where(and(inArray(submissions.id, ids), or(eq(submissions.discordId, userId), eq(submissions.userId, parseInt(userId)))));
+        await db.delete(votes).where(and(inArray(votes.id, ids), eq(votes.discordId, userId)));
     }
 }
 
-export async function updateSubmissions(db: Database, userId: string, entries: SubmissionEntry[]) {
+export async function updateVotes(db: Database, userId: string, entries: VoteEntry[]) {
     for (let i in entries) {
         let entry = entries[i];
         if (entry.id === undefined) {
             continue;
         }
-        let updateData = {
-            submission: entry.value,
-        } as { submission: string | null; discordId?: string; userId?: number };
-        if (entry.updateId) {
-            updateData = {
-                discordId: userId,
-                ...BASE_SUBMISSION,
-                ...updateData,
-            };
-        }
-        await db.update(submissions).set(updateData).where(eq(submissions.id, entry.id));
+        await db
+            .update(votes)
+            .set({
+                optionId: entry.optionId,
+            })
+            .where(and(eq(votes.id, entry.id), eq(votes.discordId, userId)));
     }
 }

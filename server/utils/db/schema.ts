@@ -19,7 +19,34 @@ export const submissions = sqliteTable(
     },
     (table) => {
         return {
-            userIdx: index("discord_idx").on(table.discordId),
+            userIdx: index("submissions_user_idx").on(table.discordId),
+        };
+    },
+);
+
+export const voteOptions = sqliteTable("vote_options", {
+    id: integer("id").primaryKey({ autoIncrement: true }),
+    categoryId: integer("category_id")
+        .notNull()
+        .references(() => categories.id),
+    name: text("name").notNull(),
+});
+
+export const votes = sqliteTable(
+    "votes",
+    {
+        id: integer("id").primaryKey({ autoIncrement: true }),
+        discordId: text("discord_id").notNull(),
+        optionId: integer("option_id")
+            .notNull()
+            .references(() => voteOptions.id),
+        categoryId: integer("category_id")
+            .notNull()
+            .references(() => categories.id),
+    },
+    (table) => {
+        return {
+            userIdx: index("votes_user_idx").on(table.discordId),
         };
     },
 );
@@ -31,3 +58,8 @@ export type InsertCategory = typeof categories.$inferInsert;
 
 export type Submission = typeof submissions.$inferSelect;
 export type InsertSubmission = typeof submissions.$inferInsert;
+
+export type VoteOption = typeof voteOptions.$inferSelect;
+
+export type Vote = typeof votes.$inferSelect;
+export type InsertVote = typeof votes.$inferInsert;

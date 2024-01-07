@@ -1,4 +1,3 @@
-import { getDb } from "./database";
 import { type H3Event } from "h3";
 
 // 2 Hours
