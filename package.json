@@ -23,6 +23,8 @@
         "migrate:generate": "drizzle-kit generate:sqlite",
         "migrate:update": "drizzle-kit up:sqlite",
         "migrate:local": "drizzle-kit push:sqlite",
+        "seed:submissions": "tsx scripts/seed-submissions.ts",
+        "seed:votes": "tsx scripts/seed-votes.ts",
         "drizzle:studio": "drizzle-kit studio",
         "wrangler": "wrangler"
     },

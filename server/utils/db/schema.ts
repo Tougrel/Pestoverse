@@ -24,22 +24,12 @@ export const submissions = sqliteTable(
     },
 );
 
-export const voteOptions = sqliteTable("vote_options", {
-    id: integer("id").primaryKey({ autoIncrement: true }),
-    categoryId: integer("category_id")
-        .notNull()
-        .references(() => categories.id),
-    name: text("name").notNull(),
-});
-
 export const votes = sqliteTable(
     "votes",
     {
         id: integer("id").primaryKey({ autoIncrement: true }),
         discordId: text("discord_id").notNull(),
-        optionId: integer("option_id")
-            .notNull()
-            .references(() => voteOptions.id),
+        optionId: integer("option_id").notNull(),
         categoryId: integer("category_id")
             .notNull()
             .references(() => categories.id),
