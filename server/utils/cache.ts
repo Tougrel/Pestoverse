@@ -1,4 +1,3 @@
-import { getDb } from "./database";
 import { type H3Event } from "h3";
 
 // 2 Hours
@@ -21,7 +20,11 @@ export const getFromCache = async (event: H3Event, key: string, data: (db: Retur
         } else {
             cacheValue = await data(db);
             console.log("adding value", cacheValue, "with ttl", ttl);
-            await cache.put(key, JSON.stringify(cacheValue), { expirationTtl: ttl });
+            const cacheOpts = {} as KVNamespacePutOptions;
+            if (ttl > 0) {
+                cacheOpts.expirationTtl = ttl;
+            }
+            await cache.put(key, JSON.stringify(cacheValue), cacheOpts);
             result = cacheValue;
         }
     } else {

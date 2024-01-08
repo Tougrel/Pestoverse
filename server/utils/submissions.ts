@@ -1,11 +1,8 @@
-import { getDb } from "./database";
-import { Submission, submissions } from "./schema";
 import { and, eq, inArray, or } from "drizzle-orm";
 
 type Database = ReturnType<typeof getDb>;
-export type NewSubmission = Omit<Submission, "id">;
 
-export type Entry = {
+export type SubmissionEntry = {
     id?: number;
     categoryId: number;
     value: string | null;
@@ -23,8 +20,8 @@ export async function getSubmissions(db: Database, userId: string): Promise<Subm
         .where(or(eq(submissions.discordId, userId), eq(submissions.userId, parseInt(userId))));
 }
 
-export async function addSubmissions(db: Database, userId: string, entries: Entry[]): Promise<void> {
-    const submissionList: NewSubmission[] = entries.map((entry) => ({
+export async function addSubmissions(db: Database, userId: string, entries: SubmissionEntry[]): Promise<void> {
+    const submissionList: InsertSubmission[] = entries.map((entry) => ({
         ...BASE_SUBMISSION,
         discordId: userId,
         categoryId: entry.categoryId,
@@ -41,7 +38,7 @@ export async function deleteSubmissions(db: Database, userId: string, ids: numbe
     }
 }
 
-export async function updateSubmissions(db: Database, userId: string, entries: Entry[]) {
+export async function updateSubmissions(db: Database, userId: string, entries: SubmissionEntry[]) {
     for (let i in entries) {
         let entry = entries[i];
         if (entry.id === undefined) {
