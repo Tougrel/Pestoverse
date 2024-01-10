@@ -4,12 +4,14 @@ const { data: categories } = await useFetch("/api/submissions/categories");
 
 type SubmissionState = { [key: number]: string };
 
-const state = reactive<SubmissionState>({} as SubmissionState);
+let state = reactive<SubmissionState>({});
+let suggestions = reactive([]);
 if (status.value === "authenticated") {
     const { data: submissions } = await useFetch<SubmissionState>("/api/submissions");
     const { data: names } = await useFetch("/api/submissions/names");
 
-    state.value = submissions.value;
+    state = submissions.value || {};
+    suggestions = names.value || [];
 }
 
 const toast = useToast();
@@ -40,6 +42,14 @@ const onSubmit = async () => {
 
 <template>
     <NuxtLayout name="default">
+        <DevOnly>
+            <code>
+                {{ state }}
+            </code>
+            <code>
+                {{ names }}
+            </code>
+        </DevOnly>
         <UForm :state="state" @submit="onSubmit" class="relative flex flex-col gap-4">
             <div class="flex w-full flex-col gap-2">
                 <UAlert
@@ -58,7 +68,7 @@ const onSubmit = async () => {
             <div class="flex flex-col gap-2 p-4">
                 <p class="text-primary-700 dark:text-primary-500 text-lg font-bold">Suggestions</p>
                 <div class="grid max-h-[272px] grid-cols-1 gap-2 overflow-y-auto md:grid-cols-4 lg:grid-cols-6">
-                    <UBadge v-for="name in names" color="gray" size="lg" :label="name" />
+                    <UBadge v-for="name in suggestions" color="gray" size="lg" :label="name" />
                 </div>
             </div>
             <UButton block type="submit" label="Submit" icon="i-mdi-check" size="lg" :disabled="status !== 'authenticated'" />
