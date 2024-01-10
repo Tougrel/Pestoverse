@@ -25,7 +25,7 @@ if (status.value === "authenticated") {
 
 const toast = useToast();
 const onSubmit = async () => {
-    const result = await fetch("/api/submissions/submit", {
+    const result = await fetch(`/api/${mode.value}/submit`, {
         method: "POST",
         body: JSON.stringify(state),
     });
@@ -52,12 +52,8 @@ const onSubmit = async () => {
 <template>
     <NuxtLayout name="default">
         <DevOnly>
-            <code>
-                Submissions / Votes: {{ state }}
-            </code>
-            <code>
-                Suggestions / Options: {{ secondary }}
-            </code>
+            <code> Submissions / Votes: {{ state }} </code>
+            <code> Suggestions / Options: {{ secondary }} </code>
         </DevOnly>
         <UForm :state="state" @submit="onSubmit" class="relative flex flex-col gap-4">
             <div class="flex w-full flex-col gap-2">
@@ -66,14 +62,11 @@ const onSubmit = async () => {
                     title="Voting submissions"
                     description="Please check if the pestie you are voting for is in the suggested list first and use the same name!"
                 />
-                <UAlert v-if="status !== 'authenticated'" color="red" title="Authentication"
-                        description="You must login before you can vote!" />
+                <UAlert v-if="status !== 'authenticated'" color="red" title="Authentication" description="You must login before you can vote!" />
             </div>
-            <AwardsSubmissions v-if="mode === 'submissions'" :categories="categories" :state="state"
-                               :names="secondary" />
+            <AwardsSubmissions v-if="mode === 'submissions'" :categories="categories" :state="state" :names="secondary" />
             <AwardsVotes v-if="mode === 'votes'" :categories="categories" :state="state" :options="secondary" />
-            <UButton block type="submit" label="Submit" icon="i-mdi-check" size="lg"
-                     :disabled="status !== 'authenticated'" />
+            <UButton block type="submit" label="Submit" icon="i-mdi-check" size="lg" :disabled="status !== 'authenticated'" />
         </UForm>
     </NuxtLayout>
 </template>
