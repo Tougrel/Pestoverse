@@ -35,7 +35,7 @@ const emotes = [
     pestoSailor,
     pestoToilet,
     plotPesto,
-    possessedPestie,
+    // possessedPestie,
     pov,
     scream,
     shruge,

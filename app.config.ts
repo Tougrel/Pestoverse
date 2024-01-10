@@ -29,8 +29,8 @@ export default defineAppConfig({
 
         card: {
             background: "bg-white dark:bg-navigation",
-            divide: "divide-y divide-slate-500 dark:divide-slate-700",
-            ring: "ring-1 ring-slate-500 dark:ring-slate-700",
+            divide: "divide-y divide-gray-500 dark:divide-gray-600",
+            ring: "ring-2 ring-slate-500 dark:ring-neutral-600",
         },
 
         slideover: {
