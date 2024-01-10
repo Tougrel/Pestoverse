@@ -17,6 +17,22 @@ Credits will be given to all pesties that help (even with bug fixing and ideas)!
 
 ---
 
+## How to set up the database locally
+
+1. Initialise the database: `yarn migrate:local`
+   This will create the database and run migrations.
+2. Seed the categories table: `sqlite3 local.db < ./migrations/categories_seed.sql`
+3. Seed some submissions into the database with `yarn seed:submissions`
+4. Seed some votes into the database with `yarn seed:votes`
+
+N.B. Steps 3 and 4 can be run multiple times and they will add new submissions and votes to the database.
+
+## Performing D1 migrations (in beta/prod)
+
+Migrations cannot be done via drizzle-kit directly, so we have to execute SQL scripts via wrangler
+
+1. `npx wrangler d1 execute pestoverse --file ./migrations/[filename].sql`
+
 ## How to run the website
 
 > Keep in mind that we deploy the website in cloudflare pages so everything we add needs to be tested there. To be sure that everything works correctly you can run the `NITRO_PRESET=cloudflare-pages yarn build` script and it will build it with the cloudflare preset.
