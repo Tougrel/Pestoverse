@@ -1,13 +1,12 @@
 <script setup lang="ts">
 const { status } = useAuth();
 
-defineProps<{ categories: any[]; state: { [key: number]: string }; names: any; }>();
+defineProps<{ categories: any[]; state: { [key: number]: string }; names: any }>();
 </script>
 
 <template>
     <div class="grid grid-cols-1 gap-x-2 gap-y-4 lg:grid-cols-2 2xl:grid-cols-3">
-        <UFormGroup v-for="item in categories" :label="item.name" :description="item.description || 'N/A'"
-                    :name="'' + item.id">
+        <UFormGroup v-for="item in categories" :label="item.name" :description="item.description || 'N/A'" :name="'' + item.id">
             <UInput color="gray" v-model="state[item.id]" :disabled="status !== 'authenticated'" />
         </UFormGroup>
     </div>
