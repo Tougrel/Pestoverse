@@ -44,10 +44,13 @@ const onSubmit = async () => {
     <NuxtLayout name="default">
         <DevOnly>
             <code>
-                {{ state }}
+                Submissions: {{ state }}
             </code>
             <code>
-                {{ names }}
+                Suggestions: {{ suggestions }}
+            </code>
+            <code>
+                Votes: ?
             </code>
         </DevOnly>
         <UForm :state="state" @submit="onSubmit" class="relative flex flex-col gap-4">
