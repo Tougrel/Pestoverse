@@ -23,6 +23,22 @@ Credits will be given to all pesties that help (even with bug fixing and ideas)!
 
 > If you want to expose the development version so others can see your progress without having to commit your changes so far, you can do it using [cloudflared](https://github.com/cloudflare/cloudflared) (you can find how to setup your first tunnel [here](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup/tunnel-guide/))
 
+## How to set up the database locally
+
+1. Initialise the database: `yarn migrate:local`
+   This will create the database and run migrations.
+2. Seed the categories table: `sqlite3 local.db < ./migrations/categories_seed.sql`
+3. Seed some submissions into the database with `yarn seed:submissions`
+4. Seed some votes into the database with `yarn seed:votes`
+
+N.B. Steps 3 and 4 can be run multiple times and they will add new submissions and votes to the database.
+
+## Performing D1 migrations (in beta/prod)
+
+Migrations cannot be done via drizzle-kit directly, so we have to execute SQL scripts via wrangler
+
+1. `npx wrangler d1 execute pestoverse --file ./migrations/[filename].sql`
+
 ```bash
 # We are using yarn as a package manager but you can use whatever you want
 # Make sure to install the dependencies:
