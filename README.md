@@ -17,12 +17,6 @@ Credits will be given to all pesties that help (even with bug fixing and ideas)!
 
 ---
 
-## How to run the website
-
-> Keep in mind that we deploy the website in cloudflare pages so everything we add needs to be tested there. To be sure that everything works correctly you can run the `NITRO_PRESET=cloudflare-pages yarn build` script and it will build it with the cloudflare preset.
-
-> If you want to expose the development version so others can see your progress without having to commit your changes so far, you can do it using [cloudflared](https://github.com/cloudflare/cloudflared) (you can find how to setup your first tunnel [here](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup/tunnel-guide/))
-
 ## How to set up the database locally
 
 1. Initialise the database: `yarn migrate:local`
@@ -38,6 +32,12 @@ N.B. Steps 3 and 4 can be run multiple times and they will add new submissions a
 Migrations cannot be done via drizzle-kit directly, so we have to execute SQL scripts via wrangler
 
 1. `npx wrangler d1 execute pestoverse --file ./migrations/[filename].sql`
+
+## How to run the website
+
+> Keep in mind that we deploy the website in cloudflare pages so everything we add needs to be tested there. To be sure that everything works correctly you can run the `NITRO_PRESET=cloudflare-pages yarn build` script and it will build it with the cloudflare preset.
+
+> If you want to expose the development version so others can see your progress without having to commit your changes so far, you can do it using [cloudflared](https://github.com/cloudflare/cloudflared) (you can find how to setup your first tunnel [here](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup/tunnel-guide/))
 
 ```bash
 # We are using yarn as a package manager but you can use whatever you want
