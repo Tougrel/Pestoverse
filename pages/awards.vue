@@ -70,6 +70,7 @@ const onSubmit = async () => {
         <UForm :state="state" @submit="onSubmit" class="relative flex flex-col gap-4">
             <div class="flex w-full flex-col gap-2">
                 <UAlert
+                    v-if="mode === 'submissions'"
                     icon="i-mdi-exclamation-bold"
                     title="Voting submissions"
                     description="Please check if the pestie you are voting for is in the suggested list first and use the same name!"
