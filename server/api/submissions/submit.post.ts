@@ -1,10 +1,4 @@
-import { getDb } from "~/server/db/database";
-import { Submission } from "~/server/db/schema";
-import { authOptions } from "~/server/api/auth/[...]";
-import { getServerSession } from "#auth";
-import { addSubmissions, deleteSubmissions, getSubmissions, updateSubmissions } from "~/server/db/submissions";
-
-import { Entry } from "~/server/db/submissions";
+import { Submission } from "~/server/utils/db/schema";
 
 type RequestSubmission = Omit<Submission, "id" | "userId" | "discordId">;
 
@@ -18,7 +12,10 @@ const normaliseBody = (body: { [key: string]: string }): RequestSubmission[] => 
     return result;
 };
 
-const findChanges = (existingSubmissions: Submission[], body: RequestSubmission[]): { created: Entry[]; updated: Entry[]; deleted: number[] } => {
+const findChanges = (
+    existingSubmissions: Submission[],
+    body: RequestSubmission[],
+): { created: SubmissionEntry[]; updated: SubmissionEntry[]; deleted: number[] } => {
     body = body.map((submission) => {
         if (submission.submission) {
             return {
@@ -28,7 +25,7 @@ const findChanges = (existingSubmissions: Submission[], body: RequestSubmission[
         }
         return submission;
     });
-    let updated: Entry[] = [];
+    let updated: SubmissionEntry[] = [];
     let deleted: number[] = [];
     existingSubmissions.forEach((submission) => {
         let pairedEntry = body.find((sub) => sub.categoryId == submission.categoryId);
@@ -53,7 +50,7 @@ const findChanges = (existingSubmissions: Submission[], body: RequestSubmission[
         }
     });
 
-    const created: Entry[] = body
+    const created: SubmissionEntry[] = body
         .filter((b) => !existingSubmissions.some((s) => s.categoryId === b.categoryId))
         .map((submission) => ({ categoryId: submission.categoryId, value: submission.submission }));
 
@@ -61,10 +58,7 @@ const findChanges = (existingSubmissions: Submission[], body: RequestSubmission[
 };
 
 export default defineEventHandler(async (event) => {
-    const session = await getServerSession(event, authOptions);
-    if (!session) {
-        throw createError({ statusCode: 401, statusMessage: "Unauthorized" });
-    }
+    const session = await getLoggedInSession(event);
     const body = await readBody(event);
     const discordId = session.profile.id;
     const db = getDb(event.context);

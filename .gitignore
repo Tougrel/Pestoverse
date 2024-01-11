@@ -36,3 +36,8 @@ logs
 
 local.db
 .wrangler/
+
+# Script cache data files
+categories.json
+counts.json
+results.json

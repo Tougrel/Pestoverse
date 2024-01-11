@@ -1,16 +1,51 @@
 <script setup lang="ts">
 const { status } = useAuth();
 const { data: categories } = await useFetch("/api/submissions/categories");
-const { data: submissions } = await useFetch("/api/submissions");
-const { data: names } = await useFetch("/api/submissions/names");
 
 type SubmissionState = { [key: number]: string };
 
-const state = reactive<SubmissionState>(submissions.value as SubmissionState);
-const toast = useToast();
+const mode = computed<string>(() => {
+    const currentDate = Date.now();
+    const votesDate = Date.UTC(2024, 0, 12, 0, 0, 0);
+    if (currentDate < votesDate) {
+        return "submissions";
+    }
+    return "votes";
+});
 
+const isAuthenticated = computed(() => status.value === "authenticated");
+
+async function getState(mode: Ref<string>): Promise<SubmissionState> {
+    let result = {};
+    if (isAuthenticated.value) {
+        const { data } = await useFetch<SubmissionState>(`/api/${mode.value}`);
+        result = data.value || {};
+    }
+    return result;
+}
+async function getSecondary(mode: Ref<string>) {
+    let result = [];
+    switch (mode.value) {
+        case "submissions":
+            if (isAuthenticated.value) {
+                const { data } = await useFetch("/api/submissions/names");
+                result = data.value || [];
+            }
+            break;
+        case "votes":
+            const { data } = await useFetch("/api/votes/options");
+            result = data.value || {};
+            break;
+    }
+    return result;
+}
+
+let state = reactive<SubmissionState>(await getState(mode));
+let secondary = reactive(await getSecondary(mode)); // TODO: rename this lmao
+
+const toast = useToast();
 const onSubmit = async () => {
-    const result = await fetch("/api/submissions/submit", {
+    const result = await fetch(`/api/${mode.value}/submit`, {
         method: "POST",
         body: JSON.stringify(state),
     });
@@ -36,28 +71,23 @@ const onSubmit = async () => {
 
 <template>
     <NuxtLayout name="default">
-        <UForm :state="state" @submit="onSubmit" v-if="status === 'authenticated'" class="relative flex flex-col gap-4">
+        <DevOnly>
+            <code> Submissions / Votes: {{ state }} </code>
+            <code> Suggestions / Options: {{ secondary }} </code>
+        </DevOnly>
+        <UForm :state="state" @submit="onSubmit" class="relative flex flex-col gap-4">
             <div class="flex w-full flex-col gap-2">
                 <UAlert
+                    v-if="mode === 'submissions'"
                     icon="i-mdi-exclamation-bold"
                     title="Voting submissions"
                     description="Please check if the pestie you are voting for is in the suggested list first and use the same name!"
                 />
+                <UAlert v-if="!isAuthenticated" color="red" title="Authentication" description="You must login before you can vote!" />
             </div>
-            <div class="grid grid-cols-1 gap-x-2 gap-y-4 lg:grid-cols-2 2xl:grid-cols-3">
-                <UFormGroup v-for="item in categories" :label="item.name" :description="item.description || 'N/A'" :name="'' + item.id">
-                    <UInput color="gray" v-model="state[item.id]" />
-                </UFormGroup>
-            </div>
-            <UDivider icon="i-mdi-creation" :ui="{ border: { base: 'border-primary-700 dark:border-primary-500' } }" />
-            <div class="flex flex-col gap-2 p-4">
-                <p class="text-primary-700 dark:text-primary-500 text-lg font-bold">Suggestions</p>
-                <div class="grid max-h-[272px] grid-cols-1 gap-2 overflow-y-auto md:grid-cols-4 lg:grid-cols-6">
-                    <UBadge v-for="name in names" color="gray" size="lg" :label="name" />
-                </div>
-            </div>
-            <UButton block type="submit" label="Submit" icon="i-mdi-check" size="lg" />
+            <AwardsSubmissions v-if="mode === 'submissions'" :categories="categories" :state="state" :names="secondary" />
+            <AwardsVotes v-if="mode === 'votes'" :categories="categories" :state="state" :options="secondary" />
+            <UButton block type="submit" label="Submit" icon="i-mdi-check" size="lg" :disabled="!isAuthenticated" />
         </UForm>
-        <UAlert v-else color="red" title="Authentication" description="Please sign in to continue!" class="mb-auto" />
     </NuxtLayout>
 </template>
