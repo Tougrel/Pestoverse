@@ -4,7 +4,15 @@ const { data: categories } = await useFetch("/api/submissions/categories");
 
 type SubmissionState = { [key: number]: string };
 
-const mode = ref<string>("votes");
+const mode = computed<string>(() => {
+    const currentDate = Date.now();
+    const votesDate = Date.UTC(2024, 0, 12, 0, 0, 0);
+    if (currentDate < votesDate) {
+        return "submissions";
+    }
+    return "votes";
+});
+
 const isAuthenticated = computed(() => status.value === "authenticated");
 
 async function getState(mode: Ref<string>): Promise<SubmissionState> {
