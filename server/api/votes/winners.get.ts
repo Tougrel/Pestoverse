@@ -59,6 +59,6 @@ export default defineEventHandler(async (event) => {
             );
             return result;
         },
-        0, // don't want to automatically refresh this
+        15 * 60 // 15 minutes
     );
 });
