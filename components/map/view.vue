@@ -9,7 +9,7 @@ import haversine from "haversine";
 
 const runtimeConfig = useRuntimeConfig();
 const props = defineProps<{ markers: MarkerProps[] }>();
-const emit = defineEmits(['loaded']);
+const emit = defineEmits(["loaded"]);
 
 const slideOverOpen = useState<boolean>("map-slideover", () => false);
 const slideOverData = ref({} as MarkerProps);
@@ -148,10 +148,10 @@ onMounted(() => {
             }),
         );
 
-        map.value.on('idle', () => {
-            loaded.value = true
-            emit('loaded')
-        })
+        map.value.on("idle", () => {
+            loaded.value = true;
+            emit("loaded");
+        });
 
         map.value.touchZoomRotate.disableRotation();
         map.value.addControl(new NavigationControl({ visualizePitch: false, showCompass: false }), "top-left");
@@ -189,12 +189,24 @@ onMounted(() => {
     <div ref="mapContainer" v-show="loaded" class="h-full w-full bg-white dark:bg-background"></div>
     <UiSlideOver state="map-slideover">
         <div class="flex flex-col gap-4">
-            <UiImage v-for="(image, index) in slideOverData.images" @click="openModal(slideOverData.images, index)"
-                :src="image.url" :width="image.width" :height="image.height" :name="slideOverData.name" />
+            <UiImage
+                v-for="(image, index) in slideOverData.images"
+                @click="openModal(slideOverData.images, index)"
+                :src="image.url"
+                :width="image.width"
+                :height="image.height"
+                :name="slideOverData.name"
+            />
         </div>
         <UModal v-model="modalOpen">
-            <img v-for="(image, index) in modalImages" v-show="index === modalActiveImage" loading="lazy" decoding="async"
-                :src="getFullImage(image.url)" :alt="slideOverData.name" />
+            <img
+                v-for="(image, index) in modalImages"
+                v-show="index === modalActiveImage"
+                loading="lazy"
+                decoding="async"
+                :src="getFullImage(image.url)"
+                :alt="slideOverData.name"
+            />
         </UModal>
     </UiSlideOver>
 </template>

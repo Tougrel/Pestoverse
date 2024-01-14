@@ -20,9 +20,9 @@ const transformMarkers = () => {
 const loading = ref(true);
 
 const loaded = () => {
-    console.log('loaded')
-    loading.value = false
-}
+    console.log("loaded");
+    loading.value = false;
+};
 
 const markers = transformMarkers();
 </script>
