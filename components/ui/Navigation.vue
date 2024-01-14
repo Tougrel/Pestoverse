@@ -25,11 +25,9 @@ const pages = [
 </script>
 
 <template>
-    <header class="flex flex-col justify-between bg-background-darker text-white max-w-[256px] p-6">
+    <header class="flex max-w-[256px] flex-col justify-between bg-background-darker p-6 text-white">
         <div class="flex flex-col gap-2">
-            <NuxtLink to="/" class="text-2xl font-bold text-primary-500">
-                Pestoverse
-            </NuxtLink>
+            <NuxtLink to="/" class="text-primary-500 text-2xl font-bold"> Pestoverse </NuxtLink>
             <p class="text-sm text-gray-400">The official website for running, upcoming and archived events created by Yuniiho's community!</p>
             <UDivider />
             <p class="text-sm text-gray-400">{{ router.currentRoute.value.meta?.description }}</p>
@@ -49,8 +47,7 @@ const pages = [
                 <UiColorPicker size="2em" />
             </div>
             <p class="text-sm text-gray-400">
-                Made with <span class="animate-pulse">❤️</span> by the <span
-                class="text-primary-700 dark:text-primary-500">pesto community</span>!
+                Made with <span class="animate-pulse">❤️</span> by the <span class="text-primary-700 dark:text-primary-500">pesto community</span>!
             </p>
         </div>
     </header>

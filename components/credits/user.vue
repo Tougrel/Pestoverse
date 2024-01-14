@@ -11,6 +11,6 @@ defineProps<{ name: string; description: string; iconPath: string }>();
             </div>
         </template>
 
-        <p class="text-gray-500 dark:text-gray-300 text-center">{{ description }}</p>
+        <p class="text-center text-gray-500 dark:text-gray-300">{{ description }}</p>
     </UCard>
 </template>

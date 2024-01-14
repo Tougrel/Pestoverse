@@ -25,16 +25,16 @@ definePageMeta({
 });
 
 onMounted(() => {
-    setTimeout(() => loading.value = false, 1500);
+    setTimeout(() => (loading.value = false), 1500);
 });
 </script>
 
 <template>
     <NuxtLayout name="new">
-        <div v-if="loading" class="flex flex-col items-center justify-center w-full h-full">
+        <div v-if="loading" class="flex h-full w-full flex-col items-center justify-center">
             <img src="/static/images/emotes/waddle.gif" decoding="async" loading="lazy" class="bg-cover bg-repeat-x" />
         </div>
-        <div v-show="!loading" class="columns-1 gap-4 sm:columns-2 md:columns-3 lg:columns-4 xl:columns-5 p-4">
+        <div v-show="!loading" class="columns-1 gap-4 p-4 sm:columns-2 md:columns-3 lg:columns-4 xl:columns-5">
             <UiImage
                 v-for="image in images"
                 @click="openModal(image.src)"

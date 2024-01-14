@@ -23,7 +23,16 @@ defineProps<{ categories: any[]; state: { [key: number]: string | number }; opti
                     <label :for="'' + item.id" class="text-lg font-medium text-gray-700 dark:text-gray-200">{{ item.name }}</label>
                     <p class="text-base text-gray-500 dark:text-gray-400">{{ item.description || "N/A" }}</p>
                 </div>
-                <UButton size="lg" color="red" variant="link" @click="state[item.id] = ''" label="Clear" icon="i-mdi-trash" :disabled="status !== 'authenticated'" class="h-fit" />
+                <UButton
+                    size="lg"
+                    color="red"
+                    variant="link"
+                    @click="state[item.id] = ''"
+                    label="Clear"
+                    icon="i-mdi-trash"
+                    :disabled="status !== 'authenticated'"
+                    class="h-fit"
+                />
             </div>
             <div class="grid grid-cols-1 gap-4 lg:grid-cols-4">
                 <UCard
