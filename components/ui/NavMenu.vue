@@ -30,7 +30,9 @@ defineProps<{ buttonClass?: string; map?: boolean }>();
             <UiColorPicker :size="iconSize" :button-class="buttonClass" />
             <UiAuthentication :size="iconSize" :button-class="buttonClass" />
 
-            <NuxtLink to="/v2" class="bg-primary-500/60 rounded-lg p-2 font-bold"> Click here for the new UI </NuxtLink>
+            <DevOnly>
+                <NuxtLink to="/v2" class="bg-primary-500/60 rounded-lg p-2 font-bold"> Click here for the new UI </NuxtLink>
+            </DevOnly>
         </div>
     </header>
 </template>
