@@ -13,7 +13,10 @@ export default {
     theme: {
         extend: {
             colors: {
-                background: "#2B303B",
+                background: {
+                    DEFAULT: "#2B303B",
+                    darker: "#15181E",
+                },
                 navigation: "#16181D",
                 italygreen: "#008D44",
                 italyred: "#D0323D",

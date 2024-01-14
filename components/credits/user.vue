@@ -5,14 +5,12 @@ defineProps<{ name: string; description: string; iconPath: string }>();
 <template>
     <UCard>
         <template #header>
-            <div class="flex flex-row justify-center">
+            <div class="flex flex-col items-center gap-2">
                 <img :src="iconPath" loading="lazy" decoding="async" class="h-32 rounded-full" />
+                <h2 class="text-primary-600 dark:text-primary-400 text-2xl font-bold">{{ name }}</h2>
             </div>
         </template>
 
-        <div class="flex flex-col gap-2">
-            <h2 class="text-primary-600 dark:text-primary-400 text-2xl font-bold">{{ name }}</h2>
-            <p class="text-gray-500 dark:text-gray-300">{{ description }}</p>
-        </div>
+        <p class="text-center text-gray-500 dark:text-gray-300">{{ description }}</p>
     </UCard>
 </template>
