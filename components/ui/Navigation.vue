@@ -1,4 +1,5 @@
 <script setup lang="ts">
+const router = useRouter();
 const pages = [
     {
         label: "Map",
@@ -24,10 +25,15 @@ const pages = [
 </script>
 
 <template>
-    <header class="flex flex-col justify-between bg-background-darker text-white max-w-[256px] p-4">
-        <NuxtLink to="/" class="text-2xl font-bold text-primary-500">
-            Pestoverse
-        </NuxtLink>
+    <header class="flex flex-col justify-between bg-background-darker text-white max-w-[256px] p-6">
+        <div class="flex flex-col gap-2">
+            <NuxtLink to="/" class="text-2xl font-bold text-primary-500">
+                Pestoverse
+            </NuxtLink>
+            <p class="text-sm text-gray-400">The official website for running, upcoming and archived events created by Yuniiho's community!</p>
+            <UDivider />
+            <p class="text-sm text-gray-400">{{ router.currentRoute.value.meta?.description }}</p>
+        </div>
 
         <div class="flex flex-col gap-2">
             <NuxtLink v-for="page in pages" :to="page.to" active-class="text-primary-500">
@@ -43,7 +49,8 @@ const pages = [
                 <UiColorPicker size="2em" />
             </div>
             <p class="text-sm text-gray-400">
-                Made with <span class="animate-pulse">❤️</span> by the <span class="text-primary-700 dark:text-primary-500">pesto community</span>!
+                Made with <span class="animate-pulse">❤️</span> by the <span
+                class="text-primary-700 dark:text-primary-500">pesto community</span>!
             </p>
         </div>
     </header>

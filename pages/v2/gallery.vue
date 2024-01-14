@@ -18,6 +18,12 @@ const openModal = (image: string) => {
     modalImage.value = getFullImage(image);
 };
 
+definePageMeta({
+    description: "Photos of places the pestini have traveled around the world!",
+    middleware: ["new-ui"],
+    devs_only: true,
+});
+
 onMounted(() => {
     setTimeout(() => loading.value = false, 1500);
 });

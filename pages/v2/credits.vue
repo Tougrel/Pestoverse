@@ -50,6 +50,12 @@ const users = [
         icon_path: phantasma,
     },
 ];
+
+definePageMeta({
+    description: "The website was made with the help of these amazing pestini",
+    middleware: ["new-ui"],
+    devs_only: true,
+});
 </script>
 
 <template>

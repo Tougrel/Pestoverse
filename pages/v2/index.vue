@@ -17,6 +17,12 @@ const transformMarkers = () => {
 };
 
 const markers = transformMarkers();
+
+definePageMeta({
+    description: "Map of journeys Pestini have taken travelling the empty world",
+    middleware: ["new-ui"],
+    devs_only: true,
+});
 </script>
 
 <template>
