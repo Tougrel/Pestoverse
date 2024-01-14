@@ -1,3 +1,4 @@
+<script setup lang="ts">
 import yuniiho from "static/images/credits/yuniiho.webp";
 import tougrel from "static/images/credits/tougrel.webp";
 import ikanexus from "static/images/credits/ikanexus.webp";
@@ -7,7 +8,7 @@ import yoclesh from "static/images/credits/yoclesh.webp";
 import vihilsta from "static/images/credits/vihilsta.webp";
 import phantasma from "static/images/credits/phantasma.webp";
 
-export const CREDIT_USERS = [
+const users = [
     {
         name: "Yuniiho",
         description: "For the amazing emotes",
@@ -49,3 +50,12 @@ export const CREDIT_USERS = [
         icon_path: phantasma,
     },
 ];
+</script>
+
+<template>
+    <NuxtLayout name="new">
+        <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 p-4">
+            <CreditsUser v-for="user in users" :name="user.name" :description="user.description" :iconPath="user.icon_path" />
+        </div>
+    </NuxtLayout>
+</template>

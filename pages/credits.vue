@@ -1,5 +1,3 @@
-<script setup lang="ts"></script>
-
 <template>
     <NuxtLayout name="default">
         <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">

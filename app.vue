@@ -59,10 +59,10 @@ onMounted(() => {
 </script>
 
 <template>
-    <main>
+    <div>
         <UiLoadingScreen v-if="loading" />
         <KudoSidebar v-if="!loading" />
         <NuxtPage v-if="!loading" />
         <UNotifications />
-    </main>
+    </div>
 </template>
