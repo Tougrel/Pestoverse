@@ -36,6 +36,11 @@ export const PAGES = {
         icon: ICONS.TROPHY,
         image: false,
     },
+    "/awards/stream": {
+        name: "Pesto Awards",
+        icon: ICONS.TROPHY,
+        image: false,
+    },
 } as const;
 
 export const NAV_MENU = [
