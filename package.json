@@ -57,6 +57,7 @@
         "sync-request": "^6.1.0",
         "tsx": "^4.6.2",
         "typescript": "^5.3.3",
+        "vue-flip": "^3.0.2",
         "wrangler": "^3.21.0"
     },
     "packageManager": "yarn@3.6.1",

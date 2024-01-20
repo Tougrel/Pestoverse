@@ -1,5 +1,5 @@
 html,
 body,
 #__nuxt {
-  @apply bg-white dark:bg-background font-poppins transition-[background] duration-300 overflow-y-auto;
+  @apply bg-gray-100 dark:bg-background font-poppins transition-[background] duration-300 overflow-y-auto;
 }
