@@ -7,10 +7,12 @@ type SubmissionState = { [key: number]: string };
 const mode = computed<string>(() => {
     const currentDate = Date.now();
     const votesDate = Date.UTC(2024, 0, 12, 0, 0, 0);
-    if (currentDate < votesDate) {
-        return "submissions";
-    }
-    return "votes";
+    if (currentDate < votesDate) return "submissions";
+
+    const winnersDate = Date.UTC(2024, 0, 20, 0, 0, 0);
+    if (currentDate < winnersDate) return "votes";
+
+    return "winners";
 });
 
 const votingOpen = computed<boolean>(() => {
@@ -23,24 +25,31 @@ const isAuthenticated = computed(() => status.value === "authenticated");
 
 async function getState(mode: Ref<string>): Promise<SubmissionState> {
     let result = {};
+
+    if (mode.value === "winners") return result;
     if (isAuthenticated.value) {
         const { data } = await useFetch<SubmissionState>(`/api/${mode.value}`);
         result = data.value || {};
     }
     return result;
 }
-async function getSecondary(mode: Ref<string>) {
+async function getSecondary(mode: Ref<string>): Promise<unknown> {
     let result = [];
     switch (mode.value) {
         case "submissions":
             if (isAuthenticated.value) {
-                const { data } = await useFetch("/api/submissions/names");
-                result = data.value || [];
+                const { data: names } = await useFetch("/api/submissions/names");
+                result = names.value || [];
             }
             break;
         case "votes":
-            const { data } = await useFetch("/api/votes/options");
-            result = data.value || {};
+            const { data: options } = await useFetch("/api/votes/options");
+            result = options.value || {};
+            break;
+        case "winners":
+            const { data: winners } = await useFetch("/api/votes/winners");
+            console.log(winners);
+            result = winners.value || {};
             break;
     }
     return result;
@@ -81,18 +90,20 @@ const onSubmit = async () => {
             <code> Submissions / Votes: {{ state }} </code>
             <code> Suggestions / Options: {{ secondary }} </code>
         </DevOnly>
-        <UForm :state="state" @submit="onSubmit" class="relative flex flex-col gap-4">
+        <UForm :state="state" @submit="onSubmit" class="relative flex flex-col gap-4 w-full">
             <div class="flex w-full flex-col gap-2">
                 <UAlert v-if="mode === 'submissions'" icon="i-mdi-exclamation-bold" title="Voting submissions"
                     description="Please check if the pestie you are voting for is in the suggested list first and use the same name!" />
                 <UAlert v-if="!isAuthenticated" color="red" title="Authentication"
                     description="You must login before you can vote!" />
-                <UAlert v-if="!votingOpen" color="red" title="Voting Closed"
+                <UAlert v-if="!votingOpen && mode !== 'winners'" color="primary" title="Voting Closed"
                     description="Thank you for all of your submissions, voting is now closed!" />
             </div>
             <AwardsSubmissions v-if="mode === 'submissions'" :categories="categories" :state="state" :names="secondary" />
-            <AwardsVotes v-if="mode === 'votes'" :categories="categories" :state="state" :options="secondary" />
-            <UButton block type="submit" label="Submit" icon="i-mdi-check" size="lg"
+            <AwardsVotes v-if="mode === 'votes' && votingOpen" :categories="categories" :state="state"
+                :options="secondary" />
+            <AwardsWinners v-if="mode === 'winners' && !votingOpen" :winners="secondary" />
+            <UButton v-if="mode !== 'winners'" block type="submit" label="Submit" icon="i-mdi-check" size="lg"
                 :disabled="!isAuthenticated || !votingOpen" />
         </UForm>
     </NuxtLayout>

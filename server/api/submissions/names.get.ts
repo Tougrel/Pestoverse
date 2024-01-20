@@ -2,7 +2,7 @@ import { submissions } from "~/server/utils/db/schema";
 
 export default defineEventHandler(async (event) => {
     const session = await getLoggedInSession(event);
-    const value = await getFromCache(
+    const value = await getOrRefreshCache(
         event,
         "submission_names",
         async (db) => {
