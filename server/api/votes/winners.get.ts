@@ -9,14 +9,12 @@ type Winner = {
 };
 
 export default defineEventHandler(async (event) => {
-    const session = await getLoggedInSession(event);
-    const options = await getFromCache(event, "voteOptions", async (db) => {
-        if ("cloudflare" in event.context) {
-            throw createError({ statusCode: 400, statusMessage: "This should be cached..." });
-        }
-        return await getTopVotesByCategory(db);
-    });
-    return await getFromCache(
+    let options = await getFromCache(event, "voteOptions");
+    if (!("cloudflare" in event.context)) {
+        options = await getTopVotesByCategory(getDb(event));
+    }
+    console.log(options);
+    return await getOrRefreshCache(
         event,
         "winners",
         async (db) => {

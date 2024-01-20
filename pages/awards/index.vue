@@ -33,20 +33,23 @@ async function getState(mode: Ref<string>): Promise<SubmissionState> {
     }
     return result;
 }
-async function getSecondary(mode: Ref<string>) {
+async function getSecondary(mode: Ref<string>): Promise<unknown> {
     let result = [];
     switch (mode.value) {
         case "submissions":
             if (isAuthenticated.value) {
-                const { data } = await useFetch("/api/submissions/names");
-                result = data.value || [];
+                const { data: names } = await useFetch("/api/submissions/names");
+                result = names.value || [];
             }
             break;
         case "votes":
-            result = await useFetch("/api/votes/options").data.value || {};
+            const { data: options } = await useFetch("/api/votes/options");
+            result = options.value || {};
             break;
         case "winners":
-            result = await useFetch("/api/votes/winners").data.value || {};
+            const { data: winners } = await useFetch("/api/votes/winners");
+            console.log(winners);
+            result = winners.value || {};
             break;
     }
     return result;
@@ -97,9 +100,11 @@ const onSubmit = async () => {
                     description="Thank you for all of your submissions, voting is now closed!" />
             </div>
             <AwardsSubmissions v-if="mode === 'submissions'" :categories="categories" :state="state" :names="secondary" />
-            <AwardsVotes v-if="mode === 'votes' && votingOpen" :categories="categories" :state="state" :options="secondary" />
+            <AwardsVotes v-if="mode === 'votes' && votingOpen" :categories="categories" :state="state"
+                :options="secondary" />
             <AwardsWinners v-if="mode === 'winners' && !votingOpen" :winners="secondary" />
-            <UButton v-if="mode !== 'winners'" block type="submit" label="Submit" icon="i-mdi-check" size="lg" :disabled="!isAuthenticated || !votingOpen" />
+            <UButton v-if="mode !== 'winners'" block type="submit" label="Submit" icon="i-mdi-check" size="lg"
+                :disabled="!isAuthenticated || !votingOpen" />
         </UForm>
     </NuxtLayout>
 </template>

@@ -1,7 +1,7 @@
 import { getTopVotesByCategory } from "~/server/utils/votes";
 
 export default defineEventHandler(async (event) => {
-    return await getFromCache(
+    return await getOrRefreshCache(
         event,
         "voteOptions",
         async (db) => {
