@@ -59,6 +59,6 @@ export default defineEventHandler(async (event) => {
             );
             return result;
         },
-        15 * 60 // 15 minutes
+        15 * 60, // 15 minutes
     );
 });

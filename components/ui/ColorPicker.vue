@@ -18,7 +18,7 @@ defineProps<{ size: string; buttonClass?: string }>();
             <Icon
                 :name="ICONS.PALETTE"
                 :size="size"
-                class="text-primary-700 dark:text-primary-400 hover:text-primary-800 hover:dark:text-primary-500 transition-colors"
+                class="text-primary-700 dark:text-primary-500 hover:text-primary-800 hover:dark:text-primary-500 transition-colors"
             />
         </div>
 
@@ -37,7 +37,7 @@ defineProps<{ size: string; buttonClass?: string }>();
                         size="1.5em"
                         role="button"
                         @click="colorMode.preference = 'dark'"
-                        :class="{ 'text-primary-700 dark:text-primary-400': colorMode.preference === 'dark' }"
+                        :class="{ 'text-primary-700 dark:text-primary-400': colorMode.preference === 'dark', 'text-black': colorMode.preference !== 'dark' }"
                     />
                 </div>
                 <hr class="border-background dark:border-white" />

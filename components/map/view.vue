@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { MarkerImageData, MarkerProps } from "@pestoverse/types";
-import maplibregl, { Map, NavigationControl, StyleSpecification, Marker, Popup, LngLatBoundsLike, AttributionControl } from "maplibre-gl";
+import maplibregl, { Map, NavigationControl, type StyleSpecification, Marker, type LngLatBoundsLike, AttributionControl } from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
 import light from "./light";
 import dark from "./dark";
@@ -9,6 +9,7 @@ import haversine from "haversine";
 
 const runtimeConfig = useRuntimeConfig();
 const props = defineProps<{ markers: MarkerProps[] }>();
+const emit = defineEmits(["loaded"]);
 
 const slideOverOpen = useState<boolean>("map-slideover", () => false);
 const slideOverData = ref({} as MarkerProps);
@@ -131,6 +132,7 @@ const handleMarkerClick = (map: Map, entry: MarkerProps, marker: Marker, documen
 };
 
 const language = "en"; // TODO replace with i18n!!
+const loaded = ref(false);
 
 onMounted(() => {
     p.getHeader().then((h) => {
@@ -145,6 +147,11 @@ onMounted(() => {
                 dragRotate: false,
             }),
         );
+
+        map.value.on("idle", () => {
+            loaded.value = true;
+            emit("loaded");
+        });
 
         map.value.touchZoomRotate.disableRotation();
         map.value.addControl(new NavigationControl({ visualizePitch: false, showCompass: false }), "top-left");
@@ -179,7 +186,7 @@ onMounted(() => {
 </script>
 
 <template>
-    <div ref="mapContainer" class="h-full w-full bg-white dark:bg-background"></div>
+    <div ref="mapContainer" v-show="loaded" class="h-full w-full bg-white dark:bg-background"></div>
     <UiSlideOver state="map-slideover">
         <div class="flex flex-col gap-4">
             <UiImage
