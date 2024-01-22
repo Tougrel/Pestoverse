@@ -18,7 +18,7 @@ defineProps<{ size: string; buttonClass?: string }>();
             <Icon
                 :name="ICONS.PALETTE"
                 :size="size"
-                class="text-primary-700 dark:text-primary-500 hover:text-primary-800 hover:dark:text-primary-500 transition-colors"
+                class="text-primary-700 dark:text-primary-500 hover:text-primary-800 hover:dark:text-primary-600 transition-colors"
             />
         </div>
 

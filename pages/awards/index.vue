@@ -87,10 +87,12 @@ const onSubmit = async () => {
 <template>
     <NuxtLayout name="default">
         <DevOnly>
-            <code> Submissions / Votes: {{ state }} </code>
-            <code> Suggestions / Options: {{ secondary }} </code>
+            <div class="flex flex-col p-4">
+                <code> Submissions / Votes: {{ state }} </code>
+                <code> Suggestions / Options: {{ secondary }} </code>
+            </div>
         </DevOnly>
-        <UForm :state="state" @submit="onSubmit" class="relative flex flex-col gap-4 w-full">
+        <UForm :state="state" @submit="onSubmit" class="relative flex flex-col gap-4 w-full p-4">
             <div class="flex w-full flex-col gap-2">
                 <UAlert v-if="mode === 'submissions'" icon="i-mdi-exclamation-bold" title="Voting submissions"
                     description="Please check if the pestie you are voting for is in the suggested list first and use the same name!" />

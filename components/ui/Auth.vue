@@ -26,12 +26,12 @@ const menu = [
 <template>
     <button v-if="status !== 'authenticated'" class="flex flex-row items-center gap-2" @click="signIn('discord')">
         <UAvatar icon="i-mdi-account" size="xs" />
-        <span class="font-medium">Sign In</span>
+        <span class="text-lg font-medium">Sign In</span>
     </button>
     <UDropdown v-else :items="menu" :popper="{ placement: 'bottom-start' }">
         <button class="flex flex-row items-center gap-2">
             <UAvatar :src="session?.profile.image_url" icon="i-mdi-account" size="xs" />
-            <span class="font-medium">{{ session?.profile.global_name }}</span>
+            <span class="text-lg font-medium">{{ session?.profile.global_name }}</span>
         </button>
     </UDropdown>
 </template>
