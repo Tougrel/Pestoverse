@@ -5,10 +5,10 @@ const CACHE_TTL = 60 * 60 * 2;
 
 type CacheValue = {
     value: any;
-    expiry: number | null
-}
+    expiry: number | null;
+};
 
-const localCacheData: {[key: string]: CacheValue} = {};
+const localCacheData: { [key: string]: CacheValue } = {};
 
 function getCacheStore(event: H3Event): CacheStore {
     const isCloudflare = "cloudflare" in event.context;
@@ -28,7 +28,7 @@ export const getFromCache = async (event: H3Event, key: string) => {
         result = cacheValue;
     }
     return result;
-}
+};
 
 export const updateCache = async (event: H3Event, key: string, value: any, ttl: number = 0) => {
     const cache = getCacheStore(event);
@@ -39,8 +39,7 @@ export const updateCache = async (event: H3Event, key: string, value: any, ttl: 
     }
     await cache.put(key, JSON.stringify(value), cacheOpts);
     return value;
-}
-
+};
 
 export const getOrRefreshCache = async (event: H3Event, key: string, data: (db: ReturnType<typeof getDb>) => any, ttl: number = CACHE_TTL) => {
     const context = event.context;
@@ -50,12 +49,11 @@ export const getOrRefreshCache = async (event: H3Event, key: string, data: (db: 
 
     if (result === null) {
         result = await data(db);
-        return await updateCache(event, key, result, ttl)
+        return await updateCache(event, key, result, ttl);
     }
 
     return result;
 };
-
 
 interface CacheStore {
     get(key: string, options: KVNamespaceGetOptions<"json">): Promise<unknown>;
@@ -69,7 +67,7 @@ class CloudflareCacheStore implements CacheStore {
         this.store = store;
     }
     async get(key: string, options: KVNamespaceGetOptions<"json">): Promise<unknown> {
-        return await this.store.get(key, options);    
+        return await this.store.get(key, options);
     }
 
     async put(key: string, value: string, options: KVNamespacePutOptions): Promise<void> {
@@ -89,7 +87,7 @@ class LocalCacheStore implements CacheStore {
         }
         const result = value.value;
         if (result === null || options.type !== "json") {
-            return result
+            return result;
         }
         return JSON.parse(result);
     }
@@ -98,13 +96,11 @@ class LocalCacheStore implements CacheStore {
         const ttl = options.expirationTtl || null;
         let expiry = null;
         if (ttl) {
-            expiry = Date.now() + (ttl * 100);
+            expiry = Date.now() + ttl * 100;
         }
         localCacheData[key] = {
             value,
-            expiry
-        }
+            expiry,
+        };
     }
 }
-
-
