@@ -1,5 +1,19 @@
 import { fileURLToPath } from "url";
 
+const getAuthBaseUrl = () => {
+    const defaultUrl = process.env.NUXT_NEXTAUTH_URL;
+    if (process.env.CF_PAGES !== "1") {
+        return defaultUrl;
+    }
+    // Use default URL for branches with custom domains
+    if (["development", "main"].indexOf(process.env.CF_PAGES_BRANCH || "") !== -1) {
+        return defaultUrl;
+    }
+    const newUrl = process.env.CF_PAGES_URL || defaultUrl;
+    console.log(newUrl);
+    return newUrl
+}
+
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
     devtools: {
@@ -45,7 +59,7 @@ export default defineNuxtConfig({
         public: {
             cdnBase: "https://cdn.pestoverse.world",
             authJs: {
-                baseUrl: process.env.NUXT_NEXTAUTH_URL,
+                baseUrl: getAuthBaseUrl(),
                 verifyClientOnEveryRequest: false,
             },
         },
