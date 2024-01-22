@@ -1,7 +1,7 @@
 {
     "name": "pestoverse",
     "description": "The official pesto community website for events",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "private": true,
     "author": {
         "email": "me@tougrel.dev",
