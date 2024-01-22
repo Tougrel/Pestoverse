@@ -19,7 +19,7 @@ const votingOpen = computed<boolean>(() => {
     const currentTime = Date.now();
     const closingTime = Date.UTC(2024, 0, 20, 0, 0, 0);
     return currentTime < closingTime;
-})
+});
 
 const isAuthenticated = computed(() => status.value === "authenticated");
 
@@ -92,21 +92,26 @@ const onSubmit = async () => {
                 <code> Suggestions / Options: {{ secondary }} </code>
             </div>
         </DevOnly>
-        <UForm :state="state" @submit="onSubmit" class="relative flex flex-col gap-4 w-full p-4">
+        <UForm :state="state" @submit="onSubmit" class="relative flex w-full flex-col gap-4 p-4">
             <div class="flex w-full flex-col gap-2">
-                <UAlert v-if="mode === 'submissions'" icon="i-mdi-exclamation-bold" title="Voting submissions"
-                    description="Please check if the pestie you are voting for is in the suggested list first and use the same name!" />
-                <UAlert v-if="!isAuthenticated" color="red" title="Authentication"
-                    description="You must login before you can vote!" />
-                <UAlert v-if="!votingOpen && mode !== 'winners'" color="primary" title="Voting Closed"
-                    description="Thank you for all of your submissions, voting is now closed!" />
+                <UAlert
+                    v-if="mode === 'submissions'"
+                    icon="i-mdi-exclamation-bold"
+                    title="Voting submissions"
+                    description="Please check if the pestie you are voting for is in the suggested list first and use the same name!"
+                />
+                <UAlert v-if="!isAuthenticated" color="red" title="Authentication" description="You must login before you can vote!" />
+                <UAlert
+                    v-if="!votingOpen && mode !== 'winners'"
+                    color="primary"
+                    title="Voting Closed"
+                    description="Thank you for all of your submissions, voting is now closed!"
+                />
             </div>
             <AwardsSubmissions v-if="mode === 'submissions'" :categories="categories" :state="state" :names="secondary" />
-            <AwardsVotes v-if="mode === 'votes' && votingOpen" :categories="categories" :state="state"
-                :options="secondary" />
+            <AwardsVotes v-if="mode === 'votes' && votingOpen" :categories="categories" :state="state" :options="secondary" />
             <AwardsWinners v-if="mode === 'winners' && !votingOpen" :winners="secondary" />
-            <UButton v-if="mode !== 'winners'" block type="submit" label="Submit" icon="i-mdi-check" size="lg"
-                :disabled="!isAuthenticated || !votingOpen" />
+            <UButton v-if="mode !== 'winners'" block type="submit" label="Submit" icon="i-mdi-check" size="lg" :disabled="!isAuthenticated || !votingOpen" />
         </UForm>
     </NuxtLayout>
 </template>

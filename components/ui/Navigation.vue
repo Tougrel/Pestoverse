@@ -33,7 +33,7 @@ const pages = ref([
 const filterPages = (pgs: any[]) => {
     if (session.value && ["256048990750113793", "769556133215862784"].indexOf(session.value.profile.id) !== -1) return pgs;
     else return pgs.filter((value) => !value.devs);
-}
+};
 </script>
 
 <template>

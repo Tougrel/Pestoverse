@@ -16,7 +16,7 @@ const isOpen = () => {
     const currentTime = Date.now();
     const closingTime = Date.UTC(2024, 0, 20, 0, 0, 0);
     return currentTime < closingTime;
-}
+};
 
 const findChanges = (existingVotes: Vote[], body: RequestVote[]): { created: VoteEntry[]; updated: VoteEntry[]; deleted: number[] } => {
     let updated: VoteEntry[] = [];
@@ -53,7 +53,7 @@ export default defineEventHandler(async (event) => {
     const requestVotes = normaliseBody(JSON.parse(body));
 
     if (!isOpen()) {
-        throw createError({ statusCode: 400, statusMessage: "Voting is now closed."});
+        throw createError({ statusCode: 400, statusMessage: "Voting is now closed." });
     }
 
     const voteChanges = findChanges(existingVotes, requestVotes);

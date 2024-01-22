@@ -1,21 +1,24 @@
 <script setup lang="ts">
-defineProps<{ winners: any; }>();
+defineProps<{ winners: any }>();
 
 type ReleaseStatus = {
     released: boolean;
-}
+};
 
 const { data: released } = await useFetch<ReleaseStatus>("/api/votes/released");
-
 </script>
 
 <template>
     <div class="flex w-full flex-col gap-2">
-        <UAlert icon="i-mdi-heart" title="THANK YOU!" color="primary"
-                description="Thanks for participating in the pesto awards 2023! We would love to see you again in the same place next year!" />
+        <UAlert
+            icon="i-mdi-heart"
+            title="THANK YOU!"
+            color="primary"
+            description="Thanks for participating in the pesto awards 2023! We would love to see you again in the same place next year!"
+        />
     </div>
     <div class="flex flex-row flex-wrap gap-8" v-if="released?.released">
-        <UCard v-for="(winner, category) in winners" class="w-full text-center max-w-xs">
+        <UCard v-for="(winner, category) in winners" class="w-full max-w-xs text-center">
             <template #header>
                 <h2 class="text-primary-700 dark:text-primary-500 font-medium">{{ category }}</h2>
             </template>
