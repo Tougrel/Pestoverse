@@ -2,16 +2,17 @@ import { fileURLToPath } from "url";
 
 const getAuthBaseUrl = () => {
     const defaultUrl = process.env.NUXT_NEXTAUTH_URL;
+    // Use default if not in Cloudflare Pages
     if (process.env.CF_PAGES !== "1") {
         return defaultUrl;
     }
-    // Use default URL for branches with custom domains
-    if (["development", "main"].indexOf(process.env.CF_PAGES_BRANCH || "") !== -1) {
+    // Use default for branches with custom domains
+    const branch = process.env.CF_PAGES_BRANCH || "";
+    if (branch === "development" || branch === "main") {
         return defaultUrl;
     }
-    const newUrl = process.env.CF_PAGES_URL || defaultUrl;
-    console.log(newUrl);
-    return newUrl
+
+    return process.env.CF_PAGES_URL || defaultUrl;
 }
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
