@@ -10,9 +10,7 @@ const { data: released } = await useFetch<ReleaseStatus>("/api/votes/released");
 </script>
 
 <template>
-    <div class="flex w-full flex-col gap-2" v-if="!released?.released">
-        <UAlert icon="i-mdi-exclamation-bold" title="Winners not yet released!"
-            description="The winners haven't been released yet! They will be announced on Stream at https://www.twitch.tv/yuniiho on 21st January" />
+    <div class="flex w-full flex-col gap-2"
         <UAlert icon="i-mdi-heart" title="THANK YOU!" color="primary"
                 description="Thanks for participating in the pesto awards 2023! We would love to see you again in the same place next year!" />
     </div>
