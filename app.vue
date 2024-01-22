@@ -62,7 +62,7 @@ onMounted(() => {
     <NuxtLoadingIndicator />
     <div>
         <UiLoadingScreen v-if="loading" />
-        <KudoSidebar v-if="!loading" />
+        <!-- <KudoSidebar v-if="!loading" /> -->
         <NuxtPage v-if="!loading" />
         <UNotifications />
     </div>

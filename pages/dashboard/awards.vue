@@ -4,7 +4,8 @@ definePageMeta({
     devs_only: true,
 });
 </script>
-
 <template>
-    <UiLoadingScreen />
+    <NuxtLayout name="default">
+        <DashboardContent title="Awards"> </DashboardContent>
+    </NuxtLayout>
 </template>
