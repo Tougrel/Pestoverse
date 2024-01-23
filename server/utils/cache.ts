@@ -10,7 +10,7 @@ type CacheValue = {
 
 const localCacheData: { [key: string]: CacheValue } = {};
 
-function getCacheStore(event: H3Event): CacheStore {
+export function getCacheStore(event: H3Event): CacheStore {
     const isCloudflare = "cloudflare" in event.context;
     if (isCloudflare) {
         return new CloudflareCacheStore(event.context.cloudflare.env.KV_CACHE);
@@ -56,8 +56,9 @@ export const getOrRefreshCache = async (event: H3Event, key: string, data: (db: 
 };
 
 interface CacheStore {
-    get(key: string, options: KVNamespaceGetOptions<"json">): Promise<unknown>;
-    put(key: string, value: string, options: KVNamespacePutOptions): Promise<void>;
+    get(key: string, options?: KVNamespaceGetOptions<"json">): Promise<unknown>;
+    put(key: string, value: string, options?: KVNamespacePutOptions): Promise<void>;
+    list(options?: KVNamespaceListOptions): Promise<KVNamespaceListResult<unknown, string>>;
 }
 
 class CloudflareCacheStore implements CacheStore {
@@ -66,17 +67,21 @@ class CloudflareCacheStore implements CacheStore {
     constructor(store: KVNamespace) {
         this.store = store;
     }
-    async get(key: string, options: KVNamespaceGetOptions<"json">): Promise<unknown> {
+    async get(key: string, options?: KVNamespaceGetOptions<"json">): Promise<unknown> {
         return await this.store.get(key, options);
     }
 
-    async put(key: string, value: string, options: KVNamespacePutOptions): Promise<void> {
+    async put(key: string, value: string, options?: KVNamespacePutOptions): Promise<void> {
         await this.store.put(key, value, options);
+    }
+
+    async list(options?: KVNamespaceListOptions): Promise<KVNamespaceListResult<unknown, string>> {
+        return await this.store.list(options);
     }
 }
 
 class LocalCacheStore implements CacheStore {
-    async get(key: string, options: KVNamespaceGetOptions<"json">): Promise<unknown> {
+    async get(key: string, options?: KVNamespaceGetOptions<"json">): Promise<unknown> {
         if (!(key in localCacheData)) {
             return null;
         }
@@ -86,21 +91,36 @@ class LocalCacheStore implements CacheStore {
             return null;
         }
         const result = value.value;
-        if (result === null || options.type !== "json") {
+        if (result === null || options?.type !== "json") {
             return result;
         }
         return JSON.parse(result);
     }
 
-    async put(key: string, value: string, options: KVNamespacePutOptions): Promise<void> {
-        const ttl = options.expirationTtl || null;
+    async put(key: string, value: string, options?: KVNamespacePutOptions): Promise<void> {
+        const ttl = options?.expirationTtl || null;
         let expiry = null;
         if (ttl) {
-            expiry = Date.now() + ttl * 100;
+            expiry = Date.now() + ttl * 1000;
         }
         localCacheData[key] = {
             value,
             expiry,
         };
+    }
+
+    async list(_options?: KVNamespaceListOptions): Promise<KVNamespaceListResult<unknown, string>> {
+        const keys: KVNamespaceListKey<unknown, string>[] = Object.entries(localCacheData).map(([key, value]) => {
+            return {
+                name: key,
+                expiration: value.expiry,
+            } as KVNamespaceListKey<unknown, string>
+        })
+
+        return {
+            keys,
+            list_complete: true,
+            cacheStatus: null
+        }
     }
 }

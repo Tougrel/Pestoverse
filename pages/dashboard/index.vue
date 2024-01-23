@@ -36,10 +36,12 @@ const pages = ref([
     },
 ]);
 
-const links = [{
-    label: 'Dashboard',
-    icon: 'mdi:view-dashboard',
-}]
+const links = [
+    {
+        label: "Dashboard",
+        icon: "mdi:view-dashboard",
+    },
+];
 const summaries = {} as { [key: string]: any };
 </script>
 <template>

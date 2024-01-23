@@ -17,4 +17,31 @@ declare module "@pestoverse/types" {
         coords: [number, number];
         images: MarkerImageData[];
     };
+
+}
+
+declare module "@pestoverse/dashboard" {
+    interface Settings {
+        awards: AwardsSettings;
+        toggles: Record<string, Toggle>;
+        kv_items: KVItemSettings[];
+    }
+
+    interface AwardsSettings {
+        nominations_start: string;
+        nominations_end: string;
+        voting_start: string;
+        voting_end: string;
+    }
+
+    interface Toggle {
+        name: string;
+        value: boolean;
+    }
+
+    interface KVItemSettings {
+        key: string,
+        expiry: string
+    }
+
 }

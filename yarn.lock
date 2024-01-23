@@ -3184,6 +3184,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@yaireo/relative-time@npm:^1.0.4":
+  version: 1.0.4
+  resolution: "@yaireo/relative-time@npm:1.0.4"
+  checksum: 50c5f08f50fa6f96f4386190e4d8a750144bb3c9e67a5a0fac6628c6d3f0cb96ac39a25d942208425a5732acf4b90ca555029b2d9088d30a66011354a16825c9
+  languageName: node
+  linkType: hard
+
 "abbrev@npm:1":
   version: 1.1.1
   resolution: "abbrev@npm:1.1.1"
@@ -9757,6 +9764,7 @@ __metadata:
     "@types/canvas-confetti": ^1.6.4
     "@types/haversine": ^1.1.8
     "@types/node": ^18.19.2
+    "@yaireo/relative-time": ^1.0.4
     better-sqlite3: ^9.2.2
     buffer-image-size: ^0.6.4
     canvas-confetti: ^1.9.2

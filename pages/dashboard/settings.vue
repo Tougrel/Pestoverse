@@ -1,34 +1,49 @@
 <script setup lang="ts">
+import type { KVItemSettings, AwardsSettings, Settings, Toggle } from "@pestoverse/dashboard";
+
 definePageMeta({
     middleware: ["devs-only"],
     devs_only: true,
 });
 
 const cardConfig = ref({
-    'header': { 'padding': 'flex-none' },
-    'body': { 'padding': 'flex-1' },
-    'footer': { 'padding': 'flex-none' }
+    header: { padding: "flex-none" },
+    body: { padding: "flex-1" },
+    footer: { padding: "flex-none" },
+});
+
+const { data: settings } = await useFetch<Settings>("/api/dashboard/settings");
+
+
+const awards = ref<AwardsSettings>(settings.value?.awards || {} as AwardsSettings);
+const toggles = ref<Record<string, Toggle>>(settings.value?.toggles || {});
+
+const kvItems = ref<KVItemSettings[]>(settings.value?.kv_items || [] as KVItemSettings[]);
+const kvColumns = [{ key: 'key', label: 'Key' }, { key: 'expiry', label: 'Expiry' }, { key: 'actions' }]
+const kvPage = ref(1);
+const kvPageCount = 5; // 5 items per pages
+const kvRows = computed(() => {
+    return kvItems.value.slice((kvPage.value - 1) * kvPageCount, (kvPage.value) * kvPageCount)
 })
-
-const awards = ref({
-    'nominations_start': '2023-12-29T00:00',
-    'nominations_end': '2024-01-12T00:00',
-    'voting_start': '2024-01-12T00:00',
-    'voting_end': '2024-01-19T00:00',
-});
-const toggles = ref({
-    'toggle1': true,
-});
-
+const kvActions = (row: KVItemSettings) => [
+    [{
+        label: 'Delete',
+        icon: 'i-heroicons-trash-20-solid',
+        click: async () => { console.log(row.key) }
+    }]
+]
 </script>
 <template>
     <NuxtLayout name="default">
         <DashboardContent title="Settings">
-            <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+            <DevOnly>
+                <code>Awards: {{ awards }}</code>
+                <code>Toggles: {{ toggles }}</code>
+                <code>KV Items: {{ kvItems }}</code>
+            </DevOnly>
+            <div class="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
                 <UCard class="flex flex-col justify-between" :ui="cardConfig">
-                    <template #header>
-                        Awards
-                    </template>
+                    <template #header> Awards </template>
                     <UForm :state="awards" class="flex flex-col gap-4">
                         <UFormGroup label="Nominations Start Date">
                             <UInput type="datetime-local" v-model="awards['nominations_start']" />
@@ -48,22 +63,30 @@ const toggles = ref({
                     </template>
                 </UCard>
                 <UCard class="flex flex-col justify-between" :ui="cardConfig">
-                    <template #header>
-                        Toggles
-                    </template>
+                    <template #header> Toggles </template>
                     <UForm :state="toggles" class="flex flex-col gap-4">
-                        <UFormGroup label="Toggle 1" class="flex flex-row justify-between">
-                            <UToggle v-model="toggles['toggle1']" />
-                        </UFormGroup>
-                        <UFormGroup label="Toggle 2" class="flex flex-row justify-between">
-                            <UToggle v-model="toggles['toggle2']" />
-                        </UFormGroup>
-                        <UFormGroup label="Toggle 3" class="flex flex-row justify-between">
-                            <UToggle v-model="toggles['toggle3']" />
+                        <UFormGroup v-for="toggle, key in toggles" :label="toggle.name"
+                            class="flex flex-row justify-between">
+                            <UToggle v-model="toggles[key].value" />
                         </UFormGroup>
                     </UForm>
                     <template #footer>
                         <UButton class="w-full justify-center">Save</UButton>
+                    </template>
+                </UCard>
+                <UCard class="flex flex-col justify-between" :ui="cardConfig">
+                    <template #header> KV Items </template>
+                    <UTable :rows="kvRows" :columns="kvColumns">
+                        <template #actions-data="{ row }">
+                            <UDropdown :items="kvActions(row)">
+                                <UButton color="gray" variant="ghost" icon="i-heroicons-ellipsis-horizontal-20-solid" />
+                            </UDropdown>
+                        </template>
+                    </UTable>
+                    <template #footer>
+                        <div class="flex justify-end">
+                            <UPagination v-model="kvPage" :total="kvItems.length" :page-count="kvPageCount" />
+                        </div>
                     </template>
                 </UCard>
             </div>

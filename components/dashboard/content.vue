@@ -1,18 +1,19 @@
 <script setup lang="ts">
-const props = defineProps<{ title: string; icon: string }>();
+const props = defineProps<{ title: string }>();
 
-const links = [{
-    label: 'Dashboard',
-    icon: 'mdi:view-dashboard',
-    to: '/dashboard'
-}, {
-    label: props.title,
-    icon: props.icon
-}]
+const links = [
+    {
+        label: "Dashboard",
+        to: "/dashboard",
+    },
+    {
+        label: props.title,
+    },
+];
 </script>
 
 <template>
-    <div class="p-4 flex flex-col gap-4 mx-auto max-w-screen-2xl text-center md:text-left">
+    <div class="mx-auto flex max-w-screen-2xl flex-col gap-4 p-4 text-center md:text-left">
         <UBreadcrumb :links="links" />
         <slot></slot>
     </div>

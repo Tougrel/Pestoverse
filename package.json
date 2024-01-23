@@ -41,6 +41,7 @@
         "@types/canvas-confetti": "^1.6.4",
         "@types/haversine": "^1.1.8",
         "@types/node": "^18.19.2",
+        "@yaireo/relative-time": "^1.0.4",
         "better-sqlite3": "^9.2.2",
         "buffer-image-size": "^0.6.4",
         "canvas-confetti": "^1.9.2",

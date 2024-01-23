@@ -3,9 +3,9 @@ import { getServerSession } from "#auth";
 
 import { H3Event } from "h3";
 
-export const getLoggedInSession = async (event: H3Event) => {
+export const getLoggedInSession = async (event: H3Event, raise = true) => {
     const session = await getServerSession(event, authOptions);
-    if (!session) {
+    if (!session && raise) {
         throw createError({ statusCode: 401, statusMessage: "Unauthorized" });
     }
     return session;

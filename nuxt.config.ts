@@ -13,7 +13,7 @@ const getAuthBaseUrl = () => {
     }
 
     return process.env.CF_PAGES_URL || defaultUrl;
-}
+};
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
@@ -63,6 +63,7 @@ export default defineNuxtConfig({
                 baseUrl: getAuthBaseUrl(),
                 verifyClientOnEveryRequest: false,
             },
+            dev_ids: ["256048990750113793", "769556133215862784"],
         },
     },
 
