@@ -82,14 +82,11 @@ class CloudflareCacheStore implements CacheStore {
 
 class LocalCacheStore implements CacheStore {
     async get(key: string, options?: KVNamespaceGetOptions<"json">): Promise<unknown> {
+        this.checkExpiration(key);
         if (!(key in localCacheData)) {
             return null;
         }
         const value = localCacheData[key];
-        if (value.expiry !== null && Date.now() >= value.expiry) {
-            delete localCacheData[key];
-            return null;
-        }
         const result = value.value;
         if (result === null || options?.type !== "json") {
             return result;
@@ -109,11 +106,20 @@ class LocalCacheStore implements CacheStore {
         };
     }
 
+    checkExpiration(key: string): void {
+        const value = localCacheData[key];
+        if (!value) return;
+        if (value.expiry !== null && Date.now() >= value.expiry) {
+            delete localCacheData[key];
+        }
+    }
+
     async list(_options?: KVNamespaceListOptions): Promise<KVNamespaceListResult<unknown, string>> {
+        Object.keys(localCacheData).forEach(key => this.checkExpiration(key));
         const keys: KVNamespaceListKey<unknown, string>[] = Object.entries(localCacheData).map(([key, value]) => {
             return {
                 name: key,
-                expiration: value.expiry,
+                expiration: value.expiry === null ? undefined : value.expiry - Date.now(),
             } as KVNamespaceListKey<unknown, string>
         })
 

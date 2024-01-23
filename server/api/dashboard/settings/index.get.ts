@@ -10,8 +10,8 @@ export default defineEventHandler(async (event) => {
     const kvItems: KVItemSettings[] = cacheKeys.keys.map(item => {
         let expiryString = "N/A";
         const expiration = item.expiration || 0;
-        if (expiration || 0 > 0) {
-            expiryString = relativeTime.from(new Date(expiration));
+        if (expiration > 0) {
+            expiryString = relativeTime.from(new Date(Date.now() + expiration));
         }
         return {
            key: item.name,
