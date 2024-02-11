@@ -67,6 +67,6 @@
         "drizzle-orm": "^0.29.1"
     },
     "resolutions": {
-        "vue": "3.3.8"
+        "vue": "3.4.8"
     }
 }
