@@ -65,8 +65,5 @@
         "@auth/core": "^0.18.4",
         "@hebilicious/authjs-nuxt": "^0.3.5",
         "drizzle-orm": "^0.29.1"
-    },
-    "resolutions": {
-        "vue": "3.4.8"
     }
 }
