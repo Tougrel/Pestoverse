@@ -20,6 +20,7 @@ const openModal = (image: string) => {
 
 definePageMeta({
     description: "Photos of places the pestini have traveled around the world!",
+    layout: "default",
 });
 
 onMounted(() => {
@@ -28,23 +29,21 @@ onMounted(() => {
 </script>
 
 <template>
-    <NuxtLayout name="default">
-        <div v-if="loading" class="flex h-full w-full flex-col items-center justify-center">
-            <img src="static/images/emotes/waddle.gif" decoding="async" loading="lazy" class="bg-cover bg-repeat-x" />
-        </div>
-        <div v-show="!loading" class="columns-1 gap-4 p-4 sm:columns-2 md:columns-3 lg:columns-4 xl:columns-5">
-            <UiImage
-                v-for="image in images"
-                @click="openModal(image.src)"
-                :name="image.name"
-                :src="image.src"
-                :width="image.width"
-                :height="image.height"
-                class="mb-4"
-            />
-            <UModal v-model="modalOpen">
-                <img loading="lazy" decoding="async" :src="modalImage" />
-            </UModal>
-        </div>
-    </NuxtLayout>
+    <div v-if="loading" class="flex h-full w-full flex-col items-center justify-center">
+        <img src="static/images/emotes/waddle.gif" decoding="async" loading="lazy" class="bg-cover bg-repeat-x" />
+    </div>
+    <div v-show="!loading" class="columns-1 gap-4 p-4 sm:columns-2 md:columns-3 lg:columns-4 xl:columns-5">
+        <UiImage
+            v-for="image in images"
+            @click="openModal(image.src)"
+            :name="image.name"
+            :src="image.src"
+            :width="image.width"
+            :height="image.height"
+            class="mb-4"
+        />
+        <UModal v-model="modalOpen">
+            <img loading="lazy" decoding="async" :src="modalImage" />
+        </UModal>
+    </div>
 </template>

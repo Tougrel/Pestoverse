@@ -53,13 +53,12 @@ const users = [
 
 definePageMeta({
     description: "The website was made with the help of these amazing pestini",
+    layout: "default",
 });
 </script>
 
 <template>
-    <NuxtLayout name="default">
-        <div class="grid grid-cols-1 gap-4 p-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
-            <CreditsUser v-for="user in users" :name="user.name" :description="user.description" :iconPath="user.icon_path" />
-        </div>
-    </NuxtLayout>
+    <div class="grid grid-cols-1 gap-4 p-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
+        <CreditsUser v-for="user in users" :name="user.name" :description="user.description" :iconPath="user.icon_path" />
+    </div>
 </template>
