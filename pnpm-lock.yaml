@@ -52,6 +52,9 @@ devDependencies:
   '@types/node':
     specifier: ^18.19.2
     version: 18.19.2
+  '@yaireo/relative-time':
+    specifier: ^1.0.4
+    version: 1.0.4
   better-sqlite3:
     specifier: ^9.2.2
     version: 9.2.2
@@ -2836,6 +2839,11 @@ packages:
     transitivePeerDependencies:
       - '@vue/composition-api'
       - vue
+    dev: true
+
+  /@yaireo/relative-time@1.0.4:
+    resolution: {integrity: sha512-ILW0k/xtOsnnzLZg+3tk+A9HtTOYu4GI4bG1epBxJ/borIZgGDRMD8kVjzitGyKbV0LOsOchIMZdsAaQxRgImA==}
+    engines: {node: '>=12.0.0'}
     dev: true
 
   /abbrev@1.1.1:
