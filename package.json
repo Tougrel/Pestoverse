@@ -60,7 +60,7 @@
         "vue-flip": "^3.0.2",
         "wrangler": "^3.21.0"
     },
-    "packageManager": "yarn@3.6.1",
+    "packageManager": "pnpm@8.15.1",
     "dependencies": {
         "@auth/core": "^0.18.4",
         "@hebilicious/authjs-nuxt": "^0.3.5",
