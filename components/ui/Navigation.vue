@@ -30,6 +30,7 @@ const pages = ref([
     },
 ]);
 
+const showAuth = ref(false);
 const filterPages = (pgs: any[]) => {
     if (session.value && ["256048990750113793", "769556133215862784"].indexOf(session.value.profile.id) !== -1) return pgs;
     else return pgs.filter((value) => !value.devs);
@@ -50,7 +51,7 @@ const filterPages = (pgs: any[]) => {
                 <Icon :name="page.icon" size="1.5em" class="mr-2" />
                 <span class="text-lg font-medium">{{ page.label }}</span>
             </NuxtLink>
-            <UiAuth />
+            <UiAuth v-if="showAuth" />
         </div>
 
         <div class="flex flex-col items-start gap-2">
