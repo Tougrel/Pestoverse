@@ -4,11 +4,11 @@ coords:
   - 18.5981
 images:
   - url: lesheran-1.jpg
-    width: 268
-    height: 595
+    width: 1800
+    height: 4000
   - url: lesheran-2.jpg
-    width: 268
-    height: 595
+    width: 1800
+    height: 4000
   - url: lesheran-3.jpg
-    width: 268
-    height: 595
+    width: 1800
+    height: 4000
