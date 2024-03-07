@@ -4,17 +4,22 @@ images:
     width: 762
     height: 1494
   - url: s_guy-emote-eightyeightdesign-1.gif
+    artist: eightyeightdesign
     width: 500
     height: 500
   - url: s_guy-emote-eightyeightdesign-2.gif
+    artist: eightyeightdesign
     width: 500
     height: 500
   - url: s_guy-emote-eightyeightdesign-3.gif
+    artist: eightyeightdesign
     width: 500
     height: 500
   - url: s_guy-emote-eightyeightdesign-4.gif
+    artist: eightyeightdesign
     width: 500
     height: 500
   - url: s_guy-siun_13.png
+    artist: siun_13
     width: 7087
     height: 4724

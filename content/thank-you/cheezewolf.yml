@@ -2,9 +2,11 @@ name: cheezewolf
 images:
   - url: cheezewolf-genc____.png
     artist: genc____
+    twitter: GENCZILLA
     width: 1650
     height: 2550
   - url: cheezewolf-wackkaronii.jpg
     artist: wackkaronii
+    twitter: false
     width: 3840
     height: 2160

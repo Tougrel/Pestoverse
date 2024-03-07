@@ -1,5 +1,5 @@
 <script setup lang="ts">
-defineProps<{ src: string; name?: string; width: number; height: number; prefix: string }>();
+defineProps<{ src: string; name?: string; width: number; height: number; prefix: string; full?: boolean }>();
 const imageLoaded = ref(false);
 </script>
 
@@ -16,7 +16,7 @@ const imageLoaded = ref(false);
                 :class="{ 'opacity-100': imageLoaded, 'opacity-0': !imageLoaded }"
                 loading="lazy"
                 decoding="async"
-                :src="getResizedImage(src, prefix)"
+                :src="full ? getFullImage(src, prefix) : getResizedImage(src, prefix)"
                 :width="width"
                 :height="height"
                 @load="imageLoaded = true"

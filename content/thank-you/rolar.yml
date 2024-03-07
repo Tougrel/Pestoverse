@@ -1,5 +1,7 @@
 name: rolar
 images:
   - url: rolar-friend.png
+    artist: Rolar's Colleague
+    twitter: false
     width: 1200
     height: 2000
