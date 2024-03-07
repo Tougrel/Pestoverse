@@ -7,7 +7,7 @@ import sizeOf from "buffer-image-size";
 const galleryPath = path.join("content", "gallery");
 const files = fs.readdirSync(galleryPath);
 
-let baseUrl = "cdn.pestoverse.world";
+let baseUrl = "https://cdn.pestoverse.world";
 if (process.argv.length > 2) {
     baseUrl = process.argv[2];
 }
