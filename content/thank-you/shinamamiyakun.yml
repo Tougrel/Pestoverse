@@ -1,3 +1,5 @@
 name: shinamamiyakun
 images:
   - url: shinamamiyakun.png
+    width: 3500
+    height: 4500

@@ -1,5 +1,11 @@
 name: yukiiarts
 images:
   - url: yukiiarts-1.png
+    width: 6376
+    height: 7200
   - url: yukiiarts-2.png
+    width: 4800
+    height: 7200
   - url: yukiiarts-3.png
+    width: 4800
+    height: 7200

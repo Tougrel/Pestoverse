@@ -1,3 +1,5 @@
 name: ruhro
 images:
   - url: ruhro-1.png
+    width: 3600
+    height: 2400

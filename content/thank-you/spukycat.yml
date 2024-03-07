@@ -1,3 +1,5 @@
 name: spukycat
 images:
   - url: spukycat-1.jpg
+    width: 800
+    height: 1467

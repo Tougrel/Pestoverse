@@ -1,3 +1,5 @@
-name: dokomi
+name: Dokomi
 images:
   - url: dokomi.jpg
+    width: 4032
+    height: 3024

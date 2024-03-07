@@ -1,4 +1,8 @@
 name: AArforce
 images:
   - url: aarforce-1.jpg
+    width: 495
+    height: 396
   - url: aarforce-2.jpg
+    width: 4960
+    height: 3508
