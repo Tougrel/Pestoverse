@@ -23,6 +23,11 @@ const pages = ref([
         to: "/credits",
     },
     {
+        label: "Thank You",
+        icon: "mdi:heart",
+        to: "/thank-you",
+    },
+    {
         label: "Dashboard",
         icon: "mdi:view-dashboard",
         to: "/dashboard",
@@ -40,14 +45,14 @@ const filterPages = (pgs: any[]) => {
 <template>
     <header class="flex max-w-[256px] flex-col justify-between bg-background-darker p-6 text-white">
         <div class="flex flex-col gap-2">
-            <NuxtLink to="/" class="text-primary-500 text-2xl font-bold"> Pestoverse </NuxtLink>
+            <NuxtLink to="/" class="text-primary-500 text-2xl font-bold"> Pestoverse</NuxtLink>
             <p class="text-sm text-gray-400">The official website for running, upcoming and archived events created by Yuniiho's community!</p>
             <UDivider />
             <p class="text-sm text-gray-400">{{ router.currentRoute.value.meta?.description }}</p>
         </div>
 
         <div class="flex flex-col gap-2">
-            <NuxtLink v-for="page in filterPages(pages)" :key="page.label" :to="page.to" active-class="text-primary-500">
+            <NuxtLink v-for="page in filterPages(pages)" :key="page.label" :to="page.to" active-class="text-primary-500" class="flex flex-row">
                 <Icon :name="page.icon" size="1.5em" class="mr-2" />
                 <span class="text-lg font-medium">{{ page.label }}</span>
             </NuxtLink>
