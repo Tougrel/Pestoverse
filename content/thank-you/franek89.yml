@@ -2,43 +2,85 @@ name: franek89
 images:
   - url: franek89-futaro_breb.png
     artist: futaro_breb
+    width: 5000
+    height: 7000
   - url: franek89-kabocha_22-1.jpg
     artist: kabocha_22
+    width: 2039
+    height: 1378
   - url: franek89-kabocha_22-2.jpg
     artist: kabocha_22
+    width: 2039
+    height: 1378
   - url: franek89-kabocha_22-3.jpg
     artist: kabocha_22
+    width: 2039
+    height: 1378
   - url: franek89-kingyoniku.png
     artist: kingyoniku
+    width: 2508
+    height: 3541
   - url: franek89-kyabe2ndmk2.png
     artist: kyabe2ndmk2
+    width: 2893
+    height: 4092
   - url: franek89-monufun_f-1.png
     artist: monufun_f
+    width: 1163
+    height: 1163
   - url: franek89-monufun_f-2.png
     artist: monufun_f
+    width: 1280
+    height: 1280
   - url: franek89-monufun_f-3.png
     artist: monufun_f
+    width: 1500
+    height: 1000
   - url: franek89-monufun_f-4.png
     artist: monufun_f
+    width: 1058
+    height: 768
   - url: franek89-monufun_f-5.gif
     artist: monufun_f
+    width: 1280
+    height: 1280
   - url: franek89-monufun_f-6.gif
     artist: monufun_f
+    width: 1280
+    height: 1280
   - url: franek89-monufun_f-7.gif
     artist: monufun_f
+    width: 1280
+    height: 1280
   - url: franek89-nagatsukimaisan.png
     artist: nagatsukimaisan
+    width: 3541
+    height: 2659
   - url: franek89-parkiranhonda-1.png
     artist: parkiranhonda
+    width: 4961
+    height: 3508
   - url: franek89-secon_56.jpg
     artist: secon_56
+    width: 4352
+    height: 6831
   - url: franek89-yotaka_sumi-1.png
     artist: yotaka_sumi
+    width: 2304
+    height: 3072
   - url: franek89-yotaka_sumi-2.png
     artist: yotaka_sumi
+    width: 3500
+    height: 3000
   - url: franek89-yotaka_sumi-3.png
     artist: yotaka_sumi
+    width: 2304
+    height: 3072
   - url: franek89-yourbuddyaxel.png
     artist: yourbuddyaxel
+    width: 2267
+    height: 1921
   - url: franek89-yzo_kun.png
     artist: yzo_kun
+    width: 3508
+    height: 2480

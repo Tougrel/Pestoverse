@@ -2,3 +2,5 @@ name: geolounge
 images:
   - url: geolounge-spukycat.png
     artist: spukycat
+    width: 2000
+    height: 2000

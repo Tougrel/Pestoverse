@@ -1,3 +1,5 @@
 name: tempest613
 images:
   - url: tempest613-1.jpg
+    width: 2268
+    height: 3428

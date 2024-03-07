@@ -1,3 +1,5 @@
 name: fuzzymix
 images:
   - url: fuzzymix-1.png
+    width: 2048
+    height: 1536

@@ -1,4 +1,8 @@
 name: freefraq
 images:
   - url: freefraq-1.png
+    width: 2093
+    height: 3091
   - url: freefraq-2.png
+    width: 2576
+    height: 3000

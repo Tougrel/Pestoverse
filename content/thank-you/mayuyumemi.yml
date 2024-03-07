@@ -1,4 +1,8 @@
 name: mayuyumemi
 images:
   - url: mayuyumemi-1.png
+    width: 2000
+    height: 3000
   - url: mayuyumemi-2.png
+    width: 3000
+    height: 3000

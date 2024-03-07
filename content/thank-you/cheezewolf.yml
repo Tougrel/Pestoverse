@@ -2,5 +2,9 @@ name: cheezewolf
 images:
   - url: cheezewolf-genc____.png
     artist: genc____
+    width: 1650
+    height: 2550
   - url: cheezewolf-wackkaronii.jpg
     artist: wackkaronii
+    width: 3840
+    height: 2160

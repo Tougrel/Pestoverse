@@ -1,3 +1,5 @@
 name: jrodster
 images:
   - url: jrodster-1.jpg
+    width: 4032
+    height: 3024

@@ -1,3 +1,5 @@
 name: orkhio
 images:
   - url: orkhio-1.png
+    width: 4000
+    height: 4000

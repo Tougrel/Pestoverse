@@ -1,3 +1,5 @@
 name: dedicatus
 images:
   - url: dedicatus-1.jpg
+    width: 3000
+    height: 4000

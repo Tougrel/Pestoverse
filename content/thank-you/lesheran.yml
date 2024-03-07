@@ -1,3 +1,5 @@
 name: lesheran
 images:
   - url: lesheran-1.png
+    width: 1600
+    height: 1200
