@@ -1,0 +1,14 @@
+name: Manateck
+coords:
+  - -28.05
+  - 152.4
+images:
+  - url: manateck-1.jpg
+    width: 3000
+    height: 4000
+  - url: manateck-2.jpg
+    width: 3000
+    height: 4000
+  - url: manateck-3.jpg
+    width: 3000
+    height: 4000

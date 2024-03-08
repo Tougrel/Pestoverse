@@ -4,10 +4,10 @@ import path from "node:path";
 import request from "sync-request";
 import sizeOf from "buffer-image-size";
 
-const galleryPath = path.join("content", "gallery");
+const galleryPath = path.join("content", "thank-you");
 const files = fs.readdirSync(galleryPath);
 
-let baseUrl = "cdn.pestoverse.world";
+let baseUrl = "https://cdn.pestoverse.world/thank-you";
 if (process.argv.length > 2) {
     baseUrl = process.argv[2];
 }
@@ -20,10 +20,12 @@ files.forEach((file) => {
     console.log("\nProcessing file", filePath);
     images.forEach((image) => {
         let imageFile;
+        let imageData = {};
         if (typeof image === "string") {
             imageFile = image;
         } else if (typeof image === "object" && "url" in image) {
             imageFile = image.url;
+            imageData = image;
         }
 
         const imageUrl = `${baseUrl}/full/${imageFile}`;
@@ -33,11 +35,13 @@ files.forEach((file) => {
         const { height, width } = sizeOf(imageBuffer);
 
         console.log(imageFile, `width=${width}, height=${height}`);
-        newImages.push({
+        const newImageData = {
+            ...imageData,
             url: imageFile,
             width,
-            height,
-        });
+            height
+        }
+        newImages.push(newImageData);
     });
     data.images = newImages;
     const outputYaml = yaml.dump(data, { lineWidth: -1 });

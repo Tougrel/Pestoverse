@@ -1,18 +1,22 @@
 <script setup lang="ts">
-defineProps<{ src: string; name?: string; width: number; height: number }>();
+defineProps<{ src: string; name?: string; width: number; height: number; prefix: string; full?: boolean }>();
 const imageLoaded = ref(false);
 </script>
 
 <template>
     <button class="group w-full break-inside-avoid rounded-lg" @click="$emit('click')">
-        <figure class="relative table w-full rounded-lg bg-cover" :style="{ backgroundImage: `url(${getPlaceholderImage(src)})` }">
+        <figure
+            class="relative table w-full rounded-lg bg-cover"
+            :style="{ backgroundImage: `url(${getPlaceholderImage(src, prefix)})` }"
+            :class="{ '!bg-none': imageLoaded }"
+        >
             <img
                 role="button"
                 class="block w-full rounded-lg bg-cover bg-center transition-[opacity_200ms_ease-in-out]"
                 :class="{ 'opacity-100': imageLoaded, 'opacity-0': !imageLoaded }"
                 loading="lazy"
                 decoding="async"
-                :src="getResizedImage(src)"
+                :src="full ? getFullImage(src, prefix) : getResizedImage(src, prefix)"
                 :width="width"
                 :height="height"
                 @load="imageLoaded = true"
