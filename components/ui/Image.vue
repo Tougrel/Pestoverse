@@ -1,10 +1,15 @@
 <script setup lang="ts">
-defineProps<{ src: string; name?: string; width: number; height: number; prefix: string; full?: boolean }>();
+const props = defineProps<{ src: string; name?: string; width: number; height: number; prefix: string; full?: boolean, link?: string }>();
 const imageLoaded = ref(false);
+
+let element = "button";
+if (props.link) {
+    element = "a"
+}
 </script>
 
 <template>
-    <button class="group w-full break-inside-avoid rounded-lg" @click="$emit('click')">
+    <component :is="element" class="group w-full break-inside-avoid rounded-lg" @click="$emit('click')" :href="element === 'a' ? props.link : ''" :target="element === 'a' ? '_blank' : ''">
         <figure
             class="relative table w-full rounded-lg bg-cover"
             :style="{ backgroundImage: `url(${getPlaceholderImage(src, prefix)})` }"
@@ -28,5 +33,5 @@ const imageLoaded = ref(false);
                 {{ name }}
             </figcaption>
         </figure>
-    </button>
+    </component>
 </template>

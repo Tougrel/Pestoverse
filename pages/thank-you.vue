@@ -48,7 +48,7 @@ const getTwitter = (image: any) => {
 const goToArtist = (image: any) => {
     const twitter = getTwitter(image);
     if (!twitter) return;
-    navigateTo(`https://twitter.com/${twitter}`, { open: { target: "_blank" } });
+    return `https://twitter.com/${twitter}`;
 };
 
 definePageMeta({
@@ -78,7 +78,7 @@ onMounted(() => {
         />
         <UModal v-model="modalOpen">
             <UiImage
-                @click="goToArtist(modalImageData)"
+                :link="goToArtist(modalImageData)"
                 :name="getLabel(modalImageData)"
                 :src="modalImageData.src"
                 :width="modalImageData.width"
