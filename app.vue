@@ -3,7 +3,6 @@ const loading = ref(true);
 const {
     public: { cdnBase },
 } = useRuntimeConfig();
-const { session, removeSession } = useAuth();
 
 useState("kudo-slideover", () => false);
 
@@ -50,8 +49,6 @@ useHead({
 
 onMounted(() => {
     loading.value = false;
-
-    if (new Date() > new Date(session.value?.expires)) removeSession();
 
     const primary = localStorage.getItem("ui-color");
     if (primary) useAppConfig().ui.primary = primary;

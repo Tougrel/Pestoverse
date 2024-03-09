@@ -11,10 +11,10 @@ type CacheValue = {
 const localCacheData: { [key: string]: CacheValue } = {};
 
 function getCacheStore(event: H3Event): CacheStore {
-    const isCloudflare = "cloudflare" in event.context;
-    if (isCloudflare) {
-        return new CloudflareCacheStore(event.context.cloudflare.env.KV_CACHE);
-    }
+    // const isCloudflare = "cloudflare" in event.context;
+    // if (isCloudflare) {
+    //     return new CloudflareCacheStore(event.context.cloudflare.env.KV_CACHE);
+    // }
     return new LocalCacheStore();
 }
 

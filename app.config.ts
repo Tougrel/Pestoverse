@@ -65,5 +65,9 @@ export default defineAppConfig({
                 },
             },
         },
+
+        modal: {
+            width: "w-full sm:max-w-lg lg:max-w-2xl"
+        }
     },
 });

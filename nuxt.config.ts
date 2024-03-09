@@ -6,7 +6,7 @@ export default defineNuxtConfig({
         enabled: true,
     },
 
-    modules: ["@nuxt/devtools", "@nuxt/image", "@nuxt/ui", "nuxt-icon", "@nuxt/content", "@nuxtjs/google-fonts", "@hebilicious/authjs-nuxt"],
+    modules: ["@nuxt/devtools", "@nuxt/image", "@nuxt/ui", "nuxt-icon", "@nuxt/content", "@nuxtjs/google-fonts"],
 
     css: ["~/assets/css/index.css"],
 
