@@ -88,4 +88,11 @@ onMounted(() => {
             />
         </UModal>
     </div>
+    <div v-show="!loading" class="columns-1 md:columns-2 px-4 pb-4">
+        <iframe class="w-full h-auto [aspect-ratio:16/9] rounded-lg" src="https://www.youtube.com/embed/qnumxLjtrJI"
+            frameborder="0"></iframe>
+        <video controls class="w-full h-auto [aspect-ratio:16/9] rounded-lg">
+            <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" type="video/mp4" />
+        </video>
+    </div>
 </template>
