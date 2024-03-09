@@ -1,7 +1,8 @@
 <script setup lang="ts">
 const gallery = await queryContent("thank-you").only(["images", "name"]).find();
+type ImageData = { name: string; artist?: string; twitter?: string | boolean; src: string; width: number; height: number };
 const images = gallery.flatMap((entry) =>
-    entry.images.flatMap((image: { url: string; width: number; height: number }) => ({
+    entry.images.flatMap((image: { url: string; width: number; height: number, twitter: string, artist: string }) => ({
         name: entry.name,
         twitter: image.twitter,
         artist: image.artist,
@@ -9,12 +10,11 @@ const images = gallery.flatMap((entry) =>
         width: image.width,
         height: image.height,
     })),
-) as [{ name: string; artist?: string; twitter?: string | boolean; src: string; width: number; height: number }];
+) as [ImageData]
 
 const loading = ref(true);
 const modalOpen = useState<boolean>("gallery-modal", () => false);
-const modalImage = useState<string>("gallery-modal-image");
-const modalImageData = useState<string>("gallery-modal-data");
+const modalImageData = useState<ImageData>("gallery-modal-data");
 
 const openModal = (image: any) => {
     modalOpen.value = true;
@@ -66,26 +66,11 @@ onMounted(() => {
         <img src="static/images/emotes/waddle.gif" decoding="async" loading="lazy" class="bg-cover bg-repeat-x" />
     </div>
     <div v-show="!loading" class="columns-1 gap-4 p-4 sm:columns-2 md:columns-3 lg:columns-4 xl:columns-5">
-        <UiImage
-            v-for="image in images"
-            @click="openModal(image)"
-            :name="image.name"
-            :src="image.src"
-            :width="image.width"
-            :height="image.height"
-            prefix="thank-you/"
-            class="mb-4"
-        />
+        <UiImage v-for="image in images" @click="openModal(image)" :name="image.name" :src="image.src" :width="image.width"
+            :height="image.height" prefix="thank-you/" class="mb-4" />
         <UModal v-model="modalOpen">
-            <UiImage
-                :link="goToArtist(modalImageData)"
-                :name="getLabel(modalImageData)"
-                :src="modalImageData.src"
-                :width="modalImageData.width"
-                :height="modalImageData.height"
-                :full="true"
-                prefix="thank-you/"
-            />
+            <UiImage :link="goToArtist(modalImageData)" :name="getLabel(modalImageData)" :src="modalImageData.src"
+                :width="modalImageData.width" :height="modalImageData.height" :full="true" prefix="thank-you/" />
         </UModal>
     </div>
 </template>
