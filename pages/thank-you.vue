@@ -73,8 +73,8 @@ onMounted(() => {
                 :width="modalImageData.width" :height="modalImageData.height" :full="true" prefix="thank-you/" />
         </UModal>
     </div>
-    <div v-show="!loading" class="columns-1 gap-4 md:columns-2 px-4 pb-4">
-        <iframe class="w-full h-auto [aspect-ratio:16/9] rounded-lg" src="https://www.youtube.com/embed/qnumxLjtrJI"
+    <div v-show="!loading" class="columns-1 md:columns-2 px-4 pb-4">
+        <iframe class="w-full h-auto [aspect-ratio:16/9] rounded-lg mb-4" src="https://www.youtube.com/embed/qnumxLjtrJI"
             frameborder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowfullscreen></iframe>
