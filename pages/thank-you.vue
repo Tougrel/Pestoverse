@@ -73,4 +73,14 @@ onMounted(() => {
                 :width="modalImageData.width" :height="modalImageData.height" :full="true" prefix="thank-you/" />
         </UModal>
     </div>
+    <div v-show="!loading" class="columns-1 md:columns-2 px-4 pb-4">
+        <iframe class="w-full h-auto [aspect-ratio:16/9] rounded-lg mb-4" src="https://www.youtube.com/embed/qnumxLjtrJI"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen></iframe>
+        <video controls class="w-full h-auto [aspect-ratio:16/9] rounded-lg">
+            <source src="https://cdn.pestoverse.world/thank-you/birthday_pesto_besto_1.mp4" type="video/mp4"
+                allowfullscreen />
+        </video>
+    </div>
 </template>
