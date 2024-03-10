@@ -79,7 +79,7 @@ onMounted(() => {
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowfullscreen></iframe>
         <video controls class="w-full h-auto [aspect-ratio:16/9] rounded-lg">
-            <source src="https://cdn.pestoverse.world/thank-you/birthday_pesto_besto.mp4" type="video/mp4"
+            <source src="https://cdn.pestoverse.world/thank-you/birthday_pesto_besto_1.mp4" type="video/mp4"
                 allowfullscreen />
         </video>
     </div>
