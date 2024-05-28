@@ -1,11 +1,11 @@
 # Pestoverse
 
-![License](https://shieldio.tougrel.dev/github/license/Tougrel/pestoverse?style=for-the-badge)
-![GitHub Contributors](https://shieldio.tougrel.dev/github/contributors/Tougrel/pestoverse?style=for-the-badge)
-![GitHub Issues](https://shieldio.tougrel.dev/github/issues/Tougrel/pestoverse?style=for-the-badge)
-![GitHub pull requests](https://shieldio.tougrel.dev/github/issues-pr/Tougrel/pestoverse?style=for-the-badge)
-[![Static Badge](https://shieldio.tougrel.dev/badge/Localization_at_Crowdin-15803d?style=for-the-badge&logo=crowdin)](https://crowdin.com/project/pestoverse)
-![Static Badge](https://shieldio.tougrel.dev/badge/Powered_by_Cloudflare-F38020?style=for-the-badge&logo=Cloudflare&logoColor=white)
+![License](https://shieldsio.tougrel.dev/github/license/Tougrel/pestoverse?style=for-the-badge)
+![GitHub Contributors](https://shieldsio.tougrel.dev/github/contributors/Tougrel/pestoverse?style=for-the-badge)
+![GitHub Issues](https://shieldsio.tougrel.dev/github/issues/Tougrel/pestoverse?style=for-the-badge)
+![GitHub pull requests](https://shieldsio.tougrel.dev/github/issues-pr/Tougrel/pestoverse?style=for-the-badge)
+[![Static Badge](https://shieldsio.tougrel.dev/badge/Localization_at_Crowdin-15803d?style=for-the-badge&logo=crowdin)](https://crowdin.com/project/pestoverse)
+![Static Badge](https://shieldsio.tougrel.dev/badge/Powered_by_Cloudflare-F38020?style=for-the-badge&logo=Cloudflare&logoColor=white)
 
 Welcome to the **Pestoverse** github repo! The official community website built for Yuniiho's community to celebrate milestones and archive them so we can go back and watch/read them!
 
