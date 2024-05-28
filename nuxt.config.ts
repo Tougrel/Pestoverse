@@ -29,11 +29,6 @@ export default defineNuxtConfig({
         dir: "static/images",
     },
 
-    authJs: {
-        verifyClientOnEveryRequest: false,
-        baseUrl: process.env.NUXT_NEXTAUTH_URL,
-    },
-
     runtimeConfig: {
         authJs: {
             secret: process.env.NUXT_NEXTAUTH_SECRET,
