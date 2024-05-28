@@ -6,7 +6,7 @@ export default defineNuxtConfig({
         enabled: true,
     },
 
-    modules: ["@nuxt/devtools", "@nuxt/image", "@nuxt/ui", "nuxt-icon", "@nuxt/content", "@nuxtjs/google-fonts"],
+    modules: ["@nuxt/devtools", "@nuxt/image", "@nuxt/ui", "nuxt-icon", "@nuxt/content", "@nuxt/fonts"],
 
     css: ["~/assets/css/index.css"],
 
@@ -46,10 +46,10 @@ export default defineNuxtConfig({
         },
     },
 
-    googleFonts: {
-        useStylesheet: true,
-        families: {
-            Poppins: [400, 500, 600, 700],
+    fonts: {
+        priority: ["bunny", "google"],
+        defaults: {
+            weights: [400, 500, 700],
         },
     },
 });
