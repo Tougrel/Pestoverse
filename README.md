@@ -19,7 +19,7 @@ Credits will be given to all pesties that help (even with bug fixing and ideas)!
 
 ## How to set up the database locally
 
-> The latest commit doesn't include a database. Please refer to commit [2898619](https://github.com/Tougrel/Pestoverse/commit/2898619) which was the last one that included a database/auth system
+> The latest commit doesn't include a database. Please refer to commit [2898619](https://github.com/Tougrel/Pestoverse/tree/2898619) which was the last one that included a database/auth system
 
 1. Initialise the database: `pnpm migrate:local`
    This will create the database and run migrations.
